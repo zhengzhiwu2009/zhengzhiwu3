@@ -1,0 +1,4 @@
+update pe_pri_role w set w.flag_role_type='4028826a1db7bb01011db7e623d70004' where w.id='1';
+
+
+insert into enum_const(id,name,code,namespace,is_default,create_date,note)values('4028826a1db7bb01011db7e623d70004','二级集体管理员','4','FlagRoleType','0',sysdate,'角色类型');

@@ -1,0 +1,2 @@
+insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('40288a7b39433ae20139434xf7dc0004', '退费中', '3', 'FlagRefundState', '0', to_date('17-01-2013', 'dd-mm-yyyy'), '订单退费状态');

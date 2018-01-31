@@ -1,0 +1,28 @@
+insert into pe_priority (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288ae93fc2d8fb013fc7f17284001ex', '发票管理_删除', '07003', '/entity/basic', 'invoiceManage', 'del');
+
+insert into pe_priority (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288ae93fc2d8fb013fc7f17284001e', '发票管理_按钮', '07003', '/entity/basic', 'invoiceManage', 'open');
+
+insert into pe_priority (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288ae93fc2d8fb013fc80a1cfc0021', '考试批次管理_按钮', '40288a333ef8a742013ef99de82c0001', '/entity/onlineexam', 'peBzzPici', 'piciBtn');
+
+insert into pe_priority (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288ae93fc2d8fb013fc7a5bd7f0018', '缴费管理_到账对账操作', '07001', '/entity/basic', 'paymentManage', 'check');
+
+insert into pe_priority (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288ae93fc2d8fb013fc7b2417f001a', '退费管理_初审按钮', '07002001', '/entity/basic', 'refoundManage', 'firstAudit');
+
+insert into pe_priority (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288ae93fc2d8fb013fc7c9c755001b', '退费终审管理_终审按钮', '07002002', '/entity/basic', 'refoundManageFinal', 'finalAudit');
+
+insert into pe_priority (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288ae93fc2d8fb013fcbe2db6d0022', '公告列表_按钮', '0900101', '/entity/information', 'peBulletin', 'bulletinBtn');
+
+insert into pe_priority (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288ae93fc2d8fb013fcc5c81660027', '调查问卷列表_按钮管理', '1000201', '/entity/information', 'peVotePaper', 'voteBtn');
+
+
+
+insert into pe_priority (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288ae93ff1e562013ff1e861f30001', '集体用户账户_重置密码', '02002', '/entity/basic', 'enterpriseManager', 'entPassword');

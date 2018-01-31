@@ -1,0 +1,17 @@
+insert into pe_pri_category (ID, NAME, FK_PARENT_ID, CODE, PATH, FLAG_LEFT_MENU)
+values ('40288a333ef8a742013ef99de82c0001', '考试批次管理', '05', '05003', '/entity/onlineexam/peBzzPici.action', '1');
+
+insert into pe_priority (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288a333f07fb87013f08b63ae50001', '在线考试批次添加学员', '40288a333ef8a742013ef99de82c0001', '/entity/onlineexam', 'pePcDetail', '*');
+
+insert into pe_priority (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288a333ef8a742013ef9a0f54c0002', '考试批次管理', '40288a333ef8a742013ef99de82c0001', '/entity/onlineexam', 'peBzzPici', '*');
+
+insert into pe_priority (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288a7b3f838390013f83ac150f000b', '集体管理员考试批次管理', '40288a333ef8a742013ef99de82c0001', '/entity/onlineexam', 'peBzzPici', 'abstractList');
+
+insert into pe_priority (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288a7b3f838390013f845898730010', '集体在线考试查看学员_abstractList', '40288a333ef8a742013ef99de82c0001', '/entity/onlineexam', 'pePcDetail', 'abstractList');
+
+insert into pe_priority (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288a7b3f838390013f8459b3de0011', '集体在线考试查看学员详细_stuviewDetail', '40288a333ef8a742013ef99de82c0001', '/entity/onlineexam', 'pePcDetail', 'stuviewDetail');

@@ -1,0 +1,2 @@
+update pe_pri_category ppc set ppc.path = '/entity/teaching/courseStudent_toCourseStudentSearch.action' where id = '40288acf39b430650139b4462a790004'
+create index training_course_courseid on TRAINING_COURSE_STUDENT (COURSE_ID);

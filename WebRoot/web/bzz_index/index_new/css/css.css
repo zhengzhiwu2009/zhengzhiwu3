@@ -1,0 +1,198 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{ background-color: #e7e7e7}
+a{ color:#333333;}
+input{ border:none; border:0;}
+/* top */
+#top{ width:1002px; height:143px; margin:0 auto;}
+
+/* nav */
+#nav{ width:1002px; height:38px; margin:0 auto; background:url(../images/nav_bg.jpg) repeat-x;}
+#nav ul{ padding-left:20px;}
+#nav ul li{ float:left; font-size:14px; text-align:center;  width:87px;  font-weight:bold;  overflow:hidden; display: block; margin:0 5px;  } 
+#nav ul li a{cursor: pointer; height:38px; line-height:38px; display:block; color:#ffffff; }
+#nav ul li a:hover{cursor: pointer; height:38px;   color:#004fb8; display:block; background: url(../images/nav_bg1.jpg) no-repeat; }
+#nav ul li.first a{height:38px ; font-size:14px; line-height:38px; font-weight:bold; background: url(../images/nav_bg1.jpg) no-repeat;  overflow:hidden; display:block; text-align:center;  color:#004fb8; }
+
+/* container_1 */
+#container_1{ width:1002px; height:auto; margin:0 auto; padding-top:5px; _padding-top:5px; padding-bottom:5px; background-color:#f1f8ff;}
+
+
+/* Announcement */
+#Announcement{ float:left; border:1px solid #c3c3c3; margin-left:5px; _margin-left:2px; padding:2px; width:216px; height:211px; background-color:#FFF;}
+.title_1{ height:27px; background:url(../images/title_1.jpg) no-repeat;}
+.more{float:right; margin-right:10px}
+.more a{ font-size:12px; font-weight:normal; height:27px; line-height:27px; color:#555555;}
+.more a:hover{ color:#FF0000}
+.title_1 h1{ color:#00448a; font-weight:bold; font-size:14px; padding-left:24px; float:left; padding-top:6px;}
+#Announcement ul{ margin:5px; }
+#Announcement ul li{ height:28px;_height:26px; border-bottom:1px dashed #c3c3c3; margin-left:6px; margin-right:6px;} 
+#Announcement ul li a{ font-size:12px; color:#333333; line-height:28px;_line-height:26px;}
+#Announcement ul li a:hover{ color:#FF0000;}
+
+/* Dynamic_news */
+#Dynamic_news{ float:left; border:1px solid #c3c3c3; margin-left:5px; padding:2px; width:535px; height:211px;background-color:#FFF;}
+.title_2{  height:27px; background:url(../images/title_2.jpg) no-repeat;}
+.more2{float:right; margin-right:10px}
+.more2 a{ font-size:12px; font-weight:normal; height:27px; line-height:27px; color:#555555;}
+.more2 a:hover{ color:#FF0000}
+.title_2 h1{ color:#00448a; font-weight:bold; font-size:14px; text-indent:30px; float:left; padding-top:6px;}
+.pic{ float:left; margin-top:10px; margin-left:5px;width:250px;}
+#Dynamic_news ul{ width:260px; _width:250px; float:left; margin-left:5px; margin-top:5px; }
+#Dynamic_news ul li{ height:28px; border-bottom:1px dashed #c3c3c3; margin-left:10px;  margin-right:10px;} 
+#Dynamic_news ul li a{ font-size:12px; color:#333333; line-height:28px;}
+#Dynamic_news ul li a:hover{ color:#FF0000;}
+
+/* Login area */
+#Login_area{ float:left; margin-left:4px; padding-top:50px; width:220px; height:168px;background-color:#FFF; background:url(../images/login_bg.jpg) no-repeat;}
+#Login_area p{ height:35px; font-size:12px; line-height:20px;}
+.input_1{ border:1px solid #cccccc; width:120px; height:18px; line-height:18px; }
+.sp1{ width:60px; text-align:right; float:left;}
+.sp2{ float:left;}
+.input_2{ width:60px; float:left; border:1px solid #cccccc; height:18px; margin-right:10px; line-height:18px; }
+.button{ text-align:center; height:30px; margin-top:5px;}
+.button a img{ margin-left:10px; margin-right:10px;}
+.key{ height:26px;  text-align:center; font-size:12px;}
+.input_3{ border:0; border:none}
+.sp10{ height:26px; margin-right:5px;}
+.sp11{ color:#46667f; font-weight:bold; margin-right:10px}
+.sp12 a:hover{ color:#FF0000;}
+
+/* Service area */
+#Service_area{ float:left; border:1px solid #c3c3c3; background-color:#FFF; margin-left:5px; _margin-left:2px; margin-top:4px; padding:2px; width:216px; height:252px; }
+#Service_area ul li{ float:left; width:70px; height:70px; text-align:center; font-size:12px; margin-top:5px;}
+#Service_area ul li a{ color:#333333;}
+#Service_area ul li a:hover{ color:#ff0000;}
+#Service_area ul li h1{ margin-top:5px;}
+
+/* Learning to rank */
+#Learning_to_rank{ float:left; border:1px solid #c3c3c3; margin-left:5px;  margin-top:4px; padding:2px;  width:535px; height:252px;background-color:#FFF;}
+.tab{width:535px; height:248px;  position:relative;  overflow:hidden}
+.title_3{ width:410px; float:right;}
+.tab dt{ height:28px; background:url(../images/title_2.jpg) no-repeat; }
+.tab dt h1{ font-size:14px; font-weight:bold; color:#00448a; padding-top:6px; padding-left:30px;}
+.tab dt a{display:inline-block; cursor:pointer; text-align:center; color:#000000; font-size:12px; width:67px; height:25px;  line-height:30px; _line-height:23px; background:url(../images/tb2.jpg) right bottom no-repeat;}
+.tab dt a.on{background:url(../images/tb1.jpg) left bottom no-repeat; color:#000000; font-size:12px; width:67px; height:25px; line-height:30px; _line-height:23px;}
+.tab dd{height:225px; overflow:hidden; clear:both; border-top: none;}
+.tab ul{ }
+.tab ul li{ height:27px;  _height:25px; border-bottom:1px dashed #CCCCCC; background:url(../images/icon2.jpg) 10px 10px no-repeat;  margin:0 10px 0 16px;}
+.tab ul li a{ font-size:12px; color:#000000; line-height:27px; _line-height:25px;}
+.tab ul li a:hover{ color:#FF0000;}
+.tab h3{position:absolute;left:460px; top:230px; padding-top:3px; font-size:12px;}
+.tab h4{position:absolute;left:440px; top:70px; padding-top:3px; font-size:12px; line-height:20px; font-weight:normal;}
+
+.title_4{ width:505px; height:28px; background:url(../images/title_3.jpg) no-repeat; margin-left:15px; margin-top:10px;  _margin-top:5px; font-size:12px;}
+.sp4{ width:70px; font-weight:bold; float:left; display:block; text-align:center;line-height:28px;}
+.sp5{ width:280px; font-weight:bold;float:left; display:block; text-align:center;line-height:28px;}
+.sp6{ width:70px; font-weight:bold;float:left; display:block; text-align:center;line-height:28px;}
+.sp7{ width:70px; font-weight:bold; float:left; display:block; line-height:28px; background:url(../images/top11.jpg)  center center no-repeat; text-align:center; color:#FFFFFF;}
+.sp8{ width:280px; font-weight:normal;float:left; display:block; text-align:center;line-height:28px; overflow:hidden;}
+.sp9{ width:70px; font-weight:normal;float:left; display:block; text-align:center;line-height:28px; font-size:11px; font-family:Arial, Helvetica, sans-serif;}
+.sp13{width:60px; font-weight:bold;float:left; display:block; text-align:center;line-height:28px;}
+.sp14{ width:60px; font-weight:normal;float:left; display:block; text-align:center;line-height:28px; overflow:hidden;}
+/* Popular courses */
+#Popular_courses{ float:left; border:1px solid #c3c3c3; margin-left:5px; margin-top:4px; padding:2px; _padding:0px 2px 0px 2px; width:214px; height:252px;  background-color:#FFF;}
+.sp3{ font-size:12px; font-weight:normal;}
+#Popular_courses ul{ width:205px; float:left; margin-left:5px; margin-top:5px; }
+#Popular_courses ul li{ height:27px; border-bottom:1px dashed #c3c3c3; margin-left:5px; margin-right:5px; padding-left:20px; overflow:hidden;}
+#Popular_courses ul li a{ font-size:12px; color:#333333; line-height:27px; width:140px; float:left; overflow:hidden;}
+#Popular_courses ul li a:hover{ color:#FF0000;}
+
+#Popular_courses ul li.li_1 { background: url(../images/top1.jpg) left 6px no-repeat ;}
+#Popular_courses ul li.li_2 { background: url(../images/top2.jpg) left 6px no-repeat ;}
+#Popular_courses ul li.li_3 { background: url(../images/top3.jpg) left 6px no-repeat ;}
+#Popular_courses ul li.li_4 { background: url(../images/top4.jpg) left 6px no-repeat ;}
+#Popular_courses ul li.li_5 { background: url(../images/top5.jpg) left 6px no-repeat ;}
+
+#Popular_courses ul li.li_1 span{ font-size:11px; font-family:Arial, Helvetica, sans-serif; width:35px; float:left; text-align:right; line-height:24px; color:#9c9c9c;}
+#Popular_courses ul li.li_2 span{ font-size:11px; font-family:Arial, Helvetica, sans-serif; width:35px; float:left; text-align:right; line-height:24px; color:#9c9c9c;}
+#Popular_courses ul li.li_3 span{ font-size:11px; font-family:Arial, Helvetica, sans-serif; width:35px; float:left; text-align:right; line-height:24px; color:#9c9c9c;}
+#Popular_courses ul li.li_4 span{ font-size:11px; font-family:Arial, Helvetica, sans-serif; width:35px; float:left; text-align:right; line-height:24px; color:#9c9c9c;}
+#Popular_courses ul li.li_5 span{ font-size:11px; font-family:Arial, Helvetica, sans-serif; width:35px; float:left; text-align:right; line-height:24px; color:#9c9c9c;}
+
+.more3{float:right; margin-right:5px}
+.more3 a{ font-size:12px; font-weight:normal; height:27px; line-height:27px; color:#555555;}
+.more3 a:hover{ color:#FF0000}
+
+/* banner */
+#banner{ width:997px; height:90px; padding-left:5px; margin:0 auto; background-color:#f1f8ff;}
+.img2{ text-align:center; margin-top:5px; margin-bottom:4px;}
+
+/* container_2 */
+#container_2{ width:1002px; height:auto; margin:0 auto; padding-top:5px; _padding-top:5px; padding-bottom:5px; background-color:#f1f8ff;}
+
+/* Teacher style */
+#Teacher_style{ float:left; border:1px solid #c3c3c3; background-color:#FFF; margin-left:5px; _margin-left:2px; margin-top:4px; padding:2px; width:216px; height:170px; overflow:hidden;}
+#Teacher_style ul li{ float:left; width:80px; height:100px; text-align:center; font-size:12px;  margin:25px 5px 10px 15px;}
+#Teacher_style ul li a{ color:#333333;}
+#Teacher_style ul li a img{ padding:2px; border:1px solid #CCCCCC; width:65px; height:73px;}
+#Teacher_style ul li a:hover{ color:#ff0000;}
+#Teacher_style ul li h1{ margin-top:10px;}
+
+/* Excellent courses */
+#Excellent_courses{ float:left; border:1px solid #c3c3c3; margin-left:5px;  margin-top:4px; padding:2px;  width:535px; height:170px;background-color:#FFF;}
+.tab2{width:535px; height:170px;  position:relative;  overflow:hidden}
+.tab2 dt{ height:28px; background:url(../images/title_4.jpg) no-repeat; }
+.tab2 dt h1{ font-size:14px; font-weight:bold; color:#00448a; padding-top:6px; padding-left:30px;}
+.tab2 dt a{display:inline-block; cursor:pointer; text-align:center; color:#000000; font-size:14px; font-weight:bold; width:102px; height:32px;  line-height:30px; _line-height:23px; }
+.tab2 dt a.on{background:url(../images/blue_title.jpg) left bottom no-repeat; color:#fff; font-size:14px; font-weight:bold; width:102px; height:32px; line-height:30px; _line-height:23px;}
+.tab2 dd{height:225px; overflow:hidden; clear:both; border-top: none;}
+.tab2 ul li{ float:left; width:100px; height:100px; text-align:center; font-size:12px;  margin:20px 3px 10px 3px;}
+.tab2 ul li a{ color:#333333;}
+.tab2 ul li a img{ padding:2px; border:1px solid #CCCCCC; width:88px; height:88px;}
+.tab2 ul li a:hover{ color:#ff0000;}
+.tab2 ul li h1{ margin-top:10px;}
+.tab2 h3{ position:absolute; left:490px; _left:470px; top:10px; padding-top:-1px}
+.tab2 h3 a{ font-size:12px; color:#000000; font-weight:normal; }
+.tab2 h3 a:hover{  color:#FF0000;}
+
+/* Teaching administration */
+#Teaching_administration{ float:left; border:1px solid #c3c3c3; margin-left:5px; margin-top:4px; padding:2px; _padding:0px 2px 0px 2px; width:214px; height:170px;  background-color:#FFF;}
+#Teaching_administration ul{ width:205px; float:left; margin-left:5px; margin-top:5px; }
+#Teaching_administration ul li{ height:25px; *+height:23px; border-bottom:1px dashed #c3c3c3; margin-left:5px; margin-right:5px;  overflow:hidden;}
+#Teaching_administration ul li a{ font-size:12px; color:#333333; line-height:25px; width:140px; float:left; overflow:hidden;}
+#Teaching_administration ul li a:hover{ color:#FF0000;}
+
+
+/* Student_Yuen*/
+#Student_Yuen{ float:left; border:1px solid #c3c3c3; margin-left:5px; _margin-left:2px; margin-top:5px; padding:2px; _padding:0px 2px 0px 2px; width:762px; height:220px;  background-color:#FFF; position:relative;}
+.tab3{width:762px; height:220px;  position:relative;  overflow:hidden}
+.tab3 dt{ height:28px; background:url(../images/blue_bg.jpg) repeat-x; }
+.tab3 dt h1{ font-size:14px; font-weight:bold; color:#00448a; padding-top:6px; padding-left:30px;}
+.tab3 dt a{display:inline-block; cursor:pointer; text-align:center; color:#000000; font-size:14px; font-weight:bold; width:102px; height:32px;  line-height:30px; _line-height:23px;  background:url(../images/tb2.jpg) right top no-repeat;}
+.tab3 dt a.on{background:url(../images/blue_title.jpg) left bottom no-repeat; color:#fff; font-size:14px; font-weight:bold; width:102px; height:32px; line-height:30px; _line-height:23px;}
+.tab3 dd{height:225px; overflow:hidden; clear:both; border-top: none;}
+.tab3 ul{ margin:10px 0 10px 20px; }
+.tab3 ul.u_1{ margin:10px; }
+.tab3 ul li a{ color:#333333;}
+
+.tab3 ul li a:hover{ color:#ff0000;}
+.tab3 ul li h1{ margin-top:10px;}
+.tab3 h3{position:absolute;left:711px;top:8px; padding-top:-1px}
+.tab3 h3 a{ font-size:12px; color:#000000; font-weight:normal; }
+.tab3 h3 a:hover{  color:#FF0000;}
+.tab3 ul li a.a_1{ width:210px; overflow:hidden; margin-right:20px; }
+.tab3 ul li a.a_2{ width:220px; overflow:hidden; color:#858383; }
+.wrap{ float:left; width:220px; padding-right:7px; overflow:hidden; margin-right:18px;}
+.wrap li{width:222px;  border-bottom:1px dashed #CCCCCC; height:30px; overflow:hidden; line-height:30px;  font-size:12px; padding-top:3px; text-align:left;}
+
+#Essay{ width:220px; height:175px; padding-left:24px; padding-top:4px; border:1px solid #fec0ab; background:url(../images/red_bg.jpg) no-repeat; position:absolute; top:35px; left:510px;}
+#Essay p{color:#858383; font-size:12px; line-height:25px; text-indent:24px;}
+
+
+/* Sponsored */
+#Sponsored{ float:left; border:1px solid #c3c3c3; margin-left:5px; margin-top:5px; padding:2px; _padding:0px 2px 0px 2px; width:214px; height:220px;  background-color:#FFF; }
+.title_5{ width:214px; height:27px; margin-bottom:25px; background:url(../images/title_1.jpg) left top no-repeat; font-weight:bold; color:#00448a; font-size:14px; text-indent:24px; line-height:24px; }
+#Sponsored p{ text-align:center; height:80px;  }
+
+/* link */
+#Link{ width:1002px; height:80px;  margin-top:5px; background-color:#FFF; margin:0 auto; overflow: hidden; }
+#marqueedivcontrol1 a{ margin-left:5px;}
+
+
+/* Foot */
+#Foot{width:1002px; height:50px;  margin-top:2px; background-color:#FFF; margin:0 auto; border-top:3px solid #1a53b2; padding-top:10px;}
+#Foot p{ font-size:12px; text-align:center; line-height:24px; font-family:Arial, Helvetica, sans-serif;}
+.bzz1105text {color:#0E0E0E;font-size:12px;line-height:22px;padding-top:6px}
+.bzz1105text a {color:#C20000; text-decoration:none;}

@@ -1,0 +1,2 @@
+insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('3x', '待审核', '2', 'FlagIsvalid', '0', to_date('02-11-2008 14:04:53', 'dd-mm-yyyy hh24:mi:ss'), '是否有效');

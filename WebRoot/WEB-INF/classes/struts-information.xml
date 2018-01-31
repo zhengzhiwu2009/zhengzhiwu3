@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd" >
+<struts>
+	<package name="entity.information" extends="platform-default" namespace="/entity/information">
+
+
+
+		<!--longyinsong-->
+		<action name="peEnterprisesInfoPrint_*" method="{1}" class="peEnterprisesInfoPrintAction">
+			<result name ="managerInfo">/entity/manager/information/infoprint/printlist_manager.jsp</result>
+		</action>
+		
+		<action name="peBzzStudentInfoPrint_*" method="{1}" class="peBzzStudentInfoPrintAction">
+			<result name="studentinfo">/entity/manager/information/infoprint/printlist_student.jsp</result>
+		</action>
+		<!-- longyinsong end -->
+
+		<action name="peBulletinView_*" method="{1}" class="peBulletinViewAction">
+			<result name="detail">/entity/manager/information/bulletin_detail.jsp</result>
+			<result name="firstInfo">/entity/manager/information/firstInfo.jsp</result>
+			<result name="clearOk">/entity/manager/information/clearsuccess.jsp</result>
+			<result name="welcome">/entity/manager/pub/welcome.jsp</result>
+		</action>
+		<action name="peDocumentView_*" method="{1}" class="peDocumentViewAction">
+			<result name="detail">/entity/manager/information/document_detail.jsp</result>
+		</action>
+		<action name="peInfoNews_*" method="{1}" class="peInfoNewsAction">
+			<result name="detail">/entity/manager/information/infoNews_detail.jsp</result>
+			<result name="newList">/entity/manager/info/news_add.jsp</result>
+			<result name="addNews">/entity/manager/info/infomessage.jsp</result>
+			<result name="modifyNews">/entity/manager/info/news_update.jsp</result>
+		</action>		
+		<action name="peBulletin_*" method="{1}" class="peBulletinAction">
+			<result name="show_add_notice">/entity/manager/info/info_news_add.jsp</result>
+			<result name="show_edit_notice">/entity/manager/info/info_news_update.jsp</result>
+			<result name="infobulletinmessage">/entity/manager/info/infomessage.jsp</result>
+			<result name="message">/test/msg.jsp</result>
+		</action>
+		<action name="peDocumentOutbox_*" method="{1}" class="peDocumentOutboxAction">
+			<result name="editnew">/entity/manager/information/new_document_.jsp</result>
+		</action>
+		<action name="peDocument_*" method="{1}" class="peDocumentAction">
+			<result name="editnew">/entity/manager/information/new_document_.jsp</result>
+		</action>
+		<action name="peSystemSmsPoint_*" method="{1}" class="peSystemSmsPointAction">
+		</action>
+		<action name="peSmsCheck_*" method="{1}" class="peSmsCheckAction">
+		</action>
+		<action name="peSms_*" method="{1}" class="peSmsAction">
+		</action>
+		<action name="peSmsStatistic_*" method="{1}" class="peSmsStatisticAction">
+			<result name="selectTime">/entity/manager/information/sms/smsTimeStat.jsp</result>
+		</action>
+		<action name="teacherPhoneView_*" method="{1}" class="teacherPhoneViewAction">
+		</action>
+		<action name="studentPhoneView_*" method="{1}" class="studentPhoneViewAction">
+		</action>
+		<action name="managerPhoneView_*" method="{1}" class="managerPhoneViewAction">
+		</action>
+		<action name="siteManagerPhoneView_*" method="{1}" class="siteManagerPhoneViewAction">
+		</action>
+		<action name="personalInfo_*" method="{1}" class="personalInfoAction">
+			<result name="info_detail">/entity/manager/information/info_detail.jsp</result>
+			<result name="info_view">/entity/information/personalInfo_viewInfo.action</result>
+			<result name="edit_manager_Info">/entity/manager/information/edit_manager_info.jsp</result>
+			<result name="edit_sitemanager_Info">/entity/manager/information/edit_sitemanager_info.jsp</result>
+			<result name="pwd">/entity/manager/information/input_password.jsp</result>
+		</action>
+		<action name="peVotePaper_*" method="{1}" class="peVotePaperAction">
+			<result name="addVotePaper">/entity/manager/information/vote/votepaper_add.jsp</result>
+			<result name="detail">/entity/manager/information/vote/votepaper_info.jsp</result>
+			<result name="voteQuestion">/entity/manager/information/vote/votequestion_manage.jsp</result>
+			<result name="editVotePaper">/entity/manager/information/vote/votepaper_edit.jsp</result>
+		</action>
+		<action name="peVotePaperTotal_*" method="{1}" class="peVotePaperTotalAction">
+			<result name="detail">/entity/manager/information/vote/votepaperTotal_info.jsp</result>
+		</action>	
+		<action name="prVoteSubQuestion_*" method="{1}" class="prVoteSubQuestionAction">
+		</action>	
+		<action name="prVoteQuestion_*" method="{1}" class="prVoteQuestionAction">
+			<result name="addQuestion">/entity/manager/information/vote/votequestion_add.jsp</result>
+			<result name="editQuestion">/entity/manager/information/vote/votequestion_edit.jsp</result>
+			<result name="answerDetail">/entity/manager/information/vote/vote_answer_view.jsp</result>
+			<result name="subQuestion"  type="redirectAction">/entity/information/prVoteSubQuestion_addQuestion.action</result>
+		</action>	
+		<action name="prVoteQuestionAnswer_*" method="{1}" class="prVoteQuestionAnswerAction">
+		</action>
+		<action name="prVoteSuggest_*" method="{1}" class="prVoteSuggestAction">
+			<result name="view">/entity/manager/information/vote/votesuggest_info.jsp</result>
+		</action>				
+		<action name="prSmsSendStatus_*" method="{1}" class="prSmsSendStatusAction">
+		</action>
+		<action name="inProgress_*" method="{1}" class="inProgressAction">
+		<result name="construct">/entity/manager/information/inprogress.jsp</result>
+		</action>
+		<action name="peVotePaperList_*" method="{1}" class="peVotePaperActionList">
+		</action>	
+		
+		<action name="infoDownload_*" method="{1}" class="infoDownloadAction">
+			<result name="infodown">/entity/manager/information/info_download.jsp</result>
+		</action>
+		
+		<action name="studentStudyStatus_*" method="{1}" class="studentStudyStatusAction">
+		</action>
+		<action name="addYearReport_*" method="{1}" class="addYearReportAction">
+			<result name="showAddYear">/entity/manager/info/add_report.jsp</result>
+			<result name="viewDetail">/entity/manager/info/report_detail.jsp</result>
+			<result name="edit">/entity/manager/info/edit_report_info.jsp</result>
+		</action>
+		<!--协会端查找密码，临时功能-->
+		<action name="searchPassword_*" method="{1}" class="searchPasswordAction">
+	    	<result name="searchPassword">/entity/manager/information/search_password.jsp</result>		    
+	    </action>
+	    <!-- 日志审计 -->
+	    <action name="logUserInfo_*" method="{1}" class="logUserInfoAction">
+			
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,28 @@
+@charset "utf-8";
+/* CSS Document */
+
+.tw_bian{border-bottom:#e3e3e3 solid 1px; border-left:#e3e3e3 solid 1px; border-right:#e3e3e3 solid 1px; background:url(images/wyjd_08.jpg) top repeat-x;}
+.tw_biaot{margin-top:12px; margin-left:19px;}
+.img1{padding-right:12px; padding-left:12px;}
+.tw_wenz{margin-left:33px; margin-top:26px; margin-bottom:14px; color:#666666; font-size:12px; letter-spacing:0.1em;}
+.lshd{border:#d6d6d6 solid 1px; margin-top:5px; background:url(images/wyjd_22.jpg) top repeat-x;}
+.lshd_biaot{margin-left:19px; margin-bottom:14px; line-height:24px;}
+.lshd_heiz{font:14px #000000;}
+.zjda{border:#d6d6d6 solid 1px; margin-top:5px; background:url(images/wyjd_27.jpg) top repeat-x;}
+.lanz{color:#133db6; font-size:12px;}
+.hangz{color:#e76400; font-size:14px; font-weight:bold;}
+.qtda{border:#d6d6d6 solid 1px; margin-top:5px;}
+.heiz{color:#000000; font-size:14px; font-weight:bold; padding-left:12px;}
+.cwzj{border:#d1bcf9 solid 1px; color:#4700cc; font-size:12px; line-height:24px; width:100px; text-align:center; margin-left:25px;}
+.qt_wenz{color:#666666; font-size:12px; letter-spacing:0.1em;}
+.jd{border:#cdaee7 solid 1px; margin-top:5px; background-color:#f6efff;}
+.jd_biaot{margin:10px; color:#7847b6; font-size:14px; font-weight:bold;}
+.textarea{border:#5d3096 solid 2px;}
+.jd_biaot1{margin:10px 0px 10px 300px; color:#a04400; font-size:14px; font-weight:bold; background:url(images/wyjd_40.jpg) no-repeat; width:93px; height:31px; padding-top:8px; padding-left:17px;}
+.xgwt{border:#e3e3e3 solid 1px;}
+.xgwt_bt{background:url(images/wyjd_06.jpg) repeat-x; height:29px; padding-left:10px;}
+.xgwt_wz{background:url(images/wyjd_19.jpg) repeat-x bottom; line-height:27px; color:#8d5ccd; font-size:12px; padding-left:10px;}
+.ann{width:43px; height:21px; border:#e3e3e3 solid 1px; background-color:#f4f4f4; font-size:12px; padding-top:3px;}
+.jd_biaot1 a{color:#a04400; text-decoration:none;}
+.jd_biaot1 a:hover{color:#000000; text-decoration:none;}
+.xytw{background:url(images/xytw_13.jpg) left bottom no-repeat; background-color:#f0e0fd;}

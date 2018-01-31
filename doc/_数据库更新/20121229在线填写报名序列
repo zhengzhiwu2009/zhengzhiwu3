@@ -1,0 +1,94 @@
+-- Create sequence 
+create sequence S_PE_SIGNUP_ORDER_SEQ
+minvalue 1
+maxvalue 999999999999
+start with 1
+increment by 1
+cache 20;
+
+insert into pe_priority (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288a213be6d699013be6df5d170002', '在线报名查看学员_*', '40288a213bc1aa14013bc1c7ccd7000d', '/entity/basic', 'prSignUpOrderStudent', '*');
+
+insert into pe_priority (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288a213be6d699013be6e0dadd0003', '在线报名查看课程_*', '40288a213bc1aa14013bc1c7ccd7000d', '/entity/basic', 'prSignUpOrderCourse', '*');
+
+-- Create table
+create table PR_SIGNUP_ORDER_COURSE
+(
+  ID                 VARCHAR2(50) not null,
+  COURSE_ID          VARCHAR2(50),
+  FK_SIGNUP_ORDER_ID VARCHAR2(50)
+)
+tablespace HZPH
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table PR_SIGNUP_ORDER_COURSE
+  add constraint PK_SIGNUP_COURSE primary key (ID)
+  using index 
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table PR_SIGNUP_ORDER_COURSE
+  add constraint FK_SIGNUP_COURSE_ID foreign key (COURSE_ID)
+  references PE_BZZ_TCH_COURSE (ID);
+alter table PR_SIGNUP_ORDER_COURSE
+  add constraint FK_SIGNUP_COU_ORDER_ID foreign key (FK_SIGNUP_ORDER_ID)
+  references PE_SIGNUP_ORDER (ID);
+  
+  -- Create table
+create table PR_SIGNUP_ORDER_STUDENT
+(
+  ID                 VARCHAR2(50) not null,
+  STUDENT_ID         VARCHAR2(50),
+  FK_SIGNUP_ORDER_ID VARCHAR2(50)
+)
+tablespace HZPH
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64
+    next 1
+    minextents 1
+    maxextents unlimited
+  );
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table PR_SIGNUP_ORDER_STUDENT
+  add constraint PK_SIGNUP_STUDENT primary key (ID)
+  using index 
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table PR_SIGNUP_ORDER_STUDENT
+  add constraint FK_SIGNUP_SDUDENT_ID foreign key (STUDENT_ID)
+  references PE_BZZ_STUDENT (ID);
+alter table PR_SIGNUP_ORDER_STUDENT
+  add constraint FK_SIGNUP_STU_ORDER_ID foreign key (FK_SIGNUP_ORDER_ID)
+  references PE_SIGNUP_ORDER (ID);
+  

@@ -1,0 +1,11 @@
+-- Add/modify columns 
+alter table ASSIGN_RECORD add FLAG_RECORD_ASSIGN_METHOD VARCHAR2(50);
+-- Add comments to the columns 
+comment on column ASSIGN_RECORD.FLAG_RECORD_ASSIGN_METHOD
+  is '用于判断此次操作时分配学时还是剥离';
+
+  
+  insert into ENUM_CONST (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('40288acf3b891a9b013b89cccbdd001f', '分配', '1', 'FlagRecordAssignMethod', '0', to_date('11-12-2012', 'dd-mm-yyyy'), '学时分配还是剥离');
+insert into ENUM_CONST (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('40288acf3b891a9b013b89cd4bcb0020', '剥离', '0', 'FlagRecordAssignMethod', '1', to_date('11-12-2012', 'dd-mm-yyyy'), '分配还是剥离');

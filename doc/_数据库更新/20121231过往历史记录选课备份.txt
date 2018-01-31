@@ -1,0 +1,106 @@
+-- Create table
+create table ELECTIVE_HISTORY
+(
+  ID                       VARCHAR2(50) not null,
+  FK_STU_ID                VARCHAR2(50) not null,
+  FK_TCH_OPENCOURSE_ID     VARCHAR2(50) not null,
+  FK_OPERATOR_ID           VARCHAR2(50),
+  FLAG_SCORE_STATUS        VARCHAR2(50),
+  FLAG_SCORE_PUB           VARCHAR2(50),
+  ELECTIVE_DATE            DATE default sysdate,
+  SCORE_EXAM               NUMBER(4,1),
+  ONLINE_TIME              VARCHAR2(50),
+  FK_TRAINING_ID           VARCHAR2(50) not null,
+  FK_ORDER_ID              VARCHAR2(50),
+  FLAG_ELECTIVE_PAY_STATUS VARCHAR2(50),
+  FK_ELE_COURSE_PERIOD_ID  VARCHAR2(50),
+  START_TIME               DATE,
+  TEMPID                   VARCHAR2(100),
+  EXAM_TIMES               NUMBER(4,1),
+  COMPLETED_TIME           DATE,
+  ISPASS                   VARCHAR2(50) default '0'
+)
+tablespace HZPH
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 1344M
+    next 8K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table ELECTIVE_HISTORY
+  is '?????';
+-- Add comments to the columns 
+comment on column ELECTIVE_HISTORY.FK_TCH_OPENCOURSE_ID
+  is '??';
+comment on column ELECTIVE_HISTORY.FLAG_SCORE_STATUS
+  is '?????0????1???2???3???4??';
+comment on column ELECTIVE_HISTORY.FLAG_SCORE_PUB
+  is '????????0??1?';
+comment on column ELECTIVE_HISTORY.ELECTIVE_DATE
+  is '????';
+comment on column ELECTIVE_HISTORY.SCORE_EXAM
+  is '????';
+comment on column ELECTIVE_HISTORY.ONLINE_TIME
+  is '????';
+comment on column ELECTIVE_HISTORY.FK_TRAINING_ID
+  is '??training_course_student?id';
+comment on column ELECTIVE_HISTORY.FK_ORDER_ID
+  is '??id';
+comment on column ELECTIVE_HISTORY.FLAG_ELECTIVE_PAY_STATUS
+  is '??????';
+comment on column ELECTIVE_HISTORY.FK_ELE_COURSE_PERIOD_ID
+  is '???ID';
+comment on column ELECTIVE_HISTORY.START_TIME
+  is '开始学习时间';
+comment on column ELECTIVE_HISTORY.EXAM_TIMES
+  is '考试次数';
+comment on column ELECTIVE_HISTORY.COMPLETED_TIME
+  is '测验完成时间';
+comment on column ELECTIVE_HISTORY.ISPASS
+  is '测验是否通过0未通过1通过';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table ELECTIVE_HISTORY
+  add constraint ELECTIVE_histroy primary key (ID)
+  using index 
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 448M
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table ELECTIVE_HISTORY
+  add constraint FK_OPENCOURSE_history foreign key (FK_TCH_OPENCOURSE_ID)
+  references PR_BZZ_TCH_OPENCOURSE (ID)
+  disable;
+alter table ELECTIVE_HISTORY
+  add constraint FK_PA_history foreign key (FK_STU_ID)
+  references PE_BZZ_STUDENT (ID);
+alter table ELECTIVE_HISTORY
+  add constraint FK_PE_PERIOD_history foreign key (FK_ELE_COURSE_PERIOD_ID)
+  references PE_ELECTIVE_COURSE_PERIOD (ID)
+  disable;
+alter table ELECTIVE_HISTORY
+  add constraint FK_PR_history foreign key (FLAG_ELECTIVE_PAY_STATUS)
+  references ENUM_CONST (ID);
+alter table ELECTIVE_HISTORY
+  add constraint FK_PR__history foreign key (FK_ORDER_ID)
+  references PE_BZZ_ORDER_INFO (ID)
+  disable;
+alter table ELECTIVE_HISTORY
+  add constraint FK_PR_history_1 foreign key (FK_OPERATOR_ID)
+  references SSO_USER (ID)
+  disable;
+alter table ELECTIVE_HISTORY
+  add constraint FK_history_2 foreign key (FK_TRAINING_ID)
+  references TRAINING_COURSE_STUDENT (ID)
+  disable;

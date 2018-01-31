@@ -1,0 +1,59 @@
+<html>
+
+<meta http-equiv=Content-Type content="text/html; charset=GB2312">
+<meta name=ProgId content=PowerPoint.Slide>
+<meta name=Generator content="Microsoft PowerPoint 9">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="-1">
+<link id=Main-File rel=Main-File href="../contents.htm">
+<link rel=Preview href=preview.wmf>
+<title></title>
+<![if !ppt]><script src=script.js></script>
+<script	language=javascript	src="../../model/APIWrapper.js"></script>
+<script	language=javascript	src="../../model/SCOFunctions.js"></script>
+<script	language=javascript	src="../../model/init.js"></script>
+<script	language=javascript	src="../../model/json.js"></script>
+<script	language="javascript">
+	beforeLoadPage();
+	loadPage();
+	finishSco=false;
+</script>
+<![endif]>
+</head>
+
+<frameset id="fraMain" framespacing="0" border="0" rows="38,96%,7" frameborder="0">
+  <!--Top-->
+  <frame name="fraTop" scrolling="no" noresize target="middle">
+
+  <!--Middle-->
+	<!-- <frameset cols="206,*" id=PPTHorizAdjust framespacing="0" frameborder="0"> -->
+	<frameset cols="206,*" id=PPTHorizAdjust framespacing="1" bordercolor="#4D5E8C" frameborder="0">
+    <!--Middle-Left-->
+    <!--<frame id=PPTOtl src="media.xml" scrolling="no" target=PPTVert> //src在load()里面设,如果是直接点击slide????.htm进来的就不设,这样可以直接显示PPT页面而不播放视频,方便编辑器-->
+    <frame id=PPTOtl src="" marginwidth="0" marginheight="0" scrolling="no" frameborder="0"  noresize>
+    <!--Middle-Right-->
+    <frameset rows="*,82" id=PPTVert framespacing=0 border=0 frameborder=0>
+
+      <!--Middle-Right-PPT-->
+      <frameset rows="0%,100%,*" id=PPTVertAdjust framespacing=0 onload="Load()" onunload="closeSco()">
+        <frame src="../../model/intro.htm" name=PPTSld marginwidth="0" marginheight="0" scrolling="auto" frameborder="0" noresize>
+        <frame src="../../model/webright.htm" name=PPTVideo marginwidth="0" marginheight="0" scrolling="auto" frameborder="0" noresize>
+        <frame src="../../model/modelframe/contents.files/whatycourseslide.htm" name=PPTNts marginwidth="0" marginheight="0" scrolling="auto" frameborder="0" noresize>
+		  </frameset>
+
+      <!--Middle-Right-BelowPPT-->
+      <frame id="PPTNav" scrolling="no" noresize >
+    </frameset>
+	</frameset>
+
+  <!--bottom-->
+	<frame id="fraBottom" scrolling="no" noresize >
+	<noframes>
+	<body>
+		<p>此网页使用了框架，但您的浏览器不支持框架。</p>
+	</body>
+	</noframes>
+</frameset>
+
+</html>

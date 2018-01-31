@@ -1,0 +1,120 @@
+-------
+insert into pe_pri_category (ID, NAME, FK_PARENT_ID, CODE, PATH, FLAG_LEFT_MENU)
+values ('03003', '学员变动管理', '03', '03003', 'to_top_menu', '1');
+
+insert into pe_pri_category (ID, NAME, FK_PARENT_ID, CODE, PATH, FLAG_LEFT_MENU)
+values ('03003001', '机构变动审核', '03003', '03003001', '/entity/basic/peBzzStudentEnterprise.action', '0');
+
+insert into pe_pri_category (ID, NAME, FK_PARENT_ID, CODE, PATH, FLAG_LEFT_MENU)
+values ('03003002', '学员离职审核', '03003', '03003002', '/entity/basic/peBzzStudentLeave.action', '0');
+
+-------
+insert into pe_priority (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288a7b37b79a350137ba5674d6003x', '学员机构变动管理_*', '03003001', '/entity/basic', 'peBzzStudentEnterprise', '*');
+
+--insert into pe_priority (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+--values ('40288a7b37b79a350137ba5674d6004x', '学员离职管理_*', '03003002', '/entity/basic', 'peBzzStudentLeave', '*');
+
+-------
+insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('ccb2880a91dadc115011dadfcf26b0005x', '审核通过', '1', 'FlagEditCheck', '0', to_date('08-04-2013 16:35:22', 'dd-mm-yyyy hh24:mi:ss'), '学员信息变更审核状态');
+
+insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('ccb2880a91dadc115011dadfcf26b0006x', '审核不通过', '2', 'FlagEditCheck', '0', to_date('08-04-2013 16:35:22', 'dd-mm-yyyy hh24:mi:ss'), '学员信息变更审核状态');
+
+insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('ccb2880a91dadc115011dadfcf26b0007x', '未审核', '0', 'FlagEditCheck', '1', to_date('08-04-2013 16:35:22', 'dd-mm-yyyy hh24:mi:ss'), '学员信息变更审核状态');
+
+
+
+-- Add comments to the columns 
+comment on column PE_BZZ_STUDENT.id
+  is 'ID';
+comment on column PE_BZZ_STUDENT.name
+  is '学号/姓名';
+comment on column PE_BZZ_STUDENT.reg_no
+  is '学号';
+comment on column PE_BZZ_STUDENT.fk_sso_user_id
+  is '用户表ID';
+comment on column PE_BZZ_STUDENT.fk_enterprise_id
+  is '机构ID';
+comment on column PE_BZZ_STUDENT.gender
+  is '性别';
+comment on column PE_BZZ_STUDENT.folk
+  is '民族';
+comment on column PE_BZZ_STUDENT.education
+  is '学历';
+comment on column PE_BZZ_STUDENT.age
+  is '年龄';
+comment on column PE_BZZ_STUDENT.position
+  is '职务';
+comment on column PE_BZZ_STUDENT.title
+  is '';
+comment on column PE_BZZ_STUDENT.department
+  is '部门';
+comment on column PE_BZZ_STUDENT.address
+  is '地址';
+comment on column PE_BZZ_STUDENT.zipcode
+  is '邮编';
+comment on column PE_BZZ_STUDENT.phone
+  is '电话';
+comment on column PE_BZZ_STUDENT.mobile_phone
+  is '手机';
+comment on column PE_BZZ_STUDENT.email
+  is 'EMAIL';
+comment on column PE_BZZ_STUDENT.fk_batch_id
+  is '批次ID（预留）';
+comment on column PE_BZZ_STUDENT.true_name
+  is '姓名';
+comment on column PE_BZZ_STUDENT.birthday
+  is '生日';
+comment on column PE_BZZ_STUDENT.export_state
+  is '导入状态';
+comment on column PE_BZZ_STUDENT.regist_people
+  is '注册人';
+comment on column PE_BZZ_STUDENT.regist_date
+  is '注册时间';
+comment on column PE_BZZ_STUDENT.fk_recruit_id
+  is '注册ID（预留）';
+comment on column PE_BZZ_STUDENT.export_people
+  is '导入人';
+comment on column PE_BZZ_STUDENT.export_date
+  is '导入时间';
+comment on column PE_BZZ_STUDENT.sub_enterprise_name
+  is '';
+comment on column PE_BZZ_STUDENT.photo
+  is '照片地址（预留）';
+comment on column PE_BZZ_STUDENT.flag_rank_state
+  is '';
+comment on column PE_BZZ_STUDENT.data_date
+  is '数据时间';
+comment on column PE_BZZ_STUDENT.photo_confirm_date
+  is '';
+comment on column PE_BZZ_STUDENT.photo_unconfirm_reason
+  is '';
+comment on column PE_BZZ_STUDENT.photo_confirm
+  is '';
+comment on column PE_BZZ_STUDENT.study_end_date
+  is '学习结束时间';
+comment on column PE_BZZ_STUDENT.is_goodstu
+  is '是否好学生';
+comment on column PE_BZZ_STUDENT.job_number
+  is '工号';
+comment on column PE_BZZ_STUDENT.pick_user
+  is '';
+comment on column PE_BZZ_STUDENT.fk_site_id
+  is '';
+comment on column PE_BZZ_STUDENT.card_type
+  is '国籍';
+comment on column PE_BZZ_STUDENT.card_no
+  is '证件号';
+comment on column PE_BZZ_STUDENT.groups
+  is '分组';
+comment on column PE_BZZ_STUDENT.fk_grade_id
+  is '年级ID（预留）';
+comment on column PE_BZZ_STUDENT.fk_exambatch_id
+  is '考试批次id（预留）';
+comment on column PE_BZZ_STUDENT.is_employee
+  is '是否从业人员';
+comment on column PE_BZZ_STUDENT.ata_id
+  is 'ATA数据ID';

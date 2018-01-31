@@ -1,0 +1,21 @@
+td {
+	font-size: 12px;
+}
+
+.ListMouseOver{
+	cursor: hand;
+	color:#00AAFF;
+	text-decoration: underline;
+}
+
+.ListDefault{
+	cursor: hand;
+	color:#000000;
+	text-decoration: none;
+}
+
+.ListHighLight{
+	cursor: hand;
+	color:#0000FF;
+	text-decoration: underline;
+}

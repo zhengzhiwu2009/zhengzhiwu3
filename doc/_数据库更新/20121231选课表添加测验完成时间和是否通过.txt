@@ -1,0 +1,8 @@
+-- Add/modify columns 
+alter table PR_BZZ_TCH_STU_ELECTIVE add COMPLETED_TIME date;
+alter table PR_BZZ_TCH_STU_ELECTIVE add ISPASS VARCHAR2(50) default '0';
+-- Add comments to the columns 
+comment on column PR_BZZ_TCH_STU_ELECTIVE.COMPLETED_TIME
+  is '测验完成时间';
+comment on column PR_BZZ_TCH_STU_ELECTIVE.ISPASS
+  is '测验是否通过0未通过1通过';

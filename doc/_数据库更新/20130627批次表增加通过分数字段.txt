@@ -1,0 +1,20 @@
+alter table pe_bzz_pici add passscore number;
+
+
+
+-- Create/Recreate indexes  增加索引
+create index SYS_C0020643 on TEST_PAPERQUESTION_INFO (TESTPAPER_ID)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+  
+  
+  --增加一个老师批改时间
+  alter table test_testpaper_history add Mark_Date date;

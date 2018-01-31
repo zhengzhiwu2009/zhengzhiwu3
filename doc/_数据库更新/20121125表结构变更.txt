@@ -1,0 +1,2 @@
+-- Add/modify columns 
+alter table PR_BZZ_TCH_STU_ELECTIVE modify exam_times number;

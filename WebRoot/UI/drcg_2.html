@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>导入成功</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="css/shared.css">
+		<link href="/entity/manager/css/admincss.css" rel="stylesheet"
+			type="text/css">
+		<script language="JavaScript" src="js/shared.js"></script>
+	</head>
+	<body leftmargin="0" topmargin="0" class="scllbar">
+		<table width="100%" border="0" align="left" cellpadding="0"
+			cellspacing="0">
+			<tr>
+				<td height="28">
+					<div class="content_title"  id="zlb_title_start">集体报名单</div id="zlb_title_end">
+				</td>
+			</tr>
+			<tr>
+				<td valign="top" class="pageBodyBorder" style="background:none;">
+					<!-- start:内容区域 -->
+
+					<div class="border">
+						<table>
+							<tr>
+								<td style="padding-left: 10px;">
+									<img src="images/jd_02.jpg" />
+								</td>
+							</tr>
+							<tr>
+								<td>
+									&nbsp;
+								</td>
+							</tr>
+						</table>
+						<table  width='98%' border="0" cellpadding="0" cellspacing='0' style='margin-bottom: 5px'>
+							<tr>
+								<td height="30" align="left">
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;总人数：
+									<font color="red">1</font>&nbsp;人&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;学时数：
+									<font color="red">30</font>&nbsp;
+									学时&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;总金额：
+									<font color="red">140.00</font>&nbsp;元
+								</td>
+								<td class='misc' style='white-space: nowrap;'>
+									<div><!-- <span class="link" help="将当前表格数据导出到Excel格式的表格。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><img src='../images/buttons/excel.png' alt='Print' width="20" height="20" title='Print'>&nbsp;<a href='#'>Excel报表</a></span>-->&nbsp;&nbsp;<span class="link" help="将选中的课程从数据库中删掉" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><img src='/entity/manager/images/buttons/multi_delete.png' alt='Print' width="20" height="20" title='Print'>&nbsp;<a href='#' onclick='if(confirm("要批量删除学期吗?")) document.userform.submit();'>删除</a></span> 
+                					</div>
+								</td>
+							</tr>
+							
+						</table>
+						<!-- end:内容区－头部：项目数量、搜索、按钮 -->
+						<!-- start:内容区－列表区域 -->
+						<form name='userform' action='#' method='post' class='nomargin'
+							onsubmit="">
+							<table width='98%' align="center" cellpadding='1' cellspacing='0'
+								class='list'>
+								<tr>
+									<th width='8px' class='select' align='center'><input type='checkbox' class='checkbox' name='listSelectAll' value='true'  onClick="listSelect('user')"> 
+             						</th>
+									<th width='8px' style='white-space: nowrap;'> <div style='display:block; width: 20px;'> 
+                  <span class="link linkdisabled"><a href='#' title="删除">D</a></span></div></th>
+									<th width='10%' style='white-space: nowrap;'>
+										<span class="link">系统编号</span>
+									</th>
+									<th width='10%' style='white-space: nowrap;'>
+										<span class="link">学员姓名</span>
+									</th>
+									<th width='' style='white-space: nowrap;'>
+										<span class="link">课程编号</span>
+									</th>
+									<th width='10%' style='white-space: nowrap;'>
+										<span class="link">学时数</span>
+									</th>
+								</tr>
+								<tr class='oddrowbg'>
+									<td style='white-space: nowrap;'>
+										<input type="checkbox" name="mag_id" value="">
+									</td>
+									 <td style='text-align: center; '><span class="link" title='删除' help="从数据库中删除该学期" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><a href="javascript:alert('删除')"><img src='/entity/manager/images/buttons/delete.png' alt='删除' width="20" height="20" title='删除' border="0"></a></span> 
+              						</td>
+									<td style='white-space: nowrap; text-align: center;'>
+										001
+									</td>
+									<td style='white-space: nowrap; text-align: center;'>
+										张三
+									</td>
+									<td style='white-space: nowrap; text-align: center;'>
+										C10022,C10035,C10041
+									</td>
+									<td style='white-space: nowrap; text-align: center;'>
+										30 学时
+									</td>
+								</tr>
+
+							</table>
+							<br/>
+      					<table width="98%" height="100%" border="0" cellpadding="0" cellspacing="0">
+   							 <tr>
+          						<td align="center" valign="middle">
+          							<span  style="width:46px;height:15px;padding-top:3px" ><a href="#" onclick="javascript:window.navigate('ddqr_2.html')">确认报名</a></span>
+          	 							&nbsp;&nbsp;&nbsp;
+          	 							<span  style="width:46px;height:15px;padding-top:3px" ><a href="#" onclick="javascript:window.history.back()">返回</a></span>
+          						</td>
+        					</tr>
+      					</table>
+						</form>
+						<!-- end:内容区－列表区域 -->
+					</div>
+					<!-- 内容区域结束 -->
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

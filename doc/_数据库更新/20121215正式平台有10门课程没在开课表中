@@ -1,0 +1,31 @@
+insert into pr_bzz_tch_opencourse (ID, FK_COURSE_ID, FK_BATCH_ID, FLAG_COURSE_TYPE, FLAG_BAK, ROOM_ID, FLAG_ISVALID)
+values ('C09001C09001', 'C09001', '40288a7b394d676d01394dad824c003b', '', '', 2913, '');
+
+insert into pr_bzz_tch_opencourse (ID, FK_COURSE_ID, FK_BATCH_ID, FLAG_COURSE_TYPE, FLAG_BAK, ROOM_ID, FLAG_ISVALID)
+values ('C09004C09004', 'C09004', '40288a7b394d676d01394dad824c003b', '', '', 2916, '');
+
+insert into pr_bzz_tch_opencourse (ID, FK_COURSE_ID, FK_BATCH_ID, FLAG_COURSE_TYPE, FLAG_BAK, ROOM_ID, FLAG_ISVALID)
+values ('C09012C09012', 'C09012', '40288a7b394d676d01394dad824c003b', '', '', 2924, '');
+
+insert into pr_bzz_tch_opencourse (ID, FK_COURSE_ID, FK_BATCH_ID, FLAG_COURSE_TYPE, FLAG_BAK, ROOM_ID, FLAG_ISVALID)
+values ('C09020C09020', 'C09020', '40288a7b394d676d01394dad824c003b', '', '', 2932, '');
+
+insert into pr_bzz_tch_opencourse (ID, FK_COURSE_ID, FK_BATCH_ID, FLAG_COURSE_TYPE, FLAG_BAK, ROOM_ID, FLAG_ISVALID)
+values ('C10001C10001', 'C10001', '40288a7b394d676d01394dad824c003b', '', '', 2942, '');
+
+insert into pr_bzz_tch_opencourse (ID, FK_COURSE_ID, FK_BATCH_ID, FLAG_COURSE_TYPE, FLAG_BAK, ROOM_ID, FLAG_ISVALID)
+values ('C10002C10002', 'C10002', '40288a7b394d676d01394dad824c003b', '', '', 2943, '');
+
+insert into pr_bzz_tch_opencourse (ID, FK_COURSE_ID, FK_BATCH_ID, FLAG_COURSE_TYPE, FLAG_BAK, ROOM_ID, FLAG_ISVALID)
+values ('C10010C10010', 'C10010', '40288a7b394d676d01394dad824c003b', '', '', 2951, '');
+
+insert into pr_bzz_tch_opencourse (ID, FK_COURSE_ID, FK_BATCH_ID, FLAG_COURSE_TYPE, FLAG_BAK, ROOM_ID, FLAG_ISVALID)
+values ('C11002C11002', 'C11002', '40288a7b394d676d01394dad824c003b', '', '', 2965, '');
+
+insert into pr_bzz_tch_opencourse (ID, FK_COURSE_ID, FK_BATCH_ID, FLAG_COURSE_TYPE, FLAG_BAK, ROOM_ID, FLAG_ISVALID)
+values ('C11006C11006', 'C11006', '40288a7b394d676d01394dad824c003b', '', '', 2969, '');
+
+insert into pr_bzz_tch_opencourse (ID, FK_COURSE_ID, FK_BATCH_ID, FLAG_COURSE_TYPE, FLAG_BAK, ROOM_ID, FLAG_ISVALID)
+values ('C11015C11015', 'C11015', '40288a7b394d676d01394dad824c003b', '', '', 2978, '');
+
+commit;

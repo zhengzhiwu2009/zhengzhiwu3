@@ -1,0 +1,4 @@
+ 应华政业务人员要求，删除常量表中的行业课程
+ 数据备份
+ insert into ENUM_CONST (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('402881213421b2f1013421ba3a910002', '行业课程', '2', 'FlagCourseType', '0', to_date('09-12-2011', 'dd-mm-yyyy'), '课程性质');

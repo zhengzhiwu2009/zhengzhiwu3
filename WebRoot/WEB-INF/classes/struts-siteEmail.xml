@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd" >
+<struts>
+
+	<package name="siteEmail" extends="struts-default" namespace="/siteEmail">
+			<interceptors>
+			<interceptor name="userPriorityInterceptor" class="com.whaty.platform.sso.web.interceptor.UserPriorityInterceptor"></interceptor>
+			<interceptor name="userLoginInterceptor" class="com.whaty.platform.sso.web.interceptor.UserLoginInterceptor"></interceptor>
+			
+			<interceptor-stack name="interceptorStack">
+				<interceptor-ref name="userLoginInterceptor"></interceptor-ref>
+				 <interceptor-ref name="userPriorityInterceptor"></interceptor-ref>
+				
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="interceptorStack"></default-interceptor-ref>
+		<global-results>
+			
+			<result name="error" type="freemarker">
+				/test/error.jsp
+			</result>
+			<result name="grid">/test/grid.jsp</result>
+		    <result name="json">/test/json.jsp</result>
+		    <result name="gridjs">/test/gridjs.jsp</result>
+		    <!-- <result name="excel">/test/export.xls</result> -->
+		    <result name="input">/entity/manager/pub/turnToLogin.jsp </result>
+		</global-results>                                  
+		<action name="recipientEmail_*" method="{1}" class="recipientEmailAction">
+		<result name="EmailInfo">/entity/function/lore/EmailInfo.jsp</result>
+		<result name="re">/entity/function/lore/reEmail.jsp</result>
+		</action>
+		<action name="sendEmail_*" method="{1}" class="sendEmailAction">
+		</action>
+		<action name="editEmail_*" method="{1}" class="editEmailAction">
+		<result name="index">/entity/function/lore/editEmail.jsp</result>
+		<result name="add">/entity/function/lore/addstudent.jsp</result>
+		<result name="status">/entity/function/lore/status.jsp</result>
+		<result name="errorr">/entity/function/lore/error.jsp</result>
+		</action>
+	</package>
+
+</struts>

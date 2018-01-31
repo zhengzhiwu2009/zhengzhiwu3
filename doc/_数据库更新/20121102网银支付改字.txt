@@ -1,0 +1,2 @@
+update enum_const set NAME='网银支付' where ID='40288a7b394207de01394212e47f0005';
+update enum_const set NAME='预付费账户支付' where ID='40288a7b394207de0139421358110006';

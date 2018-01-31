@@ -1,0 +1,20 @@
+订单表添加订单是否有效字段，用于标识订单是否被关闭
+enumConstByFlagOrderIsValid  
+
+-- Add/modify columns 
+alter table PE_BZZ_ORDER_INFO add FLAG_ORDER_ISVALID VARCHAR2(50);
+-- Add comments to the columns 
+comment on column PE_BZZ_ORDER_INFO.FLAG_ORDER_ISVALID
+  is '标识订单是否关闭';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table PE_BZZ_ORDER_INFO
+  add constraint FK_FLAG_ORDER_ISVALID foreign key (FLAG_ORDER_ISVALID)
+  references enum_const (ID);
+  
+  --常量表中的数据
+  insert into ENUM_CONST (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('40288acf3b0823db013b0827f02a0001', '是', '1', 'FlagOrderIsValid', '0', to_date('16-11-2012', 'dd-mm-yyyy'), '订单是否有效');
+insert into ENUM_CONST (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('40288acf3b0823db013b0828a4d40002', '否', '0', 'FlagOrderIsValid', '1', to_date('16-11-2012', 'dd-mm-yyyy'), '订单是否有效');
+  
+  

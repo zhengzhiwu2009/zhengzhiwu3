@@ -1,0 +1,25 @@
+-- Add/modify columns 
+alter table PE_BZZ_TCH_COURSE add FLAG_CHECK_STATUS VARCHAR2(50);
+-- Add comments to the columns 
+comment on column PE_BZZ_TCH_COURSE.FLAG_CHECK_STATUS
+  is '课程审核状态';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table PE_BZZ_TCH_COURSE
+  add constraint FLAG_CHECK_STATUS foreign key (FLAG_CHECK_STATUS)
+  references enum_const (ID);
+  
+  
+insert into ENUM_CONST (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('40288acf3d62b37f013d62b76fba0001', '已申请', '1', 'FlagCheckStatus', '0', to_date('13-03-2013', 'dd-mm-yyyy'), '课程审核状态');
+insert into ENUM_CONST (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('40288acf3d62b37f013d62b9aeec0002', '未申请', '0', 'FlagCheckStatus', '0', to_date('13-03-2013', 'dd-mm-yyyy'), '课程审核状态');
+
+
+
+---------------------更新已发布课程或者已添加到专项课程审核状态------------------------------
+update pe_bzz_tch_course pbtc set pbtc.flag_check_status = '40288acf3d62b37f013d62b76fba0001'
+where pbtc.flag_isvalid = '2' or pbtc.flag_canjoinbatch = '40288acf3aaa56d5013aaa5b8ccc0001'
+
+--------------------更新原有课程未添加到专项，未发布课程为未审核状态-----------------------------
+update pe_bzz_tch_course pbtc set pbtc.flag_check_status = '40288acf3d62b37f013d62b9aeec0002'
+where pbtc.flag_isvalid = '3' and pbtc.flag_canjoinbatch = '40288acf3aaa56d5013aaa5f779b0002'

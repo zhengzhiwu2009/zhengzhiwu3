@@ -1,0 +1,294 @@
+-- Create table
+create table STATISTIC_YEAR
+(
+  id                          NVARCHAR2(50),
+  year                        NVARCHAR2(4) default to_char(sysdate,'yyyy'),
+  month                       NVARCHAR2(2) default to_char(sysdate,'MM'),
+  reg_enterprise_num          NUMBER(10),
+  reg_user_num                NUMBER(10),
+  reg_enterprise_growth       NVARCHAR2(10),
+  reg_user_growth             NVARCHAR2(10),
+  entry_user_num              NUMBER(10),
+  entry_user_times            NUMBER(10),
+  entry_courehours            NUMBER(10),
+  fee_amount                  NUMBER(10,2),
+  entry_user_growth           NVARCHAR2(10),
+  entry_user_times_growth     NVARCHAR2(10),
+  entry_courehours_growth     NVARCHAR2(10),
+  fee_amount_growth           NVARCHAR2(10),
+  refund_num                  NUMBER(10),
+  refund_amount               NUMBER(10,2),
+  overyear_refund_num         NUMBER(10),
+  overyear_refund_amount      NUMBER(10,2),
+  study_begin_times           NUMBER(10),
+  study_complete_times        NUMBER(10),
+  study_begin_rate            NUMBER(10,2),
+  study_complete_rate         NUMBER(10,2),
+  study_begin_times_growth    NVARCHAR2(10),
+  study_complete_times_growth NVARCHAR2(10),
+  test_begin_times            NUMBER(10),
+  test_complete_times         NUMBER(10),
+  test_begin_times_growth     NVARCHAR2(10),
+  test_complete_times_growth  NVARCHAR2(10),
+  test_complete_rate          NVARCHAR2(10),
+  create_date                 DATE,
+  update_date                 DATE,
+  reg_enterprise_count        NUMBER(10),
+  reg_user_count              NUMBER(10)
+)
+tablespace HZPH
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64
+    next 8
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table STATISTIC_YEAR
+  is '综合统计-年度汇总';
+-- Add comments to the columns 
+comment on column STATISTIC_YEAR.id
+  is 'ID';
+comment on column STATISTIC_YEAR.year
+  is '年';
+comment on column STATISTIC_YEAR.month
+  is '月';
+comment on column STATISTIC_YEAR.reg_enterprise_num
+  is '注册机构数';
+comment on column STATISTIC_YEAR.reg_user_num
+  is '注册用户数';
+comment on column STATISTIC_YEAR.reg_enterprise_growth
+  is '注册机构数累计同比';
+comment on column STATISTIC_YEAR.reg_user_growth
+  is '注册用户数累计同比';
+comment on column STATISTIC_YEAR.entry_user_num
+  is '报名用户数';
+comment on column STATISTIC_YEAR.entry_user_times
+  is '报名用户人次';
+comment on column STATISTIC_YEAR.entry_courehours
+  is '报名总学时';
+comment on column STATISTIC_YEAR.fee_amount
+  is '缴费总额';
+comment on column STATISTIC_YEAR.entry_user_growth
+  is '报名用户同比';
+comment on column STATISTIC_YEAR.entry_user_times_growth
+  is '报名人次同比';
+comment on column STATISTIC_YEAR.entry_courehours_growth
+  is '报名学时同比';
+comment on column STATISTIC_YEAR.fee_amount_growth
+  is '缴费总额同比';
+comment on column STATISTIC_YEAR.refund_num
+  is '退费次数';
+comment on column STATISTIC_YEAR.refund_amount
+  is '退费总额';
+comment on column STATISTIC_YEAR.overyear_refund_num
+  is '跨年退费数';
+comment on column STATISTIC_YEAR.overyear_refund_amount
+  is '跨年退费总额';
+comment on column STATISTIC_YEAR.study_begin_times
+  is '开始学习人次';
+comment on column STATISTIC_YEAR.study_complete_times
+  is '学习完成人次';
+comment on column STATISTIC_YEAR.study_begin_rate
+  is '学习开始比率';
+comment on column STATISTIC_YEAR.study_complete_rate
+  is '学习完成比率';
+comment on column STATISTIC_YEAR.study_begin_times_growth
+  is '学习开始人次同比';
+comment on column STATISTIC_YEAR.study_complete_times_growth
+  is '学习完成人次同比';
+comment on column STATISTIC_YEAR.test_begin_times
+  is '测验开始人次';
+comment on column STATISTIC_YEAR.test_complete_times
+  is '测验完成人次';
+comment on column STATISTIC_YEAR.test_begin_times_growth
+  is '测验开始人次同比';
+comment on column STATISTIC_YEAR.test_complete_times_growth
+  is '测验完成人次同比';
+comment on column STATISTIC_YEAR.test_complete_rate
+  is '测验完成比率';
+comment on column STATISTIC_YEAR.create_date
+  is '创建时间';
+comment on column STATISTIC_YEAR.update_date
+  is '更新时间';
+comment on column STATISTIC_YEAR.reg_enterprise_count
+  is '注册机构数累计';
+comment on column STATISTIC_YEAR.reg_user_count
+  is '注册用户数累计';
+
+  
+  
+  -- Create table
+create table STATISTICSUM
+(
+  id                     NVARCHAR2(50),
+  year                   NVARCHAR2(4) default to_char(sysdate,'yyyy'),
+  month                  NVARCHAR2(2) default to_char(sysdate,'MM'),
+  day                    NVARCHAR2(2) default to_char(sysdate,'dd'),
+  fk_regtype_id          NVARCHAR2(50),
+  reg_enterprise_num     NUMBER(10),
+  reg_user_num           NUMBER(10),
+  entry_user_num         NUMBER(10),
+  entry_user_times       NUMBER(10),
+  entry_courehours       NUMBER(10),
+  fee_amount             NUMBER(10,2),
+  refund_num             NUMBER(10),
+  refund_amount          NUMBER(10,2),
+  overyear_refund_num    NUMBER(10),
+  overyear_refund_amount NUMBER(10,2),
+  study_begin_times      NUMBER(10),
+  study_complete_times   NUMBER(10),
+  test_begin_times       NUMBER(10),
+  test_complete_times    NUMBER(10),
+  create_date            DATE default sysdate,
+  update_date            DATE,
+  reg_enterprise_count   NUMBER(10),
+  reg_user_count         NUMBER(10)
+)
+tablespace HZPH
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64
+    next 8
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table STATISTICSUM
+  is '综合统计-按机构类别';
+-- Add comments to the columns 
+comment on column STATISTICSUM.id
+  is 'ID';
+comment on column STATISTICSUM.year
+  is '年';
+comment on column STATISTICSUM.month
+  is '月';
+comment on column STATISTICSUM.day
+  is '日';
+comment on column STATISTICSUM.fk_regtype_id
+  is '注册类别';
+comment on column STATISTICSUM.reg_enterprise_num
+  is '注册机构数';
+comment on column STATISTICSUM.reg_user_num
+  is '注册人数';
+comment on column STATISTICSUM.entry_user_num
+  is '报名人数';
+comment on column STATISTICSUM.entry_user_times
+  is '报名人次';
+comment on column STATISTICSUM.entry_courehours
+  is '报名学时数';
+comment on column STATISTICSUM.fee_amount
+  is '付费金额';
+comment on column STATISTICSUM.refund_num
+  is '退费人数';
+comment on column STATISTICSUM.refund_amount
+  is '退费金额';
+comment on column STATISTICSUM.overyear_refund_num
+  is '跨年退人数';
+comment on column STATISTICSUM.overyear_refund_amount
+  is '跨年退金额';
+comment on column STATISTICSUM.study_begin_times
+  is '开始学习人次';
+comment on column STATISTICSUM.study_complete_times
+  is '完成学习人次';
+comment on column STATISTICSUM.test_begin_times
+  is '开始测验人次';
+comment on column STATISTICSUM.test_complete_times
+  is '完成测验人次';
+comment on column STATISTICSUM.reg_enterprise_count
+  is '注册机构数累计';
+comment on column STATISTICSUM.reg_user_count
+  is '注册人数累计';
+  
+  
+  
+  -- Create table
+create table STATISTIC_ENTERPRISE_TYPE
+(
+  id                     NVARCHAR2(50) not null,
+  year                   NVARCHAR2(4) default to_char(sysdate,'yyyy'),
+  month                  NVARCHAR2(2) default to_char(sysdate,'MM'),
+  day                    NVARCHAR2(2) default to_char(sysdate,'dd'),
+  fk_enterprisetype_id   NVARCHAR2(50),
+  reg_enterprise_num     NUMBER(10),
+  reg_user_num           NUMBER(10),
+  entry_user_num         NUMBER(10),
+  entry_user_times       NUMBER(10),
+  entry_courehours       NUMBER(10),
+  fee_amount             NUMBER(10,2),
+  refund_num             NUMBER(10),
+  refund_amount          NUMBER(10,2),
+  overyear_refund_num    NUMBER(10),
+  overyear_refund_amount NUMBER(10,2),
+  study_begin_times      NUMBER(10),
+  study_complete_times   NUMBER(10),
+  test_begin_times       NUMBER(10),
+  test_complete_times    NUMBER(10),
+  create_date            DATE default sysdate,
+  update_date            DATE,
+  reg_enterprise_count   NUMBER(10),
+  reg_user_count         NUMBER(10)
+)
+tablespace HZPH
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64
+    next 8
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table STATISTIC_ENTERPRISE_TYPE
+  is '综合统计-按机构类别';
+-- Add comments to the columns 
+comment on column STATISTIC_ENTERPRISE_TYPE.id
+  is 'ID';
+comment on column STATISTIC_ENTERPRISE_TYPE.year
+  is '年';
+comment on column STATISTIC_ENTERPRISE_TYPE.month
+  is '月';
+comment on column STATISTIC_ENTERPRISE_TYPE.day
+  is '日';
+comment on column STATISTIC_ENTERPRISE_TYPE.fk_enterprisetype_id
+  is '机构类别';
+comment on column STATISTIC_ENTERPRISE_TYPE.reg_enterprise_num
+  is '注册机构数量';
+comment on column STATISTIC_ENTERPRISE_TYPE.reg_user_num
+  is '注册人数';
+comment on column STATISTIC_ENTERPRISE_TYPE.entry_user_num
+  is '报名人数';
+comment on column STATISTIC_ENTERPRISE_TYPE.entry_user_times
+  is '报名人次';
+comment on column STATISTIC_ENTERPRISE_TYPE.entry_courehours
+  is '报名学时数';
+comment on column STATISTIC_ENTERPRISE_TYPE.fee_amount
+  is '付费金额';
+comment on column STATISTIC_ENTERPRISE_TYPE.refund_num
+  is '退费人数';
+comment on column STATISTIC_ENTERPRISE_TYPE.refund_amount
+  is '退费金额';
+comment on column STATISTIC_ENTERPRISE_TYPE.overyear_refund_num
+  is '跨年退人数';
+comment on column STATISTIC_ENTERPRISE_TYPE.overyear_refund_amount
+  is '跨年退金额';
+comment on column STATISTIC_ENTERPRISE_TYPE.study_begin_times
+  is '开始学习人次';
+comment on column STATISTIC_ENTERPRISE_TYPE.study_complete_times
+  is '完成学习人次';
+comment on column STATISTIC_ENTERPRISE_TYPE.test_begin_times
+  is '开始测验人次';
+comment on column STATISTIC_ENTERPRISE_TYPE.test_complete_times
+  is '完成测验人次';
+  
+  
+  

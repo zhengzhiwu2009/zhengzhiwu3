@@ -1,0 +1,2 @@
+-- Add/modify columns 
+alter table SCORM_STU_SCO modify system_id VARCHAR2(500);

@@ -1,0 +1,19 @@
+-- Drop primary, unique and foreign key constraints 
+alter table PE_BZZ_INVOICE_INFO
+  drop constraint AK_PE_BZZ_INVOICE_INFO_NUM cascade;
+
+  
+  -- Create/Recreate indexes 
+drop index AK_PE_BZZ_INVOICE_INFO_NUM;
+create index AK_PE_BZZ_INVOICE_INFO_NUM on PE_BZZ_INVOICE_INFO (NUM)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+  

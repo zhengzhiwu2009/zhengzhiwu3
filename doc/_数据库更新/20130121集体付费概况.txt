@@ -1,0 +1,55 @@
+-- Create table
+create table TEAMENTRY
+(
+  YEAR         VARCHAR2(4),
+  MANAGER_ID   VARCHAR2(40),
+  SUMENTRY     NUMBER,
+  PAYEDENTRY   NUMBER,
+  PAYEDCOURSE  NUMBER,
+  PAYEDSTUDENT NUMBER,
+  PAYEDAMOUNT  NUMBER(10,2)
+)
+tablespace HZPH
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table TEAMENTRY
+  is '集体报名付费概况';
+-- Add comments to the columns 
+comment on column TEAMENTRY.YEAR
+  is '年';
+comment on column TEAMENTRY.MANAGER_ID
+  is '管理员ID';
+comment on column TEAMENTRY.SUMENTRY
+  is '报名单总数';
+comment on column TEAMENTRY.PAYEDENTRY
+  is '已支付的报名单';
+comment on column TEAMENTRY.PAYEDCOURSE
+  is '已支付报名单课程';
+comment on column TEAMENTRY.PAYEDSTUDENT
+  is '已支付报名学生';
+comment on column TEAMENTRY.PAYEDAMOUNT
+  is '已支付金额';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table TEAMENTRY
+  add constraint ENTRYSUM unique (YEAR, MANAGER_ID)
+  using index 
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );

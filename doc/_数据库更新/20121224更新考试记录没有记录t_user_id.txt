@@ -1,0 +1,1 @@
+update TEST_TESTPAPER_HISTORY t set t.t_user_id = substr(t.user_id,instr(t.user_id,'(')+1,instr(t.user_id,')')-instr(t.user_id,'(')-1) where t.t_user_id is null;

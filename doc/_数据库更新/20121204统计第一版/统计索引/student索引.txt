@@ -1,0 +1,144 @@
+create index INDEX_PE_BZZ_STUDENT1 on PE_BZZ_STUDENT (FK_SSO_USER_ID)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+create index INDEX_PE_BZZ_STUDENT2 on PE_BZZ_STUDENT (FK_ENTERPRISE_ID, ID)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+create index INDEX_PE_BZZ_STUDENT3 on PE_BZZ_STUDENT (ID, FK_SSO_USER_ID, FK_ENTERPRISE_ID)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+create index INDEX_PE_BZZ_STUDENT_REG_NO on PE_BZZ_STUDENT (REG_NO)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 10M
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+create index PE_BZZ_STUDENT_IN1 on PE_BZZ_STUDENT (TO_CHAR(NVL(COM_FIFTEEN_HOURS_DATE,TO_DATE(' 1900-01-01 00:00:00', 'syyyy-mm-dd hh24:mi:ss')),'yyyy-MM'))
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+create index PE_BZZ_STUDENT_IN2 on PE_BZZ_STUDENT (TO_CHAR(NVL(COM_FIFTEEN_HOURS_DATE,TO_DATE(' 1900-01-01 00:00:00', 'syyyy-mm-dd hh24:mi:ss')),'yyyy'))
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+create index PE_BZZ_STUDENT_INDEX2 on PE_BZZ_STUDENT (TO_CHAR(NVL(DATA_DATE,TO_DATE(' 1900-01-01 00:00:00', 'syyyy-mm-dd hh24:mi:ss')),'yyyy-MM'))
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+create index PE_BZZ_STUDENT_INDEX5 on PE_BZZ_STUDENT (TO_CHAR(NVL(COM_TEN_HOURS_DATE,TO_DATE(' 1900-01-01 00:00:00', 'syyyy-mm-dd hh24:mi:ss')),'yyyy'))
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+create index PE_BZZ_STUDENT_INDEX6 on PE_BZZ_STUDENT (TO_CHAR(NVL(COM_TEN_HOURS_DATE,TO_DATE(' 1900-01-01 00:00:00', 'syyyy-mm-dd hh24:mi:ss')),'yyyy-MM'))
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+create index PK_PE_BZZ_STUDENTCARD on PE_BZZ_STUDENT (CARD_NO)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 20M
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+create index PK_PE_BZZ_STUDENTDEPARTMENT on PE_BZZ_STUDENT (DEPARTMENT)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+create index PK_PE_BZZ_STUDENTNAME on PE_BZZ_STUDENT (NAME)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );

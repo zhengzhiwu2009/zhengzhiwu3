@@ -1,0 +1,14 @@
+@import url("comm.css");
+body{ background:#e3f1f6; padding:10px;margin: 2px 0 0 0;}
+
+.h2{background:url(jbg.jpg); border:#99bbe8 1px solid; padding:1px 5px;height:12px;}
+.h2div{ color:#15428b; font-weight:bold; float:left;}
+
+.content{}
+.content table{ margin-bottom:5px; width:100%;   background:#FFF}
+.content td,.content th{font-weight:lighter; padding:5px; border:#99bbe8 1px solid}
+.content h5{ padding:10px;text-align:center;  font-size:16px;}
+.content th  { background:#f1f7fb; font-weight:bold; width:120px}
+
+.buttbox{ padding:10px; text-align:center}
+

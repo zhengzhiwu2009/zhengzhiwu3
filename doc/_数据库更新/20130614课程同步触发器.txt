@@ -1,0 +1,134 @@
+  grant all on hzph_data_bridge.train_course_info to hzph;
+CREATE OR REPLACE TRIGGER tr_all_course
+  AFTER UPDATE OR DELETE ON hzph.pe_bzz_tch_course --添加修改，删除elective是触发
+  FOR EACH ROW
+
+when ((new.FLAG_CANJOINBATCH = '40288acf3aaa56d5013aaa5b8ccc0001' or
+        new.FLAG_ISVALID = '2') or
+       (old.FLAG_CANJOINBATCH = '40288acf3aaa56d5013aaa5b8ccc0001' or
+        old.FLAG_ISVALID = '2'))
+declare
+  --这里是关键的地方，在变量申明的地方，指定自定义事务处理。
+  pragma autonomous_transaction;
+BEGIN
+  -- --01 新增  02 修改  03 删除
+  CASE
+    WHEN UPDATING THEN
+      IF ((:new.FLAG_CANJOINBATCH = '40288acf3aaa56d5013aaa5b8ccc0001' or --旧数据发布，新数据发布--修改
+         :new.FLAG_ISVALID = '2') and
+         (:old.FLAG_CANJOINBATCH = '40288acf3aaa56d5013aaa5b8ccc0001' or
+         :old.FLAG_ISVALID = '2')) THEN
+        insert into hzph_data_bridge.TRAIN_COURSE_INFO
+        
+          (tci_course_id,
+           tci_name,
+           tci_course_name,
+           tci_hours,
+           tci_hours_type,
+           tci_update_date,
+           tci_begin_date,
+           tci_end_date,
+           tci_state,
+           tci_result)
+        values
+          (:new.CODE,
+           :new.NAME,
+           :new.NAME,
+           :new.TIME,
+           decode(:new.flag_coursetype,
+                  '402880f32200c249012200c780c40001',
+                  '1',
+                  '0'),
+           to_char(sysdate,'yyyy-mm-dd hh24:mi:ss'),
+           :new.ANNOUNCE_DATE,
+           :new.END_DATE,
+           '02',
+           '0');
+      ELSIF ((:new.FLAG_CANJOINBATCH <> '40288acf3aaa56d5013aaa5b8ccc0001' and --旧数据发布，新数据未发布--删除
+            :new.FLAG_ISVALID <> '2') and
+            (:old.FLAG_CANJOINBATCH = '40288acf3aaa56d5013aaa5b8ccc0001' or
+            :old.FLAG_ISVALID = '2')) THEN
+        insert into hzph_data_bridge.TRAIN_COURSE_INFO
+          (tci_course_id,
+           tci_name,
+           tci_course_name,
+           tci_hours,
+           tci_hours_type,
+           tci_update_date,
+           tci_begin_date,
+           tci_end_date,
+           tci_state,
+           tci_result)
+        values
+          (:new.CODE,
+           :new.NAME,
+           :new.NAME,
+           :new.TIME,
+           decode(:new.flag_coursetype,
+                  '402880f32200c249012200c780c40001',
+                  '1',
+                  '0'),
+           to_char(sysdate,'yyyy-mm-dd hh24:mi:ss'),
+           :new.ANNOUNCE_DATE,
+           :new.END_DATE,
+           '03',
+           '0');
+      ELSIF ((:new.FLAG_CANJOINBATCH = '40288acf3aaa56d5013aaa5b8ccc0001' or --旧数据未发布，新数据发布--新增
+            :new.FLAG_ISVALID = '2') and
+            (:old.FLAG_CANJOINBATCH <> '40288acf3aaa56d5013aaa5b8ccc0001' and
+            :old.FLAG_ISVALID <> '2')) THEN
+        insert into hzph_data_bridge.TRAIN_COURSE_INFO
+          (tci_course_id,
+           tci_name,
+           tci_course_name,
+           tci_hours,
+           tci_hours_type,
+           tci_update_date,
+           tci_begin_date,
+           tci_end_date,
+           tci_state,
+           tci_result)
+        values
+          (:new.CODE,
+           :new.NAME,
+           :new.NAME,
+           :new.TIME,
+           decode(:new.flag_coursetype,
+                  '402880f32200c249012200c780c40001',
+                  '1',
+                  '0'),
+           to_char(sysdate,'yyyy-mm-dd hh24:mi:ss'),
+           :new.ANNOUNCE_DATE,
+           :new.END_DATE,
+           '01',
+           '0');
+      END IF;
+    WHEN DELETING THEN
+      insert into hzph_data_bridge.train_course_info
+        (tci_course_id,
+         tci_name,
+         tci_course_name,
+         tci_hours,
+         tci_hours_type,
+         tci_update_date,
+         tci_begin_date,
+         tci_end_date,
+         tci_state,
+         tci_result)
+      values
+        (:old.CODE,
+         :old.NAME,
+         :old.NAME,
+         :old.TIME,
+         decode(:old.flag_coursetype,
+                '402880f32200c249012200c780c40001',
+                '1',
+                '0'),
+         to_char(sysdate,'yyyy-mm-dd hh24:mi:ss'),
+         :old.ANNOUNCE_DATE,
+         :old.END_DATE,
+         '03',
+         '0');
+  END CASE;
+  commit;
+END;

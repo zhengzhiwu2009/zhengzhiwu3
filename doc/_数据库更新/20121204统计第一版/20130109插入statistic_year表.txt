@@ -1,0 +1,31 @@
+--更新注册单位数(0.015)
+update statistic_year sy
+   set reg_enterprise_num = (select max(se.reg_enterprise_num)
+                               from statistic_enterprise se
+                              where sy.year = se.year
+                              group by se.year where)
+--更新注册单位累计(0.015)
+update statistic_year sy
+   set reg_enterprise_count = (select sum(enCount)
+                                 from (select max(reg_enterprise_count) as enCount,
+                                              year
+                                         from statistic_enterprise
+                                        where fk_enterprise_id <> '0000'
+                                        group by year, enterprise_type) bb
+                                where sy.year = bb.year )
+--更新注册人数(0.015)
+update statistic_year sy
+   set sy.reg_user_num = (select sum(userNum)
+                                 from (select year, sum(reg_user_num) userNum
+                                         from statistic_enterprise
+                                        group by year, enterprise_type) bb
+                                where sy.year = bb.year)
+--更新注册人数累计(0.016)
+update statistic_year sy
+   set sy.reg_user_count = (select sum(userCount) as A5
+                              from (select year,
+                                           sum(reg_user_count) as userCount
+                                      from statistic_enterprise
+                                     group by year, enterprise_type) bb
+                             where sy.year = bb.year
+                             group by year)

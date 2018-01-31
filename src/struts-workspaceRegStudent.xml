@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd" >
+<struts>
+	<package name="entity.workspaceRegStudent" extends="struts-default" namespace="/entity/workspaceRegStudent">
+		<interceptors>
+			<interceptor name="userPriorityInterceptor" class="com.whaty.platform.sso.web.interceptor.UserPriorityInterceptor"></interceptor>
+			<interceptor name="userLoginInterceptor" class="com.whaty.platform.sso.web.interceptor.UserLoginInterceptor"></interceptor>
+			<interceptor name="loggerInterceptor" class="com.whaty.log.LoggerInterceptor"></interceptor>
+
+			<interceptor-stack name="interceptorStack">
+				<interceptor-ref name="userLoginInterceptor"></interceptor-ref>
+				<interceptor-ref name="userPriorityInterceptor"></interceptor-ref>
+				<interceptor-ref name="loggerInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="token">
+					<param name="includeMethods">confirmOrder</param>
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="interceptorStack"></default-interceptor-ref>
+		<global-results>
+			<result name="grid">/test/grid.jsp</result>
+			<result name="json">/test/json.jsp</result>
+			<result name="gridjs">/test/gridjs.jsp</result>
+			<result name="excel">/test/export.jsp</result>
+			<result name="error">/test/error.jsp</result>
+			<result name="msg">/test/msg.jsp</result>
+			<result name="stu_msg">/test/stu_msg.jsp</result>
+			<result name="input">/entity/manager/pub/turnToLogin.jsp</result>
+			<result name="invalid.token" type="dispatcher">/error/tokenError.jsp</result>
+			<result name="sessionNull">/error/priv_error.htm</result>
+		</global-results>
+
+		<action name="regStudentWorkspace_*" method="{1}" class="regStudentWorkspaceAction">
+			<result name="regStudent">/entity/reg/index.jsp</result>
+			<result name="learningCourses">/entity/reg/learning_courses.jsp</result>
+			<result name="freeCourses">/entity/reg/free_courses.jsp</result>
+			<result name="show_stuindex" type="redirect">/entity/function/reg/index.jsp</result>
+			<result name="completedCourses">/entity/reg/completed_courses.jsp</result>
+			<result name="studentindex">/entity/reg/student_announce.jsp</result>
+			<result name="toPassedCourses">/entity/reg/passed_courses.jsp</result>
+			<result name="studentinfo">/entity/reg/student_info.jsp</result>
+			<result name="tohelp">/entity/reg/help.jsp</result>
+			<result name="tomodifyinfo">/entity/reg/student_info_edit.jsp</result>
+			<result name="modifyInfo">/entity/reg/InfoMessage.jsp</result>
+			<result name="toPassword">/entity/reg/student_password_edit.jsp</result>
+			<result name="editexe">/entity/reg/operateresult.jsp</result>
+			<result name="viewFailed">/entity/reg/viewFailed.jsp</result>
+			<!--  
+			<result name="view" type="redirect">/CourseImports/${courseCode}/${scormType}/${indexFile}?myDate=${myDate}</result>
+			-->
+			<result name="view">/entity/reg/view.jsp</result>
+			<result name="tositeemail">/entity/reg/siteemail.jsp</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,7 @@
+﻿//张莹莹
+peManager.java  增加 private PePriRole pePriRole;(添加修改时使用)
+peSiteManager.java 增加 private PePriRole pePriRole;(添加修改时使用)
+ssoUser.java 增加 4个横向权限set
+
+//张羽
+PrTchPaperTitle.java 添加private long titleAlreadySelect 和 private String isCurrentTitle;

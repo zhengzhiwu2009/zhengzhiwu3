@@ -1,0 +1,128 @@
+@charset "utf-8";
+/* CSS Document */
+
+body,ul,li,p,h1,h2,h3,h4,h5,form,input,div,a{margin:0;padding:0;font-size:12px; font-family:"宋体";}
+.clear{ clear:both;
+height:0px;
+overflow:hidden;}
+
+a{text-decoration:none;color:#333333; cursor:pointer;}
+ul{list-style:none;}
+img{border:none;}
+body{background:#FD8E0B; 
+margin:0px;
+padding:0px;}
+.wrap{
+width:1002px;
+margin:0px auto;
+padding:0px;}
+.header{ 
+height:168px;
+background:url(../images/t_12.jpg) no-repeat left top;}
+.top{width:131px;height:113px;padding-top:26px;padding-left:33px;}
+.container{
+width:991px;
+margin:0px auto;
+padding:0px;
+background-color:#FFffff;}
+.content{
+background:#FFffff;}
+.contenttitle{
+width:974px;
+height:31px;
+float:left;
+font-family:"宋体";
+font-size:14px;
+color:#FFFFFF;
+line-height:31px;
+font-weight:600;
+background:url(../images/tiao.jpg) no-repeat left top;
+text-indent:24px;
+margin-top:6px;
+margin-left:5px;
+}
+.font_s{
+font-size:12px;
+font-weight:normal;}
+.clist{
+margin:6px 15px;
+padding:0px;
+}
+.ctitle{
+font-family:"宋体";
+font-size:14px;
+font-weight:600;
+color:#a50000;
+height:31px;
+line-height:31px;
+background:url(../images/sub2.jpg) no-repeat left center;
+text-indent:20px;
+}
+.ctext{
+padding:4px 4px 10px 4px;
+font-size:12px;
+border-bottom:1px #333333 dotted;
+}
+.bfont{
+font-weight:600;
+line-height:30px;}
+
+/*page-start*/
+#page_div{
+    clear:both;
+    width:991px;
+	height:20px;
+	margin-top:20px;
+	font-size:12px;
+	color:#5b5b5b;
+	padding-bottom:20px;
+}
+#page_div ul{
+    list-style:none;
+	padding:0px;
+	height:20px;
+	margin:0px auto;
+	text-align:center;
+}
+#page_div ul li{
+    float:left;
+    list-style:none;
+	margin-right:3px;
+	text-align:center;
+}
+#page_div ul li a{
+    float:left;
+    list-style:none;
+	margin-right:3px;
+	text-align:center;
+	padding:2px;
+	color:#5b5b5b;
+	border:1px solid #747474;
+	text-decoration:none;
+}
+#page_div ul li a:hover{
+    float:left;
+    list-style:none;
+	margin-right:3px;
+	text-align:center;
+	padding:2px;
+	color:#ffffff;
+	background-color:#fd8e0b;
+	border:1px solid #fd8e0b;
+	text-decoration:none;
+}
+.page_num{
+    width:275px;
+	margin:0px auto;
+	height:20px;
+	text-align:center;
+}
+
+/*page-end*/
+.foot{
+height:60px;
+line-height:60px;
+font-family:12px;
+font-weight:600;
+text-align:center;
+color:#a50000;}

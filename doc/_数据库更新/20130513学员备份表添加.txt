@@ -1,0 +1,181 @@
+-- Create table
+create table PE_BZZ_STUDENT_COPY
+(
+  id                     VARCHAR2(50) not null,
+  name                   VARCHAR2(50),
+  reg_no                 VARCHAR2(50) not null,
+  fk_sso_user_id         VARCHAR2(50),
+  fk_enterprise_id       VARCHAR2(50),
+  gender                 VARCHAR2(50),
+  folk                   VARCHAR2(50),
+  education              VARCHAR2(50),
+  age                    VARCHAR2(50),
+  position               VARCHAR2(50),
+  title                  VARCHAR2(50),
+  department             VARCHAR2(200),
+  address                VARCHAR2(300),
+  zipcode                VARCHAR2(50),
+  phone                  VARCHAR2(50),
+  mobile_phone           VARCHAR2(50),
+  email                  VARCHAR2(50),
+  fk_batch_id            VARCHAR2(50),
+  true_name              VARCHAR2(50),
+  birthday               DATE,
+  export_state           VARCHAR2(1) default 0,
+  regist_people          VARCHAR2(100),
+  regist_date            DATE,
+  fk_recruit_id          VARCHAR2(50),
+  export_people          VARCHAR2(100),
+  export_date            DATE,
+  sub_enterprise_name    VARCHAR2(500),
+  photo                  VARCHAR2(100),
+  flag_rank_state        VARCHAR2(50),
+  data_date              DATE default sysdate,
+  photo_confirm_date     DATE,
+  photo_unconfirm_reason VARCHAR2(500),
+  photo_confirm          VARCHAR2(50) default '4028809c2d925bcf011d66fd0dda8006',
+  study_end_date         DATE,
+  is_goodstu             VARCHAR2(50) default 'ccb2880a91dadc115011dadfcf26b0009',
+  job_number             VARCHAR2(50),
+  pick_user              VARCHAR2(50),
+  fk_site_id             VARCHAR2(50),
+  card_type              VARCHAR2(50),
+  card_no                VARCHAR2(50),
+  groups                 VARCHAR2(100),
+  fk_grade_id            VARCHAR2(50),
+  fk_exambatch_id        VARCHAR2(50),
+  student_type           VARCHAR2(255 CHAR),
+  is_employee            VARCHAR2(50),
+  check_state            VARCHAR2(50),
+  enterprise_id          VARCHAR2(50),
+  zige                   VARCHAR2(50),
+  enterprise_name        VARCHAR2(500),
+  sub_groups             VARCHAR2(100),
+  com_ten_hours_date     DATE,
+  com_fifteen_hours_date DATE,
+  ata_id                 VARCHAR2(50),
+  index_id               VARCHAR2(50),
+  copy_carid             VARCHAR2(50),
+  flag_20130410          VARCHAR2(1),
+  bak_enterprise_id      VARCHAR2(50),
+  zjlx                   VARCHAR2(50),
+  gznx                   VARCHAR2(50),
+  modify_date            DATE
+)
+tablespace HZPH
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 16
+    next 8
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table PE_BZZ_STUDENT_COPY
+  is '????????';
+-- Add comments to the columns 
+comment on column PE_BZZ_STUDENT_COPY.id
+  is '??';
+comment on column PE_BZZ_STUDENT_COPY.reg_no
+  is '??';
+comment on column PE_BZZ_STUDENT_COPY.fk_enterprise_id
+  is '????ID';
+comment on column PE_BZZ_STUDENT_COPY.gender
+  is '??';
+comment on column PE_BZZ_STUDENT_COPY.folk
+  is '??';
+comment on column PE_BZZ_STUDENT_COPY.education
+  is '??';
+comment on column PE_BZZ_STUDENT_COPY.age
+  is '??';
+comment on column PE_BZZ_STUDENT_COPY.position
+  is '????';
+comment on column PE_BZZ_STUDENT_COPY.title
+  is '??';
+comment on column PE_BZZ_STUDENT_COPY.department
+  is '????';
+comment on column PE_BZZ_STUDENT_COPY.address
+  is '????';
+comment on column PE_BZZ_STUDENT_COPY.zipcode
+  is '??';
+comment on column PE_BZZ_STUDENT_COPY.phone
+  is '????';
+comment on column PE_BZZ_STUDENT_COPY.mobile_phone
+  is '????';
+comment on column PE_BZZ_STUDENT_COPY.email
+  is '????';
+comment on column PE_BZZ_STUDENT_COPY.fk_batch_id
+  is '????';
+comment on column PE_BZZ_STUDENT_COPY.export_state
+  is '????';
+comment on column PE_BZZ_STUDENT_COPY.regist_people
+  is '???';
+comment on column PE_BZZ_STUDENT_COPY.regist_date
+  is '????';
+comment on column PE_BZZ_STUDENT_COPY.fk_recruit_id
+  is '??????ID';
+comment on column PE_BZZ_STUDENT_COPY.export_people
+  is '???';
+comment on column PE_BZZ_STUDENT_COPY.export_date
+  is '????';
+comment on column PE_BZZ_STUDENT_COPY.sub_enterprise_name
+  is '???????';
+comment on column PE_BZZ_STUDENT_COPY.photo
+  is '??';
+comment on column PE_BZZ_STUDENT_COPY.flag_rank_state
+  is '???????????';
+comment on column PE_BZZ_STUDENT_COPY.photo_confirm_date
+  is '??????';
+comment on column PE_BZZ_STUDENT_COPY.photo_unconfirm_reason
+  is '?????????????????????';
+comment on column PE_BZZ_STUDENT_COPY.photo_confirm
+  is '????????????';
+comment on column PE_BZZ_STUDENT_COPY.study_end_date
+  is '??????';
+comment on column PE_BZZ_STUDENT_COPY.is_goodstu
+  is '?????????????';
+comment on column PE_BZZ_STUDENT_COPY.job_number
+  is '??';
+comment on column PE_BZZ_STUDENT_COPY.pick_user
+  is '???????';
+comment on column PE_BZZ_STUDENT_COPY.fk_site_id
+  is '???????';
+comment on column PE_BZZ_STUDENT_COPY.card_type
+  is '????';
+comment on column PE_BZZ_STUDENT_COPY.card_no
+  is '???';
+comment on column PE_BZZ_STUDENT_COPY.groups
+  is '??';
+comment on column PE_BZZ_STUDENT_COPY.fk_grade_id
+  is '??ID';
+comment on column PE_BZZ_STUDENT_COPY.fk_exambatch_id
+  is '??id';
+comment on column PE_BZZ_STUDENT_COPY.student_type
+  is '用户类型（集体或个人）';
+comment on column PE_BZZ_STUDENT_COPY.is_employee
+  is '??????';
+comment on column PE_BZZ_STUDENT_COPY.check_state
+  is '审核装态';
+comment on column PE_BZZ_STUDENT_COPY.enterprise_id
+  is '注册时选择的机构';
+comment on column PE_BZZ_STUDENT_COPY.zige
+  is '资格类型';
+comment on column PE_BZZ_STUDENT_COPY.enterprise_name
+  is '注册时填写的机构';
+comment on column PE_BZZ_STUDENT_COPY.sub_groups
+  is '二级机构组别记录';
+comment on column PE_BZZ_STUDENT_COPY.com_ten_hours_date
+  is '完成十个学时时间（统计时添加）';
+comment on column PE_BZZ_STUDENT_COPY.com_fifteen_hours_date
+  is '完成十五个学时时间（统计时添加）';
+comment on column PE_BZZ_STUDENT_COPY.bak_enterprise_id
+  is '数据迁移机构';
+comment on column PE_BZZ_STUDENT_COPY.zjlx
+  is '证件类型  01 身份证    02护照   03其他  ';
+comment on column PE_BZZ_STUDENT_COPY.gznx
+  is '工作年限';
+comment on column PE_BZZ_STUDENT_COPY.modify_date
+  is '数据备份时间';

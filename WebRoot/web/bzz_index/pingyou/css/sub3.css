@@ -1,0 +1,131 @@
+@charset "utf-8";
+/* CSS Document */
+
+body,ul,li,p,h1,h2,h3,h4,h5,form,input,div,a{margin:0;padding:0;font-size:12px; font-family:"宋体";}
+.clear{ clear:both;
+height:0px;
+overflow:hidden;}
+
+a{text-decoration:none;color:#333333; cursor:pointer;}
+ul{list-style:none;}
+img{border:none;}
+body{background:#FD8E0B; 
+margin:0px;
+padding:0px;}
+.wrap{
+width:1002px;
+margin:0px auto;
+padding:0px;}
+.header{ 
+height:168px;
+background:url(../images/t_12.jpg) no-repeat left top;}
+.top{width:131px;height:113px;padding-top:26px;padding-left:33px;}
+.container{ width:988px;
+margin:0px auto;
+background:url(../images/sub3-04.jpg) repeat-y;}
+.ctntop{
+width:988px;
+height:85px;
+background:url(../images/sub3_03.jpg) no-repeat left top;
+}
+.ctntoptitle{ 
+width:944px;
+height:30px;
+margin:0px auto;
+padding-top:45px;
+padding-bottom:10px;
+border-bottom:2px #d93c05 solid;
+
+}
+.titletext{
+font-size:24px;
+font-family:"黑体";
+color:#921212;
+font-weight:600;
+text-align:center;}
+.message{
+width:946px;
+margin:0px auto;
+margin-top:21px;
+}
+.imgleft{
+float:left;
+margin:0px;
+padding:0px;
+margin-right:10px;}
+.tabble{
+float:left;
+font-size:14px;
+line-height:24px;}
+.tabble td{
+padding-left:14px;
+padding-right:10px;
+margin:0px;}
+.red{
+color:#921212;
+font-weight:600;}
+.yellow{
+background-attachment:#fffae3;}
+
+.grsj{
+width:944px;
+margin:0px auto;
+margin-top:12px;
+}
+.sujx{
+width:944px;
+margin:0px auto;
+margin-top:12px;
+}
+.titlebox{
+width:944px;
+height:29px;
+line-height:29px;
+background:url(../images/sub3_11.jpg) no-repeat center;
+font-family:"宋体";
+font-size:14px;
+font-weight:600;
+color:#9f2f2f;
+text-indent:44px;
+}
+.textbox{
+padding-top:8px;
+padding-left:14px;
+margin-top:4px;
+border:1px solid #d8d8d8;
+}
+.texttitle{
+font-size:12px;
+font-weight:600;
+background:url(../images/sub3_36.jpg) no-repeat left center;
+text-indent:24px;
+height:24px;
+line-height:24px;}
+.textp{
+padding:6px 14px 20px 14px;
+margin:0px;
+
+}
+.textp p{
+font-size:12px;
+line-height:24px;
+}
+.button{
+margin:0px auto;
+width:62px;
+margin-top:20px;
+margin-bottom:6px;
+height:28px;
+text-align:center;
+
+}
+.ctnbottom{
+width:988px;
+margin:0px auto;}
+.foot{
+height:60px;
+line-height:60px;
+font-family:12px;
+font-weight:600;
+text-align:center;
+color:#a50000;}

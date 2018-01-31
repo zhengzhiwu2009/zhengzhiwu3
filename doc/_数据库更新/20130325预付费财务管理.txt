@@ -1,0 +1,6 @@
+insert into PE_PRIORITY (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288acf3d9f7d53013d9f80175d0001', '预付费财务管理_*', '40288acf3d9f7d53013d9f83cea80002', '/entity/basic', 'yufufeiPayment', '*');
+
+
+insert into PE_PRI_CATEGORY (ID, NAME, FK_PARENT_ID, CODE, PATH, FLAG_LEFT_MENU)
+values ('40288acf3d9f7d53013d9f83cea80002', '预付费财务管理', '07', '07005', '/entity/basic/yufufeiPayment.action', '1');

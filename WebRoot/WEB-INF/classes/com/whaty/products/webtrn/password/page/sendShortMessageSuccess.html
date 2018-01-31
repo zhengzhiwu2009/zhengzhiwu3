@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>找回密码</title>
+<style type="text/css"> 
+.notice_wrap{ border:1px solid #8bb2d9; background-color:#F2F7FF; margin-top:15px; padding:13px;width:450px;}
+.notice_wrap .notice_main{_height:20px; border:1px solid #E3EFFC; background-color:#fff; padding:25px 30px;}
+.notice_wrap .notice_main p{ line-height:180%; text-indent:2em;}
+</style>
+<link rel="stylesheet" type="text/css" href="${base}/resbase/password/css/master.css" />
+<link rel="stylesheet" type="text/css" href="${base}/resbase/password/css/passport.css" />
+<script src="${base}/resbase/password/js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function(){
+	<#if errorEmailMessage?? && "" != errorEmailMessage>
+		$("#errMessageCode").html("${errorEmailMessage!'请输入正确的验证码'}").css({"display" : "inline-block"});
+	</#if>
+});
+
+var sendDate = new Date("${messageSendDate!?datetime}".replace(/-/g,"/"));
+var now = new Date();    
+var date = sendDate.getTime() + 300*1000 - now.getTime(); 
+var time = Math.floor(date/1000);
+$("#restTime").html(time+"秒");
+if(time>0){
+	$("#restTime").html("("+time+"秒)");		
+}else{
+	$("#restTime").hide();	
+}
+
+var timer = setInterval(function(){--time;$("#restTime").html("("+time+"秒)");if(time<0){clearInterval(timer);$("#restTime").hide();$("#resendMessageButton").attr("href","${base}/password/getPsw_resendShortMessage.action?verifystr=${verifystr!}");}},1000);
+
+function onload(){
+	if(time>0){
+		$("#resendMessageButton").attr("href","javascript:alert('请稍后再操作')");
+	}
+}
+
+function fmSubmt(){
+	var messageCode = $("#messageCode").val();
+	
+	if(messageCode == ''){
+		$("#errMessageCode").html("请输入验证码").css({"display" : "inline-block"});
+		return;
+	}
+	$("#inputForm").submit();
+}
+</script>
+</head>
+<body onload="onload()">
+<!--头部 开始-->
+<div class="header">
+<div class="header_tool">
+<br/>
+</div>
+<a href="#"><img src="${base}/resbase/password/images/title.jpg" class="logo" width="274" height="36" border="0"/></a> 
+</div>
+<!--头部 结束-->
+<!--头部 结束-->
+<!--主体 开始-->
+<div class="main">
+	<div class="main_con1" style="border-top:1px solid #C8C8C8;">
+	<span class="pass_text">&nbsp;</span>
+	<div class="p_10">
+		<ul class="m_step2">
+			<li>1.验证身份</li>
+			<li class="active">2.重置密码</li>
+			<li>3.成功</li>
+		</ul>
+	</div>
+	<form name="form" id="inputForm" method="post" action="${base}/password/getPsw_resetpassword.action">
+	<input name="verifystr" value="${verifystr!}" id="verifystr" style="display:none" />
+	<input name="verifyType" value="1" id="verifyType" style="display:none" />
+	<input name="cellphone" value="${cellphone!}" id="mobilePhoneNum" style="display:none" />
+	<div class=""  style="padding:45px 0 65px 240px;font:12px/1.8 "lucida grande", tahoma, verdana, arial, sans-serif, "宋体"; COLOR: #787878">
+		<ul class="main_form">
+			<li>
+				<div class="fm_left" ><img src="${base}/resbase/password/images/email_send.png"/></div>
+				<div class="fm_right">
+				<p style="font-weight:bold">验证码短信发送至您的手机 ${safeCellPhone!} 查收。</p>
+				<p>请尽快填写到下方输入框完成验证  或者 <a href="/">返回首页</a> </p>
+				<br/>
+				<p>
+				验证码：
+				<input name="messageCode" id="messageCode" class="input c_888888 w_200"  type="text" value="" /><span class="err" id="errMessageCode">请输入验证码</span>
+				</p>
+				<br/>
+				<p>
+					<div style="list-style-type: disc;color:#999;font-size:12px;">
+						如果超过5分钟您仍然未收到短信，请您： <a id="resendMessageButton" href="${base}/password/getPsw_resendShortMessage.action?verifystr=${verifystr!}">重新发送</a>
+						<span id="restTime"></span>
+					</div>
+				</p>
+				<br/>
+				<p>
+					<div style="list-style-type: disc;color:#999;font-size:12px;"><span class="f_btn" style="margin-left:80px;">
+					<input align="center" type="button" id="next" value="提交" class="r_btn w_85" onclick="fmSubmt()"/></span> </div>
+				</p>
+				</div>       
+			</li>
+			<li>
+				<div class="fm_left">&nbsp;</div>
+				</li>
+			</ul>
+			
+		</div>  
+		</form>
+	</div> 
+	<div class="clear"></div>
+	<div class="main_bottom1"></div>
+</div>
+<!--主体 结束-->
+<!--版权 开始-->
+<div class="footer"> </div>
+<!--版权 结束-->
+</body>
+</html>

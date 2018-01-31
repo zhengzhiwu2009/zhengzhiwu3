@@ -1,0 +1,2 @@
+alter table PE_ENTERPRISE add (num varchar(50)); 
+comment on column PE_ENTERPRISE.Num is '从业人员规模';

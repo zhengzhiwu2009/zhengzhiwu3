@@ -1,0 +1,130 @@
+body,td,p,input,select,textarea		{font-size:9pt; font-family:arial,宋体;}
+p		{line-height:120%; text-indent: 0em;}
+form		{margin-top:2; margin-bottom:2;}
+A:link		{text-decoration:none; color:#0000ff}
+A:visited	{text-decoration:none; color:#0000ff}
+A:hover		{text-decoration:underline; color:#ff0000;}
+A:active	{text-decoration:none; color:#000099}
+
+input,button	{background-color: #ffffff; border:	1px solid rgb(120,172,255); height: 13pt; cursor:hand; }
+
+textarea	{background-color: #ffffff; border:	1px solid rgb(120,172,255); }
+select		{background-color: #ffffff; border:	1px solid rgb(120,172,255); height: 12pt; }
+
+.input1 	{background-color: #f0f0f0; border:	1px solid rgb(120,172,255) }
+.input2 	{background-color: #EEEEEE; border:	1px solid rgb(120,172,255); color:#888888;}
+.button		{cursor: hand; height: 13pt; border: 1px solid rgb(120,172,255); background: rgb(224,232,245);}
+
+
+/*========== 表格CSS ============*/
+/* 页面的标题条的td 
+   说明：一般情况下，标题条都会用一个table的td来显示
+*/
+.tdsectionbar	{background-color: rgb(120,172,255); font-size:9pt; font-weight:bold; color:#000044; text-indent: 0pt; height: 16pt; }
+/* 父表格td   
+   说明：一般都会在子表格上套一个父表格，这样能按此底色显出子表格中的表格线 
+*/
+.tdframe	{background-color: rgb(120,172,255);}
+/* 子表格的内容的td */
+.tdbg0		{background-color: #ffffff; color:#444444}
+/* 子表格的列头的td */
+.tdbg1		{background-color: rgb(224,232,245); font-weight:bold; color:#000000; height: 16pt;}
+/* 子表格的序号一列列头的td */
+.td_index {padding:3px;background:white;color:black}
+/* 放按钮的table的td
+   说明： 一般会将按钮放在一个table的td中
+*/
+.tdbgbutton	{background-color: #ddddee;}
+/* 子表格的最底一行底td
+   说明： 一般查询显示的列表都会在最底行放分页的一些信息
+*/
+.tdbgpaging	{background-color: #FFFFFF;}
+
+.title		{font-size:10.6pt; font-weight:bold; color:#ffffff}
+.doctitle	{font-size:18pt; font-weight:bold; color:#000000;}
+.subtitletable	{font-size:12pt; font-weight:bold;}
+.currentlocation {background-color: #79A5DF; font-size:9pt; color:#FFD66B; height: 18pt;}
+.table1		{border-style:Solid; border-width:1px; border-color:#000099;}         
+.tdbg2		{background-color: rgb(224,232,245); font-weight:bold; color:#000000}
+span.name{
+	padding-top:3px;
+	padding-left:4px;
+	padding-right:4px;
+	margin-bottom:1px;
+	height:19px;
+	color:#000000;
+	font-size:9pt;
+	border:1px solid #38819c;
+	background-color:#f0f4f7;
+	}
+
+
+
+/*======== 文本的颜色和字体 =========*/
+/* 警告信息 */
+.alert		{color:#ff0000;}
+/* 错误信息 */
+.error		{font-size:10.6pt; font-weight:bold; color:#ff0000;}
+/* 一般提示信息 */
+.ok		{font-size:10.6pt; font-weight:bold; color:#000000;}
+
+
+/* add by bajizhh begin ############################################################### */
+body {
+margin: 0;	
+}
+.tip{
+	border: 1px dashed #0099CC;
+	background: none repeat scroll 0 0 #FFFF66;
+line-height: 18px;
+    margin: 15px 10px;
+    padding: 15px 20px;
+    white-space: pre-wrap;
+}
+.msg {
+	background: none repeat scroll 0 0 #DDEDFB;
+	border: 1px solid #0099CC;
+    border-radius: 6px 6px 6px 6px;
+    clear: both;
+    color: #000000;
+    font-family: monospace;
+    line-height: 18px;
+    margin: 15px 10px;
+    padding: 15px 20px;
+    white-space: pre-wrap;
+}
+pre {
+	border: 1px solid #0099CC;
+    border-radius: 6px 6px 6px 6px;
+    clear: both;
+    color: #000000;
+    font-family: monospace;
+    line-height: 18px;
+    margin: 15px 10px;
+    padding: 15px 20px;
+    white-space: pre-wrap;
+}
+select{
+height: 15pt;
+}
+.enabled{
+color: #0000ff;	
+}
+.disabled{
+color: #ff0000;	
+}
+.hide {
+visibility: hidden;
+}
+.published{
+color:#0000ff;	
+}
+.unpublished{
+color:#ff0000;	
+}
+.caption{
+font: bold;
+color: red;
+background: "../manager/pub/images/images/g_32.jpg";
+}
+/* add by bajizhh end ############################################################### */

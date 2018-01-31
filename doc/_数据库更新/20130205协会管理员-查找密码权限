@@ -1,0 +1,9 @@
+课程的“发布”和“停用”另外细分为两个操作权限
+
+在PE_PRIORITY 添加两条数据：
+insert into PE_PRIORITY (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('402883e63ca3bf00013ca83255f9006d', '账户管理_查找密码', '402883e63ca3bf00013ca82915b0006b', '/entity/information', 'searchPassword', '*');
+
+在pe_pri_category 添加两条数据：
+insert into PE_PRI_CATEGORY (ID, NAME, FK_PARENT_ID, CODE, PATH, FLAG_LEFT_MENU)
+values ('402883e63ca3bf00013ca82915b0006b', '查找密码', '02', '02005', '/entity/information/searchPassword_goPage.action', '1');

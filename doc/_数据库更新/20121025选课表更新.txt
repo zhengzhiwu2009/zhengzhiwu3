@@ -1,0 +1,3 @@
+选课表pr_bzz_tch_stu_elective去除约束
+alter table PR_BZZ_TCH_STU_ELECTIVE
+  drop constraint AK_KEY_2_PR_BZZ_T1 cascade;

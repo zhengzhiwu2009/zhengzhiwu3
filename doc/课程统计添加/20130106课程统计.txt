@@ -1,0 +1,91 @@
+-- Create table
+create table STATISTIC_COURSES
+(
+  ID                    VARCHAR2(50) not null,
+  YEAR                  VARCHAR2(4) default to_char(sysdate,'yyyy') not null,
+  MONTH                 VARCHAR2(2) default to_char(sysdate,'MM') not null,
+  DAY                   VARCHAR2(2) default to_char(sysdate,'dd') not null,
+  FK_COURSE_ID          VARCHAR2(50) not null,
+  COURSE_END_DATE       DATE,
+  STUDY_TOTAL_TIMES     NUMBER(9),
+  STUDY_BEGIN_TIMES     NUMBER(9),
+  STUDY_COMPLETE_TIMES  NUMBER(9),
+  TEST_BEGIN_TIMES      NUMBER(9),
+  TEST_COMPLETE_TIMES   NUMBER(9),
+  CREATE_YEAR           VARCHAR2(4),
+  CREATE_MONTH          VARCHAR2(2),
+  CREATE_DAY            VARCHAR2(2),
+  REFUND_COUNT          NUMBER(9),
+  OVERYEAR_REFUND_TIMES NUMBER(9)
+)
+tablespace HZPH
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table STATISTIC_COURSES
+  is '课程统计';
+-- Add comments to the columns 
+comment on column STATISTIC_COURSES.FK_COURSE_ID
+  is '课程id';
+comment on column STATISTIC_COURSES.COURSE_END_DATE
+  is '课程下线日期';
+comment on column STATISTIC_COURSES.STUDY_TOTAL_TIMES
+  is '累计报名人次';
+comment on column STATISTIC_COURSES.STUDY_BEGIN_TIMES
+  is '开始学习人次';
+comment on column STATISTIC_COURSES.STUDY_COMPLETE_TIMES
+  is '完成学习人次';
+comment on column STATISTIC_COURSES.TEST_BEGIN_TIMES
+  is '开始测验人次';
+comment on column STATISTIC_COURSES.TEST_COMPLETE_TIMES
+  is '完成测验人次';
+comment on column STATISTIC_COURSES.CREATE_YEAR
+  is '课程创建年';
+comment on column STATISTIC_COURSES.CREATE_MONTH
+  is '课程创建月';
+comment on column STATISTIC_COURSES.CREATE_DAY
+  is '课程创建日';
+comment on column STATISTIC_COURSES.REFUND_COUNT
+  is '退费人次';
+comment on column STATISTIC_COURSES.OVERYEAR_REFUND_TIMES
+  is '跨年退费人数';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table STATISTIC_COURSES
+  add constraint STATISTIC_COURSES_PK primary key (ID)
+  using index 
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table STATISTIC_COURSES
+  add constraint STATISTIC_COURSES_UNIQUE unique (YEAR, MONTH, FK_COURSE_ID)
+  using index 
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table STATISTIC_COURSES
+  add constraint STATISTIC_COURSES_FK_COURSE_ID foreign key (FK_COURSE_ID)
+  references PE_BZZ_TCH_COURSE (ID);

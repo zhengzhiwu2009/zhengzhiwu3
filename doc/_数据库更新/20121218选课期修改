@@ -1,0 +1,6 @@
+选课期之前数据丢失支付状态  
+
+增加支付状态的语句
+
+ update pe_elective_course_period pes set pes.flag_eleperiodpaystatus=
+ (select id from enum_const ec where ec.name='未支付' and ec.code='0' and ec.note='选课期支付状态' ) where pes.flag_eleperiodpaystatus is  null 

@@ -1,0 +1,14 @@
+A			{text-transform:none;text-decoration:none;} 
+a:hover		{text-decoration:underline} 
+BODY		{font-family:"ËÎÌו"; font-:9pt;} td {font-famil:"ËÎÌו";font-size:9pt;}
+.inputtype	{font-size:9pt;height:18px;}
+.Arial8		{font-family:arial;font-size:8pt;}
+.Verdana8	{font-family:verdana;font-size:8pt;}
+.Copyright	{font-family:verdana,arial;font-size:8pt;color:black;}
+input.smart	{border:1 solid #000000;font-size:9pt;background-color:white;}
+textarea.smart	{border:1 solid #000000;font-size:9pt;background-color:white;}
+.newsTitle	{font-size:25px;font-weight:bold;color=#000066;}
+.newsSource	{font-size:9pt;}
+.newsMedia	{color:#980922;}
+.table1 {BORDER-LEFT: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid}
+

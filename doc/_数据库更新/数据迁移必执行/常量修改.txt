@@ -1,0 +1,9 @@
+--默认学分费用 20.00元
+update enum_const ec set ec.name='20.00' where ec.id='40288a7b39d3008a0139d399a0c100a0'; 
+--考试次数5次
+update pe_bzz_tch_course pbtc set pbtc.examtimes_allow='5';
+--订单号序列修改！！！！！！测试账号执行每次增加10w~100w，正式账户按照平台订单号!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+-- Modify the last number 
+alter sequence S_PE_BZZ_ORDER_SEQ increment by 7999999 nocache;
+select S_PE_BZZ_ORDER_SEQ.nextval from dual;
+alter sequence S_PE_BZZ_ORDER_SEQ increment by 订单号+1！ nocache;

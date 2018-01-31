@@ -1,0 +1,350 @@
+create or replace view report_rel as
+select a.year,
+       a.A1,
+       a.A2,
+       a.A3,
+       a.A4,
+       a.A5,
+       a.A6,
+       nvl(b.A7, 0) as A7,
+       nvl(b.A8, 0) as A8,
+       a.A9,
+       a.A10
+  from (select sc.year,
+               sum(case
+                     when to_char(pbtc.create_date, 'yyyy') = sc.year then
+                      1
+                     else
+                      0
+                   end) as A1,
+               
+               sum(case
+                     when to_char(pbtc.create_date, 'yyyy') = sc.year then
+                      to_number(pbtc.time)
+                     else
+                      0
+                   end) as A2,
+               
+               0 as A3,
+               0 as A4,
+               0 as A5,
+               0 as A6,
+               
+               count(sc.fk_course_id) as A9,
+               sum(pbtc.time) as A10
+          from (select distinct s.fk_course_id,s.year  from STATISTIC_COURSES s) sc
+         inner join pe_bzz_tch_course pbtc
+            on sc.fk_course_id = pbtc.id
+         group by sc.year) a
+  left join (select sc.year as year1,
+                    count(pbtc.id) as A7,
+                    
+                    sum(to_number(pbtc.time)) as A8
+             
+               from STATISTIC_COURSES sc
+              inner join pe_bzz_tch_course pbtc
+                 on sc.fk_course_id = pbtc.id
+              where to_date(to_char(pbtc.end_date, 'yyyy-mm-dd'),
+                            'yyyy-mm-dd') < (case
+                                               when sc.year = to_char(sysdate, 'yyyy') then
+                                                to_date(to_char(sysdate, 'yyyy-mm-dd'), 'yyyy-mm-dd')
+                                               else
+                                                to_date(sc.year || '-' || '12' || '-' || '31',
+                                                        'yyyy-mm-dd')
+                                             end)
+                   
+                and pbtc.end_date is not null
+              group by sc.year
+             
+             ) b
+    on b.year1 = a.year;
+
+    
+ create or replace view report_rel_onl_typ as
+select sc.year,
+       sum(case
+             when pbtc.flag_coursetype = '402880f32200c249012200c780c40001' and (to_date(to_char(nvl(pbtc.end_date, to_date('2100-01-01', 'yyyy-mm-dd')), 'yyyy-mm-dd'), 'yyyy-mm-dd')> to_date(to_char(sysdate, 'yyyy-mm-dd'), 'yyyy-mm-dd')) then
+              1
+             else
+              0
+           end) as A1, --必修
+       sum(case
+             when pbtc.flag_coursetype = '402880f32200c249012200c780c40001' and (to_date(to_char(nvl(pbtc.end_date, to_date('2100-01-01', 'yyyy-mm-dd')), 'yyyy-mm-dd'), 'yyyy-mm-dd')> to_date(to_char(sysdate, 'yyyy-mm-dd'), 'yyyy-mm-dd')) then
+              to_number(pbtc.time)
+             else
+              0
+           end) as A2,
+       sum(case
+             when pbtc.flag_coursetype = '402880f32200c249012200c7f8b30002' and (to_date(to_char(nvl(pbtc.end_date, to_date('2100-01-01', 'yyyy-mm-dd')), 'yyyy-mm-dd'), 'yyyy-mm-dd')> to_date(to_char(sysdate, 'yyyy-mm-dd'), 'yyyy-mm-dd')) then
+              1
+             else
+              0
+           end) as A3, --选修
+       sum(case
+             when pbtc.flag_coursetype = '402880f32200c249012200c7f8b30002' and (to_date(to_char(nvl(pbtc.end_date, to_date('2100-01-01', 'yyyy-mm-dd')), 'yyyy-mm-dd'), 'yyyy-mm-dd')> to_date(to_char(sysdate, 'yyyy-mm-dd'), 'yyyy-mm-dd')) then
+              to_number(pbtc.time)
+             else
+              0
+           end) as A4,
+       sum(case
+             when to_date(to_char(nvl(pbtc.end_date, to_date('2100-01-01', 'yyyy-mm-dd')), 'yyyy-mm-dd'), 'yyyy-mm-dd')> to_date(to_char(sysdate, 'yyyy-mm-dd'), 'yyyy-mm-dd')
+             then
+              1
+             else
+              0
+           end) as A5,
+       sum(case
+             when to_date(to_char(nvl(pbtc.end_date,
+                                      to_date('2100-01-01', 'yyyy-mm-dd')),
+                                  'yyyy-mm-dd'),
+                          'yyyy-mm-dd') >
+                  to_date(to_char(sysdate, 'yyyy-mm-dd'), 'yyyy-mm-dd') then
+              to_number(pbtc.time)
+             else
+              0
+           end) as A6
+  from STATISTIC_COURSES sc
+ inner join pe_bzz_tch_course pbtc on sc.fk_course_id = pbtc.id
+ inner join (select sc.year, max(sc.month) as month
+               from STATISTIC_COURSES sc
+              group by sc.year) a on a.year = sc.year
+ where sc.month = a.month
+ group by sc.year;
+ 
+ 
+create or replace view report_rel_online_detail as
+select pbtc.code        as A1,
+       pbtc.name        as A2, 
+       ec.name          as A3,
+       ec2.name         as A4,
+       ec3.name         as A5,
+       ec4.name         as A6,
+       pbtc.teacher     as A7,
+       pbtc.time        as A8,
+       pbtc.end_date as A9,
+       pbtc.create_date as A10,
+       sc.year          as year
+  from statistic_courses sc
+ inner join pe_bzz_tch_course pbtc
+    on sc.fk_course_id = pbtc.id
+ inner join enum_const ec
+    on pbtc.flag_coursetype = ec.id
+ inner join enum_const ec2
+    on pbtc.flag_isrecommend = ec2.id
+ inner join enum_const ec3
+    on pbtc.flag_coursecategory = ec3.id
+ inner join enum_const ec4
+    on pbtc.flag_course_item_type = ec4.id
+ inner join (select sc.year, max(sc.month) as month
+               from STATISTIC_COURSES sc
+              group by sc.year) a
+    on a.year = sc.year
+ where sc.month = a.month;
+
+ 
+ create or replace view report_rel as
+select a.year,
+       a.A1,
+       a.A2,
+       a.A3,
+       a.A4,
+       a.A5,
+       a.A6,
+       nvl(b.A7, 0) as A7,
+       nvl(b.A8, 0) as A8,
+       a.A9,
+       a.A10
+  from (select sc.year,
+               sum(case
+                     when to_char(pbtc.create_date, 'yyyy') = sc.year then
+                      1
+                     else
+                      0
+                   end) as A1,
+               
+               sum(case
+                     when to_char(pbtc.create_date, 'yyyy') = sc.year then
+                      to_number(pbtc.time)
+                     else
+                      0
+                   end) as A2,
+               
+               0 as A3,
+               0 as A4,
+               0 as A5,
+               0 as A6,
+               
+               sum(case
+                     when to_date(to_char(nvl(pbtc.end_date,
+                                              to_date('2100-01-01', 'yyyy-mm-dd')),
+                                          'yyyy-mm-dd'),
+                                  'yyyy-mm-dd') >
+                          to_date(to_char(sysdate, 'yyyy-mm-dd'), 'yyyy-mm-dd') then
+                      1
+                     else
+                      0
+                   end) as A9,
+               sum(case
+                     when to_date(to_char(nvl(pbtc.end_date,
+                                              to_date('2100-01-01', 'yyyy-mm-dd')),
+                                          'yyyy-mm-dd'),
+                                  'yyyy-mm-dd') >
+                          to_date(to_char(sysdate, 'yyyy-mm-dd'), 'yyyy-mm-dd') then
+                      to_number(pbtc.time)
+                     else
+                      0
+                   end) as A10
+          from (select distinct s.fk_course_id, s.year
+                  from STATISTIC_COURSES s) sc
+         inner join pe_bzz_tch_course pbtc
+            on sc.fk_course_id = pbtc.id
+         group by sc.year) a
+  left join (select sc.year as year1,
+                    count(pbtc.id) as A7,
+                    
+                    sum(to_number(pbtc.time)) as A8
+             
+               from STATISTIC_COURSES sc
+              inner join pe_bzz_tch_course pbtc
+                 on sc.fk_course_id = pbtc.id
+              where to_date(to_char(pbtc.end_date, 'yyyy-mm-dd'),
+                            'yyyy-mm-dd') < (case
+                                               when sc.year = to_char(sysdate, 'yyyy') then
+                                                to_date(to_char(sysdate, 'yyyy-mm-dd'), 'yyyy-mm-dd')
+                                               else
+                                                to_date(sc.year || '-' || '12' || '-' || '31',
+                                                        'yyyy-mm-dd')
+                                             end)
+                   
+                and pbtc.end_date is not null
+              group by sc.year
+             
+             ) b
+    on b.year1 = a.year;
+ 
+ 
+ create or replace view report_course_first as
+select sc.year as year,
+       sum(case
+             when to_date(to_char(nvl(pbtc.end_date,
+                                      to_date('2100-01-01', 'yyyy-mm-dd')),
+                                  'yyyy-mm-dd'),
+                          'yyyy-mm-dd') >
+                  to_date(to_char(sysdate, 'yyyy-mm-dd'), 'yyyy-mm-dd') then
+              1
+             else
+              0
+           end) as A1,
+       sum(case
+             when to_date(to_char(nvl(pbtc.end_date,
+                                      to_date('2100-01-01', 'yyyy-mm-dd')),
+                                  'yyyy-mm-dd'),
+                          'yyyy-mm-dd') >
+                  to_date(to_char(sysdate, 'yyyy-mm-dd'), 'yyyy-mm-dd') then
+              to_number(pbtc.time)
+             else
+              0
+           end) as A2,
+       sum(case
+             when to_char(pbtc.create_date, 'yyyy') = sc.year then
+              1
+             else
+              0
+           end) as A3,
+       sum(case
+             when to_char(pbtc.create_date, 'yyyy') = sc.year then
+              to_number(pbtc.time)
+             else
+              0
+           end) as A4
+  from STATISTIC_COURSES sc
+ inner join pe_bzz_tch_course pbtc
+    on sc.fk_course_id = pbtc.id
+ inner join (select sc.year, max(sc.month) as month
+               from STATISTIC_COURSES sc
+              group by sc.year) a
+    on a.year = sc.year
+ where sc.month = a.month
+ group by sc.year;
+ 
+ 
+ create or replace view report_lnt as
+select "YEAR",
+       "A1",
+       "A2",
+       "A3",
+       "A4",
+       "A5",
+       "A6",
+       "A7",
+       "A8",
+       "A9",
+       "YEAR1",
+       "A10",
+       "A11",
+       "A12",
+       "A13",
+       "A14",
+       "A15",
+       "A16",
+       "A17"
+  from (
+        
+        select sc.year as year,
+                sum(nvl(sc.study_total_times, 0)) as A1,
+                sum(nvl(sc.study_begin_times, 0)) as A2,
+                sum(nvl(sc.study_complete_times, 0)) as A3,
+                decode(sum(nvl(sc.study_begin_times, 0)),
+                       0,
+                       0,
+                       sum(nvl(sc.study_begin_times, 0)) /
+                       sum(nvl(sc.study_total_times, 0))) as A4,
+                decode(sum(nvl(sc.study_total_times, 0)),
+                       0,
+                       0,
+                       sum(nvl(sc.study_complete_times, 0)) /
+                       sum(nvl(sc.study_total_times, 0))) as A5,
+                sum(nvl(sc.test_begin_times, 0)) as A6,
+                sum(nvl(sc.test_complete_times, 0)) as A7,
+                decode(sum(nvl(sc.study_complete_times, 0)),
+                       0,
+                       0,
+                       sum(nvl(sc.test_begin_times, 0)) /
+                       sum(nvl(sc.study_total_times, 0))) as A8,
+                decode(sum(nvl(sc.study_complete_times, 0)),
+                       0,
+                       0,
+                       sum(nvl(sc.test_complete_times, 0)) /
+                       sum(nvl(sc.test_begin_times, 0))) as A9
+        
+          from statistic_courses sc
+         inner join pe_bzz_tch_course pbtc
+            on sc.fk_course_id = pbtc.id
+         inner join (select sc.year, max(sc.month) as month
+                       from STATISTIC_COURSES sc
+                      group by sc.year) a
+            on a.year = sc.year
+         where sc.month = a.month
+         group by sc.year
+        
+        ) a
+  left join (select scy.year as year1,
+                    max(scy.pre_start_study_number) as A10,
+                    max(scy.pre_completed__study_number) as A11,
+                    max(scy.pre_start_exam_number) as A12,
+                    max(scy.pre_pass_exam_number) as A13,
+                    '' as A14,
+                    '' as A15,
+                    '' as A16,
+                    '' as A17
+               from STATISTIC_COURSE_YEAR scy
+              group by scy.year) b
+    on b.year1 = a.year;
+ 
+ 
+ create or replace view v_pe_bzz_tch_course as
+select *
+  from pe_bzz_tch_course t
+ where t.flag_isfree is not null
+   and (t.flag_isvalid = '2' or
+       t.flag_canjoinbatch = '40288acf3aaa56d5013aaa5b8ccc0001');

@@ -1,0 +1,36 @@
+create index INDEX_PE_ENTERPRISE1 on PE_ENTERPRISE (FK_PARENT_ID)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+create index INDEX_PE_ENTERPRISE2 on PE_ENTERPRISE (ID, FK_PARENT_ID)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+create index INDEX_PE_ENTERPRISE3 on PE_ENTERPRISE (ENTYPE)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );

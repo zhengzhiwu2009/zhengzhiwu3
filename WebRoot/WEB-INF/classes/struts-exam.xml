@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd" >
+<struts>
+	<package name="entity.exam" extends="platform-default" namespace="/entity/exam">
+		<action name="peBzzExamBatch_*" method="{1}" class="peBzzExamBatchAction">
+		<result name="addExam">/entity/manager/exam/infomessage.jsp</result>
+		<result name="modifyExamExplain">/entity/manager/exam/examExplain_update.jsp</result>
+		<result name="modifyExamNotice">/entity/manager/exam/examNotice_update.jsp</result>
+		<result name="modifyLateExplain">/entity/manager/exam/lateExplain_update.jsp</result>
+		<result name="lookExamExplain">/entity/manager/exam/examExplain_look.jsp</result>
+		<result name="lookExamNotice">/entity/manager/exam/examNotice_look.jsp</result>
+		<result name="lookLateExplain">/entity/manager/exam/lateExplain_look.jsp</result>
+		<result name="modifyAnswerExplain">/entity/manager/exam/answerExplain_update.jsp</result>
+		<result name="lookAnswerExplain">/entity/manager/exam/answerExplain_look.jsp</result>
+		<result name="make" type="redirectAction">peBzzExamBatch?tag=make</result>
+		<result name="release">/entity/manager/exam/score_release_ok.jsp</result>
+		<result name="make_ok">/entity/manager/exam/make_ok.jsp</result>
+		</action>
+		
+		<action name="peBzzExamSite_*" method="{1}" class="peBzzExamSiteAction">
+		<result name="adf">//aa.jps</result>
+		</action>
+		<action name="peBzzExamBatchSite_*" method="{1}" class="peBzzExamBatchSiteAction">
+		<result name="adf">//aa.jps</result>
+		</action>
+		
+		<action name="peBzzExamScore_*" method="{1}" class="peBzzExamScoreAction">
+		<result name="up">/entity/manager/exam/reject.jsp</result>
+		<result name="ups">/entity/manager/exam/score_batch_upload.jsp</result>
+		<result name="examBatchUpload">/entity/manager/exam/exam_student_batch.jsp</result>
+		<result name="tag" type="redirectAction">peBzzExamScore?tag=${1}</result>
+		<result name="search" type="redirectAction">peBzzExamScore?tag=search</result>
+		<result name="uploadScore_result">/entity/manager/exam/operate_result.jsp</result>
+		<result name="confirm_status">/entity/manager/exam/confirm_status.jsp</result>
+		<result name="no_student">/entity/manager/exam/no_student.jsp</result>
+		<result name="examBatchPrint">/entity/manager/exam/exam_testcard_select.jsp</result>
+		<result name="unBaoMing">/entity/manager/exam/exam_un_baoming.jsp</result>
+		<result name="look">/entity/manager/exam/exam_score.jsp</result>
+		<result name="togetherScore">/entity/manager/exam/together_ok.jsp</result>
+		</action>
+		
+		
+		<action name="peBzzExamAgain_*" method="{1}" class="peBzzExamAgainAction">
+		<result name="reject">/entity/manager/exam/reject.jsp</result>
+		<result name="addCost">/entity/manager/exam/exam_cost_add.jsp</result>
+		<result name="saveCostSucc">/entity/manager/exam/exam_cost_add_result.jsp</result>
+		</action>
+		
+		
+		<action name="peBzzExamLate_*" method="{1}" class="peBzzExamLateAction">
+		<result name="reject">/entity/manager/exam/reject.jsp</result>
+		</action>
+		
+		<action name="examScore_*" method="{1}" class="examScoreAction">
+		</action>
+		
+		<action name="peBzzExamAnswer_*" method="{1}" class="peBzzExamAnswerAction">
+		<result name="questioninfo">/entity/manager/exam/question_list.jsp</result>
+		</action>
+
+		<action name="peBzzEditStudent_*" method="{1}" class="peBzzEditStudentAction">
+		<result name="adf">//aa.jps</result>
+		<result name="tag" type="redirectAction">peBzzEditStudent?tag=${1}</result>
+		</action>
+		<action name="peBzzExamFaxInfo_*" method="{1}" class="peBzzExamFaxInfoAction">
+		<result name="infoDetail">/entity/manager/exam/fp_info_detail.jsp</result>
+		<result name="infoRelateDetail">/entity/manager/exam/fp_info_relatedetail.jsp</result>
+		</action>
+		
+		<action name="peExamOnline_*" method="{1}" class="peExamOnlineAction">
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,59 @@
+.x-grid3-header-inner{
+		float: left;
+    	overflow: hidden;
+    	
+    	background:#dfe8f6;}
+.rowspan-grid .x-grid3-body .x-grid3-row {  
+	    border:#dfe8f6;  
+	}  
+.rowspan-grid .x-grid3-header .x-grid3-cell{  
+	    height:35px;
+	    font-size:14px;
+	    text-align:center;
+	    background:#dfe8f6;
+	    font-weight:bold;
+	}  
+.rowspan-grid .x-grid3-body .x-grid3-row{  
+	    overflow: hidden;  
+	    border-right: 1px solid #dfe8f6; 
+	}  
+.rowspan-grid .x-grid3-body .x-grid3-cell {  
+	    border: 1px solid #dfe8f6; 
+	    text-align:center; 
+	    border-top:none;  
+	    border-right:none;
+	     padding-top:5px;
+	     font-size:14px;
+	     height:34px;
+	}  
+.rowspan-grid .x-grid3-body .x-grid3-cell-first {  
+	    border-left: 1px solid #fff;  
+	}  
+.rowspan-grid .x-grid3-body .rowspan-unborder {  
+	    border-bottom:1px solid #fff;  
+	}  
+.rowspan-grid .x-grid3-body .rowspan {  
+	    border-bottom: 1px solid #dfe8f6;  
+	}
+.x-grid3-hd-inner{
+		height:34px;
+		cursor: inherit;
+		line-height:34px;
+		font-weight:bold;
+	    position: relative;
+	}
+	
+	
+
+
+
+
+
+
+
+
+	
+	
+
+ 
+	

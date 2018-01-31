@@ -1,0 +1,7 @@
+-- Add/modify columns 
+alter table PE_BZZ_ORDER_INFO add auto_check_times number(5) default 0;
+-- Add comments to the columns 
+comment on column PE_BZZ_ORDER_INFO.auto_check_times
+  is '订单自动三方确认次数（包括手动验证）';
+-- Create/Recreate indexes 
+create index ORDER_AUTO_CHECK_TIMES on PE_BZZ_ORDER_INFO (auto_check_times);

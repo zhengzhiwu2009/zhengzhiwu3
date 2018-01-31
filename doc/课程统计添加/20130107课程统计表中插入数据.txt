@@ -1,0 +1,183 @@
+insert into STATISTIC_COURSES
+  (id,
+   YEAR,
+   MONTH,
+   DAY,
+   FK_COURSE_ID,
+   COURSE_END_DATE,
+   
+   STUDY_TOTAL_TIMES,
+   STUDY_BEGIN_TIMES,
+   STUDY_COMPLETE_TIMES,
+   TEST_BEGIN_TIMES,
+   TEST_COMPLETE_TIMES,
+   CREATE_YEAR,
+   CREATE_MONTH,
+   CREATE_DAY,
+   refund_count,
+   OVERYEAR_REFUND_TIMES)
+  select sys_guid(),
+         f.year,
+         f.month,
+         f.day,
+         a.id,
+         a.end_date,
+         nvl(b.total_times, 0),
+         nvl(c.inc, 0) as inc,
+         nvl(g.com, 0) as com,
+         nvl(d.start_times, 0),
+         nvl(d.pass_times, 0),
+         a.create_year,
+         a.create_month,
+         a.create_day,
+         h.refund_count,
+         i.OVERYEAR_REFUND_TIMES
+    from (
+          /*取出所有的课程*/
+          select pbtc.id as id,
+                  pbtc.code as code,
+                  pbtc.end_date as end_date,
+                  pbtc.flag_course_item_type as course_item,
+                  pbtc.flag_coursecategory as course_category,
+                  pbtc.flag_coursetype as course_type,
+                  to_char(pbtc.create_date, 'yyyy') as create_year,
+                  to_char(pbtc.create_date, 'mm') as create_month,
+                  to_char(pbtc.create_date, 'dd') as create_day
+            from pe_bzz_tch_course pbtc
+          
+          ) a
+    left join (
+               /*当前年课程备选次数*/
+               select pbtc.id as id, count(pbtse.id) as total_times
+                 from pr_bzz_tch_stu_elective pbtse
+                 
+                inner join pr_bzz_tch_opencourse pbto on pbtse.fk_tch_opencourse_id =
+                                                         pbto.id
+                inner join pe_bzz_tch_course pbtc on pbtc.id =
+                                                     pbto.fk_course_id
+                where to_char(nvl(pbtse.elective_date,
+                                  to_date('1900-01-01 00:00:00',
+                                          'yyyy-MM-dd hh24:mi:ss')),
+                              'yyyy') = to_char(trunc(sysdate-1), 'yyyy')
+              --and pbtse.flag_elective_pay_status = '40288a7b3981661e01398186b0f50006'
+               
+                group by pbtc.id) b on a.id = b.id
+  
+    left join (
+               /*当前年课程未学习和未完成**/
+               select pbtc.id as id,
+                       
+                       sum(case
+                             when tcs.learn_status <> 'UNCOMPLETE' then
+                              1
+                             else
+                              0
+                           end) as inc,
+                       sum(case
+                             when tcs.learn_status = 'UNCOMPLETE' then
+                              1
+                             else
+                              0
+                           end) as unc
+                 from training_course_student tcs
+                inner join pr_bzz_tch_opencourse pbto on tcs.course_id =
+                                                         pbto.id
+                inner join pe_bzz_tch_course pbtc on pbtc.id =
+                                                     pbto.fk_course_id
+                where to_char(nvl(tcs.get_date,
+                                  to_date('1900-01-01 00:00:00',
+                                          'yyyy-MM-dd hh24:mi:ss')),
+                              'yyyy') = to_char(trunc(sysdate-1), 'yyyy')
+               
+                group by pbtc.id
+               
+               ) c on c.id = a.id
+  
+    left join (
+               /*当前年课程考试次数和通过次数*/
+               select pbtc.id as id,
+                       count(tth.id) as start_times,
+                       sum(case
+                             when to_number(nvl(tth.score, 0)) >=
+                                  to_number(pbtc.passrole) then
+                              1
+                             else
+                              0
+                           end) as pass_times
+               
+                 from test_testpaper_history tth
+               
+                inner join test_testpaper_info tti on tth.testpaper_id =
+                                                      tti.id
+                inner join pe_bzz_tch_course pbtc on tti.group_id = pbtc.id
+                where to_char(tth.test_date, 'yyyy') =
+                      to_char(trunc(sysdate-1), 'yyyy')
+                group by pbtc.id) d on d.id = a.id
+  
+    left join (
+               /*取得当前时间*/
+               select to_char(trunc(sysdate-1), 'yyyy') as year,
+                       to_char(trunc(sysdate-1), 'mm') as month,
+                       to_char(trunc(sysdate-1), 'dd') as day
+                 from dual) f on 1 = 1
+    left join (
+               /*当前年课程被学习完成次数*/
+               select pbtc.id as id,
+                       sum(case
+                             when tcs.learn_status = 'COMPLETED' then
+                              1
+                             else
+                              0
+                           end) as com
+               
+                 from training_course_student tcs
+                inner join pr_bzz_tch_opencourse pbto on tcs.course_id =
+                                                         pbto.id
+                inner join pe_bzz_tch_course pbtc on pbtc.id =
+                                                     pbto.fk_course_id
+                where to_char(nvl(tcs.complete_date,
+                                  to_date('1900-01-01 00:00:00',
+                                          'yyyy-MM-dd hh24:mi:ss')),
+                              'yyyy') = to_char(trunc(sysdate-1), 'yyyy')
+               
+                group by pbtc.id
+               
+               ) g on g.id = a.id
+    left join (select pbtc.id as id, count(ebh.id) as refund_count
+                 from elective_back_history ebh
+                inner join pe_bzz_order_info pboi on pboi.id =
+                                                     ebh.fk_order_id
+                inner join pr_bzz_tch_opencourse pbto on pbto.id =
+                                                         ebh.fk_tch_opencourse_id
+                inner join pe_bzz_tch_course pbtc on pbto.fk_course_id =
+                                                     pbtc.id
+                where pboi.flag_refund_state =
+                      '40288a7b394207de01394210f6f40003' --已退费
+                  and to_char(pboi.refund_date, 'yyyy') =
+                      to_char(trunc(sysdate-1), 'yyyy')
+                group by pbtc.id
+               
+               ) h on h.id = a.id
+    left join (select pbtc.id as id, count(ebh.id) as OVERYEAR_REFUND_TIMES
+                 from elective_back_history ebh
+                inner join pe_bzz_order_info pboi on pboi.id =
+                                                     ebh.fk_order_id
+                inner join pr_bzz_tch_opencourse pbto on pbto.id =
+                                                         ebh.fk_tch_opencourse_id
+                inner join pe_bzz_tch_course pbtc on pbto.fk_course_id =
+                                                     pbtc.id
+                where pboi.flag_refund_state =
+                      '40288a7b394207de01394210f6f40003' --跨退费
+                  and to_char(pboi.refund_date, 'yyyy') =
+                      to_char(trunc(sysdate-1), 'yyyy')
+                  and to_char(pboi.payment_date, 'yyyy') =
+                      to_char((trunc(sysdate-1) - interval '1' year), 'yyyy')
+                group by pbtc.id
+               
+               ) i on i.id = a.id
+  
+   where a.id not in (
+   select sc.fk_course_id from STATISTIC_COURSES sc
+                     where sc.year = to_char(trunc(sysdate-1), 'yyyy')
+   and sc.month = to_char(trunc(sysdate-1), 'mm')
+   )

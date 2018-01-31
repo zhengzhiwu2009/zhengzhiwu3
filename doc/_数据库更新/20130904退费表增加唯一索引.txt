@@ -1,0 +1,2 @@
+-- Create/Recreate indexes 
+create unique index FK_REFUND_ORDER_INDEX on PE_BZZ_REFUND_INFO (fk_order_id);

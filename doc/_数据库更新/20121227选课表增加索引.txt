@@ -1,0 +1,2 @@
+-- Create/Recreate indexes 
+create index FK_ORDER_ID on PR_BZZ_TCH_STU_ELECTIVE (FK_ORDER_ID);

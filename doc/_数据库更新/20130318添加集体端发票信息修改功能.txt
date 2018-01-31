@@ -1,0 +1,5 @@
+insert into PE_PRI_CATEGORY (ID, NAME, FK_PARENT_ID, CODE, PATH, FLAG_LEFT_MENU)
+values ('40288acf3d7b21c8013d7b2555da0001', '发票修改管理', '08', '08007', '/entity/basic/modifyInvoice.action', '1');
+
+insert into PE_PRIORITY (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288acf3d7b21c8013d7b277ed40002', '发票修改管理_*', '40288acf3d7b21c8013d7b2555da0001', '/entity/basic', 'modifyInvoice', '*');

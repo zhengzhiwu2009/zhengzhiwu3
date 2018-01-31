@@ -1,0 +1,26 @@
+insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('4028808c1dbe60fe011dbe7866590083', '投资主办人', '7', 'FlagQualificationsType', '0', to_date('29-11-2012 14:55:27', 'dd-mm-yyyy hh24:mi:ss'), '资格类型');
+
+insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('4028808c1dbe60fe011dbe7866590073', '保荐代表人', '6', 'FlagQualificationsType', '0', to_date('29-11-2012 14:55:27', 'dd-mm-yyyy hh24:mi:ss'), '资格类型');
+
+insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('4028808c1dbe60fe011dbe7866590063', '证券投资咨询业务(投资顾问)', '5', 'FlagQualificationsType', '0', to_date('29-11-2012 14:55:27', 'dd-mm-yyyy hh24:mi:ss'), '资格类型');
+
+insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('4028808c1dbe60fe011dbe7866590053', '证券投资咨询业务(分析师)', '4', 'FlagQualificationsType', '0', to_date('29-11-2012 14:55:27', 'dd-mm-yyyy hh24:mi:ss'), '资格类型');
+
+insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('4028808c1dbe60fe011dbe7866590043', '证券经纪人', '3', 'FlagQualificationsType', '0', to_date('29-11-2012 14:55:27', 'dd-mm-yyyy hh24:mi:ss'), '资格类型');
+
+insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('4028808c1dbe60fe011dbe7866590033', '证券经纪业务营销', '2', 'FlagQualificationsType', '0', to_date('29-11-2012 14:55:27', 'dd-mm-yyyy hh24:mi:ss'), '资格类型');
+
+insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('4028808c1dbe60fe011dbe7866590023', '证券投资咨询业务(其他)', '1', 'FlagQualificationsType', '0', to_date('29-11-2012 14:55:27', 'dd-mm-yyyy hh24:mi:ss'), '资格类型');
+
+insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('4028808c1dbe60fe011dbe7866590013', '一般证券业务', '0', 'FlagQualificationsType', '0', to_date('29-11-2012 14:55:27', 'dd-mm-yyyy hh24:mi:ss'), '资格类型');
+
+insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('4028808c1dbe60fe011dbe7866590093', '无', '8', 'FlagQualificationsType', '1', to_date('29-11-2012 14:55:27', 'dd-mm-yyyy hh24:mi:ss'), '资格类型');

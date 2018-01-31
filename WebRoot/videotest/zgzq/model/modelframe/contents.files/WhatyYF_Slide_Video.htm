@@ -1,0 +1,66 @@
+﻿<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<title>视频学习页面</title>
+<script type="text/javascript"> 
+function getQueryStringRegExp(url,name) 
+{     
+	var reg = new RegExp("(^|\\?|&)"+ name +"=([^&]*)(\\s|&|$)", "i");     
+ 
+	if (reg.test(url)) 
+		return unescape(RegExp.$2.replace(/\+/g, " ")); 
+	
+	return ""; 
+}
+function InitPage()
+{
+	var obj = document.getElementById("SlideMediaPlayer");
+	if(obj==null)
+		return;
+		
+	var param = getQueryStringRegExp(document.location.href,"videoname");
+	if(param=="")
+		return;
+	obj.URL=param;
+	
+}
+var mpStopped=1, mpPaused=2, mpPlaying=3, mpWaiting=7,
+mpScanForward=4, mpScanReverse=5,  mpMediaEnded=8,
+mpBuffering=6,mpTransitioning=9,mpReady=10,mpReconnecting=11;
+</script>
+</head>
+<body background="../../model/indexbg.gif" onload="InitPage();" scroll="auto"><p></p>
+<table align="center"  border="0">
+<tr>
+<td  valign="middle" >
+<div id="divMediaPlayer1">
+<object classid="CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6" width="640" height="480" id="SlideMediaPlayer" type="application/x-oleobject" standby="Loading Microsoft Windows Media Player components...">
+<param NAME="autoStart" VALUE="true"/>
+<param NAME="balance" VALUE="0"/>
+<param NAME="baseURL" VALUE=""/>
+<param NAME="captioningID" VALUE=""/>
+<param NAME="currentPosition" VALUE="-1"/>
+<param NAME="currentMarker" VALUE="0"/>
+<param NAME="defaultFrame" VALUE="main"/>
+<param NAME="enableContextMenu" VALUE="true"/>
+<param NAME="enabled" VALUE="true"/>
+<param NAME="fullScreen" VALUE="false"/>
+<param NAME="invokeURLs" VALUE="true"/>
+<param NAME="mute" VALUE="false"/>
+<param NAME="playCount" VALUE="1"/>
+<param NAME="rate" VALUE="1"/>
+<param NAME="SAMIFileName" VALUE=""/>
+<param NAME="SAMILang" VALUE=""/>
+<param NAME="SAMIStyle" VALUE=""/>
+<param NAME="stretchToFit" VALUE="true"/>
+<param NAME="uiMode" VALUE="full"/>
+<param NAME="URL" VALUE=""/>
+<param NAME="volume" VALUE="75"/>
+<param NAME="windowlessVideo" VALUE="false"/>
+<embed width="640" height="480" autoStart="true" balance="0" baseURL="" captioningID="" currentPosition="-1" currentMarker="0" defaultFrame="main" enableContextMenu="true" enabled="false" fullScreen="true" invokeURLs="true" mute="false" playCount="1" rate="1" SAMIFileName="" SAMILang="" SAMIStyle="" stretchToFit="true" uiMode="none" URL="" volume="75" windowlessVideo="false"></embed> 
+</object>    
+</div>
+</td>
+</tr>
+</table>
+</body></html>

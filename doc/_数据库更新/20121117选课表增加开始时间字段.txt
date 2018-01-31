@@ -1,0 +1,2 @@
+alter table pr_bzz_tch_stu_elective add (start_time date); 
+comment on column pr_bzz_tch_stu_elective.start_time is '开始学习时间';

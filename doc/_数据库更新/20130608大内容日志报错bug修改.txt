@@ -1,0 +1,8 @@
+-- Add/modify columns 
+alter table WHATYUSER_LOG4J add note VARCHAR2(4000);
+update whatyuser_log4j wl set wl.note=wl.notes;
+update whatyuser_log4j wl set wl.notes='';
+-- Add/modify columns 
+alter table WHATYUSER_LOG4J modify notes long;
+update whatyuser_log4j wl set wl.notes=wl.note;
+alter index hzph.PK_WHATYUSER_LOG4J rebuild;

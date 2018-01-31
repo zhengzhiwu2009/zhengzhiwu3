@@ -1,0 +1,34 @@
+--alter table PE_BZZ_TCH_COURSEWARE
+--  add constraint AK_KEY_1_PE_BZZ_TCH_5 unique (NAME)
+--  using index 
+--  tablespace HZPH
+--  pctfree 10
+--  initrans 2
+--  maxtrans 255
+--  storage
+--  (
+--    initial 64K
+--    next 1M
+--    minextents 1
+--    maxextents unlimited
+--  );
+-- Drop primary, unique and foreign key constraints 
+alter table PE_BZZ_TCH_COURSEWARE
+  drop constraint AK_KEY_1_PE_BZZ_TCH_5 cascade;
+  
+  
+  -- Create/Recreate indexes 
+drop index AK_KEY_1_PE_BZZ_TCH_5;
+create index AK_KEY_1_PE_BZZ_TCH_5 on PE_BZZ_TCH_COURSEWARE (NAME)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+  

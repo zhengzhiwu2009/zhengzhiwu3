@@ -1,0 +1,1 @@
+update enum_const ec set ec.name='已退费' where ec.id='40288acf3965f52b0139662096020009'

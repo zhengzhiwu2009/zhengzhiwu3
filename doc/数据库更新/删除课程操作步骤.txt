@@ -1,0 +1,51 @@
+hzph 清空课程步骤
+先删除 pr_bzz_tch_stu_elective
+delete pr_bzz_tch_stu_elective pbtse where pbtse.fk_tch_opencourse_id in( select p.id from PR_BZZ_TCH_OPENCOURSE p
+ where p.fk_course_id in (select id
+                            from pe_bzz_tch_course p where p.id in()
+在删除 PR_BZZ_TCH_STU_ELECTIVE_BACK
+delete PR_BZZ_TCH_STU_ELECTIVE_BACK p where p.fk_tch_opencourse_id in( select id from PR_BZZ_TCH_OPENCOURSE p
+ where p.fk_course_id in (select id
+                            from pe_bzz_tch_course p
+                           where p.id()
+ 删除 TRAINING_COURSE_STUDENT
+ delete TRAINING_COURSE_STUDENT t where t.course_id in (select id  from PR_BZZ_TCH_OPENCOURSE p
+ where p.fk_course_id in (select id
+                            from pe_bzz_tch_course p where p.id()
+                           
+先删除 PR_BZZ_TCH_OPENCOURSE
+----sql
+delete PR_BZZ_TCH_OPENCOURSE p
+ where p.fk_course_id in
+       (要删除的课程ID)；
+删除 PR_BZZ_TCH_COURSE_TEACHER
+---sql
+delete PR_BZZ_TCH_COURSE_TEACHER p
+ where p.fk_course_id in
+       (要删除的课程ID)；
+删除 PE_BZZ_TCH_COURSEWARE
+delete PE_BZZ_TCH_COURSEWARE p
+ where p.fk_course_id in
+       ()
+删除 PE_BZZ_TCH_COURSE_CLICK
+delete PE_BZZ_TCH_COURSE_CLICK p
+ where p.fk_course_id in
+       ()
+删除 PE_BZZ_TCH_COURSE_CLICK_DETAIL
+delete PE_BZZ_TCH_COURSE_CLICK_DETAIL p
+ where p.fk_course_id in
+       ()
+删除 PR_SIGNUP_ORDER_DETAIL
+delete PR_SIGNUP_ORDER_DETAIL p
+ where p.course_id in
+       ()
+删除 PR_SIGNUP_ORDER_DETAIL      
+       delete STATISTIC_COURSES p
+ where p.FK_COURSE_ID in()
+       
+然后可以删除 课程了
+--根据表明 查询关联主键是哪个表的外键 --蔡磊提供
+select * from user_constraints where
+R_CONSTRAINT_NAME in (select constraint_name from user_constraints where table_name = '表名一定要大写')
+
+

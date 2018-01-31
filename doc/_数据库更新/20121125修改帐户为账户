@@ -1,0 +1,3 @@
+update pe_pri_category set name='账户管理' where code='02';
+update pe_pri_category set name='账户基本信息' where code='02001';
+update pe_pri_category set name='集体用户账户' where code='02002';

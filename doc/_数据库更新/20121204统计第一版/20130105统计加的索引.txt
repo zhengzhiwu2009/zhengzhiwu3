@@ -1,0 +1,92 @@
+alter system set QUERY_REWRITE_ENABLED=TRUE scope=both;
+ 
+alter system set QUERY_REWRITE_INTEGRITY=TRUSTED scope=both;
+
+
+create index pr_bzz_tch_stu_elective_index2 on PR_BZZ_TCH_STU_ELECTIVE
+(TO_CHAR(NVL(ELECTIVE_DATE,TO_DATE(' 1900-01-01 00:00:00', 'yyyy-mm-dd
+hh24:mi:ss')),'yyyy-MM'));
+
+create index training_course_student_index2 on training_course_student
+(to_char(nvl(complete_date,to_date('1900-01-01 00:00:00','yyyy-MM-dd 
+hh24:mi:ss')),'yyyy-MM'));
+
+create index training_course_student_index3 on training_course_student
+(to_char(nvl(get_date,to_date('1900-01-01 00:00:00','yyyy-MM-dd 
+hh24:mi:ss')),'yyyy-MM'));
+
+create index pe_bzz_student_index2 on pe_bzz_student
+(to_char(nvl(data_date,to_date('1900-01-01 00:00:00','yyyy-MM-dd 
+hh24:mi:ss')),'yyyy-MM'));
+
+create index pe_bzz_refund_info_index2 on pe_bzz_refund_info
+(to_char(nvl(apply_date,to_date('1900-01-01 00:00:00','yyyy-MM-dd 
+hh24:mi:ss')),'yyyy-MM'));
+
+create index pe_bzz_order_info_index2 on pe_bzz_order_info
+(to_char(nvl(payment_date,to_date('1900-01-01 00:00:00','yyyy-MM-dd 
+hh24:mi:ss')),'yyyy-MM'));
+
+create index pr_bzz_tch_stu_elective_index3 on PR_BZZ_TCH_STU_ELECTIVE
+(TO_CHAR(NVL(Completed_Time,TO_DATE(' 1900-01-01 00:00:00', 'yyyy-mm-dd
+hh24:mi:ss')),'yyyy-MM'));
+
+create index pr_bzz_tch_stu_elective_index4 on PR_BZZ_TCH_STU_ELECTIVE
+(TO_CHAR(NVL(Completed_Time,TO_DATE(' 1900-01-01 00:00:00', 'yyyy-mm-dd
+hh24:mi:ss')),'yyyy'));
+
+create index pe_bzz_student_index5 on pe_bzz_student
+(TO_CHAR(NVL(com_ten_hours_date,TO_DATE(' 1900-01-01 00:00:00', 'yyyy-mm-dd
+hh24:mi:ss')),'yyyy'));
+create index pe_bzz_student_index6 on pe_bzz_student
+(TO_CHAR(NVL(com_ten_hours_date,TO_DATE(' 1900-01-01 00:00:00', 'yyyy-mm-dd
+hh24:mi:ss')),'yyyy-MM'));
+
+create index training_course_student_index4 on training_course_student
+(to_char(nvl(get_date,to_date('1900-01-01 00:00:00','yyyy-MM-dd 
+hh24:mi:ss')),'yyyy'));
+
+create index pr_bzz_tch_stu_elective_index8 on PR_BZZ_TCH_STU_ELECTIVE
+(TO_CHAR(NVL(ELECTIVE_DATE,TO_DATE(' 1900-01-01 00:00:00', 'yyyy-mm-dd
+hh24:mi:ss')),'yyyy'));
+
+create index training_course_student_index5 on training_course_student
+(to_char(nvl(complete_date,to_date('1900-01-01 00:00:00','yyyy-MM-dd 
+hh24:mi:ss')),'yyyy'));
+
+create index test_testpaper_history_index5 on test_testpaper_history
+(to_char(nvl(test_date,to_date('1900-01-01 00:00:00','yyyy-MM-dd 
+hh24:mi:ss')),'yyyy'));
+
+create index pe_bzz_order_info_index3 on pe_bzz_order_info
+(to_char(nvl(refund_date,to_date('1900-01-01 00:00:00','yyyy-MM-dd 
+hh24:mi:ss')),'yyyy-MM'));
+
+create index PE_BZZ_ORDER_INFO_INDEX4 on PE_BZZ_ORDER_INFO (FLAG_REFUND_STATE)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+create index pe_bzz_student_in3 on pe_bzz_student
+(to_char(nvl(com_ten_hours_date,to_date('1900-01-01 00:00:00','yyyy-MM-dd 
+hh24:mi:ss')),'yyyy-MM'));
+
+create index pe_bzz_student_in4 on pe_bzz_student
+(to_char(nvl(com_ten_hours_date,to_date('1900-01-01 00:00:00','yyyy-MM-dd 
+hh24:mi:ss')),'yyyy'));
+
+create index pe_bzz_student_in1 on pe_bzz_student
+(to_char(nvl(com_fifteen_hours_date,to_date('1900-01-01 00:00:00','yyyy-MM-dd 
+hh24:mi:ss')),'yyyy-MM'));
+
+create index pe_bzz_student_in2 on pe_bzz_student
+(to_char(nvl(com_fifteen_hours_date,to_date('1900-01-01 00:00:00','yyyy-MM-dd 
+hh24:mi:ss')),'yyyy'));

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root> 
+    <merchantid>1001</merchantid><!-- 商户编号 -->
+    <merkey>umbpay_20130513</merkey><!-- 加密密钥 -->
+    <currencytype>01</currencytype><!-- 币种，01人民币 -->
+    <url>https://www.umbpay.com/pay2_1_/paymentImplAction.do</url><!-- 支付地址 -->
+    <refundUrl>https://www.umbpay.com/mer/merAutoRefund.do</refundUrl><!-- 退款申请地址 -->
+    <singleQueryUrl>https://www.umbpay.com/pay2_1_/merCheckOut.do</singleQueryUrl><!-- 单笔查询地址 -->
+    <batchQueryUrl>https://www.umbpay.com/pay2_1_/merAccountCheck.do</batchQueryUrl><!-- 批量查询地址 -->
+    <refundQueryUrl>https://www.umbpay.com/mer/merRefundQuery.do</refundQueryUrl><!-- 退款查询地址 -->
+    <merurl>http://new.hzph.com:5525/entity/basic/onlinePayment_paymentReceive.action</merurl><!-- 商户取货URL -->
+    <informurl>http://114.112.69.156/test/check_checking.action</informurl><!-- 商户取货URL -->
+    <subject>empty</subject><!-- 商品种类 -->
+    <autojump>1</autojump><!-- 自动调转取货页面 -->
+    <tradetype>0</tradetype><!--支付类型  0→即时到账；1→担保交易 -->
+    <bankInput>1</bankInput><!-- 扩展字段 -->
+    <confirm>1</confirm><!-- 商户返回确认 0→不返回；1→返回； -->
+    <informmer>1</informmer><!-- 通知商户 0→不通知；1→通知； -->
+    <strInterface>5.00</strInterface><!-- 接口版本 -->
+    <waittime>0</waittime><!-- 跳转等待时间 -->
+    
+    <bankcardtype>00</bankcardtype><!-- 支付银行卡类型 00借贷卡混合 01 纯借记卡 -->
+    <pdtdetailurl></pdtdetailurl><!-- 商品详情地址 可空 -->
+    <pdtdnm></pdtdnm><!-- 商品名称 商品名称，多个商品以逗号隔开，不可为空 -->
+    <version>1.00</version><!-- 退费接口版本 -->
+</root>

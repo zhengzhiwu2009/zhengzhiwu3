@@ -1,0 +1,33 @@
+-- Add/modify columns 
+alter table PE_BZZ_ORDER_INFO add flag_check_state VARCHAR2(50);
+alter table PE_BZZ_ORDER_INFO add check_note VARCHAR2(4000);
+-- Add/modify columns 
+alter table PE_BZZ_ORDER_INFO add check_date date;
+-- Add comments to the columns 
+comment on column PE_BZZ_ORDER_INFO.check_date
+  is '对账日期';
+-- Add comments to the columns 
+comment on column PE_BZZ_ORDER_INFO.flag_check_state
+  is '对账状态,默认未对账';
+comment on column PE_BZZ_ORDER_INFO.check_note
+  is '对账备注';
+  -- Add/modify columns 
+alter table PE_BZZ_ORDER_INFO modify flag_check_state default '402880a91ecade03011ecae12bcd0001x';
+update pe_bzz_order_info o set o.flag_check_state='402880a91ecade03011ecae12bcd0001x' where o.flag_check_state is null；
+  
+insert into enum_const
+  (id, name, code, namespace, is_default, create_date, note)
+values
+  ('402880a91ecade03011ecae12bcd0001x', '未对账', '0', 'FlagCheckState', '1', sysdate, '对账状态');
+insert into enum_const
+  (id, name, code, namespace, is_default, create_date, note)
+values
+  ('402880a91ecade03011ecae12bcd0002x', '已对账', '1', 'FlagCheckState', '0', sysdate, '对账状态');
+insert into enum_const
+  (id, name, code, namespace, is_default, create_date, note)
+values
+  ('402880a91ecade03011ecae12bcd0003x', '对账异常', '2', 'FlagCheckState', '0', sysdate, '对账状态');
+--insert into enum_const
+--  (id, name, code, namespace, is_default, create_date, note)
+--values
+--  ('402880a91ecade03011ecae12bcd0004x', '退费处理', '3', 'FlagCheckState', '0', sysdate, '对账状态');

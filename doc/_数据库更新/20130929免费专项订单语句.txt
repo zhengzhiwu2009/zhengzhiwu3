@@ -1,0 +1,7 @@
+prompt Importing table enum_const...
+set feedback off
+set define off
+insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('40288a7b394207de01394212e47f0005x', '免费专项', '4', 'FlagPaymentMethod', '0', to_date('29-09-2013', 'dd-mm-yyyy'), '支付方式');
+
+prompt Done.

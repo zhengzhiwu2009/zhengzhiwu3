@@ -1,0 +1,77 @@
+-- Create table
+create table PE_BZZ_PICI
+(
+  ID         VARCHAR2(50) not null,
+  NAME       VARCHAR2(200),
+  START_TIME DATE,
+  END_TIME   DATE,
+  STATUS     VARCHAR2(50),
+  EXAM_TIMES VARCHAR2(50),
+  CODE       VARCHAR2(100)
+)
+tablespace HZPH
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table PE_BZZ_PICI
+  is '批次表';
+-- Add comments to the columns 
+comment on column PE_BZZ_PICI.ID
+  is 'id';
+comment on column PE_BZZ_PICI.NAME
+  is '批次名称';
+comment on column PE_BZZ_PICI.START_TIME
+  is '开始时间';
+comment on column PE_BZZ_PICI.END_TIME
+  is '结束时间';
+comment on column PE_BZZ_PICI.STATUS
+  is '激活状态';
+comment on column PE_BZZ_PICI.EXAM_TIMES
+  is '考试次数';
+comment on column PE_BZZ_PICI.CODE
+  is '开始批次编号';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table PE_BZZ_PICI
+  add constraint PICIID primary key (ID)
+  using index 
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table PE_BZZ_PICI
+  add constraint PICICODE unique (CODE)
+  using index 
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+  
+  insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('40288acf3d62b37f013d62b9aeec000x', '打开', '0', 'FlagPiciStatus', '1', to_date('31-05-2013', 'dd-mm-yyyy'), '批次激活状态');
+
+insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('40288acf3d62b37f013d62b9aeec000y', '关闭', '1', 'FlagPiciStatus', '0', to_date('31-05-2013', 'dd-mm-yyyy'), '批次激活状态');
+commit;

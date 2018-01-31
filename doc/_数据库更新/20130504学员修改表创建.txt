@@ -1,0 +1,212 @@
+drop table PE_BZZ_EDITSTUDENT;
+
+
+
+-- Create table
+create table PE_BZZ_EDITSTUDENT
+(
+  id                   VARCHAR2(50) not null,
+  student_id           VARCHAR2(50),
+  old_reg_no           VARCHAR2(50),
+  old_true_name        VARCHAR2(50),
+  old_gender           VARCHAR2(50),
+  old_birthday         DATE,
+  old_folk             VARCHAR2(50),
+  old_education        VARCHAR2(50),
+  old_fk_batch_id      VARCHAR2(50),
+  old_address          VARCHAR2(300),
+  old_phone            VARCHAR2(50),
+  old_mobile_phone     VARCHAR2(50),
+  old_fk_enterprise_id VARCHAR2(50),
+  old_email            VARCHAR2(50),
+  old_photo            VARCHAR2(100),
+  new_reg_no           VARCHAR2(50),
+  new_true_name        VARCHAR2(50),
+  new_gender           VARCHAR2(50),
+  new_birthday         DATE,
+  new_folk             VARCHAR2(50),
+  new_education        VARCHAR2(50),
+  new_fk_batch_id      VARCHAR2(50),
+  new_address          VARCHAR2(300),
+  new_phone            VARCHAR2(50),
+  new_mobile_phone     VARCHAR2(50),
+  new_fk_enterprise_id VARCHAR2(50),
+  new_email            VARCHAR2(50),
+  new_photo            VARCHAR2(100),
+  status               VARCHAR2(50),
+  alterdate            DATE,
+  createdate           DATE default sysdate,
+  old_card_no          VARCHAR2(50),
+  old_zjlx             VARCHAR2(50),
+  old_card_type        VARCHAR2(50),
+  new_card_no          VARCHAR2(50),
+  new_zjlx             VARCHAR2(50),
+  new_card_type        VARCHAR2(50),
+  flag_edit_check      VARCHAR2(50),
+  note                 VARCHAR2(50)
+)
+tablespace HZPH
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 128
+    next 8
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the columns 
+comment on column PE_BZZ_EDITSTUDENT.id
+  is 'ID';
+comment on column PE_BZZ_EDITSTUDENT.student_id
+  is '学员ID';
+comment on column PE_BZZ_EDITSTUDENT.old_reg_no
+  is '原学号';
+comment on column PE_BZZ_EDITSTUDENT.old_true_name
+  is '原真实姓名';
+comment on column PE_BZZ_EDITSTUDENT.old_gender
+  is '原性别';
+comment on column PE_BZZ_EDITSTUDENT.old_birthday
+  is '原生日';
+comment on column PE_BZZ_EDITSTUDENT.old_folk
+  is '原民族';
+comment on column PE_BZZ_EDITSTUDENT.old_education
+  is '原学历';
+comment on column PE_BZZ_EDITSTUDENT.old_fk_batch_id
+  is '批次ID（预留）';
+comment on column PE_BZZ_EDITSTUDENT.old_address
+  is '原地址';
+comment on column PE_BZZ_EDITSTUDENT.old_phone
+  is '原电话';
+comment on column PE_BZZ_EDITSTUDENT.old_mobile_phone
+  is '原手机';
+comment on column PE_BZZ_EDITSTUDENT.old_fk_enterprise_id
+  is '原机构ID';
+comment on column PE_BZZ_EDITSTUDENT.old_email
+  is '原Email';
+comment on column PE_BZZ_EDITSTUDENT.old_photo
+  is '原照片（预留）';
+comment on column PE_BZZ_EDITSTUDENT.new_reg_no
+  is '新学号';
+comment on column PE_BZZ_EDITSTUDENT.new_true_name
+  is '新姓名';
+comment on column PE_BZZ_EDITSTUDENT.new_gender
+  is '新性别';
+comment on column PE_BZZ_EDITSTUDENT.new_birthday
+  is '新生日';
+comment on column PE_BZZ_EDITSTUDENT.new_folk
+  is '新民族';
+comment on column PE_BZZ_EDITSTUDENT.new_education
+  is '新学历';
+comment on column PE_BZZ_EDITSTUDENT.new_fk_batch_id
+  is '新批次（预留）';
+comment on column PE_BZZ_EDITSTUDENT.new_address
+  is '新地址';
+comment on column PE_BZZ_EDITSTUDENT.new_phone
+  is '新电话';
+comment on column PE_BZZ_EDITSTUDENT.new_mobile_phone
+  is '新手机';
+comment on column PE_BZZ_EDITSTUDENT.new_fk_enterprise_id
+  is '新机构ID';
+comment on column PE_BZZ_EDITSTUDENT.new_email
+  is '新Email';
+comment on column PE_BZZ_EDITSTUDENT.new_photo
+  is '新照片（预留）';
+comment on column PE_BZZ_EDITSTUDENT.status
+  is '迁移的状态';
+comment on column PE_BZZ_EDITSTUDENT.alterdate
+  is '修改时间';
+comment on column PE_BZZ_EDITSTUDENT.createdate
+  is '创建时间';
+comment on column PE_BZZ_EDITSTUDENT.old_card_no
+  is '原证件号';
+comment on column PE_BZZ_EDITSTUDENT.old_zjlx
+  is '原证件类型';
+comment on column PE_BZZ_EDITSTUDENT.old_card_type
+  is '原国籍';
+comment on column PE_BZZ_EDITSTUDENT.new_card_no
+  is '新证件号';
+comment on column PE_BZZ_EDITSTUDENT.new_zjlx
+  is '新证件类型';
+comment on column PE_BZZ_EDITSTUDENT.new_card_type
+  is '新国籍';
+comment on column PE_BZZ_EDITSTUDENT.flag_edit_check
+  is '学员信息变更审核状态 : 默认：未审核‘ccb2880a91dadc115011dadfcf26b0007x’、已通过‘ccb2880a91dadc115011dadfcf26b0005x’';
+comment on column PE_BZZ_EDITSTUDENT.note
+  is '备注';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table PE_BZZ_EDITSTUDENT
+  add constraint FK_EDITSTUDENT_ID primary key (ID)
+  using index 
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table PE_BZZ_EDITSTUDENT
+  add constraint FK_EDITSTUDENT_BATCHID foreign key (OLD_FK_BATCH_ID)
+  references PE_BZZ_BATCH (ID);
+alter table PE_BZZ_EDITSTUDENT
+  add constraint FK_EDITSTUDENT_ENTERPRISEID foreign key (OLD_FK_ENTERPRISE_ID)
+  references PE_ENTERPRISE (ID);
+alter table PE_BZZ_EDITSTUDENT
+  add constraint FK_EDITSTUDENT_NEWENTERPRISEID foreign key (NEW_FK_ENTERPRISE_ID)
+  references PE_ENTERPRISE (ID);
+
+  
+-- Alter table 
+alter table HZPH_DATA_BRIDGE.HR_SITE
+  storage
+  (
+    next 1
+  )
+;
+-- Add/modify columns 
+alter table HZPH_DATA_BRIDGE.HR_SITE add note VARCHAR2(500);
+-- Add comments to the columns 
+comment on column HZPH_DATA_BRIDGE.HR_SITE.note
+  is '记录错误信息';
+  
+-- Add/modify columns 
+alter table PE_BZZ_STUDENT add ZJLX VARCHAR2(50);
+alter table PE_BZZ_STUDENT add GZNX VARCHAR2(50);
+-- Add comments to the columns 
+comment on column PE_BZZ_STUDENT.ZJLX
+  is '证件类型  01 身份证    02护照   03其他  ';
+comment on column PE_BZZ_STUDENT.GZNX
+  is '工作年限';
+  
+  
+  
+-- Alter table 
+alter table ELECTIVE_HISTORY
+  storage
+  (
+    next 8
+  )
+;
+-- Drop primary, unique and foreign key constraints 
+alter table ELECTIVE_HISTORY
+  drop constraint ELECTIVE_HISTROY cascade;
+  
+-- Create/Recreate indexes 
+drop index ELECTIVE_HISTROY;
+create index ELECTIVE_HISTROY on ELECTIVE_HISTORY (ID)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64M
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );

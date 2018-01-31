@@ -1,0 +1,905 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+
+	<foreignKey name="HNSD.FK_PR_EDU_M_FK_PR_EDU_PE_SITE">
+		<parentTable>PE_SITE</parentTable>
+		<childTable>PR_EDU_MAJOR_SITE_FEE_LEVEL</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_EXAM__FK_PE_EXA_PE_SITE">
+		<parentTable>PE_SITE</parentTable>
+		<childTable>PE_EXAM_PATROL</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_SMS_I_FK_SMS_IN_PE_SITE">
+		<parentTable>PE_SITE</parentTable>
+		<childTable>PE_SMS_INFO</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_SITE_FK_PE_SIT_PE_SITE">
+		<parentTable>PE_SITE</parentTable>
+		<childTable>PE_SITE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_SITE_FK_PE_SIT_ENUM_CO1">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_SITE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_REC_P_FK_PR_REC_PE_SITE">
+		<parentTable>PE_SITE</parentTable>
+		<childTable>PR_REC_PATROL_SETTING</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_EXAM__FK_PR_EXA_PE_SITE">
+		<parentTable>PE_SITE</parentTable>
+		<childTable>PR_EXAM_PATROL_SETTING</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_STU_C_FK_PR_STU_PE_SITE">
+		<parentTable>PE_SITE</parentTable>
+		<childTable>PR_STU_CHANGE_SITE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_STU_C_REFERENCE_PE_SIT1">
+		<parentTable>PE_SITE</parentTable>
+		<childTable>PR_STU_CHANGE_SITE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_SITE_FK_PE_SIT_ENUM_CON">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_SITE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_PRI_M_REFERENCE_PE_SITE">
+		<parentTable>PE_SITE</parentTable>
+		<childTable>PR_PRI_MANAGER_SITE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_REC_P_REFERENCE_PE_SITE">
+		<parentTable>PE_SITE</parentTable>
+		<childTable>PR_REC_PLAN_MAJOR_SITE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_STUDE_REFERENCE_PE_SITE">
+		<parentTable>PE_SITE</parentTable>
+		<childTable>PE_STUDENT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_SITEM_REFERENCE_PE_SITE">
+		<parentTable>PE_SITE</parentTable>
+		<childTable>PE_SITEMANAGER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_FEE_B_REFERENCE_PE_SITEM">
+		<parentTable>PE_SITEMANAGE</parentTable>
+		<childTable>PE_FEE_BATCH</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_MANAG_REFERENCE_SSO_USER">
+		<parentTable>SSO_USER</parentTable>
+		<childTable>PE_MANAGER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_PRIOR_REFERENCE_PE_PRI_C">
+		<parentTable>PE_PRI_CATEGORY</parentTable>
+		<childTable>PE_PRIORITY</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_RECRU_REFERENCE_PE_GRADE">
+		<parentTable>PE_GRADE</parentTable>
+		<childTable>PE_RECRUITPLAN</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_REC_S_REFERENCE_PR_REC_P">
+		<parentTable>PR_REC_PLAN_MAJOR_SITE</parentTable>
+		<childTable>PE_REC_STUDENT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_SITEM_REFERENCE_SSO_USER">
+		<parentTable>SSO_USER</parentTable>
+		<childTable>PE_SITEMANAGER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_STUDE_REFERENCE_PE_EDUTY">
+		<parentTable>PE_EDUTYPE</parentTable>
+		<childTable>PE_STUDENT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_STUDE_REFERENCE_PE_FEE_L">
+		<parentTable>PE_FEE_LEVEL</parentTable>
+		<childTable>PE_STUDENT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_STUDE_REFERENCE_PE_GRADE">
+		<parentTable>PE_GRADE</parentTable>
+		<childTable>PE_STUDENT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_STUDE_REFERENCE_PE_MAJOR">
+		<parentTable>PE_MAJOR</parentTable>
+		<childTable>PE_STUDENT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_STUDE_REFERENCE_SSO_USER">
+		<parentTable>SSO_USER</parentTable>
+		<childTable>PE_STUDENT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_TCH_B_REFERENCE_PE_TCH_C">
+		<parentTable>PE_TCH_COURSE</parentTable>
+		<childTable>PE_TCH_BOOK</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_TCH_C_REFERENCE_PE_TCH_3">
+		<parentTable>PE_TCH_COURSE</parentTable>
+		<childTable>PE_TCH_COURSEWARE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_TCH_P_REFERENCE_PE_EDUTY">
+		<parentTable>PE_EDUTYPE</parentTable>
+		<childTable>PE_TCH_PROGRAM</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_TCH_P_REFERENCE_PE_MAJOR">
+		<parentTable>PE_MAJOR</parentTable>
+		<childTable>PE_TCH_PROGRAM</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_TCH_P_REFERENCE_PE_TCH_8">
+		<parentTable>PE_TCH_PROGRAM</parentTable>
+		<childTable>PE_TCH_PROGRAM_GROUP</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_TCH_P_REFERENCE_PE_TCH_9">
+		<parentTable>PE_TCH_COURSEGROUP</parentTable>
+		<childTable>PE_TCH_PROGRAM_GROUP</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_TEACH_REFERENCE_SSO_USER">
+		<parentTable>SSO_USER</parentTable>
+		<childTable>PE_TEACHER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_FEE_D_REFERENCE_PE_FEE_B">
+		<parentTable>PE_FEE_BATCH</parentTable>
+		<childTable>PR_FEE_DETAIL</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_FEE_D_REFERENCE_PE_STUDE">
+		<parentTable>PE_STUDENT</parentTable>
+		<childTable>PR_FEE_DETAIL</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PA_LRN_S_REFERENCE_PE_STUDE">
+		<parentTable>PE_STUDENT</parentTable>
+		<childTable>PR_TCH_STU_ELECTIVE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_PRI_R_REFERENCE_PE_PRIOR">
+		<parentTable>PE_PRIORITY</parentTable>
+		<childTable>PR_PRI_ROLE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_PRI_R_REFERENCE_PE_PRI_R">
+		<parentTable>PE_PRI_ROLE</parentTable>
+		<childTable>PR_PRI_ROLE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_REC_E_REFERENCE_PE_REC_7">
+		<parentTable>PR_REC_EXAM_COURSE_TIME</parentTable>
+		<childTable>PR_REC_EXAM_STU_COURSE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_REC_P_REFERENCE_PE_EDUTY">
+		<parentTable>PE_EDUTYPE</parentTable>
+		<childTable>PR_REC_PLAN_MAJOR_EDUTYPE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_REC_P_REFERENCE_PE_MAJOR">
+		<parentTable>PE_MAJOR</parentTable>
+		<childTable>PR_REC_PLAN_MAJOR_EDUTYPE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_REC_P_REFERENCE_PE_RECRU">
+		<parentTable>PE_RECRUITPLAN</parentTable>
+		<childTable>PR_REC_PLAN_MAJOR_EDUTYPE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_REC_P_REFERENCE_PR_REC_P">
+		<parentTable>PR_REC_PLAN_MAJOR_EDUTYPE</parentTable>
+		<childTable>PR_REC_PLAN_MAJOR_SITE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PA_STU_S_REFERENCE_PE_STUDE">
+		<parentTable>PE_STUDENT</parentTable>
+		<childTable>PR_STU_CHANGE_SCHOOL</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_C_REFERENCE_PE_TCH_C">
+		<parentTable>PE_TCH_COURSE</parentTable>
+		<childTable>PR_TCH_COURSE_TEACHER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_C_REFERENCE_PE_TEACH">
+		<parentTable>PE_TEACHER</parentTable>
+		<childTable>PR_TCH_COURSE_TEACHER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_O_REFERENCE_PE_TCH_1">
+		<parentTable>PE_TCH_COURSE</parentTable>
+		<childTable>PR_TCH_OPENCOURSE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_P_REFERENCE_PE_SEMES">
+		<parentTable>PE_SEMESTER</parentTable>
+		<childTable>PR_TCH_PAPER_TITLE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_P_REFERENCE_PE_TEACH">
+		<parentTable>PE_TEACHER</parentTable>
+		<childTable>PR_TCH_PAPER_TITLE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_TCH_P_REFERENCE_PE_TCH_4">
+		<parentTable>PE_TCH_COURSE</parentTable>
+		<childTable>PR_TCH_PROGRAM_COURSE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_TCH_P_REFERENCE_PE_TCH_5">
+		<parentTable>PE_TCH_PROGRAM_GROUP</parentTable>
+		<childTable>PR_TCH_PROGRAM_COURSE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_SSO_USER_REFERENCE_PE_PRI_R">
+		<parentTable>PE_PRI_ROLE</parentTable>
+		<childTable>SSO_USER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_O_REFERENCE_PR_TCH_2">
+		<parentTable>PR_TCH_OPENCOURSE</parentTable>
+		<childTable>PR_TCH_OPENCOURSE_TEACHER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_O_REFERENCE_PE_TEAC5">
+		<parentTable>PE_TEACHER</parentTable>
+		<childTable>PR_TCH_OPENCOURSE_TEACHER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_S_REFERENCE_PR_TCH_3">
+		<parentTable>PR_TCH_PAPER_TITLE</parentTable>
+		<childTable>PR_TCH_STU_PAPER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_O_REFERENCE_PE_TCH_B">
+		<parentTable>PE_TCH_BOOK</parentTable>
+		<childTable>PR_TCH_OPENCOURSE_BOOK</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_O_REFERENCE_PR_TCH_3">
+		<parentTable>PR_TCH_OPENCOURSE</parentTable>
+		<childTable>PR_TCH_OPENCOURSE_BOOK</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_O_REFERENCE_PE_TCH_6">
+		<parentTable>PE_TCH_COURSEWARE</parentTable>
+		<childTable>PR_TCH_OPENCOURSE_COURSEWARE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_O_REFERENCE_PR_TCH_6">
+		<parentTable>PR_TCH_OPENCOURSE</parentTable>
+		<childTable>PR_TCH_OPENCOURSE_COURSEWARE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_REC_E_REFERENCE_PE_REC_4">
+		<parentTable>PE_REC_EXAMCOURSE</parentTable>
+		<childTable>PR_REC_EXAM_COURSE_TIME</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_REC_C_REFERENCE_PE_MAJOR">
+		<parentTable>PE_MAJOR</parentTable>
+		<childTable>PR_REC_COURSE_MAJOR_EDUTYPE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_REC_C_REFERENCE_PE_EDUTY">
+		<parentTable>PE_EDUTYPE</parentTable>
+		<childTable>PR_REC_COURSE_MAJOR_EDUTYPE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_REC_C_REFERENCE_PE_REC_E">
+		<parentTable>PE_REC_EXAMCOURSE</parentTable>
+		<childTable>PR_REC_COURSE_MAJOR_EDUTYPE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_PRI_C_REFERENCE_PE_PRI_C">
+		<parentTable>PE_PRI_CATEGORY</parentTable>
+		<childTable>PE_PRI_CATEGORY</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_PRI_M_REFERENCE_SSO_US98">
+		<parentTable>SSO_USER</parentTable>
+		<childTable>PR_PRI_MANAGER_SITE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_PRI_M_REFERENCE_SSO_US99">
+		<parentTable>SSO_USER</parentTable>
+		<childTable>PR_PRI_MANAGER_GRADE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_PRI_M_REFERENCE_SSO_U100">
+		<parentTable>SSO_USER</parentTable>
+		<childTable>PR_PRI_MANAGER_MAJOR</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_PRI_M_REFERENCE_SSO_U101">
+		<parentTable>SSO_USER</parentTable>
+		<childTable>PR_PRI_MANAGER_EDUTYPE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_PRI_M_REFERENCE_PE_GRADE">
+		<parentTable>PE_GRADE</parentTable>
+		<childTable>PR_PRI_MANAGER_GRADE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_PRI_M_REFERENCE_PE_MAJOR">
+		<parentTable>PE_MAJOR</parentTable>
+		<childTable>PR_PRI_MANAGER_MAJOR</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_PRI_M_REFERENCE_PE_EDUTY">
+		<parentTable>PE_EDUTYPE</parentTable>
+		<childTable>PR_PRI_MANAGER_EDUTYPE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_S_REFERENCE_PE_STUDE">
+		<parentTable>PE_STUDENT</parentTable>
+		<childTable>PR_TCH_STU_PAPER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_E_REFERENCE_PR_TCH_S">
+		<parentTable>PR_TCH_STU_ELECTIVE</parentTable>
+		<childTable>PR_TCH_ELECTIVE_BOOK</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_E_REFERENCE_PR_TCH_O">
+		<parentTable>PR_TCH_OPENCOURSE_BOOK</parentTable>
+		<childTable>PR_TCH_ELECTIVE_BOOK</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_TEACH_REFERENCE_ENUM_001">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_TEACHER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_TEACH_REFERENCE_ENUM_CON">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_TEACHER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_TCH_B_REFERENCE_ENUM_CO1">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_TCH_BOOK</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_TCH_C_REFERENCE_ENUM_CO2">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_TCH_COURSEWARE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_S_FK_PA_LRN_SSO_USER">
+		<parentTable>SSO_USER</parentTable>
+		<childTable>PR_TCH_STU_ELECTIVE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_S_FK_PA_LRN_ENUM_CO1">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PR_TCH_STU_ELECTIVE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_S_FK_PA_LRN_ENUM_CON">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PR_TCH_STU_ELECTIVE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_TCH_C_REFERENCE_ENUM_C11">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_TCH_COURSE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_SSO_USER_FK_SSO_US_ENUM_CON">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>SSO_USER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_SSO_USER_REFERENCE_ENUM_CO1">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>SSO_USER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_MANAG_FK_PE_MAN_ENUM_CON">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_MANAGER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_SITEM_FK_PE_SIT_ENUM_CON">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_SITEMANAGER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_S_FK_PR_TCH_ENUM_CON">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PR_TCH_STU_PAPER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_S_FK_PR_TCH_ENUM_CO1">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PR_TCH_STU_PAPER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_FEE_B_REFERENCE_ENUM_CO1">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_FEE_BATCH</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_FEE_B_REFERENCE_ENUM_CO2">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_FEE_BATCH</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_FEE_D_REFERENCE_ENUM_CO3">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PR_FEE_DETAIL</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_FEE_D_REFERENCE_ENUM_CO4">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PR_FEE_DETAIL</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_TCH_B_REFERENCE_ENUM_CO2">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_TCH_BOOK</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_S_FK_PR_TCH_ENUM_C14">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PR_TCH_STU_PAPER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_REC_E_FK_PR_REC_PE_RECRU">
+		<parentTable>PE_RECRUITPLAN</parentTable>
+		<childTable>PR_REC_EXAM_COURSE_TIME</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_REC_S_FK_PE_REC_ENUM_CON">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_REC_STUDENT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_REC_S_FK_PE_REC_ENUM_CO2">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_REC_STUDENT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_REC_S_FK_PE_REC_ENUM_CO3">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_REC_STUDENT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_REC_S_FK_PE_REC_ENUM_CO1">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_REC_STUDENT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_MAJOR_FK_PE_MAJ_ENUM_CON">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_MAJOR</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_REC_E_FK_PR_REC_PE_REC_S">
+		<parentTable>PE_REC_STUDENT</parentTable>
+		<childTable>PR_REC_EXAM_STU_COURSE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_STU_C_FK_PR_STU_ENUM_CON">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PR_STU_CHANGE_SCHOOL</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_TCH_P_FK_PE_TCH_PE_GRADE">
+		<parentTable>PE_GRADE</parentTable>
+		<childTable>PE_TCH_PROGRAM</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_TCH_P_FK_PE_TCH_ENUM_CON">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_TCH_PROGRAM</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_O_FK_PR_TCH_PE_SEMES">
+		<parentTable>PE_SEMESTER</parentTable>
+		<childTable>PR_TCH_OPENCOURSE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_S_FK_PR_TCH_ENUM_C13">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PR_TCH_STU_ELECTIVE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_STU_C_FK_PR_STU_PE_STU15">
+		<parentTable>PE_STUDENT</parentTable>
+		<childTable>PR_STU_CHANGE_SITE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_STU_C_FK_PR_STU_PE_STU16">
+		<parentTable>PE_STUDENT</parentTable>
+		<childTable>PR_STU_CHANGE_MAJOR</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_STU_C_FK_PR_STU_PE_STU17">
+		<parentTable>PE_STUDENT</parentTable>
+		<childTable>PR_STU_CHANGE_EDUTYPE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_STU_C_FK_PR_STU_PE_EDUTY">
+		<parentTable>PE_EDUTYPE</parentTable>
+		<childTable>PR_STU_CHANGE_EDUTYPE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_STU_C_REFERENCE_PE_EDUT1">
+		<parentTable>PE_EDUTYPE</parentTable>
+		<childTable>PR_STU_CHANGE_EDUTYPE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_S_REFERENCE_ENUM_CO3">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PR_TCH_STU_PAPER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_S_REFERENCE_ENUM_CO5">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PR_TCH_STU_PAPER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_EXAM__FK_PE_PAT_ENUM_CON">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_EXAM_PATROL</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_TCH_C_FK_PE_TCH_ENUM_CON">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_TCH_COURSE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_EXAM__FK_PR_EXA_PR_TCH_S">
+		<parentTable>PR_TCH_STU_ELECTIVE</parentTable>
+		<childTable>PR_EXAM_BOOKING</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_EXAM__FK_PR_EXA_PE_EXA18">
+		<parentTable>PE_EXAM_ROOM</parentTable>
+		<childTable>PR_EXAM_BOOKING</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_EXAM__FK_PE_EXA_PE_EXAM_">
+		<parentTable>PE_EXAM_NO</parentTable>
+		<childTable>PE_EXAM_ROOM</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_EXAM__FK_PR_EXA_PE_EXA19">
+		<parentTable>PE_EXAM_NO</parentTable>
+		<childTable>PR_EXAM_BOOKING</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_EXAM__FK_PE_EXA_PE_SEM21">
+		<parentTable>PE_SEMESTER</parentTable>
+		<childTable>PE_EXAM_NO</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_EXAM__FK_PR_EXA_PE_SEM20">
+		<parentTable>PE_SEMESTER</parentTable>
+		<childTable>PR_EXAM_BOOKING</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_EXAM__FK_PR_EXA_PE_EXA22">
+		<parentTable>PE_EXAM_PATROL</parentTable>
+		<childTable>PR_EXAM_PATROL_SETTING</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_EXAM__FK_PR_EXA_PE_SEM23">
+		<parentTable>PE_SEMESTER</parentTable>
+		<childTable>PR_EXAM_PATROL_SETTING</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_P_REFERENCE_ENUM_CO3">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PR_TCH_PROGRAM_COURSE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_EXAM__FK_PE_EXA_PE_SEM24">
+		<parentTable>PE_SEMESTER</parentTable>
+		<childTable>PE_EXAM_MAINCOURSE_NO</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_EXAM__FK_PR_EXA_PE_TCH_C">
+		<parentTable>PE_TCH_COURSE</parentTable>
+		<childTable>PR_EXAM_OPEN_MAINCOURSE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_EXAM__FK_PR_EXA_PE_EXA25">
+		<parentTable>PE_EXAM_MAINCOURSE_NO</parentTable>
+		<childTable>PR_EXAM_OPEN_MAINCOURSE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_EXAM__FK_PR_EXA_PR_EXAM_">
+		<parentTable>PR_EXAM_OPEN_MAINCOURSE</parentTable>
+		<childTable>PR_EXAM_STU_MAINCOURSE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_EXAM__FK_PR_EXA_PE_STUDE">
+		<parentTable>PE_STUDENT</parentTable>
+		<childTable>PR_EXAM_STU_MAINCOURSE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_EXAM__REFERENCE_PE_EXAM_">
+		<parentTable>PE_EXAM_MAINCOURSE_ROOM</parentTable>
+		<childTable>PR_EXAM_STU_MAINCOURSE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_EXAM__FK_PE_EXA_PR_EXAM_">
+		<parentTable>PR_EXAM_OPEN_MAINCOURSE</parentTable>
+		<childTable>PE_EXAM_MAINCOURSE_ROOM</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_REC_R_FK_PE_REC_PE_RECRU">
+		<parentTable>PE_RECRUITPLAN</parentTable>
+		<childTable>PE_REC_ROOM</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_REC_S_FK_PE_REC_PE_REC_R">
+		<parentTable>PE_REC_ROOM</parentTable>
+		<childTable>PE_REC_STUDENT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_REC_P_FK_PR_REC_PE_RECRU">
+		<parentTable>PE_RECRUITPLAN</parentTable>
+		<childTable>PR_REC_PATROL_SETTING</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_REC_P_FK_PR_REC_PE_EXAM_">
+		<parentTable>PE_EXAM_PATROL</parentTable>
+		<childTable>PR_REC_PATROL_SETTING</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_STUDE_FK_PE_STU_PR_STUDE">
+		<parentTable>PR_STUDENT_INFO</parentTable>
+		<childTable>PE_STUDENT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_TCH_P_REFERENCE_ENUM_CO1">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_TCH_PROGRAM</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_TEACH_REFERENCE_ENUM_CO2">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_TEACHER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_STU_C_REFERENCE_ENUM_CO1">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PR_STU_CHANGE_SCHOOL</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_P_REFERENCE_ENUM_CO2">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PR_TCH_PROGRAM_COURSE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_TCH_C_REFERENCE_ENUM_C12">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_TCH_COURSEWARE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_REC_S_REFERENCE_ENUM_CO4">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_REC_STUDENT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_REC_S_REFERENCE_ENUM_CO5">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_REC_STUDENT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_REC_S_REFERENCE_ENUM_CO6">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_REC_STUDENT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_STUDE_REFERENCE_ENUM_CO5">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_STUDENT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_STUDE_REFERENCE_ENUM_CO2">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_STUDENT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_STUDE_REFERENCE_PE_REC_S">
+		<parentTable>PE_REC_STUDENT</parentTable>
+		<childTable>PE_STUDENT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_EXAM__REFERENCE_ENUM_CO2">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_EXAM_PATROL</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_BULLE_FK_BULLET_PE_MANAG">
+		<parentTable>PE_MANAGER</parentTable>
+		<childTable>PE_BULLETIN</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_BULLE_FK_BULLET_ENUM_CON">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_BULLETIN</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_INFO__FK_INFO_N_PE_INFO_">
+		<parentTable>PE_INFO_NEWS_TYPE</parentTable>
+		<childTable>PE_INFO_NEWS</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_INFO__FK_INFO_N_PE_MANAG">
+		<parentTable>PE_MANAGER</parentTable>
+		<childTable>PE_INFO_NEWS</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_SMS_I_FK_SMS_IN_ENUM_CON">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_SMS_INFO</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_SMS_INFO_REFERENCE_ENUM_CO1">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_SMS_INFO</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_SMS_SYST_REFERENCE_ENUM_CO1">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_SMS_SYSTEMPOINT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_SMS_S_FK_SMS_SY_ENUM_CON">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_SMS_SYSTEMPOINT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_STU_C_FK_PR_STU_PE_MAJOR">
+		<parentTable>PE_MAJOR</parentTable>
+		<childTable>PR_STU_CHANGE_MAJOR</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_STU_C_REFERENCE_PE_MAJO1">
+		<parentTable>PE_MAJOR</parentTable>
+		<childTable>PR_STU_CHANGE_MAJOR</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_PRI_R_FK_PE_PRI_ENUM_CON">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_PRI_ROLE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_TEACH_REFERENCE_ENUM_CO3">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_TEACHER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_SITEM_REFERENCE_ENUM_CO2">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_SITEMANAGER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_MANAG_REFERENCE_ENUM_CO2">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_MANAGER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_BULLETIN_REFERENCE_ENUM_CO1">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_BULLETIN</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_DOCUM_FK_DOCUME_SSO_USER">
+		<parentTable>SSO_USER</parentTable>
+		<childTable>PE_DOCUMENT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_DOCUMENT_REFERENCE_ENUM_CO1">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_DOCUMENT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_DOCUMENT_REFERENCE_ENUM_CO2">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_DOCUMENT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_EDU_M_FK_PR_EDU_PE_FEE_L">
+		<parentTable>PE_FEE_LEVEL</parentTable>
+		<childTable>PR_EDU_MAJOR_SITE_FEE_LEVEL</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_EDU_M_FK_PR_EDU_PE_MAJOR">
+		<parentTable>PE_MAJOR</parentTable>
+		<childTable>PR_EDU_MAJOR_SITE_FEE_LEVEL</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_EDU_M_FK_PR_EDU_PE_EDUTY">
+		<parentTable>PE_EDUTYPE</parentTable>
+		<childTable>PR_EDU_MAJOR_SITE_FEE_LEVEL</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_TEACH_REFERENCE_ENUM_CO4">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_TEACHER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_S_REFERENCE_ENUM_CO6">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PR_TCH_STU_PAPER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_P_FK_PR_TCH_PR_TCH_S">
+		<parentTable>PR_TCH_STU_PAPER</parentTable>
+		<childTable>PR_TCH_PAPER_CONTENT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_P_REFERENCE_ENUM_CO1">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PR_TCH_PAPER_CONTENT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_P_FK_PR_TCH_ENUM_CON">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PR_TCH_PAPER_CONTENT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_S_FK_PR_TCH_PR_TCH_P">
+		<parentTable>PR_TCH_PROGRAM_COURSE</parentTable>
+		<childTable>PR_TCH_STU_ELECTIVE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_SYSTEM_V_FK_SYSTEM_ENUM_CON">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>SYSTEM_VARIABLES</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_SYSTEM_V_REFERENCE_ENUM_CO1">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>SYSTEM_VARIABLES</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_EXAM__REFERENCE_ENUM_CO3">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_EXAM_PATROL</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_SYSTEM_A_FK_SYSTEM_ENUM_CON">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>SYSTEM_APPLY</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_SYSTEM_A_REFERENCE_ENUM_CO1">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>SYSTEM_APPLY</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_SYSTEM_A_FK_SYSTEM_PE_STUDE">
+		<parentTable>PE_STUDENT</parentTable>
+		<childTable>SYSTEM_APPLY</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_TEACH_FK_PE_TEA_PE_MAJOR">
+		<parentTable>PE_MAJOR</parentTable>
+		<childTable>PE_TEACHER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_PRI_R_REFERENCE_ENUM_CO1">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_PRI_ROLE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_FEE_L_FK_PE_FEE_ENUM_CON">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_FEE_LEVEL</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_SMS_S_FK_SMS_NU_PE_SMS_I">
+		<parentTable>PE_SMS_INFO</parentTable>
+		<childTable>PR_SMS_SEND_STATUS</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_TEACH_REFERENCE_ENUM_CO5">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_TEACHER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_C_FK_PR_TCH_ENUM_CON">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PR_TCH_COURSE_TEACHER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_C_REFERENCE_ENUM_CO1">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PR_TCH_COURSE_TEACHER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_COURS_FK_PR_COU_PR_TCH_O">
+		<parentTable>PR_TCH_OPENCOURSE</parentTable>
+		<childTable>PR_COURSE_ARRANGE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_COURS_FK_PR_COU_ENUM_CON">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PR_COURSE_ARRANGE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_COURS_REFERENCE_ENUM_CO1">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PR_COURSE_ARRANGE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_S_FK_PR_TCH_PR_TCH_O">
+		<parentTable>PR_TCH_OPENCOURSE</parentTable>
+		<childTable>PR_TCH_STU_ELECTIVE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_O_FK_PR_TCH_ENUM_CON">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PR_TCH_OPENCOURSE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_TCH_O_REFERENCE_ENUM_CO1">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PR_TCH_OPENCOURSE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_FEE_L_REFERENCE_ENUM_CO1">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_FEE_LEVEL</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_MAJOR_REFERENCE_ENUM_CON">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_MAJOR</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_REC_S_REFERENCE_ENUM_CO7">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_REC_STUDENT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_EXAM__REFERENCE_ENUM_C02">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PR_EXAM_BOOKING</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_EXAM__REFERENCE_ENUM_C05">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PR_EXAM_STU_MAINCOURSE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_EXAM__REFERENCE_ENUM_C06">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PR_EXAM_STU_MAINCOURSE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_EXAM__REFERENCE_ENUM_C03">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PR_EXAM_BOOKING</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_REC_E_REFERENCE_ENUM_C01">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_REC_EXAMCOURSE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_REC_E_REFERENCE_ENUM_C02">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_REC_EXAMCOURSE</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_STUDE_REFERENCE_ENUM_CO3">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_STUDENT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_STUDE_REFERENCE_ENUM_CO4">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_STUDENT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_STUDE_REFERENCE_ENUM_CO6">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_STUDENT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_DOCUM_FK_PR_DOC_PE_DOCUM">
+		<parentTable>PE_DOCUMENT</parentTable>
+		<childTable>PR_DOCUMENT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_DOCUM_FK_PR_DOC_SSO_USER">
+		<parentTable>SSO_USER</parentTable>
+		<childTable>PR_DOCUMENT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_DOCUM_FK_PR_DOC_ENUM_CON">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PR_DOCUMENT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_DOCUM_REFERENCE_ENUM_CO1">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PR_DOCUMENT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_STUDE_REFERENCE_ENUM_CO1">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_STUDENT</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_INFO__FK_PE_INF_ENUM_CON">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_INFO_NEWS</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_INFO__REFERENCE_ENUM_CO1">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_INFO_NEWS</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_VOTE__FK_PR_VOT_PE_VOTE_">
+		<parentTable>PE_VOTE_PAPER</parentTable>
+		<childTable>PR_VOTE_QUESTION</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_VOTE__FK_PR_VOT_PE_VOTE1">
+		<parentTable>PE_VOTE_PAPER</parentTable>
+		<childTable>PR_VOTE_RECORD</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_VOTE__REFERENCE_PE_VOTE2">
+		<parentTable>PE_VOTE_PAPER</parentTable>
+		<childTable>PR_VOTE_SUGGEST</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_VOTE__FK_PE_VOT_ENUM_CON">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_VOTE_PAPER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_VOTE__REFERENCE_ENUM_CO1">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_VOTE_PAPER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_VOTE__REFERENCE_ENUM_CO2">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_VOTE_PAPER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_VOTE__REFERENCE_ENUM_CO3">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_VOTE_PAPER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_VOTE__REFERENCE_ENUM_CO4">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_VOTE_PAPER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PE_VOTE__REFERENCE_ENUM_CO5">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_VOTE_PAPER</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_VOTE__FK_PR_VOT_ENUM_CON">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PR_VOTE_QUESTION</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_VOTE__REFERENCE_ENUM_CO1">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PR_VOTE_SUGGEST</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_VOTE__REFERENCE_ENUM_CO2">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PR_VOTE_QUESTION</childTable>
+	</foreignKey>
+	<foreignKey name="HNSD.FK_PR_VOTE__REFERENCE_ENUM_CO3">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PR_VOTE_SUGGEST</childTable>
+	</foreignKey>
+
+</root>

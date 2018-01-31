@@ -1,0 +1,3 @@
+ 
+ --修改creatdate 为sysdate
+ alter table test_lore_info  modify(creatdate  default sysdate)

@@ -1,0 +1,5 @@
+添加种类
+insert into pe_pri_category(id,name,fk_parent_id,code,path,flag_left_menu)values('40288ccf3acf22eb013acf7293f80019','本机构学员信息列表','03','03002','/entity/basic/peBzzStudent.action?flag=self','1');
+
+添加权限
+insert into pe_priority(id,name,fk_pri_cat_id,namespace,action,method)values('40288ccf3acf22eb013acf80b6af001c','本机构学员信息_*','40288ccf3acf22eb013acf7293f80019','/entity/basic','peBzzStudent','*');

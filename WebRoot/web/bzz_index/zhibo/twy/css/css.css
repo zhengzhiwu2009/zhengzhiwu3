@@ -1,0 +1,104 @@
+body {
+margin:0px;
+padding:0px;
+}
+.body_content {
+	background-image: url(../images/twy_04.jpg);
+	background-repeat: repeat-y;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	color: #4B4B4B;
+	line-height: 25px;
+	letter-spacing: 1px;
+}
+.di_bi {
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-bottom-style: solid;
+	border-top-color: #D1D1D1;
+	border-right-color: #D1D1D1;
+	border-bottom-color: #D1D1D1;
+	border-left-color: #D1D1D1;
+}
+.bg1 {
+	background-image: url(../images/cont4.jpg);
+}
+.font1 {
+	font-family: "宋体";
+	font-size: 14px;
+	font-weight: normal;
+	color: #002362;
+	line-height: 25px;
+	text-indent: 20px;
+}
+.red {
+	background-image: url(../images/tt_15.jpg);
+	background-position: center;
+	background-repeat: repeat-y;
+}
+.areashort{
+	color:#666666;
+	width:95%;
+	height:100px;
+	margin-top: 10px;
+	margin-right: 8px;
+	margin-bottom: 10px;
+	margin-left: 8px;
+	border: 1px solid #D8C69B;
+	background-color: #FFFDF1;
+  }
+  .bot {
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-top-color: #C1C1C1;
+	border-right-color: #C1C1C1;
+	border-bottom-color: #C1C1C1;
+	border-left-color: #C1C1C1;
+  }
+.font2 {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 25px;
+	color: #4B4B4B;
+	text-align: center;
+}
+p {
+padding:0px;
+margin:0px;}
+a {
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	color: #4B4B4B;
+	line-height: 20px;
+	letter-spacing: 1px;
+	text-decoration: none;
+}
+a:visited,a:hover {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #1C52D0;
+	text-decoration: underline;
+}
+.cc {
+	color: #616161;
+	font-weight: bold;
+	text-decoration: none;
+	font-size: 12px;
+	vertical-align: middle;
+}
+.cc_bg {
+	background-image: url(../images/twy_02.jpg);
+	background-repeat: no-repeat;
+	background-position: center center;
+
+}
+.hand {
+    cursor:pointer
+} 

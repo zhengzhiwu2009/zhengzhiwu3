@@ -1,0 +1,27 @@
+create or replace view REPORT_REL_ONL_CON as
+select 
+sc.year,
+sum(case when pbtc.flag_course_item_type='40288acf3adf103d013adf5f19630020' and (to_date(to_char(nvl(pbtc.end_date, to_date('2100-01-01', 'yyyy-mm-dd')), 'yyyy-mm-dd'), 'yyyy-mm-dd')> to_date(to_char(sysdate, 'yyyy-mm-dd'), 'yyyy-mm-dd'))  then 1 else 0 end) as A1,   --职业道德
+sum(case when pbtc.flag_course_item_type='40288acf3adf103d013adf5f19630020' and (to_date(to_char(nvl(pbtc.end_date, to_date('2100-01-01', 'yyyy-mm-dd')), 'yyyy-mm-dd'), 'yyyy-mm-dd')> to_date(to_char(sysdate, 'yyyy-mm-dd'), 'yyyy-mm-dd')) then to_number(pbtc.time) else 0 end) as A2,   --职业道德
+sum(case when pbtc.flag_course_item_type='40288acf3adf103d013adf5fc7950021' and (to_date(to_char(nvl(pbtc.end_date, to_date('2100-01-01', 'yyyy-mm-dd')), 'yyyy-mm-dd'), 'yyyy-mm-dd')> to_date(to_char(sysdate, 'yyyy-mm-dd'), 'yyyy-mm-dd')) then 1 else 0 end) as A3,    --保代课程
+sum(case when pbtc.flag_course_item_type='40288acf3adf103d013adf5fc7950021' and (to_date(to_char(nvl(pbtc.end_date, to_date('2100-01-01', 'yyyy-mm-dd')), 'yyyy-mm-dd'), 'yyyy-mm-dd')> to_date(to_char(sysdate, 'yyyy-mm-dd'), 'yyyy-mm-dd')) then to_number(pbtc.time) else 0 end) as A4,    --保代课程
+sum(case when pbtc.flag_course_item_type='40288acf3adf103d013adf6061440022' and (to_date(to_char(nvl(pbtc.end_date, to_date('2100-01-01', 'yyyy-mm-dd')), 'yyyy-mm-dd'), 'yyyy-mm-dd')> to_date(to_char(sysdate, 'yyyy-mm-dd'), 'yyyy-mm-dd')) then 1 else 0 end) as A5,    --其它业务
+sum(case when pbtc.flag_course_item_type='40288acf3adf103d013adf6061440022' and (to_date(to_char(nvl(pbtc.end_date, to_date('2100-01-01', 'yyyy-mm-dd')), 'yyyy-mm-dd'), 'yyyy-mm-dd')> to_date(to_char(sysdate, 'yyyy-mm-dd'), 'yyyy-mm-dd')) then to_number(pbtc.time) else 0 end) as A6,    --其它业务
+sum(case when pbtc.flag_course_item_type='40288acf3adf103d013adf6128ea0023' and (to_date(to_char(nvl(pbtc.end_date, to_date('2100-01-01', 'yyyy-mm-dd')), 'yyyy-mm-dd'), 'yyyy-mm-dd')> to_date(to_char(sysdate, 'yyyy-mm-dd'), 'yyyy-mm-dd')) then 1 else 0 end) as A7,    --经济业务
+sum(case when pbtc.flag_course_item_type='40288acf3adf103d013adf6128ea0023' and (to_date(to_char(nvl(pbtc.end_date, to_date('2100-01-01', 'yyyy-mm-dd')), 'yyyy-mm-dd'), 'yyyy-mm-dd')> to_date(to_char(sysdate, 'yyyy-mm-dd'), 'yyyy-mm-dd')) then to_number(pbtc.time) else 0 end) as A8,    --经济业务
+
+sum(case when pbtc.flag_course_item_type='40288acf3adf103d013adf63e8e40026' and (to_date(to_char(nvl(pbtc.end_date, to_date('2100-01-01', 'yyyy-mm-dd')), 'yyyy-mm-dd'), 'yyyy-mm-dd')> to_date(to_char(sysdate, 'yyyy-mm-dd'), 'yyyy-mm-dd')) then 1 else 0 end) as A9,    --合规管理
+sum(case when pbtc.flag_course_item_type='40288acf3adf103d013adf63e8e40026' and (to_date(to_char(nvl(pbtc.end_date, to_date('2100-01-01', 'yyyy-mm-dd')), 'yyyy-mm-dd'), 'yyyy-mm-dd')> to_date(to_char(sysdate, 'yyyy-mm-dd'), 'yyyy-mm-dd')) then to_number(pbtc.time) else 0 end) as A10,    --合规管理
+sum(case when pbtc.flag_course_item_type='40288acf3ac44bb8013ac44e6f1b0001' and (to_date(to_char(nvl(pbtc.end_date, to_date('2100-01-01', 'yyyy-mm-dd')), 'yyyy-mm-dd'), 'yyyy-mm-dd')> to_date(to_char(sysdate, 'yyyy-mm-dd'), 'yyyy-mm-dd')) then 1 else 0 end) as A11,    --创新产品业务
+sum(case when pbtc.flag_course_item_type='40288acf3ac44bb8013ac44e6f1b0001' and (to_date(to_char(nvl(pbtc.end_date, to_date('2100-01-01', 'yyyy-mm-dd')), 'yyyy-mm-dd'), 'yyyy-mm-dd')> to_date(to_char(sysdate, 'yyyy-mm-dd'), 'yyyy-mm-dd')) then to_number(pbtc.time) else 0 end) as A12,    --创新产品业务
+sum(case when pbtc.flag_course_item_type='40288acf3ac45c97013ac4619f750001' and (to_date(to_char(nvl(pbtc.end_date, to_date('2100-01-01', 'yyyy-mm-dd')), 'yyyy-mm-dd'), 'yyyy-mm-dd')> to_date(to_char(sysdate, 'yyyy-mm-dd'), 'yyyy-mm-dd')) then 1 else 0 end) as A13,    --法律法规
+sum(case when pbtc.flag_course_item_type='40288acf3ac45c97013ac4619f750001' and (to_date(to_char(nvl(pbtc.end_date, to_date('2100-01-01', 'yyyy-mm-dd')), 'yyyy-mm-dd'), 'yyyy-mm-dd')> to_date(to_char(sysdate, 'yyyy-mm-dd'), 'yyyy-mm-dd')) then to_number(pbtc.time) else 0 end) as A14,    --法律法规
+sum(case when to_date(to_char(nvl(pbtc.end_date, to_date('2100-01-01', 'yyyy-mm-dd')), 'yyyy-mm-dd'), 'yyyy-mm-dd')> to_date(to_char(sysdate, 'yyyy-mm-dd'), 'yyyy-mm-dd') then 1 else 0 end) as A15,
+sum(case when to_date(to_char(nvl(pbtc.end_date, to_date('2100-01-01', 'yyyy-mm-dd')), 'yyyy-mm-dd'), 'yyyy-mm-dd')> to_date(to_char(sysdate, 'yyyy-mm-dd'), 'yyyy-mm-dd') then to_number(pbtc.time) else 0 end) as A16
+from STATISTIC_COURSES sc
+inner join pe_bzz_tch_course pbtc on sc.fk_course_id = pbtc.id
+inner join (select sc.year, max(sc.month) as month
+               from STATISTIC_COURSES sc
+              group by sc.year) a on a.year = sc.year
+ where sc.month = a.month
+group by sc.year

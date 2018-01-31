@@ -1,0 +1,5 @@
+（测试数据库）删除资源：补考信息
+
+在pe_pri_category 操作：
+
+delete from pe_priority where id = '17003001001' and name = '补考信息' and fk_pri_cat_id = '17003001' and namespace = '/entity/exam' and action = 'peBzzExamAgain' and method = '*'

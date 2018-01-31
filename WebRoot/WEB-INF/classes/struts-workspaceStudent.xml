@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd" >
+<struts>
+	<constant name="struts.custom.i18n.resources" value="resource"></constant>
+	<constant name="struts.multipart.maxSize" value="10485760"/>
+	<constant name="struts.multipart.saveDir" value="/tmp"></constant>
+	<package name="entity.workspaceStudent" extends="struts-default" namespace="/entity/workspaceStudent">
+		<interceptors>
+			<interceptor name="userPriorityInterceptor" class="com.whaty.platform.sso.web.interceptor.UserPriorityInterceptor"></interceptor>
+			<interceptor name="userLoginInterceptor" class="com.whaty.platform.sso.web.interceptor.UserLoginInterceptor"></interceptor>
+			<interceptor name="loggerInterceptor" class="com.whaty.log.LoggerInterceptor"></interceptor>
+
+			<interceptor-stack name="interceptorStack">
+				<interceptor-ref name="userLoginInterceptor"></interceptor-ref>
+				<interceptor-ref name="userPriorityInterceptor"></interceptor-ref>
+				<interceptor-ref name="loggerInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="token">
+					<param name="includeMethods">confirmOrder</param>
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="interceptorStack"></default-interceptor-ref>
+		<global-results>
+			<result name="grid">/test/grid.jsp</result>
+			<result name="json">/test/json.jsp</result>
+			<result name="gridjs">/test/gridjs.jsp</result>
+			<result name="excel">/test/export.jsp</result>
+			<result name="error">/test/error.jsp</result>
+			<result name="msg">/test/msg.jsp</result>
+			<result name="msg_show">/test/msg_show.jsp</result>
+			<result name="stu_msg">/test/stu_msg.jsp</result>
+			<result name="input">/entity/manager/pub/turnToLogin.jsp</result>
+			<result name="invalid.token" type="dispatcher">/error/tokenError.jsp</result>
+		</global-results>
+
+		<action name="prTchStuPaperTitleSelect_*" method="{1}" class="prTchStuPaperTitleSelectManageAction"></action>
+
+		<!-- zhangyu begin -->
+		<action name="peLearntCourseScore_*" method="{1}" class="peLearntCourseScoreAction"></action>
+		<action name="studentLogin_*" method="{1}" class="studentLoginAction">
+			<result name="toLeftMenu">/entity/student/menu.jsp</result>
+		</action>
+		<action name="student_*" method="{1}" class="studentAction">
+			<result name="viewInfo">/entity/student/student_info.jsp</result>
+			<result name="toEdit">/entity/student/student_edit.jsp</result>
+			<result name="editexe">/entity/student/operateresult.jsp</result>
+			<result name="toPassword">/entity/student/student_password_edit.jsp</result>
+			<result name="loginInfo">/entity/student/student_login_view.jsp</result>
+			<result name="toPaperStepSelect">/entity/student/paper_menu.jsp</result>
+			<result name="toLearningCourses">/entity/student/learning_course.jsp</result>
+			<result name="toLearntCourses">/entity/student/learnt_course.jsp</result>
+			<result name="toNotLearnCourses">/entity/student/Notlearn_course.jsp</result>
+			<result name="toPaperOperate">/entity/student/graduation_paper_student_index.jsp</result>
+			<result name="toChangeStudent">/entity/student/apply/schoolroll_change_apply.jsp</result>
+			<result name="toCourseforum">/entity/function/student/courseforum_student.jsp</result>
+		</action>
+		<action name="studentSyllabus_*" method="{1}" class="studentSyllabusAction">
+			<param name="savePath">/incoming/paper/syllabus</param>
+			<result name="toUpload">/entity/student/paper_syllabus.jsp</result>
+			<result name="operateResult">/entity/student/operateresult.jsp</result>
+			<result name="toDownloadTeacherPiGai">/entity/teacher/downloadSyllabusPiGai.jsp</result>
+			<result name="toDownloadSyllabus">/entity/teacher/downloadSyllabus.jsp</result>
+		</action>
+		<action name="studentDraftA_*" method="{1}" class="studentDraftAAction">
+			<param name="savePath">/incoming/paper/draftA</param>
+			<result name="toUpload">/entity/student/paper_draftA.jsp</result>
+			<result name="operateResult">/entity/student/operateresult.jsp</result>
+			<result name="toDownloadTeacherPiGai">/entity/teacher/downloadDraftAPiGai.jsp</result>
+			<result name="toDownloadDraftA">/entity/teacher/downloadDraftA.jsp</result>
+		</action>
+		<action name="studentFinal_*" method="{1}" class="studentFinalAction">
+			<param name="savePath">/incoming/paper/final</param>
+			<result name="toUpload">/entity/student/paper_final.jsp</result>
+			<result name="operateResult">/entity/student/operateresult.jsp</result>
+			<result name="toDownloadFinal">/entity/teacher/downloadFinal.jsp</result>
+		</action>
+		<action name="studentElective_*" method="{1}" class="studentElectiveAction">
+			<result name="main">/entity/student/studentElective.jsp</result>
+			<result name="operateResult">/entity/student/operateresult.jsp</result>
+			<result name="toProgram">/entity/student/teach_plan_list.jsp</result>
+		</action>
+		<action name="studentFee_*" method="{1}" class="studentFeeAction">
+			<result name="toDetail">/entity/student/studentFeeDetail.jsp</result>
+		</action>
+		<!-- zhangyu end -->
+		<action name="apply_*" method="{1}" class="applyAction">
+			<result name="graduate_apply">/entity/student/apply/graduate_apply.jsp</result>
+			<result name="message">/test/msg.jsp</result>
+			<result name="applyMenu">/entity/student/apply_menu.jsp</result>
+			<result name="toPaperReapply">/entity/student/apply/paper_reapply.jsp</result>
+			<result name="toDegreeEnglish">/entity/student/apply/degree_english_exam_apply.jsp</result>
+		</action>
+		<action name="applyExcellent_*" method="{1}" class="applyExcellentAction">
+			<result name="excellent_apply">/entity/student/apply/excellent_apply.jsp</result>
+		</action>
+		<action name="mainCourseScoreChangeApply_*" method="{1}" class="mainCourseScoreChangeApplyAction">
+			<result name="toApply">/entity/student/apply/maincourse_score_change_apply.jsp</result>
+		</action>
+		<action name="examScoreChangeApply_*" method="{1}" class="examScoreChangeApplyAction">
+			<result name="toApply">/entity/student/apply/exam_score_change_apply.jsp</result>
+		</action>
+		<action name="prExamReserver_*" method="{1}" class="prExamReserverAction">
+			<result name="examCourseList">/entity/student/exam_reserver_course.jsp</result>
+			<result name="examReserverMenu">/entity/student/exam_reserver_menu.jsp</result>
+		</action>
+		<action name="prExamReserverView_*" method="{1}" class="prExamReserverViewAction">
+			<result name="viewExamCourseList">/entity/student/exam_reserver_view.jsp</result>
+		</action>
+		<action name="mainCourseReserverView_*" method="{1}" class="mainCourseReserverViewAction">
+			<result name="viewMainCourse">/entity/student/main_course_view.jsp</result>
+		</action>
+		<action name="peLearningCourseScore_*" method="{1}" class="peLearningCourseScoreAction">
+			<result name="oldCourseScore">/entity/student/old_course_score.jsp</result>
+			<result name="otherCourseScore">/entity/student/otherCourseScore.jsp</result>
+			<result name="scoreMenu">/entity/student/exam_score_menu.jsp</result>
+		</action>
+		<action name="prExamDetail_*" method="{1}" class="prExamDetailAction">
+			<result name="examDetail">/entity/student/exam_detail.jsp</result>
+		</action>
+		<action name="mainCourseReserver_*" method="{1}" class="mainCourseReserverAction">
+			<result name="reserver">/entity/student/maincourse_reserver.jsp</result>
+		</action>
+		<action name="stuPeBulletinView_*" method="{1}" class="stuPeBulletinViewAction">
+			<result name="studentindex">/entity/bzz-students/student_announce.jsp</result>
+			<result name="studentindex1">/entity/bzz-students/pub/stu_index.jsp</result>
+			<result name="info">/web/news/student_bulletin_detail.jsp</result>
+			<result name="allPebulletins">/entity/bzz-students/student_pebulletinList.jsp</result>
+			<result name="detailcourse">/entity/bzz-students/student_courseList.jsp</result>
+		</action>
+		<action name="examAvoid_*" method="{1}" class="examAvoidAction">
+			<result name="avoidExam">/entity/student/apply/exam_course_avoid.jsp</result>
+		</action>
+		<action name="uniteExamAvoid_*" method="{1}" class="uniteExamAvoidAction">
+			<result name="menu">/entity/student/apply/recruit_no_exam.jsp</result>
+			<result name="avoidComputer">/entity/student/apply/avoid_computer.jsp</result>
+			<result name="avoidEnglishB">/entity/student/apply/avoid_englishB.jsp</result>
+			<result name="avoidEnglishA">/entity/student/apply/avoid_englishA.jsp</result>
+		</action>
+		<!-- gaoyuan begin -->
+		<action name="bzzstudent_*" method="{1}" class="bzzstudentAction">
+			<result name="success">/entity/bzz-students/success.jsp</result>
+			<result name="paymentMethod">/entity/bzz-students/stu_comfirm_payment.jsp</result>
+			<result name="payment">/entity/bzz-students/stu_confirm_order.jsp</result>
+			<result name="toaccountbalance">/entity/bzz-students/accountbalance.jsp</result>
+			<result name="tospecialenrolment">/entity/bzz-students/specialenrolment.jsp</result>
+			<result name="viewInfo">/entity/student/student_info.jsp</result>
+			<result name="toEdit">/entity/student/student_edit.jsp</result>
+			<result name="editexe">/entity/bzz-students/operateresult.jsp</result>
+			<result name="loginInfo">/entity/student/student_login_view.jsp</result>
+			<result name="toPaperStepSelect">/entity/student/paper_menu.jsp</result>
+			<result name="toJiChuCourses">/entity/bzz-students/student_course_jichu.jsp</result>
+			<result name="toTiShengCourses">/entity/bzz-students/student_course_tisheng.jsp</result>
+			<result name="toHangYeCourses">/entity/bzz-students/student_course_hangye.jsp</result>
+			<result name="toLearntCourses">/entity/bzz-students/student_elective.jsp</result>
+			<result name="toLearntTishengCourses">/entity/bzz-students/student_elective_tisheng.jsp</result>
+			<result name="toZiceCourses">/entity/bzz-students/student_zice.jsp</result>
+			<result name="toZiceTishengCourses">/entity/bzz-students/student_zice_tisheng.jsp</result>
+			<result name="toPingguCourses">/entity/bzz-students/student_pinggu.jsp</result>
+			<result name="toPingguTishengCourses">/entity/bzz-students/student_pinggu_tisheng.jsp</result>
+			<result name="toNotLearnCourses">/entity/student/Notlearn_course.jsp</result>
+			<result name="toPaperOperate">/entity/student/graduation_paper_student_index.jsp</result>
+			<result name="toChangeStudent">/entity/student/apply/schoolroll_change_apply.jsp</result>
+			<result name="toCourseforum">/entity/function/student/courseforum_student.jsp</result>
+			<result name="voteList">/entity/bzz-students/student_vote.jsp</result>
+			<result name="studentinfo">/entity/bzz-students/student_info.jsp</result>
+			<result name="exam_studentinfo">/entity/bzz-students/exam_student_info.jsp</result>
+			<result name="exam_student">/entity/bzz-students/exam/exam_student_info.jsp</result>
+			<result name="late_introduction">/entity/bzz-students/late_introduction.jsp</result>
+			<result name="late_introduct">/entity/bzz-students/exam/late_introduction.jsp</result>
+			<result name="late_introductionn">/entity/bzz-students/exam/late_introductionn.jsp</result>
+			<result name="late_studentinfo">/entity/bzz-students/late_student_info.jsp</result>
+			<result name="late_student">/entity/bzz-students/exam/late_student_info.jsp</result>
+			<result name="late_status">/entity/bzz-students/late_status.jsp</result>
+			<result name="late_sta">/entity/bzz-students/exam/late_status.jsp</result>
+			<result name="late_statusn">/entity/bzz-students/exam/late_statusn.jsp</result>
+			<result name="exam_statusn">/entity/bzz-students/exam/exam_statusn.jsp</result>
+			<result name="cancel_Baoming">/entity/bzz-students/cancel_baoming.jsp</result>
+			<result name="cancel_Bao">/entity/bzz-students/exam/cancel_baoming.jsp</result>
+			<result name="cancel_late">/entity/bzz-students/cancel_late.jsp</result>
+			<result name="cancel_la">/entity/bzz-students/exam/cancel_late.jsp</result>
+			<result name="examBatch">/entity/bzz-students/examBatch.jsp</result>
+			<result name="examBat">/entity/bzz-students/exam/examBatch.jsp</result>
+			<result name="exam">/entity/bzz-students/to_baoming.jsp</result>
+			<result name="noexam">/entity/bzz-students/no_baoming.jsp</result>
+			<result name="totrain">/entity/bzz-students/student_train.jsp</result>
+			<result name="toFreeCourses">/entity/bzz-students/free_courses.jsp</result>
+			<result name="tolearnreview">/entity/bzz-students/learnreview.jsp</result>
+			<result name="tositeemail">/entity/bzz-students/siteemail.jsp</result>
+			<result name="noex">/entity/bzz-students/exam/no_baoming.jsp</result>
+			<result name="noLate">/entity/bzz-students/no_late.jsp</result>
+			<result name="noLa">/entity/bzz-students/exam/no_late.jsp</result>
+			<result name="examSites">/entity/bzz-students/examSites.jsp</result>
+			<result name="examSi">/entity/bzz-students/exam/examSites.jsp</result>
+			<result name="toPassword">/entity/bzz-students/student_password_edit.jsp</result>
+			<result name="toliveroom">/entity/bzz-students/student_liveroom.jsp</result>
+			<result name="toqueryselectcourse">/entity/bzz-students/student_queryselectcourse.jsp</result>
+			<result name="tohistoryrecord">/entity/bzz-students/student_historyrecord.jsp</result>
+			<result name="tomodifyinfo">/entity/bzz-students/student_info_edit.jsp</result>
+			<result name="toUpdatePhoto">/entity/bzz-students/student_update_photo.jsp</result>
+			<result name="tomodifyinfon">/entity/bzz-students/exam/student_info.jsp</result>
+			<result name="tonewcourse">/entity/bzz-students/student_newcourse.jsp</result>
+			<result name="toAgaginmodifyinfon">/entity/bzz-students/exam/student_again_info.jsp</result>
+			<result name="tolatemodifyinfon">/entity/bzz-students/exam/latestudent_info.jsp</result>
+			<result name="noBaoming">/entity/bzz-students/noBaoMing.jsp</result>
+			<result name="noExamLate">/entity/bzz-students/noExamLate.jsp</result>
+			<result name="exam_tomodifyinfo">/entity/bzz-students/exam_student_info_edit.jsp</result>
+			<result name="exam_tomodify">/entity/bzz-students/exam/exam_student_info_edit.jsp</result>
+			<result name="exam_tomodifyn">/entity/bzz-students/exam/exam_student_info_edit_n.jsp</result>
+			<result name="exam_toinfomodify">/entity/bzz-students/exam/exam_student_infoedit.jsp</result>
+			<result name="late_toinfomodify">/entity/bzz-students/exam/late_student_infoedit.jsp</result>
+			<result name="exam_toIntroduce">/entity/bzz-students/exam/exam_introduce.jsp</result>
+			<result name="exam_toAgainIntroduce">/entity/bzz-students/exam/exam_again_introduce.jsp</result>
+			<result name="late_tomodifyinfo">/entity/bzz-students/late_student_info_edit.jsp</result>
+			<result name="late_tomodify">/entity/bzz-students/exam/late_student_info_edit.jsp</result>
+			<result name="baoming_success">/entity/bzz-students/baoming_success.jsp</result>
+			<result name="confirmPhoto_success">/entity/bzz-students/confirm_success.jsp</result>
+			<result name="baoming_succ">/entity/bzz-students/exam/baoming_introduce.jsp</result>
+			<result name="baoming_introduce">/entity/bzz-students/exam/baoming_introduce.jsp</result>
+			<result name="late_introduce">/entity/bzz-students/exam/late_introduce.jsp</result>
+			<result name="baoming_toExamInfo">/entity/bzz-students/exam/baoming_toExamInfo.jsp</result>
+			<result name="late_toExamInfo">/entity/bzz-students/exam/late_toExamInfo.jsp</result>
+			<result name="late_success">/entity/bzz-students/late_success.jsp</result>
+			<result name="late_succ">/entity/bzz-students/exam/late_success.jsp</result>
+			<result name="late_successn">/entity/bzz-students/exam/late_introduce.jsp</result>
+			<result name="wait">/entity/bzz-students/wait.jsp</result>
+			<result name="wa">/entity/bzz-students/exam/wait.jsp</result>
+			<result name="reset">/entity/bzz-students/exam/reset.jsp</result>
+			<result name="modifyInfo">/entity/bzz-students/InfoMessage.jsp</result>
+			<result name="exam_modifyInfo">/entity/bzz-students/exam_infoMessage.jsp</result>
+			<result name="exam_modifyIn">/entity/bzz-students/exam/exam_infoMessage.jsp</result>
+			<result name="exam_modifyInfoN">/entity/bzz-students/exam/exam_infoMessageN.jsp</result>
+			<result name="late_modifyInfoN">/entity/bzz-students/exam/late_infoMessageN.jsp</result>
+			<result name="late_modifyInfo">/entity/bzz-students/late_infoMessage.jsp</result>
+			<result name="late_modify">/entity/bzz-students/exam/late_infoMessage.jsp</result>
+			<result name="toStuForum">/entity/function/student/forum_student.jsp</result>
+			<result name="firstlogin">/entity/bzz-students/student_firstlogin.jsp</result>
+			<result name="modifyRecruitError">/entity/bzz-students/student_checkerror.jsp</result>
+			<result name="modifyRecruitExist">/entity/bzz-students/student_checkexist.jsp</result>
+			<result name="toOnlineCourses">/entity/bzz-students/student_online_courses.jsp</result>
+			<result name="toHistoryOnlineCourses">/entity/bzz-students/student_history_online_courses.jsp</result>
+			<result name="toSimulatedExam">/entity/bzz-students/student_simulated_exam.jsp</result>
+			<result name="toSimulatedEx">/entity/bzz-students/exam/student_simulated_exam.jsp</result>
+			<result name="toExamCard">/entity/bzz-students/student_exam_card.jsp</result>
+			<result name="toExamCa">/entity/bzz-students/exam/student_exam_card.jsp</result>
+			<result name="toStudentScore">/entity/bzz-students/student_score.jsp</result>
+			<result name="toStudentSco">/entity/bzz-students/exam/student_score.jsp</result>
+			<result name="toCertificate">/entity/bzz-students/student_certificate.jsp</result>
+			<result name="toCertifi">/entity/bzz-students/exam/student_certificate.jsp</result>
+			<result name="toExamExplain">/entity/bzz-students/student_exam_explain.jsp</result>
+			<result name="toExamEx">/entity/bzz-students/exam/student_exam_explain.jsp</result>
+			<result name="toExamIdentity">/entity/bzz-students/exam/student_exam_identity.jsp</result>
+			<result name="toIndex">/entity/bzz-students/exam/index.jsp</result>
+			<result name="toExamIndex">/entity/bzz-students/exam/exam_index.jsp</result>
+			<result name="toExamNotice">/entity/bzz-students/student_exam_notice.jsp</result>
+			<result name="toExamNoti">/entity/bzz-students/exam/student_exam_notice.jsp</result>
+			<result name="toExamTutor">/entity/bzz-students/student_exam_tutor.jsp</result>
+			<result name="toExamTu">/entity/bzz-students/exam/student_exam_tutor.jsp</result>
+			<result name="exam_index_middle">/entity/bzz-students/exam/exam_index_middle.jsp</result>
+			<result name="exam_siteexplain">/entity/bzz-students/exam/student_exam_site_explain.jsp</result>
+			<result name="exam_again_success">/entity/bzz-students/exam/baoming_again_success.jsp</result>
+			<result name="backIndex">/entity/bzz-students/exam/backIndex.jsp</result>
+
+			<result name="toPrintTestcard">/entity/bzz-students/exam/print_testcard.jsp</result>
+			<result name="feedbackList">/entity/bzz-students/feedback.jsp</result>
+			<result name="feedbackAdd">/entity/bzz-students/feedback_add.jsp</result>
+			<result name="toFeedbackDetail">/entity/bzz-students/feedback_detail.jsp</result>
+			<result name="selectcourselist">/entity/bzz-students/selectcourselist.jsp</result>
+			<result name="trainview">/entity/bzz-students/trainview.jsp</result>
+		</action>
+		<!-- gaoyuan end -->
+
+		<!-- 课程评估 -->
+		<action name="bzzAssess_*" method="{1}" class="bzzAssessAction">
+			<result name="toAssess">/entity/bzz-students/student_assess.jsp</result>
+			<result name="todetailAssessing">/entity/bzz-students/student_detailassess.jsp</result>
+			<result name="Assessing">/entity/bzz-students/student_message.jsp</result>
+			<result name="updateAssess">/entity/bzz-students/student_message.jsp</result>
+			<result name="AccessError">/entity/bzz-students/accessError.jsp</result>
+		</action>
+
+		<action name="bzzOlineCourseTwy_*" method="{1}" class="bzzOlineCourseTwyAction">
+			<result name="AddSuccess" type="redirect">/entity/workspaceStudent/bzzOlineCourseTwy_getQuerstionList.action</result>
+			<result name="success">/web/bzz_index/zhibo/twy/twy.jsp</result>
+			<result name="ErrorMessage">/web/bzz_index/zhibo/twy/errorMessage.jsp</result>
+		</action>
+		
+		<action name="studentWorkspace_*" method="{1}" class="studentWorkspaceAction">
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">
+					  application/msword,application/pdf,application/vnd.ms-powerpoint,image/jpeg,image/pjpeg,image/jpg,
+					  application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.presentationml.presentation
+				</param>
+				<param name="fileUpload.allowedExtensions">jpg,doc,docx,ppt,pptx,pdf</param>
+				<param name="maximumSize">2097152</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			<result name="input">/entity/bzz-students/upload_error.jsp</result>
+			<result name="sessionNull">/error/priv_error.htm</result>
+			<result name="viewlive">/entity/bzz-students/viewlive.jsp</result>
+			<result name="viewOrder">/entity/bzz-students/view_stu_order.jsp</result>
+			<result name="index">/entity/bzz-students/pub/stu_index.jsp</result>
+			<result name="toViewElective">/entity/workspaceStudent/studentWorkspace_viewElectiveOrder.action</result>
+			<result name="success">/entity/bzz-students/success.jsp</result>
+			<result name="paymentMethod">/entity/bzz-students/stu_comfirm_payment.jsp</result>
+			<result name="payment">/entity/bzz-students/stu_confirm_order.jsp</result>
+			<result name="toaccountbalance">/entity/bzz-students/accountbalance.jsp</result>
+			<result name="tospecialenrolment">/entity/bzz-students/specialenrolment.jsp</result>
+			<result name="viewInfo">/entity/student/student_info.jsp</result>
+			<result name="toEdit">/entity/student/student_edit.jsp</result>
+			<result name="editexe">/entity/bzz-students/operateresult.jsp</result>
+			<result name="loginInfo">/entity/student/student_login_view.jsp</result>
+			<result name="toJiChuCourses">/entity/bzz-students/student_course_jichu.jsp</result>
+			<result name="toLearntCourses">/entity/bzz-students/student_elective.jsp</result>
+			<result name="toLearntTishengCourses">/entity/bzz-students/student_elective_tisheng.jsp</result>
+			<result name="toNotLearnCourses">/entity/student/Notlearn_course.jsp</result>
+			<result name="toChangeStudent">/entity/student/apply/schoolroll_change_apply.jsp</result>
+			<result name="voteList">/entity/bzz-students/student_vote.jsp</result>
+			<result name="studentinfo">/entity/bzz-students/student_info.jsp</result>
+			<result name="learningCourses">/entity/bzz-students/learning_courses.jsp</result>
+			<result name="freeCourses">/entity/bzz-students/free_courses.jsp</result>
+			<result name="internal">/entity/bzz-students/internal.jsp</result><!-- 公司内训课程报名 Lzh -->
+			<result name="ziliao">/entity/bzz-students/ziliao.jsp</result><!-- 资料库 Lzh -->
+			<result name="courseInfo">/entity/bzz-students/resourceList.jsp</result><!-- 资料库详情 Lzh -->
+			<result name="toPeResourcecourse">/entity/bzz-students/peResourceCourse.jsp</result><!-- 资料库相关课程 Lzh -->
+			<result name="completedCourses">/entity/bzz-students/completed_courses.jsp</result>
+			<result name="tositeemail">/entity/bzz-students/siteemail.jsp</result>
+			<result name="modifyPassEmail">/entity/bzz-students/InfoMessage.jsp</result>
+			<result name="status">/entity/function/lore/status.jsp</result>
+			<result name="toPassword">/entity/bzz-students/student_password_edit.jsp</result>
+			<result name="toqueryselectcourse">/entity/bzz-students/student_queryselectcourse.jsp</result>
+			<result name="electiveCoursePeriod">/entity/bzz-students/ele_course_period.jsp</result>
+			<result name="tohistoryrecord">/entity/bzz-students/student_historyrecord.jsp</result>
+			<result name="toSacLive">/entity/bzz-students/student_toSacLive.jsp</result>
+			<result name="toSacLiveStudy">/entity/bzz-students/student_toSacLiveStudy.jsp</result>
+			<result name="tomodifyinfo">/entity/bzz-students/student_info_edit.jsp</result>
+			<result name="tomodifyEmail">/entity/bzz-students/student_email_edit.jsp</result>
+			<result name="toUpdatePhoto">/entity/bzz-students/student_update_photo.jsp</result>
+			<result name="tomodifyinfon">/entity/bzz-students/exam/student_info.jsp</result>
+			<result name="tonewcourse">/entity/bzz-students/student_newcourse.jsp</result>
+			<result name="noBaoming">/entity/bzz-students/noBaoMing.jsp</result>
+			<result name="baoming_success">/entity/bzz-students/baoming_success.jsp</result>
+			<result name="confirmPhoto_success">/entity/bzz-students/confirm_success.jsp</result>
+			<result name="wait">/entity/bzz-students/wait.jsp</result>
+			<result name="modifyInfo">/entity/bzz-students/InfoMessage.jsp</result>
+			<result name="toStuForum">/entity/function/student/forum_student.jsp</result>
+			<result name="toCourseforum">/entity/function/student/courseforum_student.jsp</result>
+			<result name="firstlogin">/entity/bzz-students/student_firstlogin.jsp</result>
+			<result name="toOnlineCourses">/entity/bzz-students/student_online_courses.jsp</result>
+			<result name="toHistoryOnlineCourses">/entity/bzz-students/student_history_online_courses.jsp</result>
+			<result name="backIndex">/entity/bzz-students/exam/backIndex.jsp</result>
+			<result name="selectcourselist">/entity/bzz-students/selectcourselist.jsp</result>
+			<result name="viewElectiveOrder">/entity/bzz-students/view_elective_order.jsp</result>
+			<result name="trainview">/entity/bzz-students/trainview.jsp</result>
+			<result name="confirmOrder">/entity/bzz-students/confirmAndPay_order.jsp</result>
+			<!--<result name="confirmOrder">/entity/bzz-students/confirm_order.jsp</result>-->
+			<result name="confirmPaymentMethod">/entity/bzz-students/confirm_payment_method.jsp</result>
+			<result name="elecourse">/entity/bzz-students/ele_course.jsp</result>
+			<result name="batchcourse">/entity/bzz-students/batch_course.jsp</result>
+			<result name="batchPbtcs">/entity/bzz-students/batchPbtcs.jsp</result>
+			<result name="viewbatchcourse">/entity/bzz-students/batch_course_view.jsp</result>
+			<result name="welcome">/entity/bzz-students/welcome.jsp</result>
+			<result name="new_welcome">/entity/bzz-students/new_welcome.jsp</result>
+			<result name="onlinePayment" type="redirect">/entity/basic/onlinePayment_electiveBank.action</result>
+			<result name="refundApply">/entity/bzz-students/student_refund_apply.jsp</result>
+			<result name="viewReason">/entity/bzz-students/view_reason.jsp</result>
+			<result name="toApplyInvoice">/entity/bzz-students/apply_invoice.jsp</result>
+			<result name="viewOrderInfo">/entity/bzz-students/view_order_info.jsp</result>
+			<result name="stuOnlinePaied">/entity/bzz-students/stuOnlinePaiedMsg.jsp</result>
+			<result name="stuPreAccountPaied">/entity/bzz-students/stuPreAccountPaiedMsg.jsp</result>
+			<result name="teacherInfo">/entity/function/teachernote_list.jsp</result>
+			<result name="toPassedCourses">/entity/bzz-students/passed_courses.jsp</result>
+			<result name="incompleteCoursePayment">/entity/workspaceStudent/studentWorkspace_paymentCourse.action</result>
+			<result name="seekInvoice">/entity/bzz-students/modify_invoice.jsp</result>
+			<!-- 在线考试start -->
+			<result name="firstOnlineExam">/entity/bzz-students/student_onlineExam.jsp</result>
+			<!-- 在线考试end -->
+			<!-- 问题及建议 -->
+			<result name="questionAdvice">/entity/bzz-students/questionAdvice.jsp</result>
+			<result name="addQuestionAdvice">/entity/bzz-students/addQuestionAdvice.jsp</result>
+			<result name="showQuestionAdvice">/entity/bzz-students/showQuestionAdvice.jsp</result>
+			<result type="stream">
+				<param name="contentType">application/octet-stream</param>
+				<param name="inputName">inputStream</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="bufferSize">1024</param>
+			</result>
+			<!-- 李文强 2014-10-26 常见问题 -->
+			<result name="frequentlyQuestion">/entity/bzz-students/frequentlyQuestion.jsp</result>
+			<result name="showQuestion">/entity/bzz-students/showQuestion.jsp</result>
+			<!-- 在线直播详细信息 -->
+			<result name="sacLiveView">/entity/bzz-students/sacLiveView.jsp</result>
+			<!-- 看直播 -->
+			<result name="liveStudy">/entity/bzz-students/sacLive.jsp</result>
+			<!-- 直播学习详情 -->
+			<result name="showDetail">/entity/bzz-students/showDetail.jsp</result>
+			<!-- 资料库上传资料 lwq 2016-02-29 -->
+			<result name="toUploadResource">/entity/bzz-students/uploadResource.jsp</result>
+			<result name="showResource">/entity/bzz-students/myResource.jsp</result>
+			<!-- 合并订单申请发票 -->
+			<result name="toMergeApplyInvoice">/entity/workspaceStudent/studentWorkspace_toApplyInvoice.action?id=${id}&amp;amount=${amount}</result>
+			<result name="toCreditNote">/entity/bzz-students/creditNote.jsp</result>
+			<result name="viewInvoiceInfo">/entity/bzz-students/viewInvoiceDetail.jsp</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,10 @@
+update pe_pri_category set name='学习情况查询' where name='一般课程查询';//左侧功能列表中“一般课程查询”改为“学习情况查询”
+
+//下面两条改标签：一般课程查询：标签统一格式，均改为“学员——课程”、“课程——学员
+update pe_pri_category set name='学员——课程' where id='40288acf39b430650139b44563610003';
+update pe_pri_category set name='课程——学员' where id='40288acf39b430650139b4462a790004';
+
+//下面3条是修改其下的具体权限
+update pe_priority set name='学习情况查询_*' where id='40284a8136cd5bee0136cdccf8fb0004'; 
+update pe_priority set name='学习情况查询学员到课程_*' where id='40288acf3aa215a2013aa217f4640001'; 
+update pe_priority set name='学习情况查询课程到学员列表_' where id='40288acf3aa1c2fd013aa1c6eea10001'; 

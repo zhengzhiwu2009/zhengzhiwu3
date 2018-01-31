@@ -1,0 +1,99 @@
+create or replace view report_rel_new_typ as
+select sc.year,
+       sum(case
+             when pbtc.flag_coursetype = '402880f32200c249012200c780c40001' and (to_char(pbtc.create_date, 'yyyy') = sc.year) then
+              1
+             else
+              0
+           end) as A1, --必修
+       sum(case
+             when pbtc.flag_coursetype = '402880f32200c249012200c780c40001' and (to_char(pbtc.create_date, 'yyyy') = sc.year) then
+              to_number(pbtc.time)
+             else
+              0
+           end) as A2,
+       sum(case
+             when pbtc.flag_coursetype = '402880f32200c249012200c7f8b30002' and (to_char(pbtc.create_date, 'yyyy') = sc.year) then
+              1
+             else
+              0
+           end) as A3, --选修
+       sum(case
+             when pbtc.flag_coursetype = '402880f32200c249012200c7f8b30002' and (to_char(pbtc.create_date, 'yyyy') = sc.year) then
+              to_number(pbtc.time)
+             else
+              0
+           end) as A4,
+       0 as A5,
+       0 as A6,
+       sum(case
+             when to_char(pbtc.create_date, 'yyyy') = sc.year then
+              1
+             else
+              0
+           end) as A7,
+       sum(case
+             when to_char(pbtc.create_date, 'yyyy') = sc.year then
+              to_number(pbtc.time)
+             else
+              0
+           end) as A8,
+           --
+          case when 
+                (
+                sum(case when to_char(pbtc.create_date, 'yyyy') = sc.year then 1 else 0 end) 
+                 - 
+                sum(case when to_number(to_char(pbtc.create_date, 'yyyy')) = (to_number(sc.year) - 1) then 1 else 0 end)
+                 ) = 0 then 0     
+                 when    
+                      (
+               sum(case when to_char(pbtc.create_date, 'yyyy') = sc.year then 1 else 0 end) 
+               - 
+               sum(case when to_number(to_char(pbtc.create_date, 'yyyy')) = (to_number(sc.year) - 1) then 1 else 0 end)
+                      ) <> 0
+                      
+                    and   
+                      sum(case when to_number(to_char(pbtc.create_date, 'yyyy')) = (to_number(sc.year) - 1) then 1 else 0 end) = 0 then 1 
+               else 
+               (
+               sum(case when to_char(pbtc.create_date, 'yyyy') = sc.year then 1 else 0 end) 
+               - 
+               sum(case when to_number(to_char(pbtc.create_date, 'yyyy')) = (to_number(sc.year) - 1) then 1 else 0 end)
+                      ) / sum(case when to_number(to_char(pbtc.create_date, 'yyyy')) = (to_number(sc.year) - 1) then 1 else 0 end)
+               end
+             as A9,
+             
+              
+             case when 
+                (
+                sum(case when to_char(pbtc.create_date, 'yyyy') = sc.year then to_number(pbtc.time) else 0 end) 
+                 - 
+                sum(case when to_number(to_char(pbtc.create_date, 'yyyy')) = (to_number(sc.year) - 1) then to_number(pbtc.time) else 0 end)
+                 ) = 0 then 0     
+                 when    
+                      (
+               sum(case when to_char(pbtc.create_date, 'yyyy') = sc.year then to_number(pbtc.time) else 0 end) 
+               - 
+               sum(case when to_number(to_char(pbtc.create_date, 'yyyy')) = (to_number(sc.year) - 1) then to_number(pbtc.time) else 0 end)
+                      ) <> 0
+                      
+                    and   
+                      sum(case when to_number(to_char(pbtc.create_date, 'yyyy')) = (to_number(sc.year) - 1) then to_number(pbtc.time) else 0 end) = 0 then 1 
+               else 
+               (
+               sum(case when to_char(pbtc.create_date, 'yyyy') = sc.year then to_number(pbtc.time) else 0 end) 
+               - 
+               sum(case when to_number(to_char(pbtc.create_date, 'yyyy')) = (to_number(sc.year) - 1) then to_number(pbtc.time) else 0 end)
+                      ) / sum(case when to_number(to_char(pbtc.create_date, 'yyyy')) = (to_number(sc.year) - 1) then to_number(pbtc.time) else 0 end)
+               end
+             as A10    
+                              
+
+
+  from STATISTIC_COURSES sc
+ inner join pe_bzz_tch_course pbtc on sc.fk_course_id = pbtc.id
+ inner join (select sc.year, max(sc.month) as month
+               from STATISTIC_COURSES sc
+              group by sc.year) a on a.year = sc.year
+ where sc.month = a.month
+ group by sc.year

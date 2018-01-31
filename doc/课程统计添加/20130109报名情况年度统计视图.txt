@@ -1,0 +1,28 @@
+create or replace view REPORT_LNT_ENT as
+ select a.A1, a.A2, nvl(b.A3, 0) as A3, nvl(c.A4, 0) as A4, nvl(d.A5, 0) as A5, nvl(e.A6, 0) as A6, nvl(f.A7, 0) as A7 from 
+ (select pbtc.id as id, pbtc.code as A1, pbtc.name as A2 from pe_bzz_tch_course pbtc)  a
+ left join 
+ (
+  select sc.fk_course_id as id, sum(nvl(sc.study_total_times, 0)) as A3 from STATISTIC_COURSEs sc where sc.year = '2008' group by sc.fk_course_id
+ 
+ ) b on a.id = b.id
+ left join 
+ (
+  select sc.fk_course_id as id, sum(nvl(sc.study_total_times, 0)) as A4 from STATISTIC_COURSEs sc where sc.year = '2009' group by sc.fk_course_id
+ ) c on c.id = a.id
+  left join 
+ (
+  select sc.fk_course_id as id, sum(nvl(sc.study_total_times, 0)) as A5 from STATISTIC_COURSEs sc where sc.year = '2010' group by sc.fk_course_id
+ ) d on d.id = a.id
+  left join 
+ (
+  select sc.fk_course_id as id, sum(nvl(sc.study_total_times, 0)) as A6 from STATISTIC_COURSEs sc where sc.year = '2011' group by sc.fk_course_id
+ ) e on e.id = a.id
+  left join 
+ (
+  select sc.fk_course_id as id, sum(nvl(sc.study_total_times, 0)) as A7 from STATISTIC_COURSEs sc where sc.year = '2012' group by sc.fk_course_id
+ ) f on f.id = a.id
+ 
+   
+   
+  

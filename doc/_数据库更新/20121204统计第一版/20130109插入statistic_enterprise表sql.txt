@@ -1,0 +1,1559 @@
+--插入年、月、机构id
+insert into statistic_enterprise
+  (id, year, month, fk_enterprise_id)
+  select SEQ_STATISTIC_ID.NEXTVAL,
+         to_char(trunc(sysdate - 1), 'yyyy'),
+         to_char(trunc(sysdate - 1), 'MM'),
+         id
+    from pe_enterprise
+   where fk_parent_id is null
+     and id not in
+         (select se.fk_enterprise_id
+            from statistic_enterprise se
+           where se.year = to_char(trunc(sysdate - 1), 'yyyy')
+             and se.month = to_char(trunc(sysdate - 1), 'MM'));
+             
+--更新机构类型
+update statistic_enterprise ww
+   set ww.enterprise_type = (select pe.entype
+                               from pe_enterprise pe
+                              where ww.fk_enterprise_id = pe.id(+))
+ where ww.year = to_char(trunc(sysdate - 1), 'yyyy')
+   and ww.month = to_char(trunc(sysdate - 1), 'MM');
+   
+--注册机构新增
+update statistic_enterprise ww
+   set ww.reg_enterprise_num = (select b.num
+                                  from (select count(pe.id) num,
+                                               pe.entype as enType
+                                          from pe_enterprise pe
+                                         where to_char(nvl(pe.data_date,
+                                                           to_date('1900-01-01 00:00:00',
+                                                                   'yyyy-MM-dd hh24:mi:ss')),
+                                                       'yyyy-MM') =
+                                               to_char(trunc(sysdate-1), 'yyyy-MM')
+                                         group by pe.entype) b
+                                 where ww.enterprise_type = b.enType)
+ where ww.year = to_char(trunc(sysdate-1), 'yyyy')
+   and ww.month = to_char(trunc(sysdate-1), 'MM');
+--注册机构累计
+update statistic_enterprise ww
+   set ww.reg_enterprise_count = (select b.num
+                                    from (select count(pe.id) as num,
+                                                 pe.entype as enType
+                                            from pe_enterprise pe
+                                           group by pe.entype) b
+                                   where ww.enterprise_type = b.enType)
+ where ww.year = to_char(trunc(sysdate-1), 'yyyy')
+   and ww.month = to_char(trunc(sysdate-1), 'MM');
+   
+--注册人数累计
+update statistic_enterprise ww
+   set ww.reg_user_count = (select count(pbs.id)
+                              from pe_bzz_student pbs, pe_enterprise pe
+                             where pbs.fk_enterprise_id = pe.id
+                               and pe.fk_parent_id is null
+                               and ww.fk_enterprise_id = pe.id group by pe.id)
+ where ww.year = to_char(trunc(sysdate-1), 'yyyy')
+   and ww.month = to_char(trunc(sysdate-1), 'MM');
+ 
+--注册人数新增
+update statistic_enterprise ww
+   set ww.reg_user_num = (select sum(bb.num)
+                            from (select b.num as num, b.enId as enId
+                                    from (select count(pbs.id) as num,
+                                                 pe.id as enId
+                                            from pe_bzz_student pbs,
+                                                 pe_enterprise  pe
+                                           where to_char(nvl(pbs.data_date,
+                                                             to_date('1900-01-01 00:00:00',
+                                                                     'yyyy-MM-dd hh24:mi:ss')),
+                                                         'yyyy-MM') =
+                                                 to_char(trunc(sysdate-1), 'yyyy-MM')
+                                             and pbs.fk_enterprise_id = pe.id
+                                             and pe.fk_parent_id is null
+                                           group by pe.id) b
+                                  union all
+                                  select b.num as num, b.enId as enId
+                                    from (select count(pbs.id) as num,
+                                                 pe.fk_parent_id as enId
+                                            from pe_bzz_student pbs,
+                                                 pe_enterprise  pe
+                                           where to_char(nvl(pbs.data_date,
+                                                             to_date('1900-01-01 00:00:00',
+                                                                     'yyyy-MM-dd hh24:mi:ss')),
+                                                         'yyyy-MM') =
+                                                 to_char(trunc(sysdate-1), 'yyyy-MM')
+                                             and pbs.fk_enterprise_id = pe.id
+                                             and pe.fk_parent_id is not null
+                                           group by pe.fk_parent_id) b) bb
+                           where bb.enId = ww.fk_enterprise_id
+                           group by bb.enId)
+ where ww.year = to_char(trunc(sysdate-1), 'yyyy')
+   and ww.month = to_char(trunc(sysdate-1), 'MM');
+--开始测验累计
+update statistic_enterprise ww
+   set ww.test_begin_times_count = (select sum(num)
+                                      from (select b.num  as num,
+                                                   b.enId as enId
+                                              from (select count(aa.id) as num,
+                                                           pe.id as enId
+                                                      from test_testpaper_history aa,
+                                                           pe_bzz_student         pbs,
+                                                           pe_enterprise          pe
+                                                     where to_char(nvl(aa.test_date,
+                                                                       to_date('1900-01-01 00:00:00',
+                                                                               'yyyy-MM-dd hh24:mi:ss')),
+                                                                   'yyyy') =
+                                                           to_char(trunc(sysdate-1),
+                                                                   'yyyy')
+                                                       and pe.fk_parent_id is null
+                                                       and aa.t_user_id =
+                                                           pbs.id
+                                                       and pbs.fk_enterprise_id =
+                                                           pe.id
+                                                     group by pe.id) b
+                                            union all
+                                            select b.num  as num,
+                                                   b.enId as enId
+                                              from (select count(aa.id) as num,
+                                                           pe.fk_parent_id as enId
+                                                      from test_testpaper_history aa,
+                                                           pe_bzz_student         pbs,
+                                                           pe_enterprise          pe
+                                                     where to_char(nvl(aa.test_date,
+                                                                       to_date('1900-01-01 00:00:00',
+                                                                               'yyyy-MM-dd hh24:mi:ss')),
+                                                                   'yyyy') =
+                                                           to_char(trunc(sysdate-1),
+                                                                   'yyyy')
+                                                       and aa.t_user_id =
+                                                           pbs.id
+                                                       and pbs.fk_enterprise_id =
+                                                           pe.id
+                                                       and pe.fk_parent_id is not null
+                                                     group by pe.fk_parent_id) b) bb
+                                     where bb.enId = ww.fk_enterprise_id
+                                     group by bb.enId)
+ where ww.year = to_char(trunc(sysdate-1), 'yyyy')
+   and ww.month = to_char(trunc(sysdate-1), 'MM');
+
+--完成测验累计
+
+update statistic_enterprise ww
+   set ww.test_complete_times_count = (select sum(num)
+                                         from (select b.num  as num,
+                                                      b.enId as enId
+                                                 from (select nvl(count(aa.id),
+                                                                  0) as num,
+                                                              pe.id as enId
+                                                         from test_testpaper_history aa,
+                                                              test_testpaper_info    tti,
+                                                              pe_bzz_tch_course      pbtc,
+                                                              pe_bzz_student         pbs,
+                                                              pe_enterprise          pe
+                                                        where to_char(nvl(aa.test_date,
+                                                                          to_date('1900-01-01 00:00:00',
+                                                                                  'yyyy-MM-dd hh24:mi:ss')),
+                                                                      'yyyy') =
+                                                              to_char(trunc(sysdate-1),
+                                                                      'yyyy')
+                                                          and pe.fk_parent_id is null
+                                                          and aa.t_user_id =
+                                                              pbs.id
+                                                          and pbs.fk_enterprise_id =
+                                                              pe.id
+                                                          and aa.testpaper_id =
+                                                              tti.id
+                                                          and tti.group_id =
+                                                              pbtc.id
+                                                          and to_number(nvl(aa.score,
+                                                                            '0')) >=
+                                                              to_number(nvl(pbtc.passrole,0))
+                                                        group by pe.id) b
+                                               union all
+                                               select b.num  as num,
+                                                      b.enId as enId
+                                                 from (select nvl(count(aa.id),
+                                                                  0) as num,
+                                                              pe.fk_parent_id as enId
+                                                         from test_testpaper_history aa,
+                                                              test_testpaper_info    tti,
+                                                              pe_bzz_tch_course      pbtc,
+                                                              pe_bzz_student         pbs,
+                                                              pe_enterprise          pe
+                                                        where to_char(nvl(aa.test_date,
+                                                                          to_date('1900-01-01 00:00:00',
+                                                                                  'yyyy-MM-dd hh24:mi:ss')),
+                                                                      'yyyy') =
+                                                              to_char(trunc(sysdate-1),
+                                                                      'yyyy')
+                                                          and pe.fk_parent_id is not null
+                                                          and aa.t_user_id =
+                                                              pbs.id
+                                                          and pbs.fk_enterprise_id =
+                                                              pe.id
+                                                          and aa.testpaper_id =
+                                                              tti.id
+                                                          and tti.group_id =
+                                                              pbtc.id
+                                                          and to_number(nvl(aa.score,
+                                                                            '0')) >=
+                                                              to_number(nvl(pbtc.passrole,0))
+                                                        group by pe.fk_parent_id) b) bb
+                                        where bb.enId = ww.fk_enterprise_id
+                                        group by bb.enId)
+ where ww.year = to_char(trunc(sysdate-1), 'yyyy')
+   and ww.month = to_char(trunc(sysdate-1), 'MM');
+   
+--开始测验新增
+
+update statistic_enterprise ww
+   set ww.test_begin_times = (select sum(num)
+                                from (select b.num as num, b.enId as enId
+                                        from (select count(aa.id) as num,
+                                                     pe.id as enId
+                                                from test_testpaper_history aa,
+                                                     pe_bzz_student         pbs,
+                                                     pe_enterprise          pe
+                                               where to_char(nvl(aa.test_date,
+                                                                 to_date('1900-01-01 00:00:00',
+                                                                         'yyyy-MM-dd hh24:mi:ss')),
+                                                             'yyyy-MM') =
+                                                     to_char(trunc(sysdate-1), 'yyyy-MM')
+                                                 and pe.fk_parent_id is null
+                                                 and aa.t_user_id = pbs.id
+                                                 and pbs.fk_enterprise_id =
+                                                     pe.id
+                                               group by pe.id) b
+                                      union all
+                                      select b.num as num, b.enId as enId
+                                        from (select count(aa.id) as num,
+                                                     pe.fk_parent_id as enId
+                                                from test_testpaper_history aa,
+                                                     pe_bzz_student         pbs,
+                                                     pe_enterprise          pe
+                                               where to_char(nvl(aa.test_date,
+                                                                 to_date('1900-01-01 00:00:00',
+                                                                         'yyyy-MM-dd hh24:mi:ss')),
+                                                             'yyyy-MM') =
+                                                     to_char(trunc(sysdate-1), 'yyyy-MM')
+                                                 and aa.t_user_id = pbs.id
+                                                 and pbs.fk_enterprise_id =
+                                                     pe.id
+                                                 and pe.fk_parent_id is not null
+                                               group by pe.fk_parent_id) b) bb
+                               where bb.enId = ww.fk_enterprise_id
+                               group by bb.enId)
+ where ww.year = to_char(trunc(sysdate-1), 'yyyy')
+   and ww.month = to_char(trunc(sysdate-1), 'MM');    
+   
+--完成测验新增
+
+update statistic_enterprise ww
+   set ww.test_complete_times = (select sum(num)
+                                   from (select b.num as num, b.enId as enId
+                                           from (select count(aa.id) as num,
+                                                        pe.id as enId
+                                                   from test_testpaper_history aa,
+                                                        test_testpaper_info    tti,
+                                                        pe_bzz_tch_course      pbtc,
+                                                        pe_bzz_student         pbs,
+                                                        pe_enterprise          pe
+                                                  where to_char(nvl(aa.test_date,
+                                                                    to_date('1900-01-01 00:00:00',
+                                                                            'yyyy-MM-dd hh24:mi:ss')),
+                                                                'yyyy-MM') =
+                                                        to_char(trunc(sysdate-1),
+                                                                'yyyy-MM')
+                                                    and pe.fk_parent_id is null
+                                                    and aa.t_user_id = pbs.id
+                                                    and pbs.fk_enterprise_id =
+                                                        pe.id
+                                                    and aa.testpaper_id =
+                                                        tti.id
+                                                    and tti.group_id = pbtc.id
+                                                    and to_number(nvl(aa.score,
+                                                                      '0')) >=
+                                                        to_number(nvl(pbtc.passrole,0))
+                                                  group by pe.id) b
+                                         union all
+                                         select b.num as num, b.enId as enId
+                                           from (select count(aa.id) as num,
+                                                        pe.fk_parent_id as enId
+                                                   from test_testpaper_history aa,
+                                                        test_testpaper_info    tti,
+                                                        pe_bzz_tch_course      pbtc,
+                                                        pe_bzz_student         pbs,
+                                                        pe_enterprise          pe
+                                                  where to_char(nvl(aa.test_date,
+                                                                    to_date('1900-01-01 00:00:00',
+                                                                            'yyyy-MM-dd hh24:mi:ss')),
+                                                                'yyyy-MM') =
+                                                        to_char(trunc(sysdate-1),
+                                                                'yyyy-MM')
+                                                    and aa.t_user_id = pbs.id
+                                                    and pbs.fk_enterprise_id =
+                                                        pe.id
+                                                    and pe.fk_parent_id is not null
+                                                    and aa.testpaper_id =
+                                                        tti.id
+                                                    and tti.group_id = pbtc.id
+                                                    and to_number(nvl(aa.score,
+                                                                      '0')) >=
+                                                        to_number(nvl(pbtc.passrole,0))
+                                                  group by pe.fk_parent_id) b) bb
+                                  where bb.enId = ww.fk_enterprise_id
+
+                                  group by bb.enId)
+ where ww.year = to_char(trunc(sysdate-1), 'yyyy')
+   and ww.month = to_char(trunc(sysdate-1), 'MM');
+                 
+--报名人数
+update statistic_enterprise ww
+   set ww.entry_user_num = (select sum(num)
+                              from (select count(b.num) as num, b.enId as enId
+                                      from (select count(pbtse.id) as num,
+                                                   pe.id as enId,
+                                                   pbtse.fk_stu_id
+                                              from pr_bzz_tch_stu_elective pbtse,
+                                                   pe_bzz_student          pbs,
+                                                   pe_enterprise           pe
+                                             where to_char(nvl(pbtse.elective_date,
+                                                               to_date('1900-01-01 00:00:00',
+                                                                       'yyyy-MM-dd hh24:mi:ss')),
+                                                           'yyyy-MM') =
+                                                   to_char(trunc(sysdate-1), 'yyyy-MM')
+                                               and pe.fk_parent_id is null
+                                               and pbtse.fk_stu_id = pbs.id
+                                               and pbtse.flag_elective_pay_status =
+                                                   '40288a7b3981661e01398186b0f50006'
+                                               and pbs.fk_enterprise_id = pe.id
+                                             group by pe.id, pbtse.fk_stu_id) b
+                                     group by enId
+                                    union all
+                                    select count(b.num) as num, b.enId as enId
+                                      from (select count(pbtse.id) as num,
+                                                   pe.fk_parent_id as enId,
+                                                   pbtse.fk_stu_id
+                                              from pr_bzz_tch_stu_elective pbtse,
+                                                   pe_bzz_student          pbs,
+                                                   pe_enterprise           pe
+                                             where to_char(nvl(pbtse.elective_date,
+                                                               to_date('1900-01-01 00:00:00',
+                                                                       'yyyy-MM-dd hh24:mi:ss')),
+                                                           'yyyy-MM') =
+                                                   to_char(trunc(sysdate-1), 'yyyy-MM')
+                                               and pe.fk_parent_id is not null
+                                               and pbtse.flag_elective_pay_status =
+                                                   '40288a7b3981661e01398186b0f50006'
+                                               and pbtse.fk_stu_id = pbs.id
+                                               and pbs.fk_enterprise_id = pe.id
+                                             group by pe.fk_parent_id,
+                                                      pbtse.fk_stu_id) b
+                                     group by enId) bb
+                             where bb.enId = ww.fk_enterprise_id
+                             group by bb.enId)
+ where ww.year = to_char(trunc(sysdate-1), 'yyyy')
+   and ww.month = to_char(trunc(sysdate-1), 'MM');
+   
+--报名人次
+
+update statistic_enterprise ww
+   set ww.entry_user_times = (select sum(num)
+                                from (select b.num as num, b.enId as enId
+                                        from (select count(pbtse.id) as num,
+                                                     pe.id as enId
+                                                from pr_bzz_tch_stu_elective pbtse,
+                                                     pe_bzz_student          pbs,
+                                                     pe_enterprise           pe
+                                               where to_char(nvl(pbtse.elective_date,
+                                                                 to_date('1900-01-01 00:00:00',
+                                                                         'yyyy-MM-dd hh24:mi:ss')),
+                                                             'yyyy-MM') =
+                                                     to_char(trunc(sysdate-1), 'yyyy-MM')
+                                                 and pe.fk_parent_id is null
+                                                 and pbtse.fk_stu_id = pbs.id
+                                                 and pbtse.flag_elective_pay_status =
+                                                     '40288a7b3981661e01398186b0f50006'
+                                                 and pbs.fk_enterprise_id =
+                                                     pe.id
+                                               group by pe.id) b
+                                      union all
+                                      select b.num as num, b.enId as enId
+                                        from (select count(pbtse.id) as num,
+                                                     pe.fk_parent_id as enId
+                                                from pr_bzz_tch_stu_elective pbtse,
+                                                     pe_bzz_student          pbs,
+                                                     pe_enterprise           pe
+                                               where to_char(nvl(pbtse.elective_date,
+                                                                 to_date('1900-01-01 00:00:00',
+                                                                         'yyyy-MM-dd hh24:mi:ss')),
+                                                             'yyyy-MM') =
+                                                     to_char(trunc(sysdate-1), 'yyyy-MM')
+                                                 and pe.fk_parent_id is not null
+                                                 and pbtse.flag_elective_pay_status =
+                                                     '40288a7b3981661e01398186b0f50006'
+                                                 and pbtse.fk_stu_id = pbs.id
+                                                 and pbs.fk_enterprise_id =
+                                                     pe.id
+                                               group by pe.fk_parent_id) b) bb
+                               where bb.enId = ww.fk_enterprise_id
+                               group by bb.enId)
+ where ww.year = to_char(trunc(sysdate-1), 'yyyy')
+   and ww.month = to_char(trunc(sysdate-1), 'MM');
+   
+--报名学时数
+
+update statistic_enterprise ww
+   set ww.entry_courehours = (select sum(time)
+                                from (select b.time as time, b.enId as enId
+                                        from (select sum(to_number(pbtc.time)) as time,
+                                                     pe.id as enId
+                                                from pr_bzz_tch_stu_elective pbtse,
+                                                     pe_bzz_student          pbs,
+                                                     pr_bzz_tch_opencourse   pbto,
+                                                     pe_bzz_tch_course       pbtc,
+                                                     pe_enterprise           pe
+                                               where to_char(nvl(pbtse.elective_date,
+                                                               to_date('1900-01-01 00:00:00',
+                                                                       'yyyy-MM-dd hh24:mi:ss')),
+                                                           'yyyy-MM') =
+                                                     to_char(trunc(sysdate-1), 'yyyy-MM')
+                                                 and pe.fk_parent_id is null
+                                                 and pbtse.fk_tch_opencourse_id =
+                                                     pbto.id
+                                                 and pbto.fk_course_id =
+                                                     pbtc.id
+                                                 and pbtse.fk_stu_id = pbs.id
+                                                 and pbtse.flag_elective_pay_status =
+                                                     '40288a7b3981661e01398186b0f50006'
+                                                 and pbs.fk_enterprise_id =
+                                                     pe.id
+                                               group by pe.id) b
+                                      union all
+                                      select b.time as time, b.enId as enId
+                                        from (select sum(to_number(pbtc.time)) as time,
+                                                     pe.fk_parent_id as enId
+                                                from pr_bzz_tch_stu_elective pbtse,
+                                                     pr_bzz_tch_opencourse   pbto,
+                                                     pe_bzz_tch_course       pbtc,
+                                                     pe_bzz_student          pbs,
+                                                     pe_enterprise           pe
+                                               where to_char(nvl(pbtse.elective_date,
+                                                               to_date('1900-01-01 00:00:00',
+                                                                       'yyyy-MM-dd hh24:mi:ss')),
+                                                           'yyyy-MM') =
+                                                     to_char(trunc(sysdate-1), 'yyyy-MM')
+                                                 and pe.fk_parent_id is not null
+                                                 and pbtse.flag_elective_pay_status =
+                                                     '40288a7b3981661e01398186b0f50006'
+                                                 and pbtse.fk_tch_opencourse_id =
+                                                     pbto.id
+                                                 and pbto.fk_course_id =
+                                                     pbtc.id
+                                                 and pbtse.fk_stu_id = pbs.id
+                                                 and pbs.fk_enterprise_id =
+                                                     pe.id
+                                               group by pe.fk_parent_id) b) bb
+                               where bb.enId = ww.fk_enterprise_id
+                               group by bb.enId)
+ where ww.year = to_char(trunc(sysdate-1), 'yyyy')
+   and ww.month = to_char(trunc(sysdate-1), 'MM');
+   
+--付费金额
+
+update statistic_enterprise ww
+   set ww.fee_amount = (select sum(num)
+                             from (select b.num as num, b.enId as enId
+                                     from (select sum(to_number(pboi.amount)) as num,
+                                                  pe.id as enId
+                                             from pe_bzz_order_info pboi,
+                                                  pe_bzz_student    pbs,
+                                                  pe_enterprise     pe
+                                            where to_char(nvl(pboi.payment_date,
+                                                              to_date('1900-01-01 00:00:00',
+                                                                      'yyyy-MM-dd hh24:mi:ss')),
+                                                          'yyyy-MM') =
+                                                  to_char(trunc(sysdate-1), 'yyyy-MM')
+                                              and pe.fk_parent_id is null
+                                              and pboi.create_user =
+                                                  pbs.fk_sso_user_id
+                                              and pbs.fk_enterprise_id = pe.id
+                                            group by pe.id) b
+                                   union all
+                                   select b.num as num, b.enId as enId
+                                     from (select sum(to_number(pboi.amount)) as num,
+                                                  pe.fk_parent_id as enId
+                                             from pe_bzz_order_info pboi,
+                                                  pe_bzz_student    pbs,
+                                                  pe_enterprise     pe
+                                            where to_char(nvl(pboi.payment_date,
+                                                              to_date('1900-01-01 00:00:00',
+                                                                      'yyyy-MM-dd hh24:mi:ss')),
+                                                          'yyyy-MM') =
+                                                  to_char(trunc(sysdate-1), 'yyyy-MM')
+                                              and pe.fk_parent_id is not null
+                                              and pboi.create_user =
+                                                  pbs.fk_sso_user_id
+                                              and pbs.fk_enterprise_id = pe.id
+                                            group by pe.fk_parent_id) b
+                                   union all
+                                   select b.num as num, b.enId as enId
+                                     from (select sum(to_number(pboi.amount)) as num,
+                                                  pe.id as enId
+                                             from pe_bzz_order_info     pboi,
+                                                  pe_enterprise_manager pem,
+                                                  pe_enterprise         pe
+                                            where to_char(nvl(pboi.payment_date,
+                                                              to_date('1900-01-01 00:00:00',
+                                                                      'yyyy-MM-dd hh24:mi:ss')),
+                                                          'yyyy-MM') =
+                                                  to_char(trunc(sysdate-1), 'yyyy-MM')
+                                              and pboi.create_user =
+                                                  pem.fk_sso_user_id
+                                              and pem.fk_enterprise_id = pe.id
+                                            group by pe.id) b
+                                   union all
+                                   select b.num as num, b.enId as enId
+                                     from (select sum(to_number(pboi.amount)) as num,
+                                                  pe.fk_parent_id as enId
+                                             from pe_bzz_order_info     pboi,
+                                                  pe_enterprise_manager pem,
+                                                  pe_enterprise         pe
+                                            where to_char(nvl(pboi.payment_date,
+                                                              to_date('1900-01-01 00:00:00',
+                                                                      'yyyy-MM-dd hh24:mi:ss')),
+                                                          'yyyy-MM') =
+                                                  to_char(trunc(sysdate-1), 'yyyy-MM')
+                                              and pboi.create_user =
+                                                  pem.fk_sso_user_id
+                                              and pem.fk_enterprise_id =
+                                                  pe.fk_parent_id
+                                            group by pe.fk_parent_id) b
+
+                                   ) bb
+                            where bb.enId = ww.fk_enterprise_id
+                            group by bb.enId)
+ where ww.year = to_char(trunc(sysdate-1), 'yyyy')
+   and ww.month = to_char(trunc(sysdate-1), 'MM');
+
+--完成学时数
+
+update statistic_enterprise ww
+   set ww.complete_hours = (select sum(time)
+                              from (select b.time as time, b.enId as enId
+                                      from (select sum(to_number(pbtc.time)) as time,
+                                                   pe.id as enId
+                                              from pr_bzz_tch_stu_elective pbtse,
+                                                   pe_bzz_student          pbs,
+                                                   pr_bzz_tch_opencourse   pbto,
+                                                   pe_bzz_tch_course       pbtc,
+                                                   pe_enterprise           pe
+                                             where to_char(nvl(pbtse.completed_time,
+                                                               to_date('1900-01-01 00:00:00',
+                                                                       'yyyy-MM-dd hh24:mi:ss')),
+                                                           'yyyy-MM') =
+                                                   to_char(trunc(sysdate-1), 'yyyy-MM')
+                                               and pbtse.flag_elective_pay_status =
+                                                   '40288a7b3981661e01398186b0f50006'
+                                               and pe.fk_parent_id is null
+                                               and pbtse.fk_tch_opencourse_id =
+                                                   pbto.id
+                                               and pbto.fk_course_id = pbtc.id
+                                               and pbtse.fk_stu_id = pbs.id
+                                               and pbs.fk_enterprise_id = pe.id
+                                             group by pe.id) b
+                                    union all
+                                    select b.time as time, b.enId as enId
+                                      from (select sum(to_number(pbtc.time)) as time,
+                                                   pe.fk_parent_id as enId
+                                              from pr_bzz_tch_stu_elective pbtse,
+                                                   pr_bzz_tch_opencourse   pbto,
+                                                   pe_bzz_tch_course       pbtc,
+                                                   pe_bzz_student          pbs,
+                                                   pe_enterprise           pe
+                                             where to_char(nvl(pbtse.completed_time,
+                                                               to_date('1900-01-01 00:00:00',
+                                                                       'yyyy-MM-dd hh24:mi:ss')),
+                                                           'yyyy-MM') =
+                                                   to_char(trunc(sysdate-1), 'yyyy-MM')
+                                               and pbtse.flag_elective_pay_status =
+                                                   '40288a7b3981661e01398186b0f50006'
+                                               and pe.fk_parent_id is not null
+                                               and pbtse.fk_tch_opencourse_id =
+                                                   pbto.id
+                                               and pbto.fk_course_id = pbtc.id
+                                               and pbtse.fk_stu_id = pbs.id
+                                               and pbs.fk_enterprise_id = pe.id
+                                             group by pe.fk_parent_id) b) bb
+                             where bb.enId = ww.fk_enterprise_id
+                             group by bb.enId)
+ where ww.year = to_char(trunc(sysdate-1), 'yyyy')
+   and ww.month = to_char(trunc(sysdate-1), 'MM');
+   
+--退费人数
+update statistic_enterprise ww
+   set ww.refund_num = (select count(num)
+                          from (select count(b.num) as num, b.enId as enId, id
+                                  from (select count(pbtse.fk_stu_id) as num,
+                                               pe.id as enId,
+                                               pbs.id as id
+                                          from elective_back_history pbtse,
+                                               pe_bzz_student        pbs,
+                                               pe_bzz_order_info     pboi,
+                                               pe_enterprise         pe
+                                         where to_char(nvl(pboi.refund_date,
+                                                           to_date('1900-01-01 00:00:00',
+                                                                   'yyyy-MM-dd hh24:mi:ss')),
+                                                       'yyyy-MM') =
+                                               to_char(trunc(sysdate-1), 'yyyy-MM')
+                                           and pe.fk_parent_id is null
+                                           and pbtse.fk_order_id = pboi.id
+                                           and pbtse.fk_stu_id = pbs.id
+                                           and pboi.flag_refund_state =
+                                               '40288a7b394207de01394210f6f40003'
+                                           and pbs.fk_enterprise_id = pe.id
+                                         group by pe.id, pbs.id) b
+                                 group by enId, id
+                                union all
+                                select count(b.num) as num, b.enId as enId, id
+                                  from (select count(pbtse.fk_stu_id) as num,
+                                               pe.fk_parent_id as enId,
+                                               pbs.id as id
+                                          from elective_back_history pbtse,
+                                               pe_bzz_student        pbs,
+                                               pe_bzz_order_info     pboi,
+                                               pe_enterprise         pe
+                                         where to_char(nvl(pboi.refund_date,
+                                                           to_date('1900-01-01 00:00:00',
+                                                                   'yyyy-MM-dd hh24:mi:ss')),
+                                                       'yyyy-MM') =
+                                               to_char(trunc(sysdate-1), 'yyyy-MM')
+                                           and pe.fk_parent_id is not null
+                                           and pbtse.fk_order_id = pboi.id
+                                           and pbtse.fk_stu_id = pbs.id
+                                           and pboi.flag_refund_state =
+                                               '40288a7b394207de01394210f6f40003'
+                                           and pbs.fk_enterprise_id = pe.id
+                                         group by pe.fk_parent_id, pbs.id) b
+                                 group by enId, id) bb
+                         where bb.enId = ww.fk_enterprise_id
+                         group by bb.enId)
+ where ww.year = to_char(trunc(sysdate-1), 'yyyy')
+   and ww.month = to_char(trunc(sysdate-1), 'MM');
+   
+-- 退费人次
+update statistic_enterprise ww
+   set ww.refund_times = (select sum(num)
+                            from (select b.num as num, b.enId as enId
+                                    from (select count(pbtse.id) as num,
+                                                 pe.id as enId
+                                            from elective_back_history pbtse,
+                                                 pe_bzz_student        pbs,
+                                                 pe_bzz_order_info     pboi,
+                                                 pe_enterprise         pe
+                                           where to_char(nvl(pboi.refund_date,
+                                                             to_date('1900-01-01 00:00:00',
+                                                                     'yyyy-MM-dd hh24:mi:ss')),
+                                                         'yyyy-MM') =
+                                                 to_char(trunc(sysdate-1), 'yyyy-MM')
+                                             and pe.fk_parent_id is null
+                                             and pbtse.fk_order_id = pboi.id
+                                             and pbtse.fk_stu_id = pbs.id
+                                             and pboi.flag_refund_state =
+                                                 '40288a7b394207de01394210f6f40003'
+                                             and pbs.fk_enterprise_id = pe.id
+                                           group by pe.id) b
+                                  union all
+                                  select b.num as num, b.enId as enId
+                                    from (select count(pbtse.id) as num,
+                                                 pe.fk_parent_id as enId
+                                            from elective_back_history pbtse,
+                                                 pe_bzz_student        pbs,
+                                                 pe_bzz_order_info     pboi,
+                                                 pe_enterprise         pe
+                                           where to_char(nvl(pboi.refund_date,
+                                                             to_date('1900-01-01 00:00:00',
+                                                                     'yyyy-MM-dd hh24:mi:ss')),
+                                                         'yyyy-MM') =
+                                                 to_char(trunc(sysdate-1), 'yyyy-MM')
+                                             and pe.fk_parent_id is not null
+                                             and pbtse.fk_order_id = pboi.id
+                                             and pbtse.fk_stu_id = pbs.id
+                                             and pboi.flag_refund_state =
+                                                 '40288a7b394207de01394210f6f40003'
+                                             and pbs.fk_enterprise_id = pe.id
+                                           group by pe.fk_parent_id) b) bb
+                           where bb.enId = ww.fk_enterprise_id
+                           group by bb.enId)
+ where ww.year = to_char(trunc(sysdate-1), 'yyyy')
+   and ww.month = to_char(trunc(sysdate-1), 'MM');
+   
+--退费学时
+
+update statistic_enterprise ww
+   set ww.refund_hours = (select count(num)
+                            from (select b.num as num, b.enId as enId
+                                    from (select sum(to_number(pbtc.time)) as num,
+                                                 pe.id as enId
+                                            from elective_back_history pbtse,
+                                                 pr_bzz_tch_opencourse pbto,
+                                                 pe_bzz_tch_course     pbtc,
+                                                 pe_bzz_student        pbs,
+                                                 pe_bzz_order_info     pboi,
+                                                 pe_enterprise         pe
+                                           where to_char(nvl(pboi.refund_date,
+                                                             to_date('1900-01-01 00:00:00',
+                                                                     'yyyy-MM-dd hh24:mi:ss')),
+                                                         'yyyy-MM') =
+                                                 to_char(trunc(sysdate-1), 'yyyy-MM')
+                                             and pbtse.fk_tch_opencourse_id =
+                                                 pbto.id
+                                             and pbto.fk_course_id = pbtc.id
+                                             and pe.fk_parent_id is null
+                                             and pbtse.fk_order_id = pboi.id
+                                             and pbtse.fk_stu_id = pbs.id
+                                             and pboi.flag_refund_state =
+                                                 '40288a7b394207de01394210f6f40003'
+                                             and pbs.fk_enterprise_id = pe.id
+                                           group by pe.id) b
+                                  union all
+                                  select b.num as num, b.enId as enId
+                                    from (select sum(to_number(pbtc.time)) as num,
+                                                 pe.fk_parent_id as enId
+                                            from elective_back_history pbtse,
+                                                 pr_bzz_tch_opencourse pbto,
+                                                 pe_bzz_tch_course     pbtc,
+                                                 pe_bzz_student        pbs,
+                                                 pe_bzz_order_info     pboi,
+                                                 pe_enterprise         pe
+                                           where to_char(nvl(pboi.refund_date,
+                                                             to_date('1900-01-01 00:00:00',
+                                                                     'yyyy-MM-dd hh24:mi:ss')),
+                                                         'yyyy-MM') =
+                                                 to_char(trunc(sysdate-1), 'yyyy-MM')
+                                             and pbtse.fk_tch_opencourse_id =
+                                                 pbto.id
+                                             and pbto.fk_course_id = pbtc.id
+                                             and pe.fk_parent_id is not null
+                                             and pbtse.fk_order_id = pboi.id
+                                             and pbtse.fk_stu_id = pbs.id
+                                             and pboi.flag_refund_state =
+                                                 '40288a7b394207de01394210f6f40003'
+                                             and pbs.fk_enterprise_id = pe.id
+                                           group by pe.fk_parent_id) b) bb
+                           where bb.enId = ww.fk_enterprise_id
+                           group by bb.enId)
+ where ww.year = to_char(trunc(sysdate-1), 'yyyy')
+   and ww.month = to_char(trunc(sysdate-1), 'MM');
+   
+--退费金额
+update statistic_enterprise ww
+   set ww.refund_amount = (select sum(num)
+                             from (select b.num as num, b.enId as enId
+                                     from (select sum(to_number(pboi.amount)) as num,
+                                                  pe.id as enId
+                                             from pe_bzz_order_info pboi,
+                                                  pe_bzz_student    pbs,
+                                                  pe_enterprise     pe
+                                            where to_char(nvl(pboi.refund_date,
+                                                              to_date('1900-01-01 00:00:00',
+                                                                      'yyyy-MM-dd hh24:mi:ss')),
+                                                          'yyyy-MM') =
+                                                  to_char(trunc(sysdate-1), 'yyyy-MM')
+                                              and pe.fk_parent_id is null
+                                              and pboi.create_user =
+                                                  pbs.fk_sso_user_id
+                                              and pboi.flag_refund_state =
+                                                  '40288a7b394207de01394210f6f40003'
+                                              and pbs.fk_enterprise_id = pe.id
+                                            group by pe.id) b
+                                   union all
+                                   select b.num as num, b.enId as enId
+                                     from (select sum(to_number(pboi.amount)) as num,
+                                                  pe.fk_parent_id as enId
+                                             from pe_bzz_order_info pboi,
+                                                  pe_bzz_student    pbs,
+                                                  pe_enterprise     pe
+                                            where to_char(nvl(pboi.refund_date,
+                                                              to_date('1900-01-01 00:00:00',
+                                                                      'yyyy-MM-dd hh24:mi:ss')),
+                                                          'yyyy-MM') =
+                                                  to_char(trunc(sysdate-1), 'yyyy-MM')
+                                              and pe.fk_parent_id is not null
+                                              and pboi.create_user =
+                                                  pbs.fk_sso_user_id
+                                              and pboi.flag_refund_state =
+                                                  '40288a7b394207de01394210f6f40003'
+                                              and pbs.fk_enterprise_id = pe.id
+                                            group by pe.fk_parent_id) b
+                                   union all
+                                   select b.num as num, b.enId as enId
+                                     from (select sum(to_number(pboi.amount)) as num,
+                                                  pe.id as enId
+                                             from pe_bzz_order_info     pboi,
+                                                  pe_enterprise_manager pem,
+                                                  pe_enterprise         pe
+                                            where to_char(nvl(pboi.refund_date,
+                                                              to_date('1900-01-01 00:00:00',
+                                                                      'yyyy-MM-dd hh24:mi:ss')),
+                                                          'yyyy-MM') =
+                                                  to_char(trunc(sysdate-1), 'yyyy-MM')
+                                              and pboi.create_user =
+                                                  pem.fk_sso_user_id
+                                              and pboi.flag_refund_state =
+                                                  '40288a7b394207de01394210f6f40003'
+                                              and pem.fk_enterprise_id = pe.id
+                                            group by pe.id) b
+                                   union all
+                                   select b.num as num, b.enId as enId
+                                     from (select sum(to_number(pboi.amount)) as num,
+                                                  pe.fk_parent_id as enId
+                                             from pe_bzz_order_info     pboi,
+                                                  pe_enterprise_manager pem,
+                                                  pe_enterprise         pe
+                                            where to_char(nvl(pboi.refund_date,
+                                                              to_date('1900-01-01 00:00:00',
+                                                                      'yyyy-MM-dd hh24:mi:ss')),
+                                                          'yyyy-MM') =
+                                                  to_char(trunc(sysdate-1), 'yyyy-MM')
+                                              and pboi.create_user =
+                                                  pem.fk_sso_user_id
+                                              and pboi.flag_refund_state =
+                                                  '40288a7b394207de01394210f6f40003'
+                                              and pem.fk_enterprise_id =
+                                                  pe.fk_parent_id
+                                            group by pe.fk_parent_id) b
+
+                                   ) bb
+                            where bb.enId = ww.fk_enterprise_id
+                            group by bb.enId)
+ where ww.year = to_char(trunc(sysdate-1), 'yyyy')
+   and ww.month = to_char(trunc(sysdate-1), 'MM');
+   
+--跨年退费人数
+
+update statistic_enterprise ww
+   set ww.overyear_refund_num = (select sum(num)
+                                   from (select b.num as num,
+                                                b.enId as enId,
+                                                id
+                                           from (select count(pbtse.fk_stu_id) as num,
+                                                        pe.id as enId,
+                                                        pbs.id as id
+                                                   from elective_back_history pbtse,
+                                                        pe_bzz_student        pbs,
+                                                        pe_bzz_order_info     pboi,
+                                                        pe_enterprise         pe
+                                                  where to_char(nvl(pboi.refund_date,
+                                                                    to_date('1900-01-01 00:00:00',
+                                                                            'yyyy-MM-dd hh24:mi:ss')),
+                                                                'yyyy-MM') =
+                                                        to_char(trunc(sysdate-1),
+                                                                'yyyy-MM')
+                                                    and to_char(pboi.payment_date,
+                                                                'yyyy') =
+                                                        to_char((trunc(sysdate-1) -
+                                                                interval '1' year),
+                                                                'yyyy')
+                                                    and pe.fk_parent_id is null
+                                                    and pbtse.fk_order_id =
+                                                        pboi.id
+                                                    and pbtse.fk_stu_id =
+                                                        pbs.id
+                                                    and pboi.flag_refund_state =
+                                                        '40288a7b394207de01394210f6f40003'
+                                                    and pbs.fk_enterprise_id =
+                                                        pe.id
+                                                  group by pe.id, pbs.id) b
+                                         union all
+                                         select b.num as num,
+                                                b.enId as enId,
+                                                id
+                                           from (select count(pbtse.fk_stu_id) as num,
+                                                        pe.fk_parent_id as enId,
+                                                        pbs.id as id
+                                                   from elective_back_history pbtse,
+                                                        pe_bzz_student        pbs,
+                                                        pe_bzz_order_info     pboi,
+                                                        pe_enterprise         pe
+                                                  where to_char(nvl(pboi.refund_date,
+                                                                    to_date('1900-01-01 00:00:00',
+                                                                            'yyyy-MM-dd hh24:mi:ss')),
+                                                                'yyyy-MM') =
+                                                        to_char(trunc(sysdate-1),
+                                                                'yyyy-MM')
+                                                    and to_char(pboi.payment_date,
+                                                                'yyyy') =
+                                                        to_char((trunc(sysdate-1) -
+                                                                interval '1' year),
+                                                                'yyyy')
+                                                    and pe.fk_parent_id is not null
+                                                    and pbtse.fk_order_id =
+                                                        pboi.id
+                                                    and pbtse.fk_stu_id =
+                                                        pbs.id
+                                                    and pboi.flag_refund_state =
+                                                        '40288a7b394207de01394210f6f40003'
+                                                    and pbs.fk_enterprise_id =
+                                                        pe.id
+                                                  group by pe.fk_parent_id,
+                                                           pbs.id) b) bb
+                                  where bb.enId = ww.fk_enterprise_id
+                                  group by bb.enId)
+ where ww.year = to_char(trunc(sysdate-1), 'yyyy')
+   and ww.month = to_char(trunc(sysdate-1), 'MM');
+   
+--跨年退费人次
+
+update statistic_enterprise ww
+   set ww.overyear_refund_times = (select sum(num)
+                                     from (select b.num as num, b.enId as enId
+                                             from (select count(pbtse.id) as num,
+                                                          pe.id as enId
+                                                     from elective_back_history pbtse,
+                                                          pe_bzz_student        pbs,
+                                                          pe_bzz_order_info     pboi,
+                                                          pe_enterprise         pe
+                                                    where to_char(nvl(pboi.refund_date,
+                                                                      to_date('1900-01-01 00:00:00',
+                                                                              'yyyy-MM-dd hh24:mi:ss')),
+                                                                  'yyyy-MM') =
+                                                          to_char(trunc(sysdate-1),
+                                                                  'yyyy-MM')
+                                                      and to_char(pboi.payment_date,
+                                                                  'yyyy') =
+                                                          to_char((trunc(sysdate-1) -
+                                                                  interval '1' year),
+                                                                  'yyyy')
+                                                      and pe.fk_parent_id is null
+                                                      and pbtse.fk_order_id =
+                                                          pboi.id
+                                                      and pbtse.fk_stu_id =
+                                                          pbs.id
+                                                      and pboi.flag_refund_state =
+                                                          '40288a7b394207de01394210f6f40003'
+                                                      and pbs.fk_enterprise_id =
+                                                          pe.id
+                                                    group by pe.id) b
+                                           union all
+                                           select b.num as num, b.enId as enId
+                                             from (select count(pbtse.id) as num,
+                                                          pe.fk_parent_id as enId
+                                                     from elective_back_history pbtse,
+                                                          pe_bzz_student        pbs,
+                                                          pe_bzz_order_info     pboi,
+                                                          pe_enterprise         pe
+                                                    where to_char(nvl(pboi.refund_date,
+                                                                      to_date('1900-01-01 00:00:00',
+                                                                              'yyyy-MM-dd hh24:mi:ss')),
+                                                                  'yyyy-MM') =
+                                                          to_char(trunc(sysdate-1),
+                                                                  'yyyy-MM')
+                                                      and to_char(pboi.payment_date,
+                                                                  'yyyy') =
+                                                          to_char((trunc(sysdate-1) -
+                                                                  interval '1' year),
+                                                                  'yyyy')
+                                                      and pe.fk_parent_id is not null
+                                                      and pbtse.fk_order_id =
+                                                          pboi.id
+                                                      and pbtse.fk_stu_id =
+                                                          pbs.id
+                                                      and pboi.flag_refund_state =
+                                                          '40288a7b394207de01394210f6f40003'
+                                                      and pbs.fk_enterprise_id =
+                                                          pe.id
+                                                    group by pe.fk_parent_id) b) bb
+                                    where bb.enId = ww.fk_enterprise_id
+                                    group by bb.enId)
+ where ww.year = to_char(trunc(sysdate-1), 'yyyy')
+   and ww.month = to_char(trunc(sysdate-1), 'MM');
+   
+--跨年退费学时
+
+update statistic_enterprise ww
+   set ww.overyear_refund_hours = (select sum(num)
+                                     from (select b.num as num, b.enId as enId
+                                             from (select sum(to_number(pbtc.time)) as num,
+                                                          pe.id as enId
+                                                     from elective_back_history pbtse,
+                                                          pr_bzz_tch_opencourse pbto,
+                                                          pe_bzz_tch_course     pbtc,
+                                                          pe_bzz_student        pbs,
+                                                          pe_bzz_order_info     pboi,
+                                                          pe_enterprise         pe
+                                                    where to_char(nvl(pboi.refund_date,
+                                                                      to_date('1900-01-01 00:00:00',
+                                                                              'yyyy-MM-dd hh24:mi:ss')),
+                                                                  'yyyy-MM') =
+                                                          to_char(trunc(sysdate-1),
+                                                                  'yyyy-MM')
+                                                      and to_char(pboi.payment_date,
+                                                                  'yyyy') =
+                                                          to_char((trunc(sysdate-1) -
+                                                                  interval '1' year),
+                                                                  'yyyy')
+                                                      and pboi.flag_refund_state =
+                                                          '40288a7b394207de01394210f6f40003'
+                                                      and pe.fk_parent_id is null
+                                                      and pbtse.fk_tch_opencourse_id =
+                                                          pbto.id
+                                                      and pbto.fk_course_id =
+                                                          pbtc.id
+                                                      and pbtse.fk_order_id =
+                                                          pboi.id
+                                                      and pbtse.fk_stu_id =
+                                                          pbs.id
+                                                      and pbs.fk_enterprise_id =
+                                                          pe.id
+                                                    group by pe.id) b
+                                           union all
+                                           select b.num as num, b.enId as enId
+                                             from (select sum(to_number(pbtc.time)) as num,
+                                                          pe.fk_parent_id as enId
+                                                     from elective_back_history pbtse,
+                                                          pr_bzz_tch_opencourse pbto,
+                                                          pe_bzz_tch_course     pbtc,
+                                                          pe_bzz_student        pbs,
+                                                          pe_bzz_order_info     pboi,
+                                                          pe_enterprise         pe
+                                                    where to_char(nvl(pboi.refund_date,
+                                                                      to_date('1900-01-01 00:00:00',
+                                                                              'yyyy-MM-dd hh24:mi:ss')),
+                                                                  'yyyy-MM') =
+                                                          to_char(trunc(sysdate-1),
+                                                                  'yyyy-MM')
+                                                      and to_char(pboi.payment_date,
+                                                                  'yyyy') =
+                                                          to_char((trunc(sysdate-1) -
+                                                                  interval '1' year),
+                                                                  'yyyy')
+                                                      and pboi.flag_refund_state =
+                                                          '40288a7b394207de01394210f6f40003'
+                                                      and pe.fk_parent_id is not null
+                                                      and pbtse.fk_tch_opencourse_id =
+                                                          pbto.id
+                                                      and pbto.fk_course_id =
+                                                          pbtc.id
+                                                      and pbtse.fk_order_id =
+                                                          pboi.id
+                                                      and pbtse.fk_stu_id =
+                                                          pbs.id
+
+                                                      and pbs.fk_enterprise_id =
+                                                          pe.id
+                                                    group by pe.fk_parent_id) b) bb
+                                    where bb.enId = ww.fk_enterprise_id
+                                    group by bb.enId)
+ where ww.year = to_char(trunc(sysdate-1), 'yyyy')
+   and ww.month = to_char(trunc(sysdate-1), 'MM');
+   
+--跨年退费金额
+
+update statistic_enterprise ww
+   set ww.overyear_refund_amount = (select sum(num)
+                                      from (select b.num  as num,
+                                                   b.enId as enId
+                                              from (select sum(to_number(pboi.amount)) as num,
+                                                           pe.id as enId
+                                                      from pe_bzz_order_info pboi,
+                                                           pe_bzz_student    pbs,
+                                                           pe_enterprise     pe
+                                                     where to_char(nvl(pboi.refund_date,
+                                                                       to_date('1900-01-01 00:00:00',
+                                                                               'yyyy-MM-dd hh24:mi:ss')),
+                                                                   'yyyy-MM') =
+                                                           to_char(trunc(sysdate-1),
+                                                                   'yyyy-MM')
+                                                       and pe.fk_parent_id is null
+                                                       and to_char(pboi.payment_date,
+                                                                   'yyyy') =
+                                                           to_char((trunc(sysdate-1) -
+                                                                   interval '1' year),
+                                                                   'yyyy')
+                                                       and pboi.create_user =
+                                                           pbs.fk_sso_user_id
+                                                       and pboi.flag_refund_state =
+                                                           '40288a7b394207de01394210f6f40003'
+                                                       and pbs.fk_enterprise_id =
+                                                           pe.id
+                                                     group by pe.id) b
+                                            union all
+                                            select b.num  as num,
+                                                   b.enId as enId
+                                              from (select sum(to_number(pboi.amount)) as num,
+                                                           pe.fk_parent_id as enId
+                                                      from pe_bzz_order_info pboi,
+                                                           pe_bzz_student    pbs,
+                                                           pe_enterprise     pe
+                                                     where to_char(nvl(pboi.refund_date,
+                                                                       to_date('1900-01-01 00:00:00',
+                                                                               'yyyy-MM-dd hh24:mi:ss')),
+                                                                   'yyyy-MM') =
+                                                           to_char(trunc(sysdate-1),
+                                                                   'yyyy-MM')
+                                                       and pe.fk_parent_id is not null
+                                                       and to_char(pboi.payment_date,
+                                                                   'yyyy') =
+                                                           to_char((trunc(sysdate-1) -
+                                                                   interval '1' year),
+                                                                   'yyyy')
+                                                       and pboi.create_user =
+                                                           pbs.fk_sso_user_id
+                                                       and pboi.flag_refund_state =
+                                                           '40288a7b394207de01394210f6f40003'
+                                                       and pbs.fk_enterprise_id =
+                                                           pe.id
+                                                     group by pe.fk_parent_id) b
+                                            union all
+                                            select b.num  as num,
+                                                   b.enId as enId
+                                              from (select sum(to_number(pboi.amount)) as num,
+                                                           pe.id as enId
+                                                      from pe_bzz_order_info     pboi,
+                                                           pe_enterprise_manager pem,
+                                                           pe_enterprise         pe
+                                                     where to_char(nvl(pboi.refund_date,
+                                                                       to_date('1900-01-01 00:00:00',
+                                                                               'yyyy-MM-dd hh24:mi:ss')),
+                                                                   'yyyy-MM') =
+                                                           to_char(trunc(sysdate-1),
+                                                                   'yyyy-MM')
+                                                       and to_char(pboi.payment_date,
+                                                                   'yyyy') =
+                                                           to_char((trunc(sysdate-1) -
+                                                                   interval '1' year),
+                                                                   'yyyy')
+                                                       and pboi.create_user =
+                                                           pem.fk_sso_user_id
+                                                       and pboi.flag_refund_state =
+                                                           '40288a7b394207de01394210f6f40003'
+                                                       and pem.fk_enterprise_id =
+                                                           pe.id
+                                                     group by pe.id) b
+                                            union all
+                                            select b.num  as num,
+                                                   b.enId as enId
+                                              from (select sum(to_number(pboi.amount)) as num,
+                                                           pe.fk_parent_id as enId
+                                                      from pe_bzz_order_info     pboi,
+                                                           pe_enterprise_manager pem,
+                                                           pe_enterprise         pe
+                                                     where to_char(nvl(pboi.refund_date,
+                                                                       to_date('1900-01-01 00:00:00',
+                                                                               'yyyy-MM-dd hh24:mi:ss')),
+                                                                   'yyyy-MM') =
+                                                           to_char(trunc(sysdate-1),
+                                                                   'yyyy-MM')
+                                                       and to_char(pboi.payment_date,
+                                                                   'yyyy') =
+                                                           to_char((trunc(sysdate-1) -
+                                                                   interval '1' year),
+                                                                   'yyyy')
+                                                       and pboi.create_user =
+                                                           pem.fk_sso_user_id
+                                                       and pboi.flag_refund_state =
+                                                           '40288a7b394207de01394210f6f40003'
+                                                       and pem.fk_enterprise_id =
+                                                           pe.fk_parent_id
+                                                     group by pe.fk_parent_id) b
+                                            ) bb
+                                     where bb.enId = ww.fk_enterprise_id
+                                     group by bb.enId)
+ where ww.year = to_char(trunc(sysdate-1), 'yyyy')
+   and ww.month = to_char(trunc(sysdate-1), 'MM');
+   
+--开始学习人次
+
+update statistic_enterprise ww
+   set ww.study_begin_times = (select sum(num)
+                                 from (select b.num as num, b.enId as enId
+                                         from (select count(tcs.id) as num,
+                                                      pe.id as enId
+                                                 from training_course_student tcs,
+                                                      pe_bzz_student          pbs,
+                                                      pe_enterprise           pe
+                                                where to_char(nvl(tcs.get_date,
+                                                                  to_date('1900-01-01 00:00:00',
+                                                                         'yyyy-MM-dd hh24:mi:ss')),
+                                                             'yyyy-MM') =
+                                                      to_char(trunc(sysdate-1),
+                                                              'yyyy-MM')
+                                                  and tcs.student_id =
+                                                      pbs.fk_sso_user_id
+                                                  and pe.fk_parent_id is null
+                                                  and pbs.fk_enterprise_id =
+                                                      pe.id
+                                                  and tcs.learn_status <>
+                                                      'UNCOMPLETE'
+                                                group by pe.id) b
+                                       union all
+                                       select b.num as num, b.enId as enId
+                                         from (select count(tcs.id) as num,
+                                                      pe.fk_parent_id as enId
+                                                 from training_course_student tcs,
+                                                      pe_bzz_student          pbs,
+                                                      pe_enterprise           pe
+                                                where to_char(nvl(tcs.get_date,
+                                                                  to_date('1900-01-01 00:00:00',
+                                                                         'yyyy-MM-dd hh24:mi:ss')),
+                                                             'yyyy-MM') =
+                                                      to_char(trunc(sysdate-1),
+                                                              'yyyy-MM')
+                                                  and tcs.student_id =
+                                                      pbs.fk_sso_user_id
+                                                  and pe.fk_parent_id is not null
+                                                  and pbs.fk_enterprise_id =
+                                                      pe.id
+                                                  and tcs.learn_status <>
+                                                      'UNCOMPLETE'
+                                                group by pe.fk_parent_id) b) bb
+                                where bb.enId = ww.fk_enterprise_id
+                                group by bb.enId)
+ where ww.year = to_char(trunc(sysdate-1), 'yyyy')
+   and ww.month = to_char(trunc(sysdate-1), 'MM');
+   
+--完成学习人次
+update statistic_enterprise ww
+   set ww.study_complete_times = (select sum(num)
+                                 from (select b.num as num, b.enId as enId
+                                         from (select count(tcs.id) as num,
+                                                      pe.id as enId
+                                                 from training_course_student tcs,
+                                                      pe_bzz_student          pbs,
+                                                      pe_enterprise           pe
+                                                where to_char(nvl(tcs.complete_date,
+                                                                  to_date('1900-01-01 00:00:00',
+                                                                          'yyyy-MM-dd hh24:mi:ss')),
+                                                              'yyyy-MM') =
+                                                      to_char(trunc(sysdate-1),
+                                                              'yyyy-MM')
+                                                  and tcs.student_id =
+                                                      pbs.fk_sso_user_id
+                                                  and tcs.learn_status =
+                                                      'COMPLETED'
+                                                  and pbs.fk_enterprise_id =
+                                                      pe.id
+                                                  and pe.fk_parent_id is null
+                                                group by pe.id) b
+                                       union all
+                                       select b.num as num, b.enId as enId
+                                         from (select count(tcs.id) as num,
+                                                      pe.fk_parent_id as enId
+                                                 from training_course_student tcs,
+                                                      pe_bzz_student          pbs,
+                                                      pe_enterprise           pe
+                                                where to_char(nvl(tcs.complete_date,
+                                                                  to_date('1900-01-01 00:00:00',
+                                                                          'yyyy-MM-dd hh24:mi:ss')),
+                                                              'yyyy-MM') =
+                                                      to_char(trunc(sysdate-1),
+                                                              'yyyy-MM')
+                                                  and tcs.student_id =
+                                                      pbs.fk_sso_user_id
+                                                  and pe.fk_parent_id is not null
+                                                  and pbs.fk_enterprise_id =
+                                                      pe.id
+                                                  and tcs.learn_status =
+                                                      'COMPLETED'
+                                                group by pe.fk_parent_id) b) bb
+                                where bb.enId = ww.fk_enterprise_id
+                                group by bb.enId)
+ where ww.year = to_char(trunc(sysdate-1), 'yyyy')
+   and ww.month = to_char(trunc(sysdate-1), 'MM');
+   
+--开始学习人次累计
+update statistic_enterprise ww
+   set ww.study_begin_times_count = (select sum(num)
+                                       from (select b.num  as num,
+                                                    b.enId as enId
+                                               from (select count(tcs.id) as num,
+                                                            pe.id as enId
+                                                       from training_course_student tcs,
+                                                            pe_bzz_student          pbs,
+                                                            pe_enterprise           pe
+                                                      where to_char(nvl(tcs.get_date,
+                                                                        to_date('1900-01-01 00:00:00',
+                                                                                'yyyy-MM-dd hh24:mi:ss')),
+                                                                    'yyyy') =
+                                                            to_char(trunc(sysdate-1),
+                                                                    'yyyy')
+                                                        and tcs.student_id =
+                                                            pbs.fk_sso_user_id
+                                                        and pe.fk_parent_id is null
+                                                        and pbs.fk_enterprise_id =
+                                                            pe.id
+                                                        and tcs.learn_status <>
+                                                            'UNCOMPLETE'
+                                                      group by pe.id) b
+                                             union all
+                                             select b.num  as num,
+                                                    b.enId as enId
+                                               from (select count(tcs.id) as num,
+                                                            pe.fk_parent_id as enId
+                                                       from training_course_student tcs,
+                                                            pe_bzz_student          pbs,
+                                                            pe_enterprise           pe
+                                                      where to_char(nvl(tcs.get_date,
+                                                                        to_date('1900-01-01 00:00:00',
+                                                                                'yyyy-MM-dd hh24:mi:ss')),
+                                                                    'yyyy') =
+                                                            to_char(trunc(sysdate-1),
+                                                                    'yyyy')
+                                                        and tcs.student_id =
+                                                            pbs.fk_sso_user_id
+                                                        and pe.fk_parent_id is not null
+                                                        and pbs.fk_enterprise_id =
+                                                            pe.id
+                                                        and tcs.learn_status <>
+                                                            'UNCOMPLETE'
+                                                      group by pe.fk_parent_id) b) bb
+                                      where bb.enId = ww.fk_enterprise_id
+                                      group by bb.enId)
+ where ww.year = to_char(trunc(sysdate-1), 'yyyy')
+   and ww.month = to_char(trunc(sysdate-1), 'MM');
+   
+--完成学习累计
+
+update statistic_enterprise ww
+   set ww.study_complete_times_count = (select sum(num)
+                                          from (select b.num  as num,
+                                                       b.enId as enId
+                                                  from (select count(tcs.id) as num,
+                                                               pe.id as enId
+                                                          from training_course_student tcs,
+                                                               pe_bzz_student          pbs,
+                                                               pe_enterprise           pe
+                                                         where to_char(nvl(tcs.complete_date,
+                                                                           to_date('1900-01-01 00:00:00',
+                                                                                   'yyyy-MM-dd hh24:mi:ss')),
+                                                                       'yyyy') =
+                                                               to_char(trunc(sysdate-1),
+                                                                       'yyyy')
+                                                           and tcs.student_id =
+                                                               pbs.fk_sso_user_id
+                                                           and pe.fk_parent_id is null
+                                                           and pbs.fk_enterprise_id =
+                                                               pe.id
+                                                           and tcs.learn_status =
+                                                               'COMPLETED'
+                                                         group by pe.id) b
+                                                union all
+                                                select b.num  as num,
+                                                       b.enId as enId
+                                                  from (select count(tcs.id) as num,
+                                                               pe.fk_parent_id as enId
+                                                          from training_course_student tcs,
+                                                               pe_bzz_student          pbs,
+                                                               pe_enterprise           pe
+                                                         where to_char(nvl(tcs.complete_date,
+                                                                           to_date('1900-01-01 00:00:00',
+                                                                                   'yyyy-MM-dd hh24:mi:ss')),
+                                                                       'yyyy') =
+                                                               to_char(trunc(sysdate-1),
+                                                                       'yyyy')
+                                                           and tcs.student_id =
+                                                               pbs.fk_sso_user_id
+                                                           and pe.fk_parent_id is not null
+                                                           and pbs.fk_enterprise_id =
+                                                               pe.id
+                                                           and tcs.learn_status =
+                                                               'COMPLETED'
+                                                         group by pe.fk_parent_id) b) bb
+                                         where bb.enId = ww.fk_enterprise_id
+                                         group by bb.enId)
+ where ww.year = to_char(trunc(sysdate-1), 'yyyy')
+   and ww.month = to_char(trunc(sysdate-1), 'MM');
+   
+--完成学时数累计
+update statistic_enterprise ww
+   set ww.complete_hours_count = (select sum(time)
+                                    from (select b.time as time,
+                                                 b.enId as enId
+                                            from (select sum(to_number(pbtc.time)) as time,
+                                                         pe.id as enId
+                                                    from pr_bzz_tch_stu_elective pbtse,
+                                                         pe_bzz_student          pbs,
+                                                         pr_bzz_tch_opencourse   pbto,
+                                                         pe_bzz_tch_course       pbtc,
+                                                         pe_enterprise           pe
+                                                   where to_char(nvl(pbtse.completed_time,
+                                                               to_date('1900-01-01 00:00:00',
+                                                                       'yyyy-MM-dd hh24:mi:ss')),
+                                                           'yyyy') =
+                                                   to_char(trunc(sysdate-1), 'yyyy')
+                                                   and pbtse.score_exam >= to_number(nvl(pbtc.passrole,0))
+                                                     and pbtse.flag_elective_pay_status =
+                                                         '40288a7b3981661e01398186b0f50006'
+                                                     and pe.fk_parent_id is null
+                                                     and pbtse.fk_tch_opencourse_id =
+                                                         pbto.id
+                                                     and pbto.fk_course_id =
+                                                         pbtc.id
+                                                     and pbtse.fk_stu_id =
+                                                         pbs.id
+
+                                                     and pbs.fk_enterprise_id =
+                                                         pe.id
+                                                   group by pe.id) b
+                                          union all
+                                          select b.time as time,
+                                                 b.enId as enId
+                                            from (select sum(to_number(pbtc.time)) as time,
+                                                         pe.fk_parent_id as enId
+                                                    from pr_bzz_tch_stu_elective pbtse,
+                                                         pr_bzz_tch_opencourse   pbto,
+                                                         pe_bzz_tch_course       pbtc,
+                                                         pe_bzz_student          pbs,
+                                                         pe_enterprise           pe
+                                                   where to_char(nvl(pbtse.completed_time,
+                                                               to_date('1900-01-01 00:00:00',
+                                                                       'yyyy-MM-dd hh24:mi:ss')),
+                                                           'yyyy') =
+                                                   to_char(trunc(sysdate-1), 'yyyy') and
+                                                   pbtse.score_exam >= to_number(nvl(pbtc.passrole,0))
+                                                     and pbtse.flag_elective_pay_status =
+                                                         '40288a7b3981661e01398186b0f50006'
+                                                     and pe.fk_parent_id is not null
+                                                     and pbtse.fk_tch_opencourse_id =
+                                                         pbto.id
+                                                     and pbto.fk_course_id =
+                                                         pbtc.id
+                                                     and pbtse.fk_stu_id =
+                                                         pbs.id
+                                                     and pbs.fk_enterprise_id =
+                                                         pe.id
+                                                   group by pe.fk_parent_id) b) bb
+                                   where bb.enId = ww.fk_enterprise_id
+                                   group by bb.enId)
+ where ww.year = to_char(trunc(sysdate-1), 'yyyy')
+   and ww.month = to_char(trunc(sysdate-1), 'MM');
+   
+--本月完成10学时时间
+update pe_bzz_student ww
+   set ww.com_ten_hours_date = trunc(sysdate-1)
+ where ww.id in
+       (select b.suId as suId
+          from (select pbtse.fk_stu_id as suId, sum(to_number(pbtc.time)) as time
+                  from pr_bzz_tch_stu_elective pbtse,
+                       pr_bzz_tch_opencourse   pbto,
+                       pe_bzz_tch_course       pbtc
+                 where to_char(nvl(pbtse.completed_time,
+                                   to_date('1900-01-01 00:00:00',
+                                           'yyyy-MM-dd hh24:mi:ss')),
+                               'yyyy') = to_char(trunc(sysdate-1), 'yyyy-MM')
+                   and pbtse.flag_elective_pay_status =
+                       '40288a7b3981661e01398186b0f50006'
+                   and pbtse.fk_tch_opencourse_id = pbto.id
+                   and pbto.fk_course_id = pbtc.id
+                   and pbtc.flag_coursetype =
+                       '402880f32200c249012200c780c40001'
+                 group by pbtse.fk_stu_id) b
+         where b.time >= 10);
+            
+--完成10学时必修人数新增
+
+update statistic_enterprise ww
+   set ww.complete_ten_hours = (select count(pbs.id) as num
+                                  from pe_bzz_student pbs
+                                 where to_char(nvl(pbs.com_ten_hours_date,
+                                                   to_date('1900-01-01 00:00:00',
+                                                           'yyyy-MM-dd hh24:mi:ss')),
+                                               'yyyy-MM') =
+                                       to_char(trunc(sysdate-1), 'yyyy-MM')
+                                   and ww.fk_enterprise_id =
+                                       pbs.fk_enterprise_id
+                                 group by pbs.fk_enterprise_id)
+ where ww.year = to_char(trunc(sysdate-1), 'yyyy')
+   and ww.month = to_char(trunc(sysdate-1), 'MM');
+   
+--完成10必修学时累计
+
+update statistic_enterprise ww
+   set ww.complete_ten_hours_count = (select count(pbs.id) as num
+                                        from pe_bzz_student pbs
+                                       where to_char(pbs.com_ten_hours_date,
+                                                     'yyyy') =
+                                             to_char(trunc(sysdate-1), 'yyyy')
+                                         and ww.fk_enterprise_id =
+                                             pbs.fk_enterprise_id
+                                       group by pbs.fk_enterprise_id)
+ where ww.year = to_char(trunc(sysdate-1), 'yyyy')
+   and ww.month = to_char(trunc(sysdate-1), 'MM');
+   
+--学员表完成15学时时间
+
+update pe_bzz_student ww
+   set ww.com_fifteen_hours_date = trunc(sysdate-1)
+ where ww.id in
+       (select b.suId as suId
+          from (select sum(time) as time, sum(ttime) as ttime, suId as suId
+                  from (select sum(to_number(pbtc.time)) as time,
+                               0 as ttime,
+                               pbtse.fk_stu_id as suId
+                          from pr_bzz_tch_stu_elective pbtse,
+                               pr_bzz_tch_opencourse   pbto,
+                               pe_bzz_tch_course       pbtc
+                         where to_char(nvl(pbtse.completed_time,
+                                           to_date('1900-01-01 00:00:00',
+                                                   'yyyy-MM-dd hh24:mi:ss')),
+                                       'yyyy-MM') =
+                               to_char(trunc(sysdate-1), 'yyyy-MM')
+                           and pbtse.flag_elective_pay_status =
+                               '40288a7b3981661e01398186b0f50006'
+                           and pbtse.fk_tch_opencourse_id = pbto.id
+                           and pbto.fk_course_id = pbtc.id
+                           and pbtc.flag_coursetype =
+                               '402880f32200c249012200c780c40001'
+                         group by pbtse.fk_stu_id
+                        union all
+                        select 0 as time,
+                               sum(to_number(pbtc.time)) as ttime,
+                               pbtse.fk_stu_id as suId
+                          from pr_bzz_tch_stu_elective pbtse,
+                               pr_bzz_tch_opencourse   pbto,
+                               pe_bzz_tch_course       pbtc
+                         where to_char(nvl(pbtse.completed_time,
+                                           to_date('1900-01-01 00:00:00',
+                                                   'yyyy-MM-dd hh24:mi:ss')),
+                                       'yyyy-MM') =
+                               to_char(trunc(sysdate-1), 'yyyy-MM')
+                           and pbtse.flag_elective_pay_status =
+                               '40288a7b3981661e01398186b0f50006'
+                           and pbtse.fk_tch_opencourse_id = pbto.id
+                           and pbto.fk_course_id = pbtc.id
+                         group by pbtse.fk_stu_id)
+                 group by suId) b
+         where b.time >= 10
+           and b.ttime >= 15);
+           
+--完成15学时新增
+update statistic_enterprise ww
+   set ww.complete_fifteen_hours = (select count(pbs.id) as num
+                                        from pe_bzz_student pbs
+                                       where to_char(nvl(pbs.com_fifteen_hours_date,
+                                           to_date('1900-01-01 00:00:00',
+                                                   'yyyy-MM-dd hh24:mi:ss')),
+                                       'yyyy-MM') =
+                                             to_char(trunc(sysdate-1), 'yyyy-MM')
+                                         and ww.fk_enterprise_id =
+                                             pbs.fk_enterprise_id
+                                       group by pbs.fk_enterprise_id)
+ where ww.year = to_char(trunc(sysdate-1), 'yyyy')
+   and ww.month = to_char(trunc(sysdate-1), 'MM');
+--完成15学时累计
+   update statistic_enterprise ww
+   set ww.complete_fifteen_hours_count = (select count(pbs.id) as num
+                                            from pe_bzz_student pbs
+                                           where to_char(nvl(pbs.com_fifteen_hours_date,
+                                                             to_date('1900-01-01 00:00:00',
+                                                                     'yyyy-MM-dd hh24:mi:ss')),
+                                                         'yyyy') =
+                                                 to_char(trunc(sysdate-1), 'yyyy')
+                                             and ww.fk_enterprise_id =
+                                                 pbs.fk_enterprise_id
+                                           group by pbs.fk_enterprise_id)
+ where ww.year = to_char(trunc(sysdate-1), 'yyyy')
+   and ww.month = to_char(trunc(sysdate-1), 'MM');                                                                            

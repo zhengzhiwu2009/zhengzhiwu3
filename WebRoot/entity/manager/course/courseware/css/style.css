@@ -1,0 +1,129 @@
+body,br,p,tr,td
+{
+font-size:12px;
+}
+
+
+input.smart	{border:1 solid #000000;font-size:9pt;background-color:white;}
+textarea.smart	{border:1 solid #000000;font-size:9pt;background-color:white;}
+.newsTitle	{font-size:25px;font-weight:bold;color=#000066;}
+.newsSource	{font-size:9pt;}
+.newsMedia	{color:#980922;}
+
+/*以上信息为原平台的style.css的内容，以下为乔硕添加的*/
+
+
+BODY { FONT: 12px "Verdana", "Arial", "宋体"; TEXT-TRANSFORM: none 
+SCROLLBAR-FACE-COLOR: #00B0EA;      /*主体颜色*/
+SCROLLBAR-HIGHLIGHT-COLOR: #ffffff;  /*内高度*/
+SCROLLBAR-SHADOW-COLOR: #ffffff;
+SCROLLBAR-3DLIGHT-COLOR: #ACD2FC;     /*左边*/
+SCROLLBAR-ARROW-COLOR: #ffffff;        /*三角*/
+SCROLLBAR-TRACK-COLOR: #ACD2FC;      /*底色*/
+SCROLLBAR-DARKSHADOW-COLOR: #00B0EA;
+SCROLLBAR-BASE-COLOR: #64A0E7;}
+
+
+a { text-decoration: none;color=000000;}
+hr { color:#7DBAFF;height:2;}       /*目录上下宽度间隔色;*/ 
+textarea,INPUT,select  {BACKGROUND: #EAF3FF; BORDER-BOTTOM: #9ECAFF 1px solid; BORDER-LEFT: #9ECAFF 1px solid; BORDER-RIGHT: #9ECAFF 1px solid; BORDER-TOP:#9ECAFF 1px solid; COLOR: #003333; font-size: 9pt;} 
+.white {color:ffffff}
+table.tableline {border: thin solid #619DE4;}
+
+
+/*顶部色值*/ 
+/*-------------------------------------------------------------------------------------------------*/
+td.top { /*background:1C59A0;这里的background和后面的代码必须有一个被蔽频掉 */ height:120px; BACKGROUND-IMAGE: url(/whatymanager/work/firstpage/images/log2.jpg);}
+/*css样式td.top和/js/top.js可选头部,修改默认top.js文件名即可取消top.js的效果，不会出现错误问题*/ 
+
+/*-------------------------------------------------------------------------------------------------*/
+table.topmenubgc{background:64A0E7}   /*006CE6-0C5EB4-1C59A0*/
+.topmenu{ color:000000;}
+.cur1 {	cursor: help; color:000000}   /* 鼠标的效果 hand(手)、crosshair(十字指针)、text(文字输入)、wait(等待)、default(默认)*/
+
+
+
+/*左边-右边*/ 
+/*-------------------------------------------------------------------------------------------------*/
+table.2left {color:000000; background:#}
+td.menutop { /*background:ffffff;*/ BACKGROUND-IMAGE: url(/whaty/images/login_n_1.gif);color:ffffff;} {左边最顶部图片}
+td.menuback { /*background:ffffff;*/  BACKGROUND-IMAGE: url(/whaty/images/an1.gif); color:#000000; height=25;} 
+td.leftmenuimg {BACKGROUND-IMAGE: url(/whaty/images/left.gif); height:130px;widht:129px} /*目录下放的图片*/ 
+td.lmenutitle {BACKGROUND-IMAGE: url(/whaty/images/title.gif);widht:129px;height:25px; color:000000} /*学生目录标题*/
+table.main {BACKGROUND:#ACD2FC; border:none;}
+td.leftback{BACKGROUND-IMAGE: url(/whaty/images/leftback.gif);/*background:#99CCFF*/}/*主页面左边背景色，用于拉长之后的颜色补充*/
+td.rmenutitle {BACKGROUND-IMAGE: url(/whaty/images/title-right.gif);widht:129px; color:000000;height:26;font-size:14} /*右边标题*/
+td.rightback {BACKGROUND-IMAGE: url(/whaty/images/rightline.gif);widht:129px; color:000000;height:150;} /*右边背景*/
+td.rightfoot {BACKGROUND-IMAGE: url(/whaty/images/login_2.jpg); color:000000;height:10;} /*右边背景*/
+
+
+
+/*左边附加扩展槽*/
+td.leftidle {background:ffffff}  /*上下空闲区,例如就学信息中的系统介绍,上面的约有1像素高的位置*/ 
+
+
+/*主体部分*/
+/*-------------------------------------------------------------------------------------------------*/
+table.mainback { background:ffffff; /* BACKGROUND-IMAGE: url(/images/top.gif)*/}
+tr.mainup1 { BACKGROUND:#ACD2FC;color:000000; height: 20px;}  /*主页面上部*/
+td.mainup {BACKGROUND:#ACD2FC;color:000000;font-SIZE: 14px; TEXT-DECORATION: none; height: 23px;}  /*主页面上部*/
+tr.maindownmenu  { BACKGROUND:64A0E7;color:ffffff}   /*主页面下部菜单#1C59A0*/
+tr.maindown { BACKGROUND:#D8EAFF;color:000000}    /*ACD2FC主页面下部菜单以下内容*/
+
+table.border { bordercolor:000000 1px}
+table.dark { bordercolorlight:94B3D6; bordercolordark:#FFFFFF}
+
+
+/*表格列定义*/
+td.mainleft {BACKGROUND:#64A0E7;color:ffffff}
+td.mainright {BACKGROUND:#ACD2FC;color:000000}
+
+
+
+/*版权说明颜色*/
+/*--------------------------------------------------------------------------------------------------------*/
+.botcolor { BACKGROUND:#ACD2FC;border:thin double #619EE5;color:000000 }        /*ACD2FC-1C59A0*/
+
+
+
+/*manager*/
+
+tr.color2 { BACKGROUND:#ACD2FC; bordercolordark:#FFFFFF;bordercolorlight:#003399}
+td.color1 { BACKGROUND:#ACD2FC;color:000000}
+table.mangertopback {BACKGROUND-IMAGE: url(/whaty/images/mangertopback.gif);}
+body.manger {BACKGROUND:#64A0E7;}
+
+
+/*自动弹出页面*/
+table.open21 {BACKGROUND:#ACD2FC; /*BACKGROUND-IMAGE: url(/whaty/images/openback.jpg);*/widht:129px; color:000000}
+BODY.openwin  {/*BACKGROUND:#ACD2FC;*/ BACKGROUND-IMAGE: url(/whaty/images/openback.jpg);widht:129px; color:000000}
+
+
+
+
+
+/*一些基本定义*/
+TD {
+	FONT-SIZE: 12px; TEXT-DECORATION: none
+}
+
+SELECT {
+	FONT-SIZE: 12px; TEXT-DECORATION: none
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*因为没有找到相关值，被我蔽频掉的*/
+
+/*.table10 {BORDER-LEFT: #ffffff 1px solid; BORDER-RIGHT: #ffffff 1px solid; BORDER-TOP: #ffffff 1px solid; BORDER-BOTTOM: #ffffff 1px solid border:1}*/

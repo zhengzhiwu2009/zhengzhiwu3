@@ -1,0 +1,76 @@
+-- Create table
+create table PE_BZZ_TCH_COURSE_CLICK
+(
+  ID               VARCHAR2(50) not null,
+  FK_OPENCOURSE_ID VARCHAR2(50),
+  FK_COURSE_ID     VARCHAR2(50),
+  LAST_CLICK_TIME  DATE,
+  TOTAL_CLICK      NUMBER(5),
+  DAY_CLICK        NUMBER(5),
+  WEEK_CLICK       NUMBER(5),
+  MONTH_CLICK      NUMBER(5)
+)
+tablespace HZPH
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table PE_BZZ_TCH_COURSE_CLICK
+  add constraint PE_BZZ_TCH_COURSE_CLICK_ID primary key (ID)
+  using index 
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255;
+alter table PE_BZZ_TCH_COURSE_CLICK
+  add constraint FK_COURSE_ID_FK_FK foreign key (FK_COURSE_ID)
+  references PE_BZZ_TCH_COURSE (ID);
+alter table PE_BZZ_TCH_COURSE_CLICK
+  add constraint FK_OPENCOURSE_ID_FK_FK foreign key (FK_OPENCOURSE_ID)
+  references PR_BZZ_TCH_OPENCOURSE (ID);
+
+  
+  
+  -- Create table
+create table PE_BZZ_TCH_COURSE_CLICK_DETAIL
+(
+  ID               VARCHAR2(50) not null,
+  FK_STUDENT_ID    VARCHAR2(50),
+  FK_COURSE_ID     VARCHAR2(50),
+  FK_OPENCOURSE_ID VARCHAR2(50),
+  CLICK_TIME       DATE
+)
+tablespace HZPH
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table PE_BZZ_TCH_COURSE_CLICK_DETAIL
+  add constraint ID_ID_PRIMARY_KEY primary key (ID)
+  using index 
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255;
+alter table PE_BZZ_TCH_COURSE_CLICK_DETAIL
+  add constraint FK_COURSE_ID_FK_PRIMARY_KEY foreign key (FK_COURSE_ID)
+  references PE_BZZ_TCH_COURSE (ID);
+alter table PE_BZZ_TCH_COURSE_CLICK_DETAIL
+  add constraint FK_OPENCOURSE_ID_FK_FK_PRIMARY foreign key (FK_OPENCOURSE_ID)
+  references PR_BZZ_TCH_OPENCOURSE (ID);
+alter table PE_BZZ_TCH_COURSE_CLICK_DETAIL
+  add constraint FK_STUDENT_ID_FK_FK foreign key (FK_STUDENT_ID)
+  references PE_BZZ_STUDENT (ID);
+  

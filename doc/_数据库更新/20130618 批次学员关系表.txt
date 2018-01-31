@@ -1,0 +1,68 @@
+-- Create table
+create table PE_BZZ_PICI_STUDENT
+(
+  ID            VARCHAR2(50) not null,
+  PC_ID         VARCHAR2(50),
+  STU_ID        VARCHAR2(50),
+  START_TIME    DATE,
+  COMPLETE_TIME DATE,
+  EXAM_TIMES    VARCHAR2(10),
+  ISPASS        VARCHAR2(10),
+  SCORE         VARCHAR2(10)
+)
+tablespace HZPH
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the columns 
+comment on column PE_BZZ_PICI_STUDENT.ID
+  is '主键id';
+comment on column PE_BZZ_PICI_STUDENT.PC_ID
+  is '批次id';
+comment on column PE_BZZ_PICI_STUDENT.STU_ID
+  is '学生id';
+comment on column PE_BZZ_PICI_STUDENT.START_TIME
+  is '考试开始时间';
+comment on column PE_BZZ_PICI_STUDENT.COMPLETE_TIME
+  is '考试结束时间';
+comment on column PE_BZZ_PICI_STUDENT.EXAM_TIMES
+  is '考试次数';
+comment on column PE_BZZ_PICI_STUDENT.ISPASS
+  is '是否通过';
+comment on column PE_BZZ_PICI_STUDENT.SCORE
+  is '考试成绩';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table PE_BZZ_PICI_STUDENT
+  add constraint PICI_ID primary key (ID)
+  using index 
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+-- Create/Recreate indexes 
+create index PICI_PC_STU on PE_BZZ_PICI_STUDENT (STU_ID, PC_ID)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );

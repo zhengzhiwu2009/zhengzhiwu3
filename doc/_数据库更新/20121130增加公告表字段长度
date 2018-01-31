@@ -1,0 +1,1 @@
+alter table PE_BULLETIN modify SCOPE_STRING VARCHAR2(4000);

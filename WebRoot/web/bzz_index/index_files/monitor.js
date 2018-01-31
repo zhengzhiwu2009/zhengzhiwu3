@@ -1,0 +1,20 @@
+document.open();
+live800_companyID="96531";
+var enterurl="null";
+var isOldSkin=false;
+var globalWindowAttribute='toolbar=0,scrollbars=0,location=0,menubar=0,resizable=1,width=570,height=424';
+jid="4313005661";
+var live800_baseUrl="chat16.live800.com";
+var live800_baseHtmlUrl="chat16.live800.com";
+var live800_baseWebApp="/live800";
+var live800_baseChatHtmlDir="/chatClient";
+monitor_live800_configID="3508";
+live800_status="1";
+live800_Language="en";
+monitor_live800_configContent="live800_invite_auto=1&live800_invite_delay=10&live800_invite_top=1&live800_invite_style=default&live800_invite_title=Invite";
+live800_inviteContent="May I help you?";
+live800_visitorAddr="welcome";
+var invite_accept='Accept';
+var invite_cancel='Cancel';
+var isChatWindowViaSSL=false
+document.write("<scr"+"ipt language=\"javascript\" src=\"http://chat16.live800.com/live800/chatClient/monitorStatic.js\"></scr"+"ipt>");

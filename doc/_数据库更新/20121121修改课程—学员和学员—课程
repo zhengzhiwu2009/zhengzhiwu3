@@ -1,0 +1,2 @@
+update pe_pri_category set name='学员—课程' where code='0600301';
+update pe_pri_category set name='课程—学员' where code='0600302';

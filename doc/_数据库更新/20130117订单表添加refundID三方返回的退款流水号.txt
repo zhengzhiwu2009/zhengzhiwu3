@@ -1,0 +1,5 @@
+-- Add/modify columns 
+alter table PE_BZZ_ORDER_INFO add refund_id VARCHAR2(50);
+-- Add comments to the columns 
+comment on column PE_BZZ_ORDER_INFO.refund_id
+  is '三方返回的退款流水号';

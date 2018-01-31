@@ -1,0 +1,13 @@
+-- Alter table 
+alter table PE_ENTERPRISE
+  storage
+  (
+    next 1
+  )
+;
+-- Add/modify columns 
+alter table PE_ENTERPRISE add sub_enterprise_name varchar2(50);
+-- Add comments to the columns 
+comment on column PE_ENTERPRISE.sub_enterprise_name
+  is '子机构的单独名称';
+commit;

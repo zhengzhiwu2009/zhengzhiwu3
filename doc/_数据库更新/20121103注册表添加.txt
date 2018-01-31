@@ -1,0 +1,167 @@
+-- Create table
+create table REG_STUDENT
+(
+  ID                     VARCHAR2(50) not null,
+  NAME                   VARCHAR2(50),
+  REG_NO                 VARCHAR2(50) not null,
+  FK_SSO_USER_ID         VARCHAR2(50),
+  FK_ENTERPRISE_ID       VARCHAR2(50),
+  GENDER                 VARCHAR2(50),
+  FOLK                   VARCHAR2(50),
+  EDUCATION              VARCHAR2(50),
+  AGE                    VARCHAR2(50),
+  POSITION               VARCHAR2(50),
+  TITLE                  VARCHAR2(50),
+  DEPARTMENT             VARCHAR2(200),
+  ADDRESS                VARCHAR2(300),
+  ZIPCODE                VARCHAR2(50),
+  PHONE                  VARCHAR2(50),
+  MOBILE_PHONE           VARCHAR2(50),
+  EMAIL                  VARCHAR2(50),
+  FK_BATCH_ID            VARCHAR2(50),
+  TRUE_NAME              VARCHAR2(50),
+  BIRTHDAY               DATE,
+  EXPORT_STATE           VARCHAR2(1) default 0,
+  REGIST_PEOPLE          VARCHAR2(100),
+  REGIST_DATE            DATE,
+  FK_RECRUIT_ID          VARCHAR2(50),
+  EXPORT_PEOPLE          VARCHAR2(100),
+  EXPORT_DATE            DATE,
+  SUB_ENTERPRISE_NAME    VARCHAR2(500),
+  PHOTO                  VARCHAR2(100),
+  FLAG_RANK_STATE        VARCHAR2(50),
+  DATA_DATE              DATE default sysdate,
+  PHOTO_CONFIRM_DATE     DATE,
+  PHOTO_UNCONFIRM_REASON VARCHAR2(500),
+  PHOTO_CONFIRM          VARCHAR2(50) default '4028809c2d925bcf011d66fd0dda8006' not null,
+  STUDY_END_DATE         DATE,
+  IS_GOODSTU             VARCHAR2(50) default 'ccb2880a91dadc115011dadfcf26b0009',
+  JOB_NUMBER             VARCHAR2(50),
+  PICK_USER              VARCHAR2(50),
+  FK_SITE_ID             VARCHAR2(50),
+  CARD_TYPE              VARCHAR2(50),
+  CARD_NO                VARCHAR2(50),
+  GROUPS                 VARCHAR2(100),
+  FK_GRADE_ID            VARCHAR2(50),
+  FK_EXAMBATCH_ID        VARCHAR2(50),
+  STUDENT_TYPE           VARCHAR2(50),
+  CHECK_STATE            VARCHAR2(50)
+)
+tablespace HZPH
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the columns 
+comment on column REG_STUDENT.ID
+  is '序号';
+comment on column REG_STUDENT.REG_NO
+  is '学号';
+comment on column REG_STUDENT.FK_ENTERPRISE_ID
+  is '所在企业ID';
+comment on column REG_STUDENT.GENDER
+  is '性别';
+comment on column REG_STUDENT.FOLK
+  is '民族';
+comment on column REG_STUDENT.EDUCATION
+  is '学历';
+comment on column REG_STUDENT.AGE
+  is '年龄';
+comment on column REG_STUDENT.POSITION
+  is '具体职务';
+comment on column REG_STUDENT.TITLE
+  is '职称';
+comment on column REG_STUDENT.DEPARTMENT
+  is '工作部门';
+comment on column REG_STUDENT.ADDRESS
+  is '通讯地址';
+comment on column REG_STUDENT.ZIPCODE
+  is '邮编';
+comment on column REG_STUDENT.PHONE
+  is '办公电话';
+comment on column REG_STUDENT.MOBILE_PHONE
+  is '移动电话';
+comment on column REG_STUDENT.EMAIL
+  is '电子邮件';
+comment on column REG_STUDENT.FK_BATCH_ID
+  is '所在批次';
+comment on column REG_STUDENT.EXPORT_STATE
+  is '导出状态';
+comment on column REG_STUDENT.REGIST_PEOPLE
+  is '注册人';
+comment on column REG_STUDENT.REGIST_DATE
+  is '注册时间';
+comment on column REG_STUDENT.FK_RECRUIT_ID
+  is '对应报名表中ID';
+comment on column REG_STUDENT.EXPORT_PEOPLE
+  is '导出人';
+comment on column REG_STUDENT.EXPORT_DATE
+  is '导出时间';
+comment on column REG_STUDENT.SUB_ENTERPRISE_NAME
+  is '原二级公司备份';
+comment on column REG_STUDENT.PHOTO
+  is '相片';
+comment on column REG_STUDENT.FLAG_RANK_STATE
+  is '学员身份（体验、正式）';
+comment on column REG_STUDENT.PHOTO_CONFIRM_DATE
+  is '照片确认时间';
+comment on column REG_STUDENT.PHOTO_UNCONFIRM_REASON
+  is '管理员将其照片确认状态修改为未确认时的原因';
+comment on column REG_STUDENT.PHOTO_CONFIRM
+  is '照片是否确认，默认未确认';
+comment on column REG_STUDENT.STUDY_END_DATE
+  is '学习截止时间';
+comment on column REG_STUDENT.IS_GOODSTU
+  is '是否是优秀学员，默认是：否';
+comment on column REG_STUDENT.JOB_NUMBER
+  is '工号';
+comment on column REG_STUDENT.PICK_USER
+  is '体验账号领用人';
+comment on column REG_STUDENT.FK_SITE_ID
+  is '管理员所在企业';
+comment on column REG_STUDENT.CARD_TYPE
+  is '证件类型';
+comment on column REG_STUDENT.CARD_NO
+  is '证件号';
+comment on column REG_STUDENT.GROUPS
+  is '分组';
+comment on column REG_STUDENT.FK_GRADE_ID
+  is '年级ID';
+comment on column REG_STUDENT.FK_EXAMBATCH_ID
+  is '考试id';
+comment on column REG_STUDENT.STUDENT_TYPE
+  is '用户类型（集体或个人）';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table REG_STUDENT
+  add constraint PK_REG_STUDENT primary key (ID)
+  using index 
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+alter table REG_STUDENT
+  add constraint FK_PE_BZZ_ST_R_BZZ_REC1 foreign key (FK_RECRUIT_ID)
+  references PE_BZZ_RECRUIT (ID);
+alter table REG_STUDENT
+  add constraint FK_PE_BZZ_ST_R_ENUM_CONST1 foreign key (STUDENT_TYPE)
+  references ENUM_CONST (ID);
+alter table REG_STUDENT
+  add constraint FK_PE_BZZ_ST_R_PE_ENT1 foreign key (FK_ENTERPRISE_ID)
+  references PE_ENTERPRISE (ID);
+alter table REG_STUDENT
+  add constraint FK_PE_BZZ_ST_R_SSO_USER1 foreign key (FK_SSO_USER_ID)
+  references SSO_USER (ID);
+alter table REG_STUDENT
+  add constraint FK_PE_BZZ_ST_R_TEST_EXAMBATCH1 foreign key (FK_EXAMBATCH_ID)
+  references TEST_EXAMBATCH_INFO (ID);

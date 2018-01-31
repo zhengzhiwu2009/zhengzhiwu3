@@ -1,0 +1,9 @@
+------20121208
+---此次迁移 迁移了 机构的注册地址，办公地址，网址 3个字段
+--迁移到ORACLE中的临时表示inst_name
+---以下是更新语句
+update pe_enterprise p set p.address=(select i.office_address from inst_name i where i.code=p.code);--办公地址
+update pe_enterprise p set p.enrol_address=(select i.enrol_address from inst_name i where i.code=p.code);--注册地址
+update pe_enterprise p set p.net_address=(select i.net_address from inst_name i where i.code=p.code);--网址
+update pe_enterprise p set p.address='' where p.name='空';--迁移过来有null字符串替换
+

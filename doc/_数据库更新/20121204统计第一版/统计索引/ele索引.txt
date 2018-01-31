@@ -1,0 +1,192 @@
+create index AK_KET_2_OPERATOR on PR_BZZ_TCH_STU_ELECTIVE (FK_OPERATOR_ID)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+create index AK_KEY_2_PR_BZZ_STU on PR_BZZ_TCH_STU_ELECTIVE (FK_STU_ID)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 168M
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+create unique index AK_KEY_2_PR_BZZ_T1 on PR_BZZ_TCH_STU_ELECTIVE (FK_STU_ID, FK_TCH_OPENCOURSE_ID)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 256M
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+create unique index AK_KEY_FK_TRAINING_ID on PR_BZZ_TCH_STU_ELECTIVE (FK_TRAINING_ID)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 320M
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+create index AK_KEY_TEMPID on PR_BZZ_TCH_STU_ELECTIVE (TEMPID)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 256M
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+create index FK_ELE_COURSE_PERIOD_ID on PR_BZZ_TCH_STU_ELECTIVE (FK_ELE_COURSE_PERIOD_ID)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+create index FK_PA_LRN_ORDER_D on PR_BZZ_TCH_STU_ELECTIVE (FK_ORDER_ID)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+create index FK_TCH_OPENCOURSE_ID on PR_BZZ_TCH_STU_ELECTIVE (FK_TCH_OPENCOURSE_ID)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+create index INDEX1 on PR_BZZ_TCH_STU_ELECTIVE (FLAG_ELECTIVE_PAY_STATUS, FK_TCH_OPENCOURSE_ID, FK_STU_ID, SCORE_EXAM)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+create index INDEX_ELE_STUEXAMOPENOD on PR_BZZ_TCH_STU_ELECTIVE (FK_STU_ID, SCORE_EXAM, FK_TCH_OPENCOURSE_ID, FK_ORDER_ID)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+create index PR_BZZ_TCH_STU_ELECTIVE_INDEX2 on PR_BZZ_TCH_STU_ELECTIVE (TO_CHAR(NVL(ELECTIVE_DATE,TO_DATE(' 1900-01-01 00:00:00', 'syyyy-mm-dd hh24:mi:ss')),'yyyy-MM'))
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+create index PR_BZZ_TCH_STU_ELECTIVE_INDEX3 on PR_BZZ_TCH_STU_ELECTIVE (TO_CHAR(NVL(COMPLETED_TIME,TO_DATE(' 1900-01-01 00:00:00', 'syyyy-mm-dd hh24:mi:ss')),'yyyy-MM'))
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+create index PR_BZZ_TCH_STU_ELECTIVE_INDEX4 on PR_BZZ_TCH_STU_ELECTIVE (TO_CHAR(NVL(COMPLETED_TIME,TO_DATE(' 1900-01-01 00:00:00', 'syyyy-mm-dd hh24:mi:ss')),'yyyy'))
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+create index PR_BZZ_TCH_STU_ELECTIVE_INDEX6 on PR_BZZ_TCH_STU_ELECTIVE (ISPASS)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+create index PR_BZZ_TCH_STU_ELECTIVE_INDEX7 on PR_BZZ_TCH_STU_ELECTIVE (FLAG_ELECTIVE_PAY_STATUS)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+create index PR_BZZ_TCH_STU_ELECTIVE_INDEX8 on PR_BZZ_TCH_STU_ELECTIVE (TO_CHAR(NVL(ELECTIVE_DATE,TO_DATE(' 1900-01-01 00:00:00', 'syyyy-mm-dd hh24:mi:ss')),'yyyy'))
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );

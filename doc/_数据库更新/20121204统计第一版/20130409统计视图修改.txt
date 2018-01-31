@@ -1,0 +1,68 @@
+create or replace view report_reg_ins as
+select nvl(c.name, '个人用户') as A1,
+                max(se.reg_enterprise_num) as A2,
+                max(se.reg_enterprise_count) as A3,
+                sum(se.reg_user_num) as A4,
+                max(se.reg_user_count) as A5,
+                year as YEAR
+           from (
+               select month ,enterprise_type,
+               max(reg_enterprise_num) as reg_enterprise_num,
+               max(reg_enterprise_count) as reg_enterprise_count,
+               sum(reg_user_num) as reg_user_num,
+               sum(reg_user_count) as reg_user_count,
+               year as YEAR from
+           statistic_enterprise group by month, year,enterprise_type) se
+           left join enum_const c on se.enterprise_type = c.id
+          group by c.name, year
+          order by c.name；
+
+
+update pe_enterprise pe set pe.data_date=to_date('2012-12-31 00:00:00','yyyy-MM-dd hh24:mi:ss ') where pe.data_date is  null;
+
+create or replace view report_reg_type as
+select '集体用户' as A1,
+       sum(enNum) as A2,
+       sum(enCount) as A3,
+       sum(userNum) as A4,
+       max(userCount) as A5,
+       year as YEAR
+  from (select year,
+               enterprise_type,
+               max(reg_enterprise_num) as enNum,
+               max(reg_enterprise_count) as enCount,
+               sum(reg_user_num) userNum,
+               max(reg_user_count) as userCount
+          from (select month,
+                       enterprise_type,
+                       max(reg_enterprise_num) as reg_enterprise_num,
+                       max(reg_enterprise_count) as reg_enterprise_count,
+                       sum(reg_user_num) as reg_user_num,
+                       sum(reg_user_count) as reg_user_count,
+                       year as YEAR
+                  from statistic_enterprise
+                 where fk_enterprise_id <> '0000'
+                 group by month, year, enterprise_type) se
+        
+         group by year, enterprise_type)
+ group by year
+union
+select '个人用户' as A1,
+       sum(reg_enterprise_num) as A2,
+       sum(reg_enterprise_count) as A3,
+       sum(reg_user_num) as A4,
+       sum(reg_user_count) as A5,
+       year
+  from (select month,
+               enterprise_type,
+               max(reg_enterprise_num) as reg_enterprise_num,
+               max(reg_enterprise_count) as reg_enterprise_count,
+               sum(reg_user_num) as reg_user_num,
+               sum(reg_user_count) as reg_user_count,
+               year as YEAR
+          from statistic_enterprise
+         where fk_enterprise_id = '0000'
+         group by month, year, enterprise_type)
+ group by year;
+
+ 

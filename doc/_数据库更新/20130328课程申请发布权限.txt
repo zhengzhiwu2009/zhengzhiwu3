@@ -1,0 +1,5 @@
+insert into PE_PRIORITY (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288acf3dae92da013daea7375a000a', '课程发布管理_申请发布', '04001', '/entity/teaching', 'peBzzCourseManager', 'applyopen');
+
+--在pe_pri_role中添加（申请发布）角色：
+insert into pe_pri_role (ID, NAME, FLAG_ROLE_TYPE, FLAG_BAK) values ('ff8080813bd023d7013cd26b5b300145', '协会管理员_申请发布', '4028826a1db7bb01011db7e623d70003', '');

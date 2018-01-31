@@ -1,0 +1,22 @@
+create or replace view report_rel_online_detail as
+select 
+pbtc.code as A1,
+pbtc.name as A2,
+pbtc.teacher as A3,
+ec.name as A4,
+ec2.name as A5, 
+ec3.name as A6,
+ec4.name as A7,
+pbtc.time as A8,
+pbtc.create_date as A9,
+sc.year as year
+from statistic_courses sc
+inner join pe_bzz_tch_course pbtc on sc.fk_course_id = pbtc.id
+inner join enum_const ec on pbtc.flag_coursetype = ec.id
+inner join enum_const ec2 on pbtc.flag_isrecommend = ec2.id
+inner join enum_const ec3 on pbtc.flag_coursecategory = ec3.id
+inner join enum_const ec4 on pbtc.flag_course_item_type = ec4.id
+inner join (select sc.year, max(sc.month) as month
+               from STATISTIC_COURSES sc
+              group by sc.year) a on a.year = sc.year
+where sc.month = a.month

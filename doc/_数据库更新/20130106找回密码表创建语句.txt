@@ -1,0 +1,37 @@
+-- Create table
+create table VERIFYSTR
+(
+  ID           VARCHAR2(50) not null,
+  CREATE_DATE  TIMESTAMP(6),
+  USER_ID      VARCHAR2(50),
+  ISVALID      VARCHAR2(2),
+  LOGIN_ID     VARCHAR2(50),
+  VERIFY_COUNT NUMBER(1),
+  VERIFY_TYPE  NUMBER(2),
+  VERIFY_INFO  VARCHAR2(50)
+)
+tablespace HZPH
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table VERIFYSTR
+  is '找回密码相关表';
+-- Add comments to the columns 
+comment on column VERIFYSTR.ID
+  is 'ID';
+comment on column VERIFYSTR.CREATE_DATE
+  is '创建时间';
+comment on column VERIFYSTR.USER_ID
+  is 'userID';
+comment on column VERIFYSTR.ISVALID
+  is '是否有效';
+comment on column VERIFYSTR.LOGIN_ID
+  is '登陆ID';

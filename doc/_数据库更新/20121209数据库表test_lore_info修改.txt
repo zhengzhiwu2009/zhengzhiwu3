@@ -1,0 +1,12 @@
+// by  wuhao 
+
+修改数据库表Test_lore_info 结构
+默认表中creatdate 为系统日期
+
+ alter table test_lore_info modify   creatdate default sysdate 
+ 
+ 
+ 
+ 增加联合唯一键 (name,loredir)同一目录下知识点名称唯一
+ 
+ alter  table test_lore_info  add constraint lore_info_uk unique (name,loredir)

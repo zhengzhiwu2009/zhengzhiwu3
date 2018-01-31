@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by tbao (whaty) -->
+<Schema xmlns="urn:schemas-microsoft-com:xml-data" xmlns:dt="urn:schemas-microsoft-com:datatypes">
+	<ElementType name="description" content="textOnly"/>
+	<ElementType name="coursetitle" content="textOnly"/>
+	<ElementType name="Teacher" content="textOnly"/>
+	<ElementType name="LocalVideo-filename" content="textOnly"/>
+	<ElementType name="RemoteVideo-filename" content="textOnly"/>
+	<ElementType name="Pagenum" dt:type="fixed.14.4"/>
+	<ElementType name="CourseType" content="textOnly"/>
+	<ElementType name="sequence" dt:type="int"/>
+	<ElementType name="id" content="textOnly"/>
+	<ElementType name="duration" dt:type="int"/>
+	<ElementType name="title" content="textOnly"/>
+	<ElementType name="hidden" content="textOnly"/>
+	<ElementType name="ColorStyleId" content="textOnly"/>
+	<ElementType name="InitIsShowRightDown" content="textOnly"/>
+	<ElementType name="ShowAudioOnlyMenu" content="textOnly"/>
+	<ElementType name="ShowColorStyleMenu" content="textOnly"/>
+	<ElementType name="InitLeftSize" content="textOnly"/>
+	<AttributeType name="model"/>
+	<AttributeType name="openICON"/>
+	<AttributeType name="closeICON"/>
+	<AttributeType name="nodeICON"/>
+	<AttributeType name="index"/>
+	<AttributeType name="flashwidth"/>
+	<AttributeType name="flashheight"/>
+	<AttributeType name="flashpath"/>
+	<AttributeType name="time"/>
+	<AttributeType name="name"/>
+	<AttributeType name="pic"/>
+	<AttributeType name="photo"/>
+	<ElementType name="courseslides" content="mixed">
+		<attribute type="model"/>
+		<attribute type="openICON"/>
+		<attribute type="closeICON"/>
+		<attribute type="nodeICON"/>
+		<attribute type="photo"/>
+		<element type="coursetitle"/>
+		<element type="description"/>
+		<element type="Teacher"/>
+		<element type="LocalVideo-filename"/>
+		<element type="RemoteVideo-filename"/>
+		<element type="Pagenum"/>
+		<element type="CourseType"/>
+		<element type="slide" minOccurs="0" maxOccurs="*"/>
+		<element type="picview"/>
+	</ElementType>
+	<ElementType name="slide" content="mixed">
+		<attribute type="index"/>
+		<attribute type="openICON"/>
+		<attribute type="closeICON"/>
+		<attribute type="photo"/>
+		<element type="sequence"/>
+		<element type="title"/>
+		<element type="hidden"/>
+		<element type="duration"/>
+		<element type="file"/>
+		<element type="TimeLine" minOccurs="0" maxOccurs="1"/>
+	</ElementType>
+	<ElementType name="file" content="mixed">
+		<attribute type="flashpath"/>
+		<attribute type="flashwidth"/>
+		<attribute type="flashheight"/>
+	</ElementType>
+	<ElementType name="TimeLine" content="eltOnly">
+		<element type="item" minOccurs="0" maxOccurs="*"/>
+	</ElementType>
+	<ElementType name="item" content="mixed">
+		<attribute type="time"/>
+		<attribute type="name"/>
+		<attribute type="pic"/>
+	</ElementType>
+	<ElementType name="CourseSettings" content="mixed">
+		<element type="ColorStyleId"/>
+		<element type="InitIsShowRightDown"/>
+		<element type="ShowAudioOnlyMenu"/>
+		<element type="ShowColorStyleMenu"/>
+		<element type="InitLeftSize"/>
+	</ElementType>
+	<ElementType name="picview" content="eltOnly">
+		<element type="item" minOccurs="0" maxOccurs="*"/>
+	</ElementType>
+</Schema>

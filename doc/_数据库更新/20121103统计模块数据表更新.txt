@@ -1,0 +1,19 @@
+pe_bzz_student更新语句
+alter table pe_bzz_student add STUDENT_TYPE VARCHAR2(255 CHAR);
+-- Add comments to the columns 
+comment on column pe_bzz_student.STUDENT_TYPE
+  is '用户类型（集体或个人）';
+
+
+
+alter table PE_BZZ_STUDENT
+  add constraint FK_PE_BZZ_ST_R_ENUM_CONST foreign key (STUDENT_TYPE)
+  references ENUM_CONST (ID);
+  
+  -------------------------------
+  enum_const插入信息
+  insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('402880a91da9032f011da905da070002', '否', '0', 'FlagStudentType', '1', to_date('23-10-2012 10:55:15', 'dd-mm-yyyy hh24:mi:ss'), '是否是个人用户');
+
+insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('402880a91da9032f011da905da070003', '是', '1', 'FlagStudentType', '0', to_date('23-10-2012 10:55:15', 'dd-mm-yyyy hh24:mi:ss'), '是否是个人用户');

@@ -1,0 +1,56 @@
+@import url("comm_welcome.css");
+ 
+h1{ background:url(top_pic1.jpg); height:156px;}
+h1 div{ background:url(top_pic.jpg) center no-repeat; height:156px;}
+h2{ margin:10px auto 0 auto; text-indent:44px; background-repeat:no-repeat;width:179px; height:35px;} 
+h2,h2 a,h2 a:link,h2 a:visited{ font-size:14px; font-weight:bold; line-height:35px; color:#fff}
+
+.menu a{ display:block; margin:4px auto 0 auto;  width:167px; text-indent:40px; height:30px; background-repeat:no-repeat; line-height:30px;}
+ 
+
+
+.list td,.list th{ border:#c7c7c7 1px solid; padding:5px;}
+.list th{ color:#00274c; padding:10px 5px; letter-spacing:normal; white-space:nowrap; background:#eef1f6}
+.list{ padding:10px; background:#FFF}
+.list table{ width:100%}
+
+.search{ padding:20px 10px;}
+/*
+.search table{ width:100%}
+.search th{ color:#00274c; padding:10px 5px; letter-spacing:normal; white-space:nowrap; background:#eef1f6}
+.search td,.search th{ border:#c7c7c7 1px solid; padding:5px;}
+*/
+
+.content{ padding:10px}
+.content table{   background:#FFF}
+.content td,.content th{font-weight:lighter; padding:5px; border:#99bbe8 1px solid}
+.content h5{ padding:10px;text-align:center;  font-size:16px;}
+.content th  { background:#f1f7fb; text-align:right; font-weight:bold; width:120px}
+ 
+.biankuangbox div{ padding:10px}
+.biankuangbox{   border:#a4bcd7 1px solid; margin:10px auto 0 auto; width:737px; }
+.alert{ border:#a4bcd7 1px solid;margin:0 auto; width:97%;}
+.alert td{ font-weight:bold; padding:5px;}
+.title{ margin:0 auto; width:97%; margin-top:10px; background:url(03.jpg) no-repeat; line-height:32px; font-size:16px; color:#00274c; font-weight:bold; text-indent:40px; border:1px solid #c7c7c7;}
+
+
+.title_blue{ border:#b1d0e7 1px solid; margin:0 auto; width:737px; margin-top:10px; background:#d0e3f1;   font-size:14px; color:#00274c; font-weight:bold; text-indent:10px}
+.title_red{ text-align:center; font-size:18px; color:#ff3b12; font-family:"微软雅黑"}
+.content01{   margin:0 auto; width:737px; margin-top:10px;   }
+.content01 td,.content01 th{font-weight:lighter; padding:5px; border:#99bbe8 1px solid}
+ .content01 th  { background:#f1f7fb; text-align:right; font-weight:bold; width:120px}
+
+
+
+.bottom{ width:940px; margin:0 auto; background:#f3f3f3; border-top:#c0c0c0 1px solid; text-align:center; padding:30px;}
+.bg{ background:#e0e0e0}
+.baibeijing{ width:1000px; background:#FFF; overflow:hidden; margin:0 auto}
+.baibeijing .biaoti{ padding:0 10px; background:#e6eff9; color:#252a8e; font-size:14px; font-weight:bold}
+
+.erjitop{  background:url(top_pic.jpg) no-repeat center;  height:156px;}
+
+
+ 
+.contentmanyidu{ padding:10px}
+.contentmanyidu .timu  { padding:10px 0; font-size:14px;   text-align:left; font-weight:bold; }
+.contentmanyidu  td{ border:none; border-bottom:#CCC 1px solid}

@@ -1,0 +1,7 @@
+update pe_enterprise pe
+   set pe.entype =
+       (select ec.id
+          from enum_const ec
+         where substr(pe.code, 0, 1) = ec.code and ec.namespace='FlagEnterpriseType')
+ where pe.fk_parent_id is null
+   and pe.id <> '0000'

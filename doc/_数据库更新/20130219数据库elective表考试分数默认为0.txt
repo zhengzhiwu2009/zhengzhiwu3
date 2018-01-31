@@ -1,0 +1,1 @@
+alter table PR_BZZ_TCH_STU_ELECTIVE modify SCORE_EXAM default 0;

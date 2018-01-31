@@ -1,0 +1,49 @@
+-- Create table
+create table PR_BZZ_TCH_STU_ELECTIVE_BACK
+(
+  id                      varchar2(50),
+  FK_OPERATOR_ID          varchar2(50),
+  FK_TCH_OPENCOURSE_ID    varchar2(50),
+  FK_STU_ID               varchar2(50),
+  FK_ORDER_ID             varchar2(50),
+  FK_ELE_COURSE_PERIOD_ID varchar2(50)
+)
+tablespace HZPH
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table PR_BZZ_TCH_STU_ELECTIVE_BACK
+  is '此表用于网银支付时，订单生成时，所产生的选课记录';
+-- Add comments to the columns 
+comment on column PR_BZZ_TCH_STU_ELECTIVE_BACK.FK_OPERATOR_ID
+  is '订单创建人';
+comment on column PR_BZZ_TCH_STU_ELECTIVE_BACK.FK_TCH_OPENCOURSE_ID
+  is '对应的opencourse的id号';
+comment on column PR_BZZ_TCH_STU_ELECTIVE_BACK.FK_STU_ID
+  is '学生id';
+comment on column PR_BZZ_TCH_STU_ELECTIVE_BACK.FK_ORDER_ID
+  is '订单号';
+comment on column PR_BZZ_TCH_STU_ELECTIVE_BACK.FK_ELE_COURSE_PERIOD_ID
+  is '选课期id';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table PR_BZZ_TCH_STU_ELECTIVE_BACK
+  add constraint pk_back_id primary key (ID);
+alter table PR_BZZ_TCH_STU_ELECTIVE_BACK
+  add constraint FK_OPERATOR_ID foreign key (FK_OPERATOR_ID)
+  references sso_user (ID);
+alter table PR_BZZ_TCH_STU_ELECTIVE_BACK
+  add constraint FK_TCH_OPENCOURSE_ID foreign key (FK_TCH_OPENCOURSE_ID)
+  references pr_bzz_tch_opencourse (ID);
+alter table PR_BZZ_TCH_STU_ELECTIVE_BACK
+  add constraint FK_STU_ID foreign key (FK_STU_ID)
+  references pe_bzz_student (ID);
+alter table PR_BZZ_TCH_STU_ELECTIVE_BACK
+  add constraint FK_ORDER_ID foreign key (FK_ORDER_ID)
+  references pe_bzz_order_info (ID);
+alter table PR_BZZ_TCH_STU_ELECTIVE_BACK
+  add constraint FK_ELE_COURSE_PERIOD_ID foreign key (FK_ELE_COURSE_PERIOD_ID)
+  references pe_elective_course_period (ID);

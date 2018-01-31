@@ -1,0 +1,110 @@
+insert into pe_pri_category (ID, NAME, FK_PARENT_ID, CODE, PATH, FLAG_LEFT_MENU)
+values ('40288a213bc0df4a013bc1a10d1a0013', '在线报名单', '08', '08006', 'to_top_menu', '1');
+
+insert into pe_pri_category (ID, NAME, FK_PARENT_ID, CODE, PATH, FLAG_LEFT_MENU)
+values ('40288a213bc1aa14013bc1c7ccd7000d', '报名单列表', '40288a213bc0df4a013bc1a10d1a0013', '0800601', '/entity/basic/signUpOnline.action', '0');
+
+insert into pe_pri_category (ID, NAME, FK_PARENT_ID, CODE, PATH, FLAG_LEFT_MENU)
+values ('40288a213bc1aa14013bc1c8b0de000e', '报名单添加', '40288a213bc0df4a013bc1a10d1a0013', '0800602', '/entity/manager/signUpOnline/signUpOnline.jsp', '0');
+
+
+
+insert into pe_priority (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288a213bc1aa14013bc1cfb9960015', '在线报名单_abstractList', '40288a213bc0df4a013bc1a10d1a0013', '*', '*', '*');
+
+insert into pe_priority (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288a213bc0df4a013bc1a3203a0014', '在线报名单_*', '40288a213bc0df4a013bc1a10d1a0013', '*', '*', '*');
+
+insert into pe_priority (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288a213bc1aa14013bc1b70dea0006', '在线报名单列表_*', '40288a213bc1aa14013bc1c7ccd7000d', '/entity/basic', 'signUpOnline', '*');
+
+insert into pe_priority (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288a213bc1aa14013bc1b8e9ce0007', '在线报名单添加_*', '40288a213bc1aa14013bc1c8b0de000e', '/entity/basic', 'signUpOnline', '*');
+
+- Create table
+create table PE_SIGNUP_ORDER
+(
+  ID             VARCHAR2(50) not null,
+  ORDER_SEQUENCE VARCHAR2(50),
+  NOTE           VARCHAR2(200),
+  ADD_DATE       DATE default sysdate,
+  OPERATOR       VARCHAR2(50),
+  FLAG_ISPAIED   VARCHAR2(50)
+)
+tablespace HZPH
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 8K
+    minextents 1
+    maxextents unlimited
+  );
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table PE_SIGNUP_ORDER
+  add constraint PK_PE_SIGNUP_ORDER primary key (ID)
+  using index 
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table PE_SIGNUP_ORDER
+  add constraint FK_PE_SIGNUP_ORDER_ISPAIED foreign key (FLAG_ISPAIED)
+  references ENUM_CONST (ID);
+alter table PE_SIGNUP_ORDER
+  add constraint FK_PE_SIGNUP_ORDER_OPERATOR foreign key (OPERATOR)
+  references PE_ENTERPRISE_MANAGER (ID);
+  
+ -- Create table
+create table PR_SIGNUP_ORDER_DETAIL
+(
+  ID         VARCHAR2(50) not null,
+  STUDENT_ID VARCHAR2(50),
+  COURSE_ID  VARCHAR2(50),
+  ORDER_ID   VARCHAR2(50)
+)
+tablespace HZPH
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table PR_SIGNUP_ORDER_DETAIL
+  add constraint PK_PR_SIGNUP_ORDER_DETAIL primary key (ID)
+  using index 
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table PR_SIGNUP_ORDER_DETAIL
+  add constraint FK_SIGNUP_ORDER_COURSE_ID foreign key (COURSE_ID)
+  references PE_BZZ_TCH_COURSE (ID);
+alter table PR_SIGNUP_ORDER_DETAIL
+  add constraint FK_SIGNUP_ORDER_ID foreign key (ORDER_ID)
+  references PE_SIGNUP_ORDER (ID);
+alter table PR_SIGNUP_ORDER_DETAIL
+  add constraint FK_SIGNUP_ORDER_STUDENT foreign key (STUDENT_ID)
+  references PE_BZZ_STUDENT (ID);
+  

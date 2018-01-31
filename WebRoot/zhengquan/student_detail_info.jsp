@@ -1,0 +1,108 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="/zhengquan/css/shared.css">
+<script language="JavaScript" src="js/shared.js"></script>
+</head>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<form name="form1" method="post" action="">
+   <table width="100%" border="0" cellspacing="0" cellpadding="4" align="center">
+    <tr> 
+      <td class="tdsectionbar">学习详情</td>
+    </tr>
+  </table>
+   <table width="100%" border="0" align="center" cellpadding="2" cellspacing="3" class="tdbg2">
+    <tr> 
+      <td width="13%" nowrap class="tdbg2">系统编号：001</td>
+      <td width="13%" align="left" nowrap class="tdbg1">学员姓名：张三</td>
+	  <td width="74%" nowrap class="tdbg2">证件编号：346846475464584564 </td>
+     </tr>
+	
+  </table>
+  <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <td class="tdsectionbar">所学课程情况</td>
+    </tr>
+  </table>
+  <table width="98%" border="0" align="center" cellpadding="0" cellspacing="1" class="tdframe">
+    <tr align="center" class="tdbg2">
+		<td width="10%">课程名称</td>
+		<td width="10%">课程编号</td>
+		<td width="10%">是否必修</td>
+		<td width="10%">课程学时</td>
+		<td width="10%">支付时间</td>
+		<td width="10%">首次学习时间</td>
+		<td width="10%">学习完成时间</td>
+		<td width="10%">学习期限</td>
+		<td width="10%">课程状态</td>
+		<td width="10%">学习结果</td>
+	</tr>
+	<tr align="center" class="tdbg0">
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td></td>
+	</tr>
+  </table>
+  <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <td class="tdsectionbar">课程讲解</td>
+    </tr>
+  </table>
+  <table width="98%" border="0" align="center" cellpadding="0" cellspacing="1" class="tdframe">
+    <tr align="center" class="tdbg2">
+		<td width="10%">要求学习时间</td>
+		<td width="10%">累计学习时间</td>
+		<td width="10%">累计学习次数</td>
+		<td width="10%">上一次学习时间</td>
+	</tr>
+	<tr align="center" class="tdbg0">
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+  </table>
+  <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <td class="tdsectionbar">课程测验</td>
+    </tr>
+  </table>
+  <table width="98%" border="0" align="center" cellpadding="0" cellspacing="1" class="tdframe">
+    <tr align="center" class="tdbg2">
+		<td width="10%">限定测验次数</td>
+		<td width="10%">测验通过成绩</td>
+		<td width="10%">上次测验时间</td>
+		
+	</tr>
+	<tr align="center" class="tdbg0">
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		
+	</tr>
+  </table>
+  </form>
+  <table width="98%" border="0" cellspacing="3" cellpadding="0" align="center">
+<tr class="tdbg2"> 
+<td align="center">
+<input type="button" class="button" value="返回" onclick="window.history.go(-1);"/>
+</td>
+</tr>
+</table>
+  </body>
+</html>

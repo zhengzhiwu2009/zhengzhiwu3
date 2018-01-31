@@ -1,0 +1,2 @@
+update enum_const e set e.name='是' where e.id='402880f827f5b99b0127f5bdadc70007'; 
+update enum_const e set e.name='否' where e.id='402880f827f5b99b0127f5bdadc70008'; 

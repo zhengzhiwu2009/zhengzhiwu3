@@ -1,0 +1,21 @@
+添加种类
+insert into pe_pri_category(id,name,fk_parent_id,code,path,flag_left_menu)values('40288ccf3aaf4b0c013ab00af90c0013','
+
+审核注册用户','02','02004','/sso/web/action/regist.action','1');
+
+添加权限
+insert into pe_priority(id,name,fk_pri_cat_id,namespace,action,method)values('40288ccf3aaf4b0c013ab00c2b430014','审核
+
+注册_*','40288ccf3aaf4b0c013ab00af90c0013','/sso','regist','*');
+
+
+下面3个可以手动分配权限
+insert into pr_pri_role(id,fk_role_id,fk_priority_id,flag_isvalid)values
+
+('40288ccf3aaf4b0c013ab00cbd040015','3','40288ccf3aaf4b0c013ab00c2b430014','1');
+insert into pr_pri_role(id,fk_role_id,fk_priority_id,flag_isvalid)values
+
+('40288ccf3aaf4b0c013ab00d2eba0016','2','40288ccf3aaf4b0c013ab00c2b430014','1');
+insert into pr_pri_role(id,fk_role_id,fk_priority_id,flag_isvalid)values
+
+('40288ccf3aaf4b0c013ab00d61720017','1','40288ccf3aaf4b0c013ab00c2b430014','1');

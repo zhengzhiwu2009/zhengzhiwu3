@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>课程发布管理</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="css/shared.css">
+<script language="JavaScript" src="js/shared.js"></script>
+</head>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<form name="form1" method="post" action="">
+   <table width="100%" border="0" cellspacing="0" cellpadding="4" align="center">
+    <tr> 
+      <td class="tdsectionbar">课程发布管理</td>
+    </tr>
+  </table>
+  <table width="100%" border="0" align="center" cellpadding="2" cellspacing="3" class="tdbg2">
+    <tr> 
+      <td width="9%" nowrap class="tdbg2"> <div align="right">课程名称</div></td>
+      <td width="9%" nowrap class="tdbg2"><input name="textfield32" type="text" size="15" maxlength="30"></td>
+      <td width="9%" nowrap class="tdbg2"> <div align="right">课程类别</div></td>
+      <td width="9%" nowrap class="tdbg2"><input name="textfield32" type="text" size="15" maxlength="30"></td>
+      <td width="9%" nowrap class="tdbg2"> <div align="right">学时数</div></td>
+      <td width="9%" nowrap class="tdbg2"><input name="textfield32" type="text" size="15" maxlength="30"></td>
+    <td width="9%" nowrap class="tdbg2"> <div align="right">发布状态</div></td>
+      <td width="9%" nowrap class="tdbg2">
+      <select>
+      	<option>未发布</option>
+      	<option>已发布</option>
+      </select></td>
+	   <td width="9%" nowrap class="tdbg2"> <div align="right">年度</div></td>
+      <td width="9%" nowrap class="tdbg2">
+      	<select>
+      	<option>2008年度</option>
+      	<option>2009年度</option>
+      	<option>2010年度</option>
+      	<option>2011年度</option>
+      	<option>2012年度</option>
+      </select></td>
+      </td>
+	 <!--    <td width="10%" nowrap class="tdbg2"> <div align="right">往年转入课程</div></td>
+      <td width="10%" nowrap class="tdbg0"><input name="textfield32" type="text" size="15" maxlength="30"></td>-->
+	  <td width="9%" nowrap><span class="tdbg2">
+         <INPUT class=button type=submit value="搜索">
+      </span></td>
+    </tr>
+  </table>
+<table width="98%" border="0" cellspacing="3" cellpadding="0" align="center"><tr><td>
+<input type="button" class="button" onclick="window.location.href='tjkc.html';" value="添加"/>
+<input type="button" class="button" onclick="window.location.href='tjkc.html';" value="删除"/>
+</td></tr>
+</table>      
+ <table width="98%" border="0" cellspacing="1" cellpadding="0" align=center>
+    <tr>
+      <td class="tdsectionbar">基本信息</td>
+    </tr>
+  </table>
+  <table width="98%" border="0" align="center" cellpadding="0" cellspacing="1" class="tdframe">
+    <tr align="center" class="tdbg2">
+      <td><input type="checkbox"/></td>
+      <td width="10%">课程编号</td>
+      <td width="20%">课程名称</td>
+      <td width="5%">课程性质</td>
+      <td width="10%">课程类别 </td>
+	  <td width="5%">主讲人 </td>
+	  <td width="5%">学时数</td>
+	<td width="5%">发布状态 </td>
+	  <td width="10%">学习资源管理</td>
+	  <td width="10%">满意度调查</td>
+	  <td width="20%">操作 </td>
+    </tr>
+    <tr align="center" class="tdbg0">
+    <td><input type="checkbox"/></td>
+      <td>C12001</td>
+      <td><a href="#">证券研究基础</a></td>
+      <td>必修</td>
+      <td>法律法规</td> 
+	  <td>安青松</td>
+      <td>1</td>
+      <td class="published">已发布</td>
+	<!--  <td>已发布</td>
+	   <td>是</td>--> 
+	   <td><a href="/sso/bzzinteraction_InteractioManage.action?course_id=ff8080812253c263012253c31a1200a5&teacher_id=teacher1" target="_blank">管理学习资源</a></td>
+	   <td><a href="#">添加</a></td>
+	   <td>发布/<a href="#">停用</a><br/>编辑/删除/<a href="#">预览</a><br/><a href="course_info.html">查看信息</a></td>
+    </tr>
+    <tr align="center" class="tdbg0"><td><input type="checkbox"/></td>
+      <td>B11009</td>
+      <td>上市公司并购重组法规解读</td>
+      <td>必修</td>
+      <td>法律法规</td> 
+	  <td>校坚</td>
+      <td>1</td>
+      <td class="unpublished">未发布</td>
+	   <td><a href="/sso/bzzinteraction_InteractioManage.action?course_id=ff8080812253c263012253c31a1200a5&teacher_id=teacher1" target="_blank" >管理学习资源</a></td>
+	   <td><a href="#">添加</a></td>
+	   <td><a href="course_publish.html">发布</a>/停用<br/>
+	   <a href="#">编辑</a>/<a href="#">删除</a>/预览<br/><a href="course_info.html">查看信息</a></td>
+    </tr>
+    <tr align="center" class="tdbg0"><td><input type="checkbox"/></td>
+      <td>C10019</td>
+      <td><a href="#">企业并购会计处理实务</a></td>
+      <td>必修</td>
+      <td>法律法规</td>  
+	  <td>易卫东</td>
+      <td>2</td>
+     <td class="unpublished">未发布</td>
+	   <td><a href="/sso/bzzinteraction_InteractioManage.action?course_id=ff8080812253c263012253c31a1200a5&teacher_id=teacher1" target="_blank">管理学习资源</a></td>
+	   <td><a href="#">添加</a></td>
+	   <td><a href="course_publish.html">发布</a>/停用<br/>
+	   <a href="#">编辑</a>/<a href="#">删除</a>/<a href="#">预览</a><br/><a href="course_info.html">查看信息</a></td>
+    </tr>
+    <tr align="center" class="tdbg0"><td><input type="checkbox"/></td>
+      <td>C11016</td>
+      <td><a href="#">新企业会计准则的变化</a></td>
+      <td>必修</td>
+     <td>法律法规</td> 
+	  <td>后渝兰</td>
+      <td>3</td>
+     <td class="published">已发布</td>
+	<!--  <td>已发布</td>
+	   <td>是</td>--> 
+	   <td><a href="/sso/bzzinteraction_InteractioManage.action?course_id=ff8080812253c263012253c31a1200a5&teacher_id=teacher1" target="_blank">管理学习资源</a></td>
+	   <td><a href="#">查看</a></td>
+	   <td>发布/<a href="#">停用</a><br/>编辑/删除/<a href="#">预览</a><br/><a href="course_info.html">查看信息</a></td>
+    </tr>
+    <tr align="center" class="tdbg0"><td><input type="checkbox"/></td>
+      <td>C11013</td>
+      <td><a href="#">ETF的特点与运营</a></td>
+     <td>必修</td>
+      <td>保代远程培训</td> 
+	  <td>毕晓颖</td>
+      <td>1</td>
+      <td class="published">已发布</td>
+	<!--  <td>已发布</td>
+	   <td>是</td>--> 
+	   <td><a href="/sso/bzzinteraction_InteractioManage.action?course_id=ff8080812253c263012253c31a1200a5&teacher_id=teacher1" target="_blank">管理学习资源</a></td>
+	   <td><a href="#">查看</a></td>
+	   <td>发布/<a href="#">停用</a><br/>编辑/删除/<a href="#">预览</a><br/><a href="course_info.html">查看信息</a></td>
+    </tr>
+  </table>
+
+  <!--结束-->
+</form>
+<!-- 
+<pre class="tip">
+增加导入课件的功能，这样可以将课件管理和课程管理合二为一（建议将导入放入新建里，可以在新建页面导入或者填完课程信息后增加下一步进行导入）；
+要体现课程发布的流程：发布课程信息、加入课件、试读、发布。其中，试读可不带题库，发布进入检查所有课程资料等信息的页面，正确后才可以点击确认进行发布；
+-----------------------
+试读功能：如果已导入课件，点击“预览”按钮或“课程标题”都可以浏览课件。没有导入课件的课程标题为正常文字无法点击，预览按钮也不可用。
+</pre>
+ -->
+</body>
+</html>

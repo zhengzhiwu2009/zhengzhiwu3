@@ -1,0 +1,5 @@
+-- Add/modify columns 
+alter table PE_BZZ_ORDER_INFO add refund_date date;
+-- Add comments to the columns 
+comment on column PE_BZZ_ORDER_INFO.refund_date
+  is '退费确认日期';

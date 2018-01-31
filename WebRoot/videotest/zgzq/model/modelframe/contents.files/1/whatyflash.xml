@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="gb2312"?>
+<course>
+<Properties TotalSec="172" MovieScale="20" numBg="5" width="800" height="600">网梯多媒体演示课件</Properties>
+<SWFFile>
+<SWF file="section1.swf" totalframe="845" framerate="10" >片断1</SWF>
+<SWF file="section2.swf" totalframe="440" framerate="10" >片断2</SWF>
+</SWFFile>
+<TimeLine>
+<item time="0.000000">WinVNC Tray Icon</item>
+<item time="1.792000">whatyscreen</item>
+<item time="6.349000">System (C:)</item>
+<item time="7.490000">我的电脑</item>
+<item time="11.426000">Windows Messenger</item>
+<item time="15.902000">我的电脑</item>
+<item time="18.736000">Program Manager</item>
+<item time="19.007000">Windows 资源管理器</item>
+<item time="19.708000">回收站</item>
+<item time="23.073000">确认删除多个文件</item>
+<item time="23.974000">回收站</item>
+<item time="27.779000">我的电脑</item>
+<item time="27.900000">Program Manager</item>
+<item time="33.398000">「开始」菜单</item>
+<item time="37.664000">Program Manager</item>
+<item time="44.323000">无标题 - 记事本</item>
+<item time="44.423000">北大演示.txt - 记事本</item>
+<item time="47.838000">我的电脑</item>
+<item time="48.329000">Program Manager</item>
+<item time="50.742000">无标题 - 记事本</item>
+<item time="51.213000">Address.txt - 记事本</item>
+<item time="53.997000">我的电脑</item>
+<item time="59.755000">Program Manager</item>
+<item time="60.907000">无标题 - 记事本</item>
+<item time="61.067000">proxy.txt - 记事本</item>
+<item time="62.339000">我的电脑</item>
+<item time="63.941000">Program Manager</item>
+<item time="65.303000">无标题 - 记事本</item>
+<item time="65.894000">备忘.txt - 记事本</item>
+<item time="72.674000">我的电脑</item>
+<item time="76.269000">Program Manager</item>
+<item time="76.590000">Windows 资源管理器</item>
+<item time="76.920000">Fla0927</item>
+<item time="78.242000">我的电脑</item>
+<item time="78.973000">Program Manager</item>
+<item time="81.917000">无标题 - 记事本</item>
+<item time="82.138000">photoaddress.txt - 记事本</item>
+<item time="86.093000">我的电脑</item>
+<item time="87.055000">「开始」菜单</item>
+<item time="98.101000">Outlook Express</item>
+<item time="105.111000">收件箱 - Outlook Express</item>
+<item time="119.391000">我的电脑</item>
+<item time="119.952000">Outlook Express</item>
+<item time="124.539000">我的电脑</item>
+<item time="125.840000">WinVNC Tray Icon</item>
+</TimeLine>
+</course>

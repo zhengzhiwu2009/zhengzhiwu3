@@ -1,0 +1,83 @@
+<html>
+<head>
+<title>添加公告</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="css/shared.css">
+<script language="JavaScript" src="js/shared.js"></script>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<form name="form1" method="post" action="">
+ <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <td class="tdsectionbar">添加公告</td>
+    </tr>
+  </table>
+  <table width="98%" border="0" align="center" cellpadding="0" cellspacing="1" class="tdframe">
+    <tr align="center" class="tdbg2">
+      <td width="14%" height="17"><div align="left">公告名称： <span class="tdbg0">
+        <input name="textfield32" type="text" size="15" maxlength="30">
+      </span></div></td>
+    </tr>
+        <tr align="center" class="tdbg0">
+      <td><div align="left">是否置顶：
+          <select name="select">
+            <option>是</option>
+            <option>否</option>
+
+          </select>
+      </div></td>
+    </tr>
+    <tr align="center" class="tdbg0">
+      <td><div align="left">发布范围：
+        	协会管理员<input type="checkbox" name="target" value="1"/>
+        	集体用户管理员<input type="checkbox" name="target" value="2"/>
+        	学员<input type="checkbox" name="target" value="3" onclick="JavaScript:window.open('stulist.html','填写发票号','width=800,height=500');"/>
+      </div></td>
+    </tr>
+    <tr align="center" class="tdbg0">
+      <td><div align="left">发布状态：
+        发布：<input type="radio" name="publish" value="1">
+        不发布：<input type="radio" name="publish" value="2">
+      </div></td>
+    </tr>
+    <!--
+	<tr align="center" class="tdbg0">
+      <td><div align="left">人员范围
+        <select name="select2">
+          <option>组织机构</option>
+          <option>用户类别</option>
+		  <option>用户账号</option>		  
+        </select><select name="select2">
+          <option>全部</option>
+          <option>协会</option>
+		  <option>安信证券</option>
+		  <option>银河证券</option>
+        </select>
+      </div></td>
+    </tr>
+      -->
+	<tr align="center" class="tdbg0">
+      <td><div align="left">公告内容：
+        <textarea name="textarea2" cols="100" rows="5"></textarea>
+      </div></td>
+    </tr>
+    <tr align="center" class="tdbg0">
+      <td><div align="left">上传附件：
+        	<input type="file" name="archive" value=""/>
+      </div></td>
+    </tr>
+  </table>
+  <br/>
+	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+	<tr>
+		<td align="center" class="tdbgbutton">
+			<INPUT class=button type=submit  value="提交">
+			<input type="button" class="button" value="取消" onclick="window.history.go(-1);"/>
+		</td>
+	</tr>
+   
+  </table>
+  <!--结束-->
+</form>
+ 
+</body>
+</html>

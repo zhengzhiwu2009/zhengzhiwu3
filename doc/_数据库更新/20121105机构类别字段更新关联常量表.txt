@@ -1,0 +1,35 @@
+
+
+
+
+
+
+  alter table Pe_Enterprise add ENTYPE VARCHAR2(50)
+
+
+
+
+  insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('402880a91dadc115011dadfcf26b6003', '资产管理公司', 'Z', 'FlagEnterpriseType', '0', to_date('29-10-2012 16:26:32', 'dd-mm-yyyy hh24:mi:ss'), '机构类别');
+
+insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('402880a91dadc115011dadfcf26b5003', '证券资信评级机构', 'R', 'FlagEnterpriseType', '0', to_date('29-10-2012 16:26:32', 'dd-mm-yyyy hh24:mi:ss'), '机构类别');
+
+insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('402880a91dadc115011dadfcf26b4003', '证券投资咨询公司', 'A', 'FlagEnterpriseType', '0', to_date('29-10-2012 16:26:32', 'dd-mm-yyyy hh24:mi:ss'), '机构类别');
+
+insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('402880a91dadc115011dadfcf26b3003', '证券公司', 'S', 'FlagEnterpriseType', '0', to_date('29-10-2012 16:26:32', 'dd-mm-yyyy hh24:mi:ss'), '机构类别');
+
+insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('402880a91dadc115011dadfcf26b2003', '基金托管代销银行', 'B', 'FlagEnterpriseType', '0', to_date('29-10-2012 16:26:32', 'dd-mm-yyyy hh24:mi:ss'), '机构类别');
+
+insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('402880a91dadc115011dadfcf26b1003', '基金公司', 'F', 'FlagEnterpriseType', '0', to_date('29-10-2012 16:26:32', 'dd-mm-yyyy hh24:mi:ss'), '机构类别');
+
+
+
+
+alter table PE_ENTERPRISE
+  add constraint FK_PE_ENT_R_ENUMC foreign key (ENTYPE)
+  references ENUM_CONST (ID);

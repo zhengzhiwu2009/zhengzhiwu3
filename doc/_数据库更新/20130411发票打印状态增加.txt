@@ -1,0 +1,28 @@
+--新增发票打印状况
+
+
+
+
+
+alter table  pe_bzz_invoice_info add (flag_print_status varchar2(50))；
+comment on column pe_bzz_invoice_info.flag_print_status is '发票打印状态';
+
+
+alter table PE_BZZ_INVOICE_INFO
+  add constraint FK_PEINVOICE_R_ENUMPRINT foreign key (FLAG_PRINT_STATUS)
+  references ENUM_CONST (ID);
+
+
+insert into ENUM_CONST (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('40288acf3bb20d25013bb280c97b012c', '已打印发票', '1', 'flagPrintStatus', '0', to_date('11-04-2013', 'dd-mm-yyyy'), '发票打印情况');
+  commit;
+  
+insert into ENUM_CONST (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('40288acf3bb20d25013bb280c97b012d', '未打印发票', '0', 'flagPrintStatus', '0', to_date('11-04-2013', 'dd-mm-yyyy'), '发票打印情况');
+  
+    commit;
+  
+  
+  
+  
+  

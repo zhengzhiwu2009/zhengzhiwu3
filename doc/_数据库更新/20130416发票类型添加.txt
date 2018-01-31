@@ -1,0 +1,23 @@
+
+insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('4028808c1e1f9f08011e1fa750cc000ax', '定额发票', '0', 'InvoiceType', '0', to_date('16-04-2013', 'dd-mm-yyyy'), '发票类型');
+
+insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('4028808c1e1f9f08011e1fa750cc000bx', '机打发票', '1', 'InvoiceType', '0', to_date('16-04-2013', 'dd-mm-yyyy'), '发票类型');
+
+--insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+--values ('4028808c1e1f9f08011e1fa750cc000cx', '未录入', '2', 'InvoiceType', '0', to_date('16-04-2013', 'dd-mm-yyyy'), '发票类型');
+
+commit;
+
+-- Add/modify columns 
+alter table PE_BZZ_INVOICE_INFO add create_date date default sysdate;
+alter table PE_BZZ_INVOICE_INFO add open_date date;
+alter table PE_BZZ_INVOICE_INFO add invoice_type VARCHAR2(50);
+-- Add comments to the columns 
+comment on column PE_BZZ_INVOICE_INFO.create_date
+  is '创建时间';
+comment on column PE_BZZ_INVOICE_INFO.open_date
+  is '发票开具时间';
+comment on column PE_BZZ_INVOICE_INFO.invoice_type
+  is '发票类型：未录入、定额发票、机打发票';、

@@ -1,0 +1,10 @@
+update enum_const set NAME='在线支付' where ID='40288a7b394207de01394212e47f0005';
+
+--修改关于‘电汇’‘支票’的显示；
+update enum_const set NAME='公司转账' where ID='40288a7b394207de013942141b340007';
+
+--订单表，用‘支票’支付的改为“电汇”
+update pe_bzz_order_info o set o.flag_payment_method = '40288a7b394207de013942141b340007' where o.flag_payment_method='40288a7b394207de013942147c520008';
+
+--在线支付资源名称修改
+update pe_pri_category p set p.name='线上支付订单' where p.id='40288acf39aef4d00139af07203d0001'

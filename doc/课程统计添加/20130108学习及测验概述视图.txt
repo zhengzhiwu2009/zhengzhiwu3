@@ -1,0 +1,36 @@
+create or replace view report_lnt as
+select "YEAR","A1","A2","A3","A4","A5","A6","A7","A8","A9","YEAR1","A10","A11","A12","A13","A14","A15","A16","A17" from (select 
+sc.year as year,
+sum(nvl(sc.study_total_times, 0)) as A1,
+sum(nvl(sc.study_begin_times, 0)) as A2,
+sum(nvl(sc.study_complete_times, 0)) as A3,
+decode(sum(nvl(sc.study_begin_times, 0)), 0, 0, sum(nvl(sc.study_begin_times, 0)) / sum(nvl(sc.study_total_times, 0))) as A4,
+decode(sum(nvl(sc.study_total_times, 0)), 0, 0, sum(nvl(sc.study_complete_times, 0)) / sum(nvl(sc.study_total_times, 0))) as A5,
+sum(nvl(sc.test_begin_times, 0)) as A6,
+sum(nvl(sc.test_complete_times, 0)) as A7,
+decode(sum(nvl(sc.study_complete_times, 0)), 0, 0, sum(nvl(sc.study_complete_times, 0)) / sum(nvl(sc.test_begin_times, 0))) as A8,
+decode(sum(nvl(sc.study_complete_times, 0)), 0, 0, sum(nvl(sc.test_complete_times, 0))/ sum(nvl(sc.study_complete_times, 0))) as A9
+
+from statistic_courses sc
+inner join pe_bzz_tch_course pbtc on sc.fk_course_id = pbtc.id
+inner join (select sc.year, max(sc.month) as month
+               from STATISTIC_COURSES sc
+              group by sc.year) a on a.year = sc.year
+where sc.month = a.month
+group by sc.year) a
+left join 
+(
+select 
+scy.year as year1,
+max(scy.pre_start_study_number) as A10, 
+max(scy.pre_completed__study_number) as A11,
+max(scy.pre_start_exam_number) as A12,
+max(scy.pre_pass_exam_number) as A13,
+'' as A14,
+'' as A15,
+'' as A16,
+'' as A17
+ from STATISTIC_COURSE_YEAR scy
+group by scy.year
+) b on b.year1 = a.year
+

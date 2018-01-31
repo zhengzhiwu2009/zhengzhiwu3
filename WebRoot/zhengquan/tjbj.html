@@ -1,0 +1,107 @@
+<html>
+<head>
+<title>专项培训管理</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="css/shared.css">
+<script language="JavaScript" src="js/shared.js"></script>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<form name="form1" method="post" action="">
+ <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <td class="tdsectionbar">专项培训信息</td>
+    </tr>
+  </table>
+  <table width="98%" border="0" align="center" cellpadding="0" cellspacing="1" class="tdframe">
+    <tr align="center" class="tdbg2">
+      <td width="14%" height="17"><div align="left">专项培训名称： <span class="tdbg0">
+        <input name="textfield32" type="text" size="15" maxlength="30">
+      </span></div></td>
+    </tr>
+	 <tr align="center" class="tdbg0">
+      <td><div align="left">开始时间：
+        <input name="textfield323" type="text" size="15" maxlength="30">
+      </div></td>
+    </tr>
+	<tr align="center" class="tdbg0">
+      <td><div align="left">结束时间：
+        <input name="textfield323" type="text" size="15" maxlength="30">
+      </div></td>
+    </tr>
+    <tr align="center" class="tdbg0">
+      <td><div align="left">收费金额：
+        <input name="textfield323" type="text" size="15" maxlength="30">（元人名币）
+      </div></td>
+    </tr>
+    <tr align="center" class="tdbg0">
+      <td title="根据所选课程自动计算"><div align="left">总学时：
+        <input name="textfield323" type="text" size="15" maxlength="30" value="15" disabled="true">
+      </div></td>
+    </tr>
+	<tr align="center" class="tdbg0">
+      <td><div align="left">指定课程：
+        <select>
+			<option>测试课程</option>
+			<option>测试课程1</option>
+			<option>测试课程2</option>
+		</select>
+      </div></td>
+    </tr>
+	<table width="100%" border="0" cellspacing="1" cellpadding="0">
+		<tr>
+		  <td class="tdsectionbar">学员列表</td>
+		  <td align="right"><a href="#" onclick="JavaScript:window.open('batchadd.html','批量导入学生','width=800,height=300');">批量导入学生</a></td>
+		</tr>
+  	</table>
+	 <table width="98%" border="0" align="center" cellpadding="0" cellspacing="1" class="tdframe">
+		<tr align="center" class="tdbg2">
+			<td>单位名称：<input name="textfield323" type="text" size="15" maxlength="30"></td>
+			<td>从事业务：<input name="textfield323" type="text" size="15" maxlength="30"></td>	
+			<td>工作部门：<input name="textfield323" type="text" size="15" maxlength="30"></td>	
+			<td>工作所在地区：<input name="textfield323" type="text" size="15" maxlength="30"></td>	
+			<td><INPUT class=button type=submit value="查询"></td>		
+		</tr>
+	<table width="100%" border="0" cellspacing="1" cellpadding="0">
+		<tr>
+		  <td class="tdsectionbar">班级信息</td>
+		</tr>
+ 	</table>
+	<table width="98%" border="0" align="center" cellpadding="0" cellspacing="1" class="tdframe">
+    	<tr align="center" class="tdbg2">
+		  <td width="7%" height="17"><input name="" type="checkbox" value="" /></td>
+			<td width="19%">系统编号</td>
+			<td width="12%">姓名</td>
+			<td width="12%">单位名称</td>
+			<td width="12%">身份证号</td>
+			<td width="12%">从事业务</td>
+			<td width="13%">工作部门</td>
+			<td width="13%">工作所在地区</td>
+		</tr>
+		<tr align="center" class="tdbg2">
+			<td><input name="" type="checkbox" value="" /></td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>	
+  </table>
+  <table width="98%" border="0" align="center" cellpadding="0" cellspacing="3">
+  <tr align="center" class="tdbg2">
+  	<td align="center">
+  		<input name="submit" type=submit class=button value="提交">&nbsp;&nbsp;&nbsp;
+		  <input class="button" type="button" value="返回" onclick="window.history.go(-1);"></td>
+	</tr>
+	</table>
+  <!--结束-->
+</form>
+<pre class="tip">
+课程名称，去掉；班级名称改为专项名称；（已修改）
+加入金额信息；（已修改）
+开始时间，时间到了以后，系统自动开课；（无法在界面上体现）
+学时，从所选课程中自动计算出来；（已修改）
+保代有个截止时间，到时间后就未通过的课程（即使还没有点开开始学习等情况）全部停止，只要未通过的课程就都没有学时。（无法在界面上体现）
+</pre>
+</body>
+</html>

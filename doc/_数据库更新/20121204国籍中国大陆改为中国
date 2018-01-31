@@ -1,0 +1,1 @@
+update enum_const set name='中国' where namespace='Nation' and is_default='1'

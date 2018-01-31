@@ -1,0 +1,129 @@
+<html>
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="css/shared.css">
+<link rel="stylesheet" type="text/css" href="./js/extjs/resources/css/ext-all.css">
+<script language="JavaScript" src="js/shared.js"></script>
+<script language="JavaScript" src="./js/extjs/ext-all.js"></script>
+<script type="text/javascript">
+Ext.Loader.setConfig({enabled : true});
+Ext.require(['Ext.tab.*','*']);
+Ext.onReady(function() {
+	var mask = new Ext.LoadMask(Ext.getBody(), {msg:'加载中，请稍候......'});
+	mask.show();
+	var tabs = Ext.createWidget('tabpanel', {
+        renderTo: 'tab',
+        activeTab: 1,
+        border:false,
+        defaults :{
+            bodyPadding: 10,
+            border:false
+        },
+        items: [{
+            contentEl:'tab_course2user', 
+            title: '课程->学员'
+        }]
+    });
+	tabs.setActiveTab(0);
+    mask.hide();
+	
+});
+</script>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table width="101.5%" border="0" cellspacing="0" cellpadding="4" align="center">
+    <tr> 
+      <td class="tdsectionbar">专项课程查询</td>
+    </tr>
+</table>
+<div id="tab">
+<div id="tab_course2user" style="width:101.7%">
+<form name="form1" method="post" action="">
+   <table width="96%" border="0" align="center" cellpadding="2" cellspacing="3" class="tdbg2">
+    <tr> 
+    <td width=25%></td>
+    <td width="20%" nowrap class="tdbg2">课程编号
+      <input name="textfield32" type="text" size="15" maxlength="30"></td>
+	   <td width="20%" nowrap class="tdbg2">课程名称
+      <input name="textfield32" type="text" size="15" maxlength="30"></td>
+		<td width="60%" nowrap class="tdbg2">
+	  <INPUT class=button type=submit value="搜索"></td>
+		
+    </tr>
+  </table>
+  <table width="96%" border="0" align="center" cellpadding="0" cellspacing="1" class="tdframe">
+		<tr align="center" class="tdbg2">
+			<td width="10%">课程编号</td>
+			<td width="25%">课程名称</td>
+			<td width="8%">课程学时</td>
+			<td width="8%">是否必修</td>
+			<td width="10%">已缴费人数</td>
+			<td width="10%">缴费总金额</td>
+			<td width="10%">学习完成率</td>
+			<td width="10%">考试通过率</td>
+			<td width="10%">操作</td>
+		</tr>
+		<tr align="center" class="tdbg0">
+			<td>C12001</td>
+			<td>上市公司治理</td>
+			<td>3</td>
+			<td>是</td>
+			<td>240</td>
+			<td>76000</td>
+			<td>80%</td>
+			<td>70%</td>
+			<td><a href="users_of_course.html">查看学员</a></td>
+		</tr>
+		<tr align="center" class="tdbg0">
+			<td>B11003</td>
+			<td>首次公开发行审核的主要法律问题</td>
+			<td>2</td>
+			<td>否</td>
+			<td>200</td>
+			<td>67800</td>
+			<td>80%</td>
+			<td>85%</td>
+			<td><a href="users_of_course.html">查看学员</a></td>
+		</tr>
+		<tr align="center" class="tdbg0">
+			<td>C11015</td>
+			<td>反洗钱基础知识</td>
+			<td>2</td>
+			<td>否</td>
+			<td>300</td>
+			<td>58900</td>
+			<td>90%</td>
+			<td>870%</td>
+			<td><a href="users_of_course.html">查看学员</a></td>
+		</tr>
+		<tr align="center" class="tdbg0">
+			<td>C11008</td>
+			<td>我国证券市场新股发行体制改革情况介绍</td>
+			<td>3</td>
+			<td>是</td>
+			<td>320</td>
+			<td>36000</td>
+			<td>76%</td>
+			<td>75%</td>
+			<td><a href="users_of_course.html">查看学员</a></td>
+		</tr>
+		<tr align="center" class="tdbg0">
+			<td>C10019</td>
+			<td>企业并购会计处理实务</td>
+			<td>3</td>
+			<td>是</td>
+			<td>321</td>
+			<td>56700</td>
+			<td>90%</td>
+			<td>87%</td>
+			<td><a href="users_of_course.html">查看学员</a></td>
+		</tr>
+  </table>
+  </form>
+</div>
+</div>
+<pre class="tip">
+该模块专门针对专项培训课程查询，即保代课程查询。
+</pre>
+</body>
+</html>

@@ -1,0 +1,1 @@
+update pe_pri_category ppc set ppc.path = '/entity/teaching/studentCourse_toStudentCourseSearch.action' where id = '40288acf39b430650139b44563610003'

@@ -1,0 +1,5 @@
+由于PeBzzTchCourseware表中name属性字段长度不够，扩充至500
+修改PeBzzTchCourseware.hbm.xml中至500
+数据库表pe_bzz_tch_courseware.name字段扩充至500
+-- Add/modify columns 
+alter table PE_BZZ_TCH_COURSEWARE modify NAME VARCHAR2(500);

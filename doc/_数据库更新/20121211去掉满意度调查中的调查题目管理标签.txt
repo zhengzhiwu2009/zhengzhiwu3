@@ -1,0 +1,3 @@
+delete from pr_pri_role a where a.fk_priority_id in (select s.id from pe_priority s where s.fk_pri_cat_id='04004002');
+delete from pe_priority s where s.fk_pri_cat_id='04004002';
+delete from pe_pri_category b where b.id='04004002';

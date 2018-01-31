@@ -1,0 +1,7 @@
+
+-- Add/modify columns 
+--注册地址
+alter table pe_enterprise add enrol_address varchar2(200);
+--网址
+alter table pe_enterprise add net_address varchar2(200);
+

@@ -1,0 +1,27 @@
+
+{totalcount:1,root:[
+	       {pass_name:'供电所1',user_num:'6090',user_name:'大工业用电户数',user_count:15,dedicated_line:'公用线',dedicated_num:5,
+	       		extraInfo:{user_name:['jean','jack'],dedicated_line:['海淀区','知春路','盈都大厦']}
+	       },
+	       {pass_name:'供电所1',user_num:'6090',user_name:'非普工业用电户数',user_count:15,dedicated_line:'公用线',dedicated_num:5,
+	       		extraInfo:{user_name:['jean','jack'],dedicated_line:['海淀区','知春路','盈都大厦']}
+	       },
+	       {pass_name:'供电所1',user_num:'6090',user_name:'商业用电户数',user_count:15,dedicated_line:'公用线',dedicated_num:5},
+	       {pass_name:'供电所1',user_num:'6090',user_name:'住宅用电户数',user_count:15,dedicated_line:'公用线',dedicated_num:5},
+	
+	       {pass_name:'供电所1',user_num:'6090',user_name:'城区用户数',user_count:0,dedicated_line:'专用线',dedicated_num:0},
+	       {pass_name:'供电所1',user_num:'6090',user_name:'非城区用户数',user_count:0,dedicated_line:'专用线',dedicated_num:0},
+	       {pass_name:'供电所1',user_num:'6090',user_name:'低压用户数',user_count:41,dedicated_line:'专用线',dedicated_num:0},
+	       {pass_name:'供电所1',user_num:'6090',user_name:'未完成一户一表改造户数',user_count:0,dedicated_line:'专用线',dedicated_num:0},
+	
+	       {pass_name:'供电所2',user_num:'6090',user_name:'城区用户数',user_count:0,dedicated_line:'公用线',dedicated_num:10},
+	       {pass_name:'供电所2',user_num:'6090',user_name:'非城区用户数',user_count:0,dedicated_line:'公用线',dedicated_num:10},
+	       {pass_name:'供电所2',user_num:'6090',user_name:'低压用户数',user_count:41,dedicated_line:'公用线',dedicated_num:10},
+	       {pass_name:'供电所2',user_num:'6090',user_name:'未完成一户一表改造户数',user_count:0,dedicated_line:'公用线',dedicated_num:10},
+	
+	       {pass_name:'供电所2',user_num:'6090',user_name:'城区用户数',user_count:0,dedicated_line:'专用线',dedicated_num:0},
+	       {pass_name:'供电所2',user_num:'6090',user_name:'非城区用户数',user_count:0,dedicated_line:'专用线',dedicated_num:0},
+	       {pass_name:'供电所2',user_num:'6090',user_name:'低压用户数',user_count:41,dedicated_line:'专用线',dedicated_num:0},
+	       {pass_name:'<font color="red">供电所2<font>',user_num:'6090',user_name:'未完成一户一表改造户数',user_count:0,dedicated_line:'专用线',dedicated_num:0}
+	   ]
+}

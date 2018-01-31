@@ -1,0 +1,10 @@
+-- Add/modify columns 
+alter table PE_BZZ_TCH_COURSE add operation_logs VARCHAR2(2000);
+-- Add comments to the columns 
+comment on column PE_BZZ_TCH_COURSE.operation_logs
+  is '课程操作日志';
+
+  
+  -- Add/modify columns 
+alter table PE_BZZ_REFUND_INFO add operation_logs VARCHAR2(2000);
+  

@@ -1,0 +1,166 @@
+-- Create sequence 
+create sequence sac_hours
+minvalue 0
+maxvalue 999999999999
+start with 0
+increment by 1;
+
+
+--- Create table
+create table REMOTE_TRAIN_STUDENT_INFO
+(
+  rts_id               VARCHAR2(150) not null,
+  rts_name             VARCHAR2(150) not null,
+  rts_id_type          VARCHAR2(150) not null,
+  rts_id_num           VARCHAR2(150) not null,
+  rts_sys_num          VARCHAR2(150),
+  tci_id               VARCHAR2(150) not null,
+  rts_course_name      VARCHAR2(150) not null,
+  rts_course_hourse    VARCHAR2(150) not null,
+  rts_is_complete      VARCHAR2(150),
+  rts_get_hours_time   VARCHAR2(150),
+  rts_institution      VARCHAR2(150),
+  rts_update_date      VARCHAR2(150) default sysdate,
+  rts_hour_type        VARCHAR2(150) not null,
+  rts_state            VARCHAR2(150) not null,
+  rts_train_begin_date VARCHAR2(150),
+  rts_train_end_date   VARCHAR2(150)
+)
+tablespace HZPH
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the columns 
+comment on column REMOTE_TRAIN_STUDENT_INFO.rts_id
+  is '唯一编号Sequences(sac_hours)';
+comment on column REMOTE_TRAIN_STUDENT_INFO.rts_name
+  is '学员姓名';
+comment on column REMOTE_TRAIN_STUDENT_INFO.rts_id_type
+  is '证件类型（01：身份证 02：护照	03其他）';
+comment on column REMOTE_TRAIN_STUDENT_INFO.rts_id_num
+  is '证件号码';
+comment on column REMOTE_TRAIN_STUDENT_INFO.rts_sys_num
+  is '学员对应从业系统编号';
+comment on column REMOTE_TRAIN_STUDENT_INFO.tci_id
+  is '培训班编号';
+comment on column REMOTE_TRAIN_STUDENT_INFO.rts_course_name
+  is '课件名称';
+comment on column REMOTE_TRAIN_STUDENT_INFO.rts_course_hourse
+  is '学时数';
+comment on column REMOTE_TRAIN_STUDENT_INFO.rts_is_complete
+  is '本次课件完成状态(是否完成)';
+comment on column REMOTE_TRAIN_STUDENT_INFO.rts_get_hours_time
+  is '获取学时时间';
+comment on column REMOTE_TRAIN_STUDENT_INFO.rts_institution
+  is '学员参训时所在机构从业系统机构ID';
+comment on column REMOTE_TRAIN_STUDENT_INFO.rts_update_date
+  is '更新日期';
+comment on column REMOTE_TRAIN_STUDENT_INFO.rts_hour_type
+  is '1 必修 0 选修';
+comment on column REMOTE_TRAIN_STUDENT_INFO.rts_state
+  is '01 新增  02 修改  03 删除  04 已移植';
+comment on column REMOTE_TRAIN_STUDENT_INFO.rts_train_begin_date
+  is '培训开始日期';
+comment on column REMOTE_TRAIN_STUDENT_INFO.rts_train_end_date
+  is '培训结束日期';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table REMOTE_TRAIN_STUDENT_INFO
+  add constraint PK_REMOTE_TRAIN_ID primary key (RTS_ID)
+  using index 
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+alter table REMOTE_TRAIN_STUDENT_INFO
+  add constraint UK_REMOTE_TRAIN_STU_COURSE unique (RTS_ID_TYPE, RTS_ID_NUM, RTS_COURSE_NAME)
+  using index 
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+
+
+
+-- Create table
+create table TRAIN_COURSE_INFO
+(
+  tci_course_id   VARCHAR2(150) not null,
+  tci_name        VARCHAR2(150) not null,
+  tci_course_name VARCHAR2(150),
+  tci_hours       VARCHAR2(150),
+  tci_hours_type  VARCHAR2(150),
+  tci_update_date VARCHAR2(150) not null,
+  tci_begin_date  VARCHAR2(150) not null,
+  tci_end_date    VARCHAR2(150) not null,
+  tci_state       VARCHAR2(150) default '01'
+)
+tablespace HZPH
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the columns 
+comment on column TRAIN_COURSE_INFO.tci_course_id
+  is '课件主键';
+comment on column TRAIN_COURSE_INFO.tci_name
+  is '培训班名称';
+comment on column TRAIN_COURSE_INFO.tci_course_name
+  is '课件名称';
+comment on column TRAIN_COURSE_INFO.tci_hours
+  is '课件学时数';
+comment on column TRAIN_COURSE_INFO.tci_hours_type
+  is '课件学时类型';
+comment on column TRAIN_COURSE_INFO.tci_update_date
+  is '更新日期';
+comment on column TRAIN_COURSE_INFO.tci_begin_date
+  is '培训开始日期';
+comment on column TRAIN_COURSE_INFO.tci_end_date
+  is '培训结束日期';
+comment on column TRAIN_COURSE_INFO.tci_state
+  is '01 新增  02 修改  03 删除  04 已移植';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table TRAIN_COURSE_INFO
+  add constraint PK_TCI_ID primary key (TCI_COURSE_ID)
+  using index 
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+
+-- Grant/Revoke object privileges 
+grant select, insert, update, delete on HR_RESULT to HZPH_DATA_BRIDGE;
+grant select, insert, update, delete on HR_SITE to HZPH_DATA_BRIDGE;
+grant select, insert, update, delete on EDU_RESULT to HZPH_DATA_BRIDGE;
+grant select, insert, update, delete on REMOTE_TRAIN_STUDENT_INFO to HZPH_DATA_BRIDGE;
+grant select, insert, update, delete on TRAIN_COURSE_INFO to HZPH_DATA_BRIDGE;
+
+

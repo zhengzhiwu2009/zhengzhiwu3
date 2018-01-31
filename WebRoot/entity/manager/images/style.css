@@ -1,0 +1,483 @@
+body {
+	margin: 0px; padding: 0px; background-color: rgb(255, 255, 255);
+}
+img {
+	margin: 0px; padding: 0px; border: 0px currentColor;
+}
+ul {
+	list-style: none; margin: 0px; padding: 0px;
+}
+li {
+	list-style: none; margin: 0px; padding: 0px;
+}
+a {
+	text-decoration: none;
+}
+.container {
+	margin: 0px auto; border: 1px solid rgb(3, 86, 171); width: 1000px; text-align: center;
+}
+.top {
+	margin: 0px auto; height: 192px;
+}
+.nav {
+	background: url("index_06.jpg") repeat-x left; margin: 0px auto; width: 1000px; height: 41px;
+}
+.subNav2-off {
+	height: 41px; text-align: center; color: rgb(4, 88, 174); line-height: 41px; letter-spacing: 2px; padding-left: 8px; font-size: 14px; font-weight: bold; margin-left: 35px; float: left; display: inline; cursor: pointer; min-width: 50px;
+}
+.subNav2-off span {
+	height: 41px; padding-right: 8px; float: left;
+}
+.subNav2-on {
+	background: url("index_08.jpg") no-repeat left; height: 41px; text-align: center; color: rgb(255, 255, 255); line-height: 41px; letter-spacing: 2px; padding-left: 8px; font-size: 14px; font-weight: bold; margin-left: 35px; float: left; display: inline; cursor: pointer; min-width: 50px;
+}
+.subNav2-on span {
+	background: url("index_08.jpg") no-repeat right; height: 41px; padding-right: 8px; float: left;
+}
+.main {
+	margin: 0px auto; padding: 11px;
+}
+.main_left {
+	margin: 0px; padding: 0px; width: 245px; float: left;
+}
+.main_right {
+	margin: 0px; padding: 0px; width: 718px; float: right;
+}
+.bottom {
+	background: url("index_97.jpg") repeat-x; height: 71px; clear: both; border-top:#32558b 3px solid;
+}
+.bottom p {
+	margin: 0px 0px 0px 20px; padding: 8px 0px 0px; color: rgb(46, 46, 46); line-height: 22px; font-size: 12px; float: left;
+}
+.main_left h2 {
+	background: url("index_13.jpg") no-repeat center; margin: 0px; padding: 0px 0px 0px 30px; width: 215px; height: 33px; text-align: left; color: rgb(46, 46, 46); line-height: 34px; letter-spacing: 1px; font-size: 14px; font-weight: bold;
+}
+.login {
+	margin: 0px; padding: 11px; height: 152px;
+}
+.login p {
+	margin: 0px; padding: 10px 0px;
+}
+.login p a {
+	margin: 0px; padding: 0px; color: rgb(4, 88, 174); font-size: 12px;
+}
+.login p a:link {
+	color: rgb(4, 88, 174);
+}
+.login p a:hover {
+	color: rgb(0, 0, 0);
+}
+.lgt {
+	margin: 0px 6px 0px 0px; padding: 0px; letter-spacing: 2px; font-size: 12px; float: left;
+}
+.dl_btn {
+	background: url("index_21.jpg") no-repeat; width: 58px; height: 54px; color: rgb(255, 255, 255); line-height: 54px; letter-spacing: 3px; font-weight: bold; float: left;
+}
+.dl_btn a {
+	color: rgb(255, 255, 255);
+}
+.dl_btn a:link {
+	color: rgb(255, 255, 255);
+}
+.dl_btn a:hover {
+	color: rgb(0, 0, 0);
+}
+.lgb {
+	margin: 23px 0px 0px; padding: 0px; height: 27px; line-height: 27px; letter-spacing: 6px; font-family: "ËÎÌå"; font-size: 12px; font-weight: bold;
+}
+.lgb a {
+	background: url("index_28.jpg") no-repeat; width: 66px; height: 27px; color: rgb(91, 91, 91); margin-right: 8px; float: left; display: inline;
+}
+.lgb a:link {
+	background: url("index_28.jpg") no-repeat; color: rgb(0, 0, 0);
+}
+.lgb a:hover {
+	background: url("index_28.jpg") no-repeat; color: rgb(4, 88, 174);
+}
+.pxgz {
+	margin: 0px; padding: 10px 15px 0px 13px; height: 160px;
+}
+.pxgz li {
+	background: url("fk_63.jpg") no-repeat left; padding: 12px 0px 0px 13px; text-align: left; letter-spacing: 1px; font-size: 12px;
+}
+.pxgz li a {
+	color: rgb(46, 46, 46);
+}
+.pxgz li a:link {
+	color: rgb(46, 46, 46);
+}
+.pxgz li a:hover {
+	color: rgb(4, 88, 174);
+}
+.pxgz li span {
+	float: right;
+}
+.cjwt {
+	margin: 0px; padding: 10px 15px 0px 13px; height: 150px;
+}
+.cjwt li {
+	padding: 0px; height: 28px; text-align: left; line-height: 28px; letter-spacing: 1px; font-size: 12px;
+}
+.cjwt li a {
+	background: url("index_70.jpg") no-repeat left; padding: 0px 0px 0px 26px; color: rgb(46, 46, 46);
+}
+.cjwt li a:link {
+	background: url("index_70.jpg") no-repeat left; color: rgb(46, 46, 46);
+}
+.cjwt li a:hover {
+	background: url("index_64.jpg") no-repeat left; color: rgb(4, 88, 174);
+}
+.contact {
+	margin: 0px; padding: 0px 11px; height: 130px; text-align: left;
+}
+.tel {
+	margin: 0px 0px 11px; padding: 0px;
+}
+.mail {
+	
+}
+.zxly {
+	margin: 9px 0px 0px 50px; padding: 0px; width: 131px; height: 33px;
+}
+.pxgg {
+	height: 195px; border-right-color: rgb(221, 221, 221); border-bottom-color: rgb(221, 221, 221); border-left-color: rgb(221, 221, 221); border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-right-style: solid; border-bottom-style: solid; border-left-style: solid;
+}
+.title {
+	background: url("index_52.jpg") repeat-x; height: 39px; text-align: left; line-height: 39px; padding-left: 14px;
+}
+.title_h {
+	background: url("index_16.jpg") no-repeat left; color: rgb(46, 46, 46); letter-spacing: 3px; padding-left: 18px; font-size: 14px; font-weight: bold; display: inline;
+}
+.title h1 {
+	color: rgb(46, 46, 46); letter-spacing: 3px; padding-left: 10px; font-size: 14px; font-weight: bold; display: inline;
+}
+.title h3 {
+	color: rgb(46, 46, 46); letter-spacing: 3px; padding-left: 10px; font-size: 14px; font-weight: bold; display: inline;
+}
+.mo {
+	padding: 0px 10px 0px 0px; font-size: 12px; float: right;
+}
+.mo a {
+	color: rgb(46, 46, 46);
+}
+.mo a:hover {
+	color: rgb(4, 88, 174);
+}
+.new_photo {
+	margin: 14px 15px 5px; width: 200px; height: 130px; float: left; display: inline;
+}
+.new {
+	width: 460px; text-align: left; padding-right: 20px; font-size: 12px; margin-top: 10px; float: right;
+}
+.new li {
+	background: url("index_88.jpg") no-repeat 0px 50%; padding: 6px 0px 6px 10px;
+}
+.new li span {
+	float: right;
+}
+.new li a {
+	color: rgb(46, 46, 46);
+}
+.new li a:link {
+	color: rgb(46, 46, 46);
+}
+.new li a:hover {
+	color: rgb(4, 88, 174);
+}
+.tjkc {
+	height:213px; margin-top: 13px; border-right-color: rgb(221, 221, 221); border-bottom-color: rgb(221, 221, 221); border-left-color: rgb(221, 221, 221); border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-right-style: solid; border-bottom-style: solid; border-left-style: solid;
+}
+.jt {
+	width: 12px; height: 150px; float: left;
+}
+.kc {
+	padding: 0px 0px 0px 12px; width: 649px; height: 170px; float: left;
+}
+.kcbox {
+	margin-right: 10px; float: left;
+}
+.kci {
+	padding: 2px; border: 1px solid rgb(178, 178, 178);
+}
+.kct {
+	margin: 0px; line-height: 18px; padding-top: 8px; font-size: 12px;
+}
+.kct a {
+	color: rgb(46, 46, 46); font-size: 12px;
+}
+.kct a:link {
+	color: rgb(46, 46, 46);
+}
+.kct a:hover {
+	color: rgb(4, 88, 174);
+}
+.kc_list {
+	height: 415px; margin-top: 17px;
+}
+.pxdt {
+	height: 187px; margin-top: 13px; border-right-color: rgb(221, 221, 221); border-bottom-color: rgb(221, 221, 221); border-left-color: rgb(221, 221, 221); border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-right-style: solid; border-bottom-style: solid; border-left-style: solid;
+}
+.dt_new {
+	width: 680px; text-align: left; font-size: 12px; margin-top: 6px; margin-left: 16px; float: left;
+}
+.dt_new li {
+	background: url("index_88.jpg") no-repeat 0px 50%; padding: 6px 0px 6px 10px;
+}
+.dt_new li span {
+	float: right;
+}
+.dt_new li a {
+	color: rgb(46, 46, 46);
+}
+.dt_new li a:link {
+	color: rgb(46, 46, 46);
+}
+.dt_new li a:hover {
+	color: rgb(4, 88, 174);
+}
+.tzgg_centent {
+	margin: 16px auto; width: 961px; height: 500px;
+}
+.qbkcqy_centent {
+	margin: 16px auto; width: 961px;
+}
+.tzgg_box {
+	background: url("tzgg_06.gif") repeat-x; height: 39px;
+}
+.tzgg_title {
+	background: url("tzgg_11.gif") no-repeat 15px; text-align: left; color: rgb(38, 38, 38); line-height: 39px; padding-left: 40px; font-size: 18px; font-weight: bold; margin-left: 20px;
+}
+.qbkcqy_title {
+	background: url("tjkc_06.gif") no-repeat 15px; text-align: left; color: rgb(38, 38, 38); line-height: 39px; padding-left: 40px; font-size: 18px; font-weight: bold; margin-left: 20px;
+}
+.tzgg_list {
+	margin: 0px 31px;
+}
+.tzgg_list ul {
+	margin: 0px; padding: 0px; list-style-type: none;
+}
+.tzgg_list ul li {
+	width: 880px; height: 36px; text-align: left; line-height: 36px; font-family: "ËÎÌå"; font-size: 12px;
+}
+.tzgg_list ul li span {
+	float: right;
+}
+.tzgg_list a {
+	background: url("tzgg_05.jpg") no-repeat; width: 853px; height: 36px; color: rgb(38, 38, 38); padding-left: 27px; text-decoration: none; display: block;
+}
+.tzgg_list a:link {
+	color: rgb(38, 38, 38);
+}
+.tzgg_list a:hover {
+	background: url("tzgg_03.jpg") no-repeat; width: 853px; height: 36px; color: rgb(1, 78, 170); padding-left: 27px; display: block;
+}
+#fany {
+	margin: 33px auto 20px; border: 1px solid rgb(198, 198, 198); width: 577px; color: rgb(86, 86, 86); font-size: 12px;
+}
+#fany2 {
+	border: 1px solid rgb(255, 255, 255); width: 575px; height: 27px; color: rgb(86, 86, 86); font-size: 12px; background-image: url("fany_03.jpg");
+}
+#fany2 p {
+	margin: 3px 0px 0px; padding: 0px; text-align: center; color: rgb(86, 86, 86); font-size: 12px; font-weight: normal;
+}
+#fany2 p a {
+	color: rgb(86, 86, 86); font-size: 12px; text-decoration: none;
+}
+#fany2 p a:link {
+	color: rgb(86, 86, 86); font-size: 12px; text-decoration: none;
+}
+#fany2 p a:visited {
+	color: rgb(86, 86, 86); font-size: 12px; text-decoration: none;
+}
+#fany2 p a:hover {
+	color: rgb(165, 165, 165); font-size: 12px; text-decoration: none;
+}
+#fany2 p input {
+	border: 1px solid rgb(198, 198, 198); width: 24px; height: 18px; color: rgb(51, 51, 51); font-size: 12px; background-color: rgb(255, 255, 255);
+}
+#fany2 p img {
+	margin: -4px 0px 0px; border: 0px currentColor;
+}
+.tzgg_centent_3d {
+	background: url("3d_10.gif") repeat-y; margin: 16px auto; width: 928px; height: auto !important; min-height: 100px;
+}
+.tzgg_centent_3d_01 {
+	background: url("3d_10.gif") repeat-y; margin: 16px auto; width: 928px; height: auto !important; min-height: 100px;
+}
+.tzgg_centent_3d_01 h1 {
+	background: url("3d_07.gif") no-repeat bottom; font-family: "Î¢ÈíÑÅºÚ"; font-size: 24px; font-weight: bold;
+}
+.tzgg_centent_3d_01 h2 {
+	text-align: right; color: rgb(153, 153, 153); font-family: "ËÎÌå"; font-size: 14px;
+}
+.tzgg_centent_3d_01 p {
+	margin: 10px auto 0px; width: 800px; text-align: left; line-height: 24px; text-indent: 2em; font-family: "ËÎÌå"; font-size: 12px;
+}
+.tzgg_centent_3d_01 p1 {
+	width: 120px; text-align: left; line-height: 24px; text-indent: 2em; font-family: "ËÎÌå"; font-size: 12px;
+}
+.tzgg_centent_3d_01 p2 {
+	width: 600px; text-align: left; line-height: 24px; text-indent: 2em; font-family: "ËÎÌå"; font-size: 12px;
+}
+.tzgg_centent_3d h1 {
+	background: url("3d_07.gif") no-repeat bottom; margin: 0px; padding: 0px; line-height: 30px; font-family: "Î¢ÈíÑÅºÚ"; font-size: 24px; font-weight: bold; min-height: 40px;
+}
+.tzgg_centent_3d h2 {
+	margin: 0px; padding: 0px 50px 0px 0px; height: 30px; text-align: right; color: rgb(153, 153, 153); line-height: 30px; font-family: "ËÎÌå"; font-size: 14px;
+}
+.tzgg_centent_3d p {
+	margin: 20px auto 0px; width: 800px; text-align: left; line-height: 24px; text-indent: 2em; font-family: "ËÎÌå"; font-size: 12px;
+}
+.content {
+	margin: 16px auto; width: 969px;
+}
+.content_right {
+	width: 732px; height: 642px; float: right;
+}
+.content_left {
+	width: 210px; height: 642px; float: left;
+}
+.left_nav {
+	background: url("tjkc_19.gif") repeat-y; margin: 0px auto; padding: 0px; text-align: center;
+}
+.list {
+	list-style: none; margin: 0px 15px; padding: 0px; width: 186px; letter-spacing: 3px;
+}
+.list li {
+	margin: 0px; text-align: left; font-size: 14px;
+}
+.list li a {
+	background: url("tjkc_01.gif") no-repeat left bottom; height: 30px; color: rgb(255, 255, 255); line-height: 30px; padding-left: 34px; text-decoration: none; display: block;
+}
+.list li a:link {
+	color: rgb(45, 45, 45); text-decoration: none;
+}
+.list li a:visited {
+	color: rgb(45, 45, 45); text-decoration: none;
+}
+.list li a:hover {
+	background: url("tjkc_15.gif") no-repeat left bottom; color: rgb(255, 255, 255); text-decoration: none;
+}
+.tjkc_box {
+	background: url("tzgg_06.gif") repeat-x; width: 700px; height: 39px; margin-left: 10px;
+}
+.tjkc_title {
+	background: url("tjkc_06.gif") no-repeat 15px; text-align: left; color: rgb(38, 38, 38); line-height: 39px; padding-left: 40px; font-size: 18px; font-weight: bold; margin-left: 20px;
+}
+.tjkc_list {
+	margin: 0px 40px; width: 600px;
+}
+.tjkc_list ul {
+	margin: 0px; padding: 0px; list-style-type: none;
+}
+.tjkc_list ul li {
+	text-align: left; font-family: "ËÎÌå"; font-size: 12px; margin-top: 30px; margin-right: 36px; float: left;
+}
+.tjkc_list ul li img {
+	padding: 2px; border: 1px solid rgb(178, 178, 178); width: 144px; height: 108px;
+}
+.tjkc_list ul li p {
+	margin: 0px; padding: 0px; text-align: center;
+}
+.tjkc_list ul li a {
+	color: rgb(0, 0, 0); line-height: 24px;
+}
+.tjkc_list ul li a:link {
+	color: rgb(0, 0, 0);
+}
+.tjkc_list ul li a:visited {
+	color: rgb(0, 0, 0);
+}
+.tjkc_list ul li a:hover {
+	color: rgb(4, 88, 174);
+}
+.more {
+	margin-right: 20px; float: right; display: inline;
+}
+.more a {
+	color: rgb(0, 0, 0); font-size: 12px;
+}
+.more a:link {
+	color: rgb(0, 0, 0);
+}
+.more a:hover {
+	color: rgb(255, 0, 0);
+}
+.biaozu {
+	margin: 4px 0px 0px 4px; padding: 2px 5px; color: rgb(255, 255, 255); line-height: 20px; font-size: 12px; background-color: rgb(255, 0, 0);
+}
+.biaozu1 {
+	margin: 4px 0px 0px 4px; padding: 2px 5px; color: rgb(255, 255, 255); line-height: 20px; font-size: 12px; background-color: rgb(3, 86, 171);
+}
+.biaozu2 {
+	margin: 4px 0px 0px 4px; padding: 2px 5px; color: rgb(255, 255, 255); line-height: 20px; font-size: 12px; background-color: rgb(51, 255, 0);
+}
+.qbkcqy_box {
+	margin: 24px auto; border: 1px solid rgb(143, 202, 249); width: 898px; text-align: left; hegiht: 200px;
+}
+.datalist2 {
+	margin: 10px 0px 10px 10px; padding: 0px; border: 0px currentColor; font-size: 12px;
+}
+.datalist2 tr td {
+	height: 28px; line-height: 28px;
+}
+.datalist2 tr th {
+	color: rgb(25, 106, 182); letter-spacing: 2px; font-weight: bold;
+}
+.datalist2 a {
+	margin: 0px; padding: 2px 4px; color: rgb(0, 39, 76);
+}
+.datalist2 a:link {
+	color: rgb(0, 39, 76); font-size: 12px;
+}
+.datalist2 a:hover {
+	color: rgb(255, 255, 255); font-size: 12px; background-color: rgb(4, 88, 174);
+}
+.datalist2_off {
+	color: rgb(0, 39, 76); font-size: 12px;
+}
+.datalist2_on {
+	color: rgb(255, 255, 255); font-size: 12px; background-color: rgb(4, 88, 174);
+}
+.datalist1 {
+	margin: 0px auto; padding: 5px; border: 1px solid rgb(197, 194, 194); font-family: Arial; border-collapse: collapse;
+}
+.datalist1 th {
+	background: url("2rd_07.jpg") repeat-x; padding: 0px 10px; border: 0px currentColor; height: 38px; text-align: center; color: rgb(4, 88, 174); line-height: 38px; font-size: 14px; font-weight: bold;
+}
+.datalist3 {
+	margin: 5px auto; border: 0px currentColor; font-family: Arial; border-collapse: collapse;
+}
+.datalist3 th {
+	padding: 0px 10px; border: 0px currentColor; height: 30px; text-align: center; color: rgb(46, 46, 46); line-height: 30px; font-size: 14px; font-weight: bold;
+}
+.datalist3 td {
+	padding: 0px 10px; text-align: left; font-size: 12px;
+}
+.list_js {
+	background: url("tr1.jpg") repeat-x bottom; height: 30px; line-height: 30px;
+}
+.list_js td {
+	padding: 0px 10px; text-align: left; color: rgb(46, 46, 46); font-size: 12px;
+}
+.list_js a {
+	background: url("index_28_1.jpg") no-repeat; margin: 0px; padding: 0px; width: 60px; height: 18px; text-align: center; color: rgb(46, 46, 46); line-height: 18px; display: block;
+}
+.list_os {
+	background: url("tr2.jpg") repeat-x bottom; height: 30px; line-height: 30px;
+}
+.list_os td {
+	padding: 0px 10px; text-align: left; color: rgb(46, 46, 46); font-size: 12px;
+}
+.list_os a {
+	background: url("index_28_2.jpg") no-repeat; margin: 0px; padding: 0px; width: 60px; height: 18px; text-align: center; color: rgb(46, 46, 46); line-height: 18px; display: block;
+}
+.ss_txt {
+	padding: 0px 10px; border: 1px solid rgb(200, 200, 200); width: 166px; height: 26px; color: rgb(153, 153, 153); font-size: 20px; margin-right: 4px;
+}
+.ss_btn {
+	border: 0px currentColor; width: 68px; height: 26px; cursor: pointer; background-image: url("so1.jpg");
+}
+.ss_btn_re {
+	border: 0px currentColor; width: 68px; height: 26px; cursor: pointer; background-image: url("index_31_1.jpg");
+}

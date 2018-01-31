@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="css/shared.css">
+<link href="/entity/manager/css/admincss.css" rel="stylesheet"
+			type="text/css">
+<link rel="stylesheet" type="text/css" href="../zhengquan/js/extjs/resources/css/ext-all.css">
+<script language="JavaScript" src="js/shared.js"></script>
+<script language="JavaScript" src="../zhengquan/js/extjs/ext-all.js"></script>
+<body>
+<table width="100%" border="0" align="left" cellpadding="0"
+			cellspacing="0">
+			<tr>
+				<td height="28">
+					<div class="content_title"  id="zlb_title_start">课程列表</div id="zlb_title_end">
+				</td>
+			</tr>
+			<tr>
+				<td valign="top" class="pageBodyBorder" style="background:none;">
+					<!-- start:内容区域 -->
+
+					<div class="border">
+						<form name="searchForm"
+							action="/entity/manager/information/infoprint/printlist_student.jsp"
+							method="post">
+							<table width='100%' border="0" cellpadding="0" cellspacing='0'
+								style='margin-bottom: 5px;text-align:left;'>
+									<tr>
+										<td>
+											<div style="padding-left: 15px"><span class="link">课程编号</span>：   
+										<input type="text" name="textfield36" size="10" maxlength="15"> 
+											&nbsp;&nbsp;&nbsp;&nbsp; 课程名称： 
+										<input name="textfield36" type="text" size="10" maxlength="15"> 
+										<span class="link"><img src='/entity/manager/images/buttons/search.png' alt='Search' width="20" height="20" title='Search'>&nbsp;<a href='#'>查找</a></span></div>
+										</div>
+									</td>
+									<td>
+										<div style="text-align:right;padding-right:15px"><span class="link" help=""><img src='/entity/manager/images/buttons/back.png' alt='Print' width="20" height="20" title='Print'>&nbsp;<a href='#' onclick="javascript:window.history.back();">返回</a></span> 
+                				</div>
+									</td>
+								</tr>
+							</table>
+						</form>
+						<!-- end:内容区－头部：项目数量、搜索、按钮 -->
+						<!-- start:内容区－列表区域 -->
+						<form name='userform' action='#' method='post' class='nomargin'
+							onsubmit="">
+							<table width='98%' align="center" cellpadding='1' cellspacing='0'
+								class='list'>
+								<tr>
+									<th width='10%' style='white-space: nowrap;'>
+										<span class="link">课程编号</span>
+									</th>
+									<th width='30%' style='white-space: nowrap;'>
+										<span class="link">课程名称</span>
+									</th>
+									<th width='10%' style='white-space: nowrap;'>
+										<span class="link">课程学时</span>
+									</th>
+									<th width='10%' style='white-space: nowrap;'>
+										<span class="link">是否必修</span>
+									</th>
+								</tr>
+								<tr class='oddrowbg'>
+									<td style='white-space: nowrap; text-align: center;'>C12001 
+									</td>
+									<td style='white-space: nowrap; text-align: center;'>上市公司治理 
+									</td>
+									<td style='white-space: nowrap; text-align: center;'>4 
+									</td>
+									<td style='white-space: nowrap; text-align: center;'> 
+										是 
+									</td>
+								</tr>
+								<tr class='oddrowbg'>
+									<td style='white-space: nowrap; text-align: center;'>B11003  
+									</td>
+									<td style='white-space: nowrap; text-align: center;'>首次公开发行审核的主要法律问题  
+									</td>
+									<td style='white-space: nowrap; text-align: center;'>7  
+									</td>
+									<td style='white-space: nowrap; text-align: center;'>是 
+									</td>
+								</tr>
+								<tr class='oddrowbg'>
+									<td style='white-space: nowrap; text-align: center;'>C11015  
+									</td>
+									<td style='white-space: nowrap; text-align: center;'>反洗钱基础知识  
+									</td>
+									<td style='white-space: nowrap; text-align: center;'>4 
+									</td>
+									<td style='white-space: nowrap; text-align: center;'>否 
+									</td>
+								</tr>
+								<tr class='oddrowbg'>
+									<td style='white-space: nowrap; text-align: center;'>C11008  
+									</td>
+									<td style='white-space: nowrap; text-align: center;'>我国证券市场新股发行体制改革情况介绍 
+									</td>
+									<td style='white-space: nowrap; text-align: center;'>23  
+									</td>
+									<td style='white-space: nowrap; text-align: center;'>否 
+									</td>
+								</tr>
+								<tr class='oddrowbg'>
+									<td style='white-space: nowrap; text-align: center;'>C10019  
+									</td>
+									<td style='white-space: nowrap; text-align: center;'>企业并购会计处理实务  
+									</td>
+									<td style='white-space: nowrap; text-align: center;'>4  
+									</td>
+									<td style='white-space: nowrap; text-align: center;'>是 
+									</td>
+								</tr>
+
+							</table>
+							<br/>
+						</form>
+						<!-- end:内容区－列表区域 -->
+					</div>
+					<!-- 内容区域结束 -->
+				</td>
+			</tr>
+		</table>
+</body>
+</html>

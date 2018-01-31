@@ -1,0 +1,19 @@
+create or replace view report_rel_new as
+select sc.year,
+sum(case when pbtc.flag_coursetype = '402880f32200c249012200c780c40001' then 1 else 0 end) as A1,    --必修
+sum(case when pbtc.flag_coursetype = '402880f32200c249012200c780c40001' then to_number(pbtc.time) else 0 end) as A2,
+sum(case when pbtc.flag_coursetype = '402880f32200c249012200c7f8b30002' then 1 else 0 end) as A3,    --选修
+sum(case when pbtc.flag_coursetype = '402880f32200c249012200c7f8b30002' then to_number(pbtc.time) else 0 end) as A4,
+sum(case when to_char(pbtc.create_date, 'yyyy')=to_char(sysdate, 'yyyy') then 1 else 0 end) as A5,
+sum(case when to_char(pbtc.create_date, 'yyyy')=to_char(sysdate, 'yyyy') then to_number(pbtc.time) else 0 end) as A6
+
+
+ from STATISTIC_COURSES sc
+inner join pe_bzz_tch_course pbtc on sc.fk_course_id = pbtc.id
+inner join (
+select sc.year, max(sc.month) as month
+from STATISTIC_COURSES sc 
+group by sc.year
+) a on a.year = sc.year
+where sc.month = a.month
+group by sc.year

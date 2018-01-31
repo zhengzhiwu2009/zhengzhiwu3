@@ -1,0 +1,1 @@
+update pe_bzz_student set education='本科' where education like '%大本%';

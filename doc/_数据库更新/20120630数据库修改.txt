@@ -1,0 +1,9 @@
+alter table PE_BZZ_STUDENT add CARD_TYPE varchar2(50);
+alter table PE_BZZ_STUDENT add CARD_NO varchar2(50);
+alter table PE_BZZ_STUDENT add GROUPS varchar2(100);
+comment on column PE_BZZ_STUDENT.CARD_TYPE
+ is '证件类型';
+comment on column PE_BZZ_STUDENT.CARD_NO 
+  is '证件号码';
+comment on column PE_BZZ_STUDENT.GROUPS  
+  is '分组';

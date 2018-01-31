@@ -1,0 +1,6 @@
+update pe_pri_category set name='二级机构' where name like '二级%' and code='06005'    //修改二级组织机构为二级机构
+
+下面3句是删除二级集体用户账户权限以及分配给用户的权限
+delete from pr_pri_role a where a.fk_priority_id in (select s.id from pe_priority s where s.fk_pri_cat_id='02003');//删除给用户分配的权限
+delete from pe_priority s where s.fk_pri_cat_id='02003';//删除具体权限
+delete from pe_pri_category b where b.id='02003';//删除权限种类

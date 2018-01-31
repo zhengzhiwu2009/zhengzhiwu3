@@ -1,0 +1,2 @@
+insert into enum_const(id,name,code,namespace,is_default,note) values('4028808c1dbe60fe011dbe7866590004','80','0','FlagTestPassLine','0','学习考试合格通过的标准分数线');
+ commit;

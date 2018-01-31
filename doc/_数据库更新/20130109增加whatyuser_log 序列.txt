@@ -1,0 +1,3 @@
+--增加序列 ，用于jsp 及其他页面的 日志Id生成
+
+	CREATE SEQUENCE s_whatyuser_log4j INCREMENT BY 1 START WITH 1111;

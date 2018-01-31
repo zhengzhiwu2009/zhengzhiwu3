@@ -1,0 +1,2 @@
+update enum_const t set name='是' where t.namespace='FlagCanJoinBatch' and t.code='1';
+update enum_const t set name='否' where t.namespace='FlagCanJoinBatch' and t.code='0';

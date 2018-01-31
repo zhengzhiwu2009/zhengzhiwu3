@@ -1,0 +1,14 @@
+-- Create sequence 
+create sequence SEQ_STATISTIC_ID
+minvalue 1
+maxvalue 999999999999999999
+start with 4421
+increment by 1
+cache 20;
+-- Create sequence 
+create sequence SEQ_STATI_YEAR
+minvalue 1
+maxvalue 999999999999999
+start with 121
+increment by 1
+cache 20;

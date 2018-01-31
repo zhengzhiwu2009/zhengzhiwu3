@@ -1,0 +1,19 @@
+create or replace view REPORT_REL_NEW_TIM as
+select 
+sc.year,
+sum(case when pbtc.time='0' and to_char(pbtc.create_date, 'yyyy')=sc.year then 1 else 0 end) as A1,  --0学时课程数
+sum(case when pbtc.time='1' and to_char(pbtc.create_date, 'yyyy')=sc.year then 1 else 0 end) as A2,   --1学时课程数
+sum(case when pbtc.time='2' and to_char(pbtc.create_date, 'yyyy')=sc.year then 1 else 0 end) as A3,   --2学时课程数
+sum(case when pbtc.time='3' and to_char(pbtc.create_date, 'yyyy')=sc.year then 1 else 0 end) as A4,   --3学时课程数
+sum(case when pbtc.time not in ('0', '1', '2', '3') and to_char(pbtc.create_date, 'yyyy')=sc.year then 1 else 0 end) as A5,  --其它课程数
+sum(case when to_char(pbtc.create_date, 'yyyy')=sc.year then 1 else 0 end) as A6,   --课程数
+sum(case when to_char(pbtc.create_date, 'yyyy')=sc.year then to_number(pbtc.time) else 0 end) as A7   --课程学时数
+ from 
+statistic_courses sc
+inner join pe_bzz_tch_course pbtc on sc.fk_course_id = pbtc.id
+inner join (select sc.year, max(sc.month) as month
+               from STATISTIC_COURSES sc
+              group by sc.year) a on a.year = sc.year
+ where sc.month = a.month
+group by sc.year
+

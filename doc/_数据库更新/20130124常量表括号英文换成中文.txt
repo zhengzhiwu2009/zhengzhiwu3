@@ -1,0 +1,3 @@
+update ENUM_CONST t set t.name='证券投资咨询业务（投资顾问）' where t.namespace='FlagQualificationsType' and t.code='5';
+update ENUM_CONST t set t.name='证券投资咨询业务（分析师）' where t.namespace='FlagQualificationsType' and t.code='4';
+update ENUM_CONST t set t.name='证券投资咨询业务（其他）' where t.namespace='FlagQualificationsType' and t.code='1';

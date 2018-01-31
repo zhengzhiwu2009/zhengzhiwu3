@@ -1,0 +1,245 @@
+insert into STATISTIC_COURSE_YEAR
+  (year,
+   ELECTIVE_PERSON_NUMBER,
+   START_STUDY_PERSON_NUMBER,
+   COMPLETED_STUDY_PERSON_NUMBER,
+   START_EXAM_PERSON_NUMBER,
+   PASS_EXAM_PERSON_NUMBER,
+   PRE_START_STUDY_NUMBER,
+   PRE_COMPLETED__STUDY_NUMBER,
+   PRE_START_EXAM_NUMBER,
+   PRE_PASS_EXAM_NUMBER,
+   PRE_COURSE_TIMES,
+   PRE_PASS_TJMES,
+   UPDATE_TIME,
+   PRE_PASS_COM_TEN_HOURS,
+   PRE_PASS_COM_FIFTEEN_HOURS,
+   PASS_COM_TEN_HOURS,
+   PASS_COM_FIFTEEN_HOURS,
+   PASS_TJMES)
+  select f.year,
+         nvl(a.total_number, 0), --当前年选课人数
+         nvl(b.inc, 0), --当前年开始学习人数
+         nvl(g.com, 0), --当前年通过人数
+         nvl(c.exam_number, 0), --当前年测验人数
+         nvl(c.pass_times, 0), --当前年测验通过人数 
+         nvl(d.tcs_total_number, 0), --非当前年开始学习人数
+         nvl(d.pre_com, 0), --非当前年学习完成人数
+         nvl(e.pre_exam_number, 0), --非当前年考试人数
+         nvl(e.pre_pass_times, 0), --非当前年测验通过人数
+         nvl(i.pre_course_times, 0), --非当前年报名，今年考试学时总数
+         nvl(i.pre_pass_times, 0), --非当前年报名，今年考试通过学时总数
+         f.update_time, --数据更新日期
+         nvl(j.PRE_PASS_COM_TEN_HOURS, 0), --跨年完成10学时
+         nvl(k.PRE_PASS_COM_FIFTEEN_HOURS, 0), --跨年完成15学时
+         nvl(l.PASS_COM_TEN_HOURS, 0), --完成10学时人数
+         nvl(m.PASS_COM_FIFTEEN_HOURS, 0), --完成15学时人数
+         nvl(n.pass_times, 0) --完成学时数
+    from (select count(pbtse.id) as total_number
+            from pr_bzz_tch_stu_elective pbtse
+           where to_char(nvl(pbtse.elective_date,
+                             to_date('1900-01-01 00:00:00',
+                                     'yyyy-MM-dd hh24:mi:ss')),
+                         'yyyy') = to_char(trunc(sysdate-1), 'yyyy')
+            and pbtse.flag_elective_pay_status = '40288a7b3981661e01398186b0f50006'             
+                         ) a,
+         (
+          
+          select sum(case
+                        when tcs.learn_status <> 'UNCOMPLETE' then
+                         1
+                        else
+                         0
+                      end) as inc,
+                  sum(case
+                        when tcs.learn_status = 'UNCOMPLETE' then
+                         1
+                        else
+                         0
+                      end) as unc
+          
+            from training_course_student tcs
+           where to_char(nvl(tcs.get_date,
+                             to_date('1900-01-01 00:00:00',
+                                     'yyyy-MM-dd hh24:mi:ss')),
+                         'yyyy') = to_char(trunc(sysdate-1), 'yyyy') /**今年课程学习情况*/
+          ) b,
+         (select sum(case
+                       when tcs.learn_status = 'COMPLETED' then
+                        1
+                       else
+                        0
+                     end) as com
+          
+            from training_course_student tcs
+           where to_char(nvl(tcs.complete_date,
+                             to_date('1900-01-01 00:00:00',
+                                     'yyyy-MM-dd hh24:mi:ss')),
+                         'yyyy') = to_char(trunc(sysdate-1), 'yyyy') /**今年课程学习完成情况*/
+          ) g,
+         (select count(tth.id) as exam_number, --测验人数
+                 sum(case
+                       when to_number(nvl(tth.score, 0)) >= to_number(pbtc.passrole) then
+                        1
+                       else
+                        0
+                     end) as pass_times --通过人数
+          
+            from test_testpaper_history tth
+          
+           inner join test_testpaper_info tti on tth.testpaper_id = tti.id
+           inner join pe_bzz_tch_course pbtc on tti.group_id = pbtc.id
+           where to_char(tth.test_date, 'yyyy') = to_char(trunc(sysdate-1), 'yyyy') /**今年测验情况*/
+          ) c,
+         (select count(pbtse.id) as tcs_total_number,
+                 sum(case
+                       when tcs.learn_status = 'COMPLETED' then
+                        1
+                       else
+                        0
+                     end) as pre_com
+          
+            from pr_bzz_tch_stu_elective pbtse
+           inner join training_course_student tcs on pbtse.fk_training_id =
+                                                     tcs.id
+          
+           where to_number(to_char(nvl(pbtse.elective_date,
+                                       to_date('1900-01-01 00:00:00',
+                                               'yyyy-MM-dd hh24:mi:ss')),
+                                   'yyyy')) =
+                 (to_number(to_char(trunc(sysdate-1), 'yyyy')) - 1)
+                
+             and to_char(nvl(tcs.complete_date,
+                             to_date('1900-01-01 00:00:00',
+                                     'yyyy-MM-dd hh24:mi:ss')),
+                         'yyyy') = to_char(trunc(sysdate-1), 'yyyy')
+             and pbtse.flag_elective_pay_status = '40288a7b3981661e01398186b0f50006'
+          
+          /*非今年报名学习人数，学习完成人数**/
+          
+          ) d,
+         (select count(tti.id) as pre_exam_number,
+                  sum(case
+                        when to_number(nvl(tth.score, 0)) >= to_number(pbtc.passrole) then
+                         1
+                        else
+                         0
+                      end) as pre_pass_times
+             from pr_bzz_tch_stu_elective pbtse
+            inner join pr_bzz_tch_opencourse pbto on pbtse.fk_tch_opencourse_id =
+                                                     pbto.id
+            inner join pe_bzz_tch_course pbtc on pbtc.id = pbto.fk_course_id
+            inner join test_testpaper_info tti on tti.group_id = pbtc.id
+            inner join test_testpaper_history tth on tth.testpaper_id =
+                                                     tti.id
+            where /*to_number(to_char(pbtse.elective_date, 'yyyy')) =
+                                                                      (to_number(to_char(trunc(sysdate-1), 'yyyy')) - 1)*/
+            to_number(to_char(nvl(pbtse.elective_date,
+                                  to_date('1900-01-01 00:00:00',
+                                          'yyyy-MM-dd hh24:mi:ss')),
+                              'yyyy')) =
+            (to_number(to_char(trunc(sysdate-1), 'yyyy')) - 1)
+         and pbtse.flag_elective_pay_status = '40288a7b3981661e01398186b0f50006'   
+           
+         and to_char(nvl(tth.test_date,
+                        to_date('1900-01-01 00:00:00', 'yyyy-MM-dd hh24:mi:ss')),
+                    'yyyy') = to_char(trunc(sysdate-1), 'yyyy')) e, /*去年报名，今年考试和通过的*/
+         
+         (select to_char(trunc(sysdate-1), 'yyyy') as year, trunc(sysdate-1) as update_time
+            from dual --年份
+          ) f,
+         (select sum(to_number(pbtc.time)) as pre_course_times,
+                 sum(case
+                       when to_number(nvl(tth.score, 0)) >= to_number(pbtc.passrole) then
+                        to_number(pbtc.time)
+                       else
+                        0
+                     end) as pre_pass_times
+            from pr_bzz_tch_stu_elective pbtse
+           inner join training_course_student tcs on pbtse.fk_training_id =
+                                                     tcs.id
+           inner join pr_bzz_tch_opencourse pbto on pbtse.fk_tch_opencourse_id =
+                                                    pbto.id
+           inner join pe_bzz_tch_course pbtc on pbto.fk_course_id = pbtc.id
+           inner join test_testpaper_info tti on tti.group_id = pbtc.id
+           inner join test_testpaper_history tth on tth.testpaper_id =
+                                                    tti.id
+           where to_number(to_char(nvl(pbtse.elective_date,
+                                       to_date('1900-01-01 00:00:00',
+                                               'yyyy-MM-dd hh24:mi:ss')),
+                                   'yyyy')) =
+                 (to_number(to_char(trunc(sysdate-1), 'yyyy')) - 1)
+             and to_char(nvl(tth.test_date,
+                             to_date('1900-01-01 00:00:00',
+                                     'yyyy-MM-dd hh24:mi:ss')),
+                         'yyyy') = to_char(trunc(sysdate-1), 'yyyy')
+            and pbtse.flag_elective_pay_status = '40288a7b3981661e01398186b0f50006'             
+          
+          ) i, /*去年报名，今年测验总学时，通过总学时*/
+         (select count(distinct pbs.id) as PRE_PASS_COM_TEN_HOURS
+            from pr_bzz_tch_stu_elective pbtse, pe_bzz_student pbs
+          
+           where to_char(nvl(pbtse.elective_date,
+                             to_date('1900-01-01 00:00:00',
+                                     'yyyy-MM-dd hh24:mi:ss')),
+                         'yyyy') =
+                 to_char(trunc(sysdate-1) - interval '1' year, 'yyyy')
+                
+             and to_char(nvl(pbs.com_ten_hours_date,
+                             to_date('1900-01-01 00:00:00',
+                                     'yyyy-MM-dd hh24:mi:ss')),
+                         'yyyy') = to_char(trunc(sysdate-1), 'yyyy')
+             and pbtse.fk_stu_id = pbs.id
+             and pbtse.flag_elective_pay_status = '40288a7b3981661e01398186b0f50006'
+          
+          ) j, /*跨年完成10学时人数*/
+         (select count(distinct pbs.id) as PRE_PASS_COM_FIFTEEN_HOURS
+            from pr_bzz_tch_stu_elective pbtse, pe_bzz_student pbs
+          
+           where to_char(nvl(pbtse.elective_date,
+                             to_date('1900-01-01 00:00:00',
+                                     'yyyy-MM-dd hh24:mi:ss')),
+                         'yyyy') =
+                 to_char(trunc(sysdate-1) - interval '1' year, 'yyyy')
+                
+             and to_char(nvl(pbs.com_fifteen_hours_date,
+                             to_date('1900-01-01 00:00:00',
+                                     'yyyy-MM-dd hh24:mi:ss')),
+                         'yyyy') = to_char(trunc(sysdate-1), 'yyyy')
+             and pbtse.fk_stu_id = pbs.id
+             and pbtse.flag_elective_pay_status = '40288a7b3981661e01398186b0f50006'
+          
+          ) k, /*跨年完成15学时人数*/
+         (select count(distinct pbs.id) as PASS_COM_TEN_HOURS
+            from pe_bzz_student pbs
+           where to_char(nvl(pbs.com_ten_hours_date,
+                             to_date('1900-01-01 00:00:00',
+                                     'yyyy-MM-dd hh24:mi:ss')),
+                         'yyyy') = to_char(trunc(sysdate-1), 'yyyy')
+          
+          ) l, /*完成10学时人数*/
+         (select count(distinct pbs.id) as PASS_COM_FIFTEEN_HOURS
+            from pe_bzz_student pbs
+           where to_char(nvl(pbs.com_fifteen_hours_date,
+                             to_date('1900-01-01 00:00:00',
+                                     'yyyy-MM-dd hh24:mi:ss')),
+                         'yyyy') = to_char(trunc(sysdate-1), 'yyyy')
+          
+          ) m, /*完成15学时人数*/
+         (select sum(case
+                       when pbtse.score_exam >= to_number(pbtc.passrole) then
+                        to_number(pbtc.time)
+                       else
+                        0
+                     end) as pass_times
+            from pr_bzz_tch_stu_elective pbtse
+           inner join pr_bzz_tch_opencourse pbto on pbtse.fk_tch_opencourse_id =
+                                                    pbto.id
+           inner join pe_bzz_tch_course pbtc on pbto.fk_course_id = pbtc.id
+           where to_char(nvl(pbtse.completed_time,
+                             to_date('1900-01-01 00:00:00',
+                                     'yyyy-MM-dd hh24:mi:ss')),
+                         'yyyy') = to_char(trunc(sysdate-1), 'yyyy')
+           and pbtse.flag_elective_pay_status = '40288a7b3981661e01398186b0f50006'              
+          
+          ) n /*完成学时数*/

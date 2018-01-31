@@ -1,0 +1,5 @@
+alter table PE_BZZ_STUDENT add (CHECK_STATE varchar(50)); 
+comment on column PE_BZZ_STUDENT.CHECK_STATE is '审核装态';
+
+alter table PE_BZZ_STUDENT add (ENTERPRISE_ID varchar(50)); 
+comment on column PE_BZZ_STUDENT.ENTERPRISE_ID is '注册时选择的机构';

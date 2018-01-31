@@ -1,0 +1,21 @@
+create or replace view REPORT_REL_DETAIL as
+select 
+pbtc.code as A1,
+pbtc.name as A2,
+case when pbtc.flag_coursetype = '402880f32200c249012200c780c40001' then '必修' else '选修' end as A3,  
+case when pbtc.flag_isrecommend = '40288a7b399a357801399a4ff9ef0006' then '是' else '否' end as A4,
+ec.name as A5,   --按大纲分类
+ec.name as A6,   --按业务分类
+pbtc.teacher as A7, --任课教师
+pbtc.time as A8,
+pbtc.create_date as A9,
+to_char(pbtc.create_date, 'yyyy') as YEAR 
+
+from statistic_courses sc
+inner join pe_bzz_tch_course pbtc on sc.fk_course_id = pbtc.id
+inner join enum_const ec on pbtc.flag_course_item_type = ec.id
+inner join enum_const ec2 on pbtc.flag_coursecategory = ec2.id
+inner join (select sc.year, max(sc.month) as month
+               from STATISTIC_COURSES sc
+              group by sc.year) a on a.year = sc.year
+ where sc.month = a.month

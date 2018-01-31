@@ -1,0 +1,10 @@
+{totalCount:1,
+	root:[
+	 	{username:'张三',password:'zhangsan',address:'北京',
+	 		extraInfo:{username:['jean','jack'],address:['海淀区','知春路','盈都大厦']}},
+	 		
+	 	{username:'李四',password:'lisi',address:'上海',
+	 		extraInfo:{username:['tom','jams'],address:['浦东区','南京路','理想大厦']}},
+	 	{username:'王五',password:'wangwu',address:'南京'}
+ 	]
+ }

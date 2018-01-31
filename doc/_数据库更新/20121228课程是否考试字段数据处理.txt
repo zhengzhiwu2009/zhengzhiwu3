@@ -1,0 +1,3 @@
+ update pe_bzz_tch_course pbtc set pbtc.flag_is_exam = '40288acf3ae01103013ae012940b0001' where pbtc.flag_is_exam is null;
+ commit;
+ 

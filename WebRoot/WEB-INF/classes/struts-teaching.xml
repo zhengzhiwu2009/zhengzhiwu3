@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd" >
+<struts>
+	<constant name="struts.custom.i18n.resources" value="resource"></constant>
+	<constant name="struts.multipart.maxSize" value="10485760"/>
+	<constant name="struts.multipart.saveDir" value="/tmp"></constant>
+	<package name="entity.teaching" extends="platform-default" namespace="/entity/teaching">
+		<global-results>
+			<result name="m_msg">/test/msg.jsp</result>
+			<result name="msg">/test/stu_msg.jsp</result>
+			<result name="lee">/test/msg.jsp</result>
+			<result name="error" type="freemarker">/test/error.jsp</result>
+			<result name="grid">/test/grid.jsp</result>
+			<result name="json">/test/json.jsp</result>
+			<result name="gridjs">/test/gridjs.jsp</result>
+			<!-- <result name="excel">/test/export.xls</result> -->
+			<result name="input">/entity/manager/pub/turnToLogin.jsp</result>
+		</global-results>
+		<action name="peCourseManager_*" method="{1}" class="peCourseManagerAction">
+			<result name="batch">/entity/manager/teaching/course_bath_enter.jsp</result>
+			<result name="uploadCourse_result">/entity/manager/teaching/operate_result.jsp</result>
+		</action>
+		<!-- longyinsong begin-->
+		<action name="prBzzTchOpenCourse_*" method="{1}" class="prBzzTchOpenCourseAction">
+			<result name="front">/entity/manager/teaching/course_type_select.jsp</result>
+		</action>
+		<!-- 公共课程查询 -->
+		<action name="peBzzCoursePubSearch_*" method="{1}" class="peBzzCoursePubSearchAction">
+			<result name="singleCourseSearch">/entity/teaching/peBzzCoursePubSearch.action?courseParams=${courseParams}</result>
+		</action>
+		<!-- 在线直播查询 -->
+		<action name="peBzzCourseLiveSearch_*" method="{1}" class="peBzzCourseLiveSearchAction"></action>
+		<action name="peBzzStudentSearch_*" method="{1}" class="peBzzStudentSearchAction">
+			<result name="singleStudentSearch">/entity/teaching/peBzzStudentSearch.action?studentParams=${studentParams}</result>
+		</action>
+		<action name="pePubStuDetail_*" method="{1}" class="pePubStuDetailAction"></action>
+		<!-- 公司内训查询 Lzh -->
+		<action name="peBzzCourseInternalSearch_*" method="{1}" class="peBzzCourseInternalSearchAction">
+			<result name="courseInfo">/entity/manager/teaching/pub_course_Internal_info.jsp</result>
+		</action>
+		<!-- 按人员查询 -->
+		<action name="coursePersonnel_*" method="{1}" class="coursePersonnelAction">
+			
+		</action>
+
+		<action name="prBzzTchOpenCourseReady_*" method="{1}" class="prBzzTchOpenCourseReadyAction"></action>
+		<action name="prBzzTchOpenCourseDetail_*" method="{1}" class="prBzzTchOpenCourseDetailAction">
+			<result name="resultinfo">/entity/manager/teaching/resultInfo.jsp</result>
+		</action>
+		<action name="prBzzTchOpenCourseDetailSearch_*" method="{1}" class="prBzzTchOpenCourseDetailSearchAction">
+			<result name="showDiscription">/entity/manager/teaching/showDiscription.jsp</result>
+		</action>
+		<action name="peBzzZhiBoRoom_*" method="{1}" class="peBzzZhiBoRoomAction"></action>
+		<action name="prBzzTchSelectCourses_*" method="{1}" class="prBzzTchSelectCoursesAction">
+			<result name="ajaxsubmit">/entity/manager/teaching/infomessage.jsp</result>
+			<result name="singleSelCourseSuccess">/entity/manager/teaching/singleSelCourseSuccess.jsp</result>
+			<result name="delSelectCourseSuccess">/entity/manager/teaching/delSelectCourseSuccess.jsp</result>
+		</action>
+		<action name="pebzzManagerAssess_*" method="{1}" class="pebzzManagerAssessAction">
+			<result name="toAssess">/entity/manager/teaching/managerAssess.jsp</result>
+			<result name="todetailAssessing">/entity/manager/teaching/managerAssess_detail.jsp</result>
+			<result name="Assessing">/entity/manager/teaching/managerAssess_result.jsp</result>
+			<result name="updateAssess">/entity/manager/teaching/managerAssess_result.jsp</result>
+		</action>
+		<action name="pebzzAssessRusts_*" method="{1}" class="pebzzAssessRustsAction">
+			<result name="toReviwes">/entity/manager/teaching/managerAssessRuslt.jsp</result>
+		</action>
+		<!-- longyinsong end -->
+		<!-- Lee 公共课程发布 -->
+		<action name="peBzzCoursePubManager_*" method="{1}" class="peBzzCoursePubManagerAction">
+			<result name="batch">/entity/manager/teaching/pub_course_bath_enter.jsp</result>
+			<result name="uploadCourse_result">/entity/manager/teaching/pub_operate_result.jsp</result>
+			<result name="copyHomework">/entity/manager/teaching/pub_copy_homework.jsp</result>
+			<result name="copyTestPaper">/entity/manager/teaching/pub_copy_testpaper.jsp</result>
+			<result name="courseInfo">/entity/manager/teaching/pub_course_info.jsp</result>
+			<result name="toUploadCourseware">/entity/manager/course/courseware/scorm12/pub_import.jsp</result>
+			<result name="noPreView">/entity/manager/teaching/pub_nopreview.jsp</result>
+			<result name="setTeaImg">/entity/manager/teaching/setTeaImg.jsp</result>
+			<result name="setSugg">/entity/basic/sacLiveSugg.action?tableName=PE_BZZ_TCH_COURSE</result>
+		</action>
+		<!-- Lee 在线直播课程发布 -->
+		<action name="peBzzCourseLiveManager_*" method="{1}" class="peBzzCourseLiveManagerAction">
+			<result name="toUploadCourseware">/entity/manager/course/courseware/scorm12/live_import.jsp</result>
+			<!-- 设置课程图片 -->
+			<result name="setCourseImg">/entity/bzz-students/setCourseImg.jsp</result>
+			<!-- 设置讲师照片 -->
+			<result name="setTeaImg">/entity/bzz-students/setTeaImg.jsp</result>
+			<!-- 查看 -->
+			<result name="sacLiveView">/entity/manager/basic/sacLiveView.jsp</result>
+			<!-- 设置建议学习人群 -->
+			<result name="setSugg">/entity/basic/sacLiveSugg.action?tableName=PE_BZZ_TCH_COURSE</result>
+		</action>
+		<!--Lzh 公司内训课程发布-->
+		<action name="peBzzCourseInternal_*" method="{1}" class="PeBzzCourseInternalAction">
+			<result name="courseInfo">/entity/manager/teaching/pub_course_Internal_info.jsp</result>
+			<result name="setTeaImg">/entity/manager/teaching/setTeaImg.jsp</result>
+			<result name="toUploadCourseware">/entity/manager/course/courseware/scorm12/pub_import.jsp</result>
+			<result name="setSugg">/entity/basic/sacLiveSugg.action?tableName=PE_BZZ_TCH_COURSE</result>
+		</action>
+		<!-- 资料库 lzh  -->
+		<action name="peResource_*" method="{1}" class="peResourceAction">
+			<result name="courseInfo">/entity/manager/teaching/ziliao.jsp</result>
+			<result name="toAdd">/entity/manager/teaching/add_resource.jsp</result>
+			<result name="toEdit">/entity/manager/teaching/edit_resource.jsp</result>
+			<result name="addToCourse">/entity/teaching/kechengPerResource.action?typeflag=addkecheng"</result>
+		</action>
+		<action name="kechengPerResource_*" method="{1}" class="kechengPerResourceAction">
+		</action>
+		<action name="peResourcejiti_*" method="{1}" class="peResourcejitiAction">
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">
+					  application/msword,application/pdf,application/vnd.ms-powerpoint,image/jpeg,image/pjpeg,image/jpg,
+					  application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.presentationml.presentation
+				</param>
+				<param name="fileUpload.allowedExtensions">jpg,doc,docx,ppt,pptx,pdf</param>
+				<param name="maximumSize">2097152</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			<result name="input">/entity/bzz-students/upload_error.jsp</result>
+			<result name="courseInfo">/entity/manager/teaching/ziliao.jsp</result>
+			<result name="toUploadResource">/entity/manager/teaching/uploadResource.jsp</result>
+		</action>
+		<action name="myResource_*" method="{1}" class="myResourceAction">
+		</action>
+		<!--  end -->
+		<!-- 必选自选查看 -->
+		<action name="peBzzCourseZixuanManager_*" method="{1}" class="peBzzCourseZixuanManagerAction">
+			<result name="courseInfo">/entity/manager/teaching/pub_course_info.jsp</result>
+		</action>
+		<!-- Lzh 公共课程发布 -->
+		<action name="peBzzCoursePubCourse_*" method="{1}" class="peBzzCoursePubCourseAction">
+			<result name="courseInfo">/entity/manager/teaching/pub_course_info.jsp</result>
+		</action>
+		<!-- Lee 专项课程发布 -->
+		<action name="peBzzCourseBatManager_*" method="{1}" class="peBzzCourseBatManagerAction">
+			<result name="batch">/entity/manager/teaching/bat_course_bath_enter.jsp</result>
+			<result name="uploadCourse_result">/entity/manager/teaching/bat_operate_result.jsp</result>
+			<result name="copyHomework">/entity/manager/teaching/bat_copy_homework.jsp</result>
+			<result name="copyTestPaper">/entity/manager/teaching/bat_copy_testpaper.jsp</result>
+			<result name="courseInfo">/entity/manager/teaching/bat_course_info.jsp</result>
+			<result name="toUploadCourseware">/entity/manager/course/courseware/scorm12/bat_import.jsp</result>
+			<result name="noPreView">/entity/manager/teaching/bat_nopreview.jsp</result>
+			<result name="setTeaImg">/entity/manager/teaching/setTeaImg.jsp</result>
+			<result name="setSugg">/entity/basic/sacLiveSugg.action?tableName=PE_BZZ_TCH_COURSE</result>
+		</action>
+		<!-- Lee end -->
+		<!-- 李文强 协会内训课程发布 2014-10-13-->
+		<action name="peBzzCourseAssManager_*" method="{1}" class="peBzzCourseAssManagerAction">
+			<result name="courseInfo">/entity/manager/teaching/ass_course_info.jsp</result>
+			<result name="toUploadCourseware">/entity/manager/course/courseware/scorm12/ass_import.jsp</result>
+			<result name="setTeaImg">/entity/manager/teaching/setTeaImg.jsp</result>
+		</action>
+		<!-- 李文强 协会内训查询 2014-10-14 -->
+		<action name="peBzzCourseAssSearch_*" method="{1}" class="peBzzCourseAssSearchAction">
+
+		</action>
+
+		<!-- 李文强 协会内训课程学习 2014-10-15 -->
+		<action name="peBzzCourseAssLearn_*" method="{1}" class="peBzzCourseAssLearnAction"></action>
+
+		<!-- 李文强 协会内训学习详情 2014-10-16 -->
+		<action name="peAssCourseDetail_*" method="{1}" class="peAssCourseDetailAction">
+			<result name="learnCourseDetail">/entity/function/ass/course_state.jsp</result>
+		</action>
+
+		<!-- 协会内训课程学习 李文强 2014-10-17 -->
+		<action name="assinteraction_*" method="{1}" class="assinteractionAction">
+			<result name="show_stuindex" type="redirect">/entity/function/ass/index.jsp</result>
+		</action>
+
+		<!-- 李文强 监管机构课程发布 2014-10-14 -->
+		<action name="peBzzCourseRegManager_*" method="{1}" class="peBzzCourseRegManagerAction">
+			<result name="courseInfo">/entity/manager/teaching/reg_course_info.jsp</result>
+			<result name="toUploadCourseware">/entity/manager/course/courseware/scorm12/reg_import.jsp</result>
+			<result name="setTeaImg">/entity/manager/teaching/setTeaImg.jsp</result>
+		</action>
+
+		<!-- 李文强 监管机构内训查询 2014-10-23 -->
+		<action name="peBzzCourseRegSearch_*" method="{1}" class="peBzzCourseRegSearchAction">
+
+		</action>
+
+		<!-- 李文强 监管机构内训学习详情 2014-10-23 -->
+		<action name="peRegCourseDetail_*" method="{1}" class="peRegCourseDetailAction">
+			<result name="learnCourseDetail">/entity/function/reg/course_state.jsp</result>
+		</action>
+
+		<!-- 李文强 监管机构内训课程学习 2014-10-23 -->
+		<action name="peBzzCourseRegLearn_*" method="{1}" class="peBzzCourseRegLearnAction"></action>
+
+		<!-- 监管机构内训课程学习 李文强 2014-10-23 -->
+		<action name="assinteraction_*" method="{1}" class="assinteractionAction">
+			<result name="show_stuindex" type="redirect">/entity/function/ass/index.jsp</result>
+		</action>
+		<!-- gaoyuan begin -->
+		<action name="peBzzCourseManager_*" method="{1}" class="peBzzCourseManagerAction">
+			<result name="batch">/entity/manager/teaching/course_bath_enter.jsp</result>
+			<result name="uploadCourse_result">/entity/manager/teaching/operate_result.jsp</result>
+			<result name="copyHomework">/entity/manager/teaching/copy_homework.jsp</result>
+			<result name="copyTestPaper">/entity/manager/teaching/copy_testpaper.jsp</result>
+			<result name="courseInfo">/entity/manager/teaching/course_info.jsp</result>
+			<result name="toUploadCourseware">/entity/manager/course/courseware/scorm12/import.jsp</result>
+			<result name="noPreView">/entity/manager/teaching/nopreview.jsp</result>
+		</action>
+		<action name="peBzzExamLibManager_*" method="{1}" class="peBzzExamLibManagerAction">
+			<result name="batch">/entity/manager/teaching/course_bath_enter.jsp</result>
+		</action>
+		<!--<action name="peBzzCourseExamLibManager_*" method="{1}" class="peBzzCourseExamLibManagerAction">
+			</action>-->
+		<!-- gaoyuan end -->
+		<action name="courseBookHis_*" method="{1}" class="courseBookHisAction"></action>
+		<action name="courseCoursewareHis_*" method="{1}" class="courseCoursewareHisAction"></action>
+
+		<action name="peTeaPlan_*" method="{1}" class="peTeachPlanManagerAction">
+			<result name="totransplant">/entity/manager/teaching/teachplantransplant.jsp</result>
+			<result name="batch">/entity/manager/teaching/propram_batch_enter.jsp</result>
+		</action>
+		<action name="teachPlanInfo_*" method="{1}" class="teachPlanInfoAction"></action>
+		<action name="teachPlanInfoCourse_*" method="{1}" class="teachPlanInfoCourseAction"></action>
+
+		<action name="teacher_*" method="{1}" class="peTeacherManagerAction"></action>
+		<action name="teacherCourse_*" method="{1}" class="teacherCourseAction"></action>
+		<action name="syllabus_*" method="{1}" class="peSyllabusManagerAction">
+			<result name="batch">/entity/manager/teaching/syllabus_upload.jsp</result>
+		</action>
+		<action name="countcoursecoefficient_*" method="{1}" class="peCountCourseCoefficientAction"></action>
+		<action name="countcoursereward_*" method="{1}" class="prCountCourseRewardAction">
+			<result name="detail">/entity/manager/teaching/countcourserewarddetail.jsp</result>
+			<result name="turnto">/entity/manager/teaching/countcourserewardturnto.jsp</result>
+		</action>
+		<action name="countcheckofworkfee_*" method="{1}" class="prCountCheckofWorkFeeAction">
+			<result name="detail">/entity/manager/teaching/countcheckofworkfeedetail.jsp</result>
+			<result name="turnto">/entity/manager/teaching/countcheckofworkfeeturnto.jsp</result>
+		</action>
+
+		<!-- libing -->
+		<action name="prTchCourseBook_*" method="{1}" class="prTchCourseBookAction"></action>
+		<action name="courseware_*" method="{1}" class="courseWareAction"></action>
+		<action name="teachingMaterialsManager_*" method="{1}" class="teachingMaterialsManagerAction">
+			<result name="batch">/entity/manager/teaching/materials_bath_enter.jsp</result>
+			<result name="uploadBook_result">/entity/manager/teaching/operate_result.jsp</result>
+		</action>
+		<!-- gaoyuan begin -->
+		<action name="bzzcourseware_*" method="{1}" class="bzzcourseWareAction"></action>
+		<!-- gaoyuan end -->
+
+
+		<!-- zhangyu begin -->
+		<action name="usualScoreView_*" method="{1}" class="usualScoreViewAction"></action>
+		<action name="homeworkScoreView_*" method="{1}" class="homeworkScoreViewAction"></action>
+		<action name="examScoreView_*" method="{1}" class="examScoreViewAction"></action>
+		<action name="scorePercentSet_*" method="{1}" class="scorePercentSetAction"></action>
+		<action name="unitExamScore_*" method="{1}" class="unitExamScoreAction"></action>
+		<action name="degreeEnglishScore_*" method="{1}" class="degreeEnglishScoreAction"></action>
+		<action name="paperTime_*" method="{1}" class="paperTimeAction"></action>
+		<action name="studentTopic_*" method="{1}" class="studentTopicAction"></action>
+		<action name="studentNoSelect_*" method="{1}" class="studentNoSelectAction"></action>
+		<action name="teacherTopic_*" method="{1}" class="teacherTopicAction"></action>
+		<action name="replyListSelect_*" method="{1}" class="replyListSelectAction"></action>
+		<action name="replyListView_*" method="{1}" class="replyListViewAction"></action>
+		<action name="replyTimeSet_*" method="{1}" class="replyTimeSetAction"></action>
+		<action name="paperScoreSearch_*" method="{1}" class="paperScoreSearchAction"></action>
+		<action name="replyScoreSearch_*" method="{1}" class="replyScoreSearchAction"></action>
+		<action name="finalScore_*" method="{1}" class="finalScoreAction"></action>
+		<action name="paperShenqingStat_*" method="{1}" class="paperShenqingStatAction"></action>
+		<action name="paperProcess_*" method="{1}" class="paperProcessAction"></action>
+		<action name="paperScoreStat_*" method="{1}" class="paperScoreStatAction">
+			<result name="paperScoreStat">/entity/manager/teaching/paper_score_stat.jsp</result>
+		</action>
+		<action name="peStuElective_*" method="{1}" class="peStuElectiveAction"></action>
+		<action name="peStuElectiveCourses_*" method="{1}" class="peStuElectiveCoursesAction"></action>
+		<action name="peStuBeginCourse_*" method="{1}" class="peStuBeginCourseAction"></action>
+		<action name="scoreSearch_*" method="{1}" class="scoreSearchAction"></action>
+		<action name="prTchProgramCourse_*" method="{1}" class="prTchProgramCourseAction"></action>
+		<action name="prTchCourseTeacher_*" method="{1}" class="prTchCourseTeacherAction"></action>
+		<action name="prTchOpencourse_*" method="{1}" class="prTchOpencourseAction"></action>
+		<action name="opencourseTimes_*" method="{1}" class="opencourseTimesAction"></action>
+		<action name="paperReapplyAudit_*" method="{1}" class="paperReapplyAuditAction"></action>
+		<action name="degreeEnglishAudit_*" method="{1}" class="degreeEnglishAuditAction"></action>
+		<action name="courseHomework_*" method="{1}" class="courseHomeworkAction"></action>
+		<!-- zhangyu end -->
+
+		<action name="electiveTimeManage_*" method="{1}" class="electiveTimeManageAction"></action>
+		<action name="elelctiveManage_*" method="{1}" class="elelctiveManageAction">
+			<result name="turntoSearch">/entity/manager/teaching/electiveForStudent_search.jsp</result>
+		</action>
+		<action name="peTchRejoinRoom_*" method="{1}" class="peTchRejoinRoomAction"></action>
+		<action name="peTchRejoinSection_*" method="{1}" class="peTchRejoinSectionAction"></action>
+		<action name="paperProcessTeacher_*" method="{1}" class="paperProcessTeacherAction"></action>
+		<action name="paperProcessInfo_*" method="{1}" class="paperProcessInfoAction"></action>
+		<action name="paperProcessStuInfo_*" method="{1}" class="paperProcessStuInfoAction"></action>
+		<action name="electiveInfoManage_*" method="{1}" class="electiveInfoManageAction"></action>
+		<action name="electiveStat_*" method="{1}" class="electiveStatAction"></action>
+		<action name="unElectiveStuList_*" method="{1}" class="unElectiveStuListAction"></action>
+		<action name="courseOrderStat_*" method="{1}" class="courseOrderStatAction"></action>
+		<action name="manualConfirmCourse_*" method="{1}" class="manualConfirmCourseAction"></action>
+		<action name="batchConfirmCourse_*" method="{1}" class="batchConfirmCourseAction">
+			<result name="result">/entity/manager/teaching/batchOpenCourseExe.jsp</result>
+		</action>
+		<action name="confirmedCourseStat_*" method="{1}" class="confirmedCourseStatAction"></action>
+		<action name="confirmedCourseInfo_*" method="{1}" class="confirmedCourseInfoAction"></action>
+		<action name="teachingStat_*" method="{1}" class="teachingStatAction"></action>
+		<action name="homeWorkStat_*" method="{1}" class="homeWorkStatAction"></action>
+		<action name="paperTeacher_*" method="{1}" class="paperTeacherAction"></action>
+		<action name="paperTeacherAdd_*" method="{1}" class="paperTeacherAddAction"></action>
+		<action name="printScore_*" method="{1}" class="printScoreAction">
+			<result name="printscorebatch">/entity/manager/teaching/print_score_report_batch.jsp</result>
+		</action>
+		<!-- huze SCORM多表现形式 start-->
+		<action name="multidisplay_*" method="{1}" class="multiDisplayAction"></action>
+		<!-- huze end -->
+		<!-- sunjicheng start -->
+		<action name="prBzzTchSelectStudent_*" method="{1}" class="prBzzTchSelectStudentAction"></action>
+		<action name="prBzzTchOpenCourseViewRes_*" method="{1}" class="prBzzTchOpenCourseViewResAction">
+			<result name="prBzzTchOpenCourseExportStu">/entity/manager/teaching/elective_openCourse_exportStu_excel.jsp</result>
+			<result name="prBzzTchNOpenCourseExportStu">/entity/manager/teaching/elective_NOpenCourse_exportStu_excel.jsp</result>
+		</action>
+		<!-- sunjicheng end -->
+		<action name="satisfactionQuestionManager_*" method="{1}" class="satisfactionQuestionManagerAction">
+			<result name="questionInfo">/entity/manager/teaching/satisfaction/question/question_info.jsp</result>
+			<result name="questionEdit">/entity/manager/teaching/satisfaction/question/question_edit.jsp</result>
+			<result name="questionAdd">/entity/manager/teaching/satisfaction/question/question_add.jsp</result>
+			<result name="questionUpload">/entity/manager/teaching/satisfaction/question/question_upload.jsp</result>
+		</action>
+		<action name="satisfactionPaperManager_*" method="{1}" class="satisfactionPaperManagerAction">
+			<result name="viewPaper">/entity/manager/teaching/elective_openCourse_exportStu_excel.jsp</result>
+			<result name="prBzzTchNOpenCourseExportStu">/entity/manager/teaching/elective_NOpenCourse_exportStu_excel.jsp</result>
+			<result name="prBzzTchNOpenCourseExportStu">/entity/manager/teaching/elective_NOpenCourse_exportStu_excel.jsp</result>
+			<result name="preView">/entity/teacher/statisfyPaperView.jsp</result>
+			<result name="detail">/entity/manager/information/vote/Coursevotepaper_info.jsp</result>
+			<result name="courseList">/entity/teaching/courseDetailView.action?id=${value}</result>
+
+			<result name="voteQuestion">/entity/manager/information/vote/Coursevotequestion_manage.jsp</result>
+			<result name="voteQuestionAnswer">/entity/manager/information/vote/questionAnswer_manage.jsp</result>
+		</action>
+		<action name="addSatisfactionPaper_*" method="{1}" class="addSatisfactionPaperAction">
+			<result name="detailInfo">/entity/manager/information/vote/Coursevoteinfo.jsp</result>
+		</action>
+		<action name="addQuestionToSatisfy_*" method="{1}" class="addQuestionToSatisfyAction"></action>
+
+		<action name="studentCourse_*" method="{1}" class="studentCourseAction">
+			<result name="courseSearch">/entity/teacher/stu_course_search.jsp</result>
+			<result name="studyDetail">/entity/teacher/study_detail.jsp</result>
+			<result name="toStudentCourseSearch">/entity/teacher/student_course_query.jsp</result>
+		</action>
+		<action name="courseStudent_*" method="{1}" class="courseStudentAction">
+			<result name="viewStudent">/entity/teacher/view_student.jsp</result>
+			<result name="viewCourse">/entity/teacher/course_detail.jsp</result>
+			<result name="toCourseStudentSearch">/entity/teacher/course_student_query.jsp</result>
+		</action>
+		<action name="searchAnyStudent_*" method="{1}" class="searchAnyStudentAction">
+			<result name="electivedCourse">/entity/teacher/student_electived_course.jsp</result>
+			<result name="reg_electivedCourse">/entity/teacher/reg_student_electived_course.jsp</result>
+			<result name="courseInfo">/entity/teacher/student_history_record.jsp</result>
+			<result name="courseInfos">/entity/teacher/student_history_records.jsp</result>
+			<result name="electivedBatchCourse">/entity/teacher/student_electived_batch_course.jsp</result>
+		</action>
+		<action name="courseStudentViewStudent_*" method="{1}" class="courseStudentViewStudentAction"></action>
+		<action name="studentCourseViewCourse_*" method="{1}" class="studentCourseViewCourseAction"></action>
+		<action name="courseView_*" method="{1}" class="courseViewAction"></action>
+		<action name="kechengLiulan_*" method="{1}" class="kechengLiulanAction"></action>
+		<action name="yetOffline_*" method="{1}" class="yetOfflineAction"></action>
+		<!-- 按订单查询 -->
+		<action name="peBzzTchOrderSearch_*" method="{1}" class="peBzzTchOrderSearchAction">
+			<result name="seqOrderSearch">/entity/teaching/peBzzTchOrderSearch.action?seq=${seq}&amp;name=${name}</result>
+		</action>
+		<!-- 满意度调查中查看课程详情 -->
+		<action name="courseDetailView_*" method="{1}" class="courseDetailViewAction"></action>
+	</package>
+</struts>

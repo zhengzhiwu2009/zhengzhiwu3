@@ -1,0 +1,11 @@
+课程的“发布”和“停用”另外细分为两个操作权限
+
+在pe_pri_category 添加两条数据：
+
+insert into pe_priority(id,name,fk_pri_cat_id,namespace,action,method) values('4028937b384132ff01384142ce790003','课程发布管理_fabu','04001','/entity/teaching','peBzzCourseManager','fabu')  
+insert into pe_priority(id,name,fk_pri_cat_id,namespace,action,method) values('4028937b384132ff01384142ce790004','课程发布管理_tingyong','04001','/entity/teaching','peBzzCourseManager','tingyong')
+
+在pe_pri_role中添加（发布和停用）角色：
+
+insert into pe_pri_role (ID, NAME, FLAG_ROLE_TYPE, FLAG_BAK) values ('ff8080813bd023d7013bd26b5b300135', '协会管理员_发布', '4028826a1db7bb01011db7e623d70003', '');
+insert into pe_pri_role (ID, NAME, FLAG_ROLE_TYPE, FLAG_BAK) values ('ff8080813bd023d7013bd26c831f0170', '协会管理员_停用', '4028826a1db7bb01011db7e623d70003', '');

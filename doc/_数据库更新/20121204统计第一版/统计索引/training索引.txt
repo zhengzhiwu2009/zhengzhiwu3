@@ -1,0 +1,190 @@
+-- Create table
+create table TRAINING_COURSE_STUDENT
+(
+  ID            VARCHAR2(50) not null,
+  STUDENT_ID    VARCHAR2(50),
+  COURSE_ID     VARCHAR2(50),
+  STATUS        VARCHAR2(50),
+  GET_DATE      DATE default sysdate,
+  PERCENT       NUMBER(6,2),
+  LEARN_STATUS  VARCHAR2(20),
+  SCORE         NUMBER,
+  COMPLETE_DATE DATE
+)
+tablespace HZPH
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 632M
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the columns 
+comment on column TRAINING_COURSE_STUDENT.COMPLETE_DATE
+  is '学习完成时间';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table TRAINING_COURSE_STUDENT
+  add constraint TRAINING_CURSE_STUDENTPRI1 primary key (ID)
+  using index 
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 464M
+    minextents 1
+    maxextents unlimited
+  );
+alter table TRAINING_COURSE_STUDENT
+  add constraint FK_TR_C_STU_R_PR_TCH_OP_C foreign key (COURSE_ID)
+  references PR_BZZ_TCH_OPENCOURSE (ID);
+alter table TRAINING_COURSE_STUDENT
+  add constraint FK_TR_C_STU_R_SSO_USER foreign key (STUDENT_ID)
+  references SSO_USER (ID);
+-- Create/Recreate indexes 
+create index AK_KEY_STA on TRAINING_COURSE_STUDENT (STATUS)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+create index AK_PERCENT on TRAINING_COURSE_STUDENT (PERCENT)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+create index HZPH_FK_INDEX_OPID on TRAINING_COURSE_STUDENT (COURSE_ID, ID)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+create index HZPH_FK_INDEX_OPID1 on TRAINING_COURSE_STUDENT (LEARN_STATUS, COURSE_ID)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+create index HZPH_FK_INDEX_OPID2 on TRAINING_COURSE_STUDENT (SCORE, COURSE_ID)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+create index INDEX_TCS_LCS on TRAINING_COURSE_STUDENT (LEARN_STATUS, STUDENT_ID, COURSE_ID)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+create index TRAINING_COURSE_COURSEID on TRAINING_COURSE_STUDENT (COURSE_ID)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+create index TRAINING_COURSE_STUDENT_INDEX2 on TRAINING_COURSE_STUDENT (TO_CHAR(NVL(COMPLETE_DATE,TO_DATE('1900-01-01 00:00:00', 'yyyy-mm-dd hh24:mi:ss')),'yyyy-MM'))
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+create index TRAINING_COURSE_STUDENT_INDEX3 on TRAINING_COURSE_STUDENT (TO_CHAR(NVL(GET_DATE,TO_DATE('1900-01-01 00:00:00', 'yyyy-mm-dd hh24:mi:ss')),'yyyy-MM'))
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+create index TRAINING_COURSE_STUDENT_INDEX4 on TRAINING_COURSE_STUDENT (TO_CHAR(NVL(GET_DATE,TO_DATE('1900-01-01 00:00:00', 'yyyy-mm-dd hh24:mi:ss')),'yyyy'))
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+create index TRAINING_COURSE_STUDENT_INDEX5 on TRAINING_COURSE_STUDENT (TO_CHAR(NVL(COMPLETE_DATE,TO_DATE('1900-01-01 00:00:00', 'yyyy-mm-dd hh24:mi:ss')),'yyyy'))
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+create index TRAINING_COURSE_STUID on TRAINING_COURSE_STUDENT (STUDENT_ID, COURSE_ID)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+create index TRAINING_CURSE_STUDENTLS on TRAINING_COURSE_STUDENT (LEARN_STATUS, STUDENT_ID, ID)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );

@@ -1,0 +1,20 @@
+添加字段:课程发布时间 -- PE_BZZ_TCH_COURSE
+
+-- Alter table 
+alter table PE_BZZ_TCH_COURSE
+  storage
+  (
+    next 1
+  )
+;
+-- Add/modify columns 
+alter table PE_BZZ_TCH_COURSE add ANNOUNCE_DATE DATE;
+-- Add comments to the columns 
+comment on column PE_BZZ_TCH_COURSE.ANNOUNCE_DATE
+  is '课程发布时间';
+  
+  
+  
+  
+ 更新新添字段：有修改时间传值修改时间，否则创建时间
+ update pe_bzz_tch_course p set announce_date = (case when edit_date is null then create_date else edit_date end) where p.flag_isvalid='2'

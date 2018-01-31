@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+
+   <alternateKey name="HNSD.AK_KEY_2_ENUM_CON">
+        <table>ENUM_CONST</table>
+        <columns>
+        <column>NAME</column>
+        <column>NAMESPACE</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_1_PE_EDUTY">
+        <table>PE_EDUTYPE</table>
+        <columns>
+        <column>NAME</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_3_PE_EDUTY">
+        <table>PE_EDUTYPE</table>
+        <columns>
+        <column>CODE</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_PE_EXA04">
+        <table>PE_EXAM_MAINCOURSE_NO</table>
+        <columns>
+        <column>NAME</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_PE_EXA07">
+        <table>PE_EXAM_MAINCOURSE_ROOM</table>
+        <columns>
+        <column>NAME</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_PE_EXAM_">
+        <table>PE_EXAM_NO</table>
+        <columns>
+        <column>NAME</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_PE_EXA01">
+        <table>PE_EXAM_PATROL</table>
+        <columns>
+        <column>NAME</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_3_PE_EXAM_">
+        <table>PE_EXAM_PATROL</table>
+        <columns>
+        <column>CARD_NUM</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_4_PE_EXAM_">
+        <table>PE_EXAM_PATROL</table>
+        <columns>
+        <column>CODE</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_PE_EXAM1">
+        <table>PE_EXAM_ROOM</table>
+        <columns>
+        <column>NAME</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_1_PE_FEE_B">
+        <table>PE_FEE_BATCH</table>
+        <columns>
+        <column>NAME</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_PE_FEE_L">
+        <table>PE_FEE_LEVEL</table>
+        <columns>
+        <column>NAME</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_1_PE_GRADE">
+        <table>PE_GRADE</table>
+        <columns>
+        <column>NAME</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_3_PE_GRADE">
+        <table>PE_GRADE</table>
+        <columns>
+        <column>CODE</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_4_PE_GRADE">
+        <table>PE_GRADE</table>
+        <columns>
+        <column>SERIAL_NUMBER</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_PE_INFO_">
+        <table>PE_INFO_NEWS_TYPE</table>
+        <columns>
+        <column>NAME</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_PE_JIANZ">
+        <table>PE_JIANZHANG</table>
+        <columns>
+        <column>NAME</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_1_PE_MAJOR">
+        <table>PE_MAJOR</table>
+        <columns>
+        <column>NAME</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_3_PE_MAJOR">
+        <table>PE_MAJOR</table>
+        <columns>
+        <column>CODE</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_PE_MANAG">
+        <table>PE_MANAGER</table>
+        <columns>
+        <column>NAME</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_3_PE_MANAG">
+        <table>PE_MANAGER</table>
+        <columns>
+        <column>LOGIN_ID</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_PE_PC_CO">
+        <table>PE_PC_COURSE</table>
+        <columns>
+        <column>NAME</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_PE_PC_ST">
+        <table>PE_PC_STUDENT</table>
+        <columns>
+        <column>REG_NO</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_3_PE_PRI_C">
+        <table>PE_PRI_CATEGORY</table>
+        <columns>
+        <column>CODE</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_1_PE_PRI_R">
+        <table>PE_PRI_ROLE</table>
+        <columns>
+        <column>NAME</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_1_PE_RECRU">
+        <table>PE_RECRUITPLAN</table>
+        <columns>
+        <column>NAME</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_AK_KEY_3_PE_RECRU_PE_RECRU">
+        <table>PE_RECRUITPLAN</table>
+        <columns>
+        <column>CODE</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_1_PE_REC_2">
+        <table>PE_REC_EXAMCOURSE</table>
+        <columns>
+        <column>NAME</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_PE_REC_R">
+        <table>PE_REC_ROOM</table>
+        <columns>
+        <column>NAME</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_3_PE_REC_S">
+        <table>PE_REC_STUDENT</table>
+        <columns>
+        <column>FK_REC_MAJOR_SITE_ID</column>
+        <column>CARD_TYPE</column>
+        <column>CARD_NO</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_4_PE_REC_S">
+        <table>PE_REC_STUDENT</table>
+        <columns>
+        <column>EXAM_CARD_NUM</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_1_PE_TCH_S">
+        <table>PE_SEMESTER</table>
+        <columns>
+        <column>NAME</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_4_PE_SEMES">
+        <table>PE_SEMESTER</table>
+        <columns>
+        <column>SERIAL_NUMBER</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_1_PE_SITE">
+        <table>PE_SITE</table>
+        <columns>
+        <column>NAME</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_4_PE_SITE">
+        <table>PE_SITE</table>
+        <columns>
+        <column>CODE</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_PE_SITEM">
+        <table>PE_SITEMANAGER</table>
+        <columns>
+        <column>NAME</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_3_PE_SITEM">
+        <table>PE_SITEMANAGER</table>
+        <columns>
+        <column>LOGIN_ID</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_PE_SMS_S">
+        <table>PE_SMS_SYSTEMPOINT</table>
+        <columns>
+        <column>NAME</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_3_PE_SMS_S">
+        <table>PE_SMS_SYSTEMPOINT</table>
+        <columns>
+        <column>CODE</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_PE_STUDE">
+        <table>PE_STUDENT</table>
+        <columns>
+        <column>NAME</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_3_PE_STUDE">
+        <table>PE_STUDENT</table>
+        <columns>
+        <column>FK_STUDENT_INFO_ID</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_4_PE_STUDE">
+        <table>PE_STUDENT</table>
+        <columns>
+        <column>REG_NO</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_PE_TCH_B">
+        <table>PE_TCH_BOOK</table>
+        <columns>
+        <column>CODE</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_1_PE_TCH_3">
+        <table>PE_TCH_COURSE</table>
+        <columns>
+        <column>NAME</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_3_PE_TCH_C">
+        <table>PE_TCH_COURSE</table>
+        <columns>
+        <column>CODE</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_PE_TCH_C">
+        <table>PE_TCH_COURSEGROUP</table>
+        <columns>
+        <column>NAME</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_1_PE_TCH_5">
+        <table>PE_TCH_COURSEWARE</table>
+        <columns>
+        <column>NAME</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_4_PE_TCH_C">
+        <table>PE_TCH_COURSEWARE</table>
+        <columns>
+        <column>FK_COURSE_ID</column>
+        <column>LINK</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_1_PE_TCH_7">
+        <table>PE_TCH_PROGRAM</table>
+        <columns>
+        <column>NAME</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_3_PE_TCH_P">
+        <table>PE_TCH_PROGRAM</table>
+        <columns>
+        <column>FK_MAJOR_ID</column>
+        <column>FK_EDUTYPE_ID</column>
+        <column>FK_GRADE_ID</column>
+        <column>FLAG_MAJOR_TYPE</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_PE_TCH_R">
+        <table>PE_TCH_REJOIN_ROOM</table>
+        <columns>
+        <column>NAME</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_AK_KEY_2_PE_TCH_R">
+        <table>PE_TCH_REJOIN_SECTION</table>
+        <columns>
+        <column>NAME</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_PE_TEACH">
+        <table>PE_TEACHER</table>
+        <columns>
+        <column>NAME</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_3_PE_TEACH">
+        <table>PE_TEACHER</table>
+        <columns>
+        <column>LOGIN_ID</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_PR_COURS">
+        <table>PR_COURSE_ARRANGE</table>
+        <columns>
+        <column>ARRANGE_DATE</column>
+        <column>FLAG_COURSE_SECTION</column>
+        <column>CLASSROOM</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_PR_DOCUM">
+        <table>PR_DOCUMENT</table>
+        <columns>
+        <column>FK_DOCUMENT_ID</column>
+        <column>FK_SSO_ID</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_PR_EDU_M">
+        <table>PR_EDU_MAJOR_SITE_FEE_LEVEL</table>
+        <columns>
+        <column>FK_EDUTYPE_ID</column>
+        <column>FK_MAJOR_ID</column>
+        <column>FK_SITE_ID</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_PR_EXA17">
+        <table>PR_EXAM_BOOKING</table>
+        <columns>
+        <column>FK_TCH_STU_ELECTIVE_ID</column>
+        <column>FK_SEMESTER_ID</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_PR_EXAM_">
+        <table>PR_EXAM_OPEN_MAINCOURSE</table>
+        <columns>
+        <column>FK_COURSE_ID</column>
+        <column>FK_EXAM_MAINCOURSE_NO_ID</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_PR_EXA26">
+        <table>PR_EXAM_STU_MAINCOURSE</table>
+        <columns>
+        <column>FK_STUDENT_ID</column>
+        <column>FK_EXAM_OPEN_MAINCOURSE_ID</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_PR_PC_ST">
+        <table>PR_PC_STU_BOOKING</table>
+        <columns>
+        <column>FK_BOOKING_SEAT_ID</column>
+        <column>FK_ELECTIVE_ID</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_PR_REC_C">
+        <table>PR_REC_COURSE_MAJOR_EDUTYPE</table>
+        <columns>
+        <column>FK_MAJOR_ID</column>
+        <column>FK_EDUTYPE_ID</column>
+        <column>FK_REC_EXAMCOURSE_ID</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_PR_REC_6">
+        <table>PR_REC_EXAM_COURSE_TIME</table>
+        <columns>
+        <column>FK_RECRUITPLAN_ID</column>
+        <column>FK_REC_EXAMCOURSE_ID</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_PR_REC_4">
+        <table>PR_REC_PLAN_MAJOR_EDUTYPE</table>
+        <columns>
+        <column>FK_RECRUITPLAN_ID</column>
+        <column>FK_MAJOR_ID</column>
+        <column>FK_EDUTYPE_ID</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_PR_REC_5">
+        <table>PR_REC_PLAN_MAJOR_SITE</table>
+        <columns>
+        <column>FK_SITE_ID</column>
+        <column>FK_REC_PLAN_MAJOR_EDUTYPE_ID</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_PR_STU_M">
+        <table>PR_STU_MULTI_MAJOR</table>
+        <columns>
+        <column>FK_MAJOR_ID</column>
+        <column>OLD_MAJOR</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_AK_KEY_2_PR_TCH_C_PR_TCH_C">
+        <table>PR_TCH_COURSE_BOOK</table>
+        <columns>
+        <column>FK_COURSE_ID</column>
+        <column>FK_BOOK_ID</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_PR_TCH_C">
+        <table>PR_TCH_COURSE_TEACHER</table>
+        <columns>
+        <column>FK_COURSE_ID</column>
+        <column>FK_TEACHER_ID</column>
+        <column>FLAG_TEACHER_TYPE</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_PR_TCH_O">
+        <table>PR_TCH_OPENCOURSE</table>
+        <columns>
+        <column>FK_COURSE_ID</column>
+        <column>FK_SEMESTER_ID</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_9_PR_TCH_P">
+        <table>PR_TCH_PAPER_TITLE</table>
+        <columns>
+        <column>FK_SEMESTER</column>
+        <column>FK_TEACHER</column>
+        <column>TITLE</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_PR_TCH_P">
+        <table>PR_TCH_PROGRAM_COURSE</table>
+        <columns>
+        <column>FK_PROGRAMGROUP_ID</column>
+        <column>FK_COURSE_ID</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_PR_TCH_S">
+        <table>PR_TCH_STU_ELECTIVE</table>
+        <columns>
+        <column>FK_STU_ID</column>
+        <column>FK_TCH_OPENCOURSE_ID</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_3_PR_TCH_S">
+        <table>PR_TCH_STU_ELECTIVE</table>
+        <columns>
+        <column>FK_STU_ID</column>
+        <column>FK_TCH_PROGRAM_COURSE</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_1_SSO_USER">
+        <table>SSO_USER</table>
+        <columns>
+        <column>LOGIN_ID</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="HNSD.AK_KEY_2_SYSTEM_V">
+        <table>SYSTEM_VARIABLES</table>
+        <columns>
+        <column>NAME</column>
+        </columns>
+   </alternateKey>
+
+</root>

@@ -1,0 +1,1 @@
+create index fk_pa_lrn_order_d on PR_BZZ_TCH_STU_ELECTIVE (fk_order_id);

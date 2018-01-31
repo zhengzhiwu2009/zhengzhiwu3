@@ -1,0 +1,14 @@
+body,td,p	{font-size:9pt; font-family:arial,ËÎÌו;}
+p		{line-height:130%; text-indent: 2em;}
+.tableprintable {border-bottom: #000000 1px solid; border-left: #000000 1px solid; border-right: #000000 2px solid; border-top: #000000 2px solid;}
+.tableprintable1{border-bottom: #000000 0px solid; border-left: #000000 1px solid; border-right: #000000 2px solid; border-top: #000000 2px solid;}
+.tableprintable2{border-bottom: #000000 0px solid; border-left: #000000 1px solid; border-right: #000000 2px solid; border-top: #000000 0px solid;}
+.tableprintable3{border-bottom: #000000 1px solid; border-left: #000000 1px solid; border-right: #000000 2px solid; border-top: #000000 0px solid;}
+.tdprintableleft{border-bottom: #000000 1px solid; border-left: #000000 1px solid; border-right: #000000 0px solid; border-top: #000000 0px solid;}
+.tdprintabtop	{border-bottom: #000000 1px solid; border-left: #000000 1px solid; border-right: #000000 0px solid; border-top: #000000 0px solid;}
+
+@media screen {
+   input {font-size:9pt;}
+}
+@media print {
+   input {display:none}

@@ -1,0 +1,2 @@
+update enum_const ec set ec.code='7' where ec.id='40288acf3adf103d013adf6061440022';
+update enum_const ec set ec.code='9' where ec.id='52cce2fd23412cc201234a6ad1ba00a2';

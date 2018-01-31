@@ -1,0 +1,80 @@
+* {
+	scrollbar-3dlight-color: #aabdce;
+	scrollbar-highlight-color: #aabdce;
+	scrollbar-face-color: #aabdce;
+	scrollbar-arrow-color: #fff;
+	scrollbar-shadow-color: #aabdce;
+	scrollbar-darkshadow-color: #aabdce;
+	scrollbar-base-color: #aabdce;
+	scrollbar-track-color: #f0f0f0;
+}
+
+form {
+	margin: 0;
+	padding: 0
+}
+
+table a {
+	font-weight: bold;
+}
+
+a:link {
+	color: #6c150c;
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;
+	color: #6c150c;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: #6c150c;
+}
+
+a:active {
+	text-decoration: none;
+	color: #6c150c;
+}
+
+body,td,textarea,div,th {
+	font-size: 12px;
+	line-height: 180%
+}
+
+body {
+	margin: 0;
+	padding: 0
+}
+
+p {
+	padding: 0;
+	margin: 0;
+	line-height: 180%
+}
+
+a {
+	cursor: pointer
+}
+
+img {
+	border: 0
+}
+
+table {
+	border-collapse: collapse
+}
+
+p {
+	padding: 0;
+	margin: 0
+}
+
+h1,h2,h3,h4,h5,h6 {
+	line-height: 180%;
+	padding: 0;
+	display: block;
+	overflow: hidden;
+	margin: 0;
+}

@@ -1,0 +1,5 @@
+-- Add/modify columns 
+alter table PE_BZZ_STUDENT add sub_groups VARCHAR2(100);
+-- Add comments to the columns 
+comment on column PE_BZZ_STUDENT.sub_groups
+  is '二级机构组别记录';

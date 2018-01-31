@@ -1,0 +1,98 @@
+insert into ENUM_CONST (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('40288acf3c6b57b8013c6b921eb90012', '年度报告', '0', 'ReportType', '0', to_date('24-01-2013', 'dd-mm-yyyy'), '报表下载，添加公告');
+insert into ENUM_CONST (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('40288acf3c6b57b8013c6b9389c20013', '半年报告', '1', 'ReportType', '0', to_date('24-01-2013', 'dd-mm-yyyy'), '报表下载，添加公告');
+insert into ENUM_CONST (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('40288acf3c6b57b8013c6b943b4f0014', '季度报告', '2', 'ReportType', '0', to_date('24-01-2013', 'dd-mm-yyyy'), '报表下载，添加公告');
+insert into ENUM_CONST (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('40288acf3c6b57b8013c6b94cb990015', '月度报告', '3', 'ReportType', '0', to_date('24-01-2013', 'dd-mm-yyyy'), '报表下载，添加公告');
+
+
+-------------------------------------------------------
+-- Create table
+create table REPORT_INFO
+(
+  ID          VARCHAR2(50) not null,
+  REPORT_TYPE VARCHAR2(50),
+  TITLE       VARCHAR2(200),
+  YEAR        VARCHAR2(4),
+  MONTH       VARCHAR2(2),
+  QUARTER     VARCHAR2(1),
+  HALF        VARCHAR2(1),
+  NOTE        CLOB,
+  FK_USER_ID  VARCHAR2(50),
+  TRUE_NAME   VARCHAR2(50)
+)
+tablespace HZPH
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table REPORT_INFO
+  is '报表下载添加年报';
+-- Add comments to the columns 
+comment on column REPORT_INFO.REPORT_TYPE
+  is '年报类型';
+comment on column REPORT_INFO.TITLE
+  is '题目';
+comment on column REPORT_INFO.YEAR
+  is '年度';
+comment on column REPORT_INFO.MONTH
+  is '月份';
+comment on column REPORT_INFO.QUARTER
+  is '季度';
+comment on column REPORT_INFO.HALF
+  is '半年报';
+comment on column REPORT_INFO.NOTE
+  is '内容';
+comment on column REPORT_INFO.FK_USER_ID
+  is '添加人';
+comment on column REPORT_INFO.TRUE_NAME
+  is '添加人名称';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table REPORT_INFO
+  add constraint REPORT_INFO_PK primary key (ID)
+  using index 
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table REPORT_INFO
+  add constraint REPORT_INFO_FK_EN foreign key (REPORT_TYPE)
+  references ENUM_CONST (ID);
+alter table REPORT_INFO
+  add constraint REPORT_INFO_FK_USER foreign key (FK_USER_ID)
+  references SSO_USER (ID);
+---------------------------------------------------------
+
+insert into PE_PRI_CATEGORY (ID, NAME, FK_PARENT_ID, CODE, PATH, FLAG_LEFT_MENU)
+values ('40288acf3c6a817c013c6a900e640004', '年报列表', '11004', '1100401', '/entity/information/addYearReport.action', '0');
+insert into PE_PRI_CATEGORY (ID, NAME, FK_PARENT_ID, CODE, PATH, FLAG_LEFT_MENU)
+values ('40288acf3c6a817c013c6a91864e0006', '添加年报', '11004', '1100402', '/entity/information/addYearReport_showAddYear.action', '0');
+
+insert into PE_PRIORITY (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288acf3c6a817c013c6a96412f0007', '年报列表_*', '40288acf3c6a817c013c6a900e640004', '/entity/information', 'addYearReport', '*');
+insert into PE_PRIORITY (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288acf3c6a817c013c6a96f9ff0008', '添加年报_*', '40288acf3c6a817c013c6a91864e0006', '/entity/information', 'addYearReport', '*');
+
+insert into PE_PRI_CATEGORY (ID, NAME, FK_PARENT_ID, CODE, PATH, FLAG_LEFT_MENU)
+values ('11004', '报表下载', '11', '11004', 'to_top_menu', '1');
+
+
+update pe_pri_category ppc set ppc.path = 'to_top_menu' where ppc.id = '1104' and ppc.name = '报表下载' and ppc.fk_parent_id = '1104' and ppc.flag_left_menu = '1'
+-----------------------------------------------------------
+

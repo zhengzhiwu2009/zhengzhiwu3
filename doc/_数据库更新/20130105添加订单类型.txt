@@ -1,0 +1,2 @@
+insert into ENUM_CONST (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('40288acf3c0845a6013c085979760006', '未通过课程购买', '6', 'FlagOrderType', '0', to_date('05-01-2013', 'dd-mm-yyyy'), '订单类型');

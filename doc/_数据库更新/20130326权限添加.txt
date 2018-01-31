@@ -1,0 +1,13 @@
+insert into PE_PRIORITY (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288acf3da4c543013da4c9ea390002', '二级订单查看_*', '40288acf3da4c543013da4c8e3580001', '/entity/basic', 'subOrderInfo', '*');
+
+insert into PE_PRIORITY (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288acf3da5590f013da55e07560003', '订单信息列表_*', '40288acf3da5590f013da55cfd680002', '/entity/basic', 'orderInfoList', '*');
+
+
+insert into PE_PRI_CATEGORY (ID, NAME, FK_PARENT_ID, CODE, PATH, FLAG_LEFT_MENU)
+values ('40288acf3da4c543013da4c8e3580001', '二级订单查看', '08', '08008', '/entity/basic/subOrderInfo.action', '1');
+
+insert into PE_PRI_CATEGORY (ID, NAME, FK_PARENT_ID, CODE, PATH, FLAG_LEFT_MENU)
+values ('40288acf3da5590f013da55cfd680002', '订单列表显示', '40288acf3da4c543013da4c8e3580001', '0123456', '/entity/basic/orderInfoList.action', '0');
+

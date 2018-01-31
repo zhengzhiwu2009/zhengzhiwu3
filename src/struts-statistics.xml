@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd" >
+<struts>
+	<package name="entity.statistics" extends="platform-default" namespace="/entity/statistics">
+		<action name="prBzzStatistics_*" method="{1}" class="PrBzzStatisticsAction">
+			<result name="stu">/entity/manager/statistics/stat_student.jsp</result>
+			<result name="res">/entity/manager/statistics/stat_resource.jsp</result>
+			<result name="ele">/entity/manager/statistics/stat_elective.jsp</result>
+			<result name="pro">/entity/manager/statistics/stat_progress.jsp</result>
+			<result name="serverCount">/entity/manager/statistics/stat_servercount.jsp</result>
+			<result name="onlineDateCount">/entity/manager/statistics/stat_onlineDateCount.jsp</result>
+			<result name="studyStatus">/entity/manager/statistics/stat_study_status.jsp</result>
+			<result name="recruitStatus">/entity/manager/statistics/stat_recruit_status.jsp</result>
+			<result name="accountActiveStatus">/entity/manager/statistics/stat_account_active_status.jsp</result>
+			<result name="zhiVoteStatus">/entity/manager/statistics/stat_zhiboVote.jsp</result>
+			<result name="exam">/entity/manager/statistics/stat_exam.jsp</result>
+			<result name="json">/zhengquan/statdata.jsp</result>
+		</action>	
+         <action name="courseStatistics_*" method="{1}" class="CourseStatisticsAction"> 
+		 </action>
+		 <action name="electiveCourseInfo_*" method="{1}" class="ElectiveCourseInfoAction">
+		 </action>
+		 <action name="reStatistics_*" method="{1}" class="ReStatisticsAction">
+		 <result name="start">/entity/manager/statistics/reStatistics_stat.jsp</result>
+		 </action>
+	</package>
+</struts>

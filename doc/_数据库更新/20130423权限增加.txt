@@ -1,0 +1,16 @@
+--增加课程浏览的权限
+
+
+--权限类别
+   			 insert  into pe_pri_category pc values ('40288acf3d9fb2eb013da0458e930009','课程信息浏览','04','04005','to_top_menu','1');
+             
+              insert  into pe_pri_category pc values ('40288afe3e308f50013e309e8a060007','课程浏览',
+              '40288acf3d9fb2eb013da0458e930009','0400501','/entity/teaching/kechengLiulan.action','0');
+             
+              insert  into pe_pri_category pc values ('40288afe3e308f50013e30a019300008','未审核课程浏览',
+              '40288acf3d9fb2eb013da0458e930009','0400502','/entity/teaching/courseView.action','0');
+             
+      -- 权限      
+               insert into pe_priority  pp values ('40288afe3e308f50013e30a14f440009','未审核课程浏览','40288afe3e308f50013e30a019300008','/entity/teaching','courseView','*');
+    insert into pe_priority  pp values ('40288afe3e308f50013e30a1f5f6000a','课程浏览','40288afe3e308f50013e309e8a060007','/entity/teaching','kechengLiulan','*')       ;       
+   

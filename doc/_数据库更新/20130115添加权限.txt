@@ -1,0 +1,84 @@
+insert into pe_priority (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288a333c3d4471013c3d646273000c', '专项培训课程查看学员', '04003', '/entity/basic', 'peDetail', '*');
+
+insert into pe_priority(id,name,fk_pri_cat_id,namespace,action,method)values('4028937b384132ff01384142ce790100','课程发布管理_添加','04001','/entity/teaching','peBzzCourseManager','add');
+insert into pe_priority(id,name,fk_pri_cat_id,namespace,action,method)values('4028937b384132ff01384142ce790200','课程发布管理_删除','04001','/entity/teaching','peBzzCourseManager','delete');
+insert into pe_priority(id,name,fk_pri_cat_id,namespace,action,method)values('4028937b384132ff01384142ce790300','课程发布管理_修改','04001','/entity/teaching','peBzzCourseManager','update');
+insert into pe_priority(id,name,fk_pri_cat_id,namespace,action,method)values('4028937b384132ff01384142ce790400','课程发布管理_添加到专项','04001','/entity/teaching','peBzzCourseManager','addToSpecial');
+insert into pe_priority(id,name,fk_pri_cat_id,namespace,action,method)values('4028937b384132ff01384142ce790500','课程发布管理_取消专项','04001','/entity/teaching','peBzzCourseManager','cancelSpecial');
+insert into pe_priority
+  (id, name, fk_pri_cat_id, namespace, action, method)
+values
+  ('4028937b384132ff01384142ce790600',
+   '课程发布管理_导入课件',
+   '04001',
+   '/entity/teaching',
+   'peBzzCourseManager',
+   'impCourse');
+   
+   insert into pe_priority
+     (id, name, fk_pri_cat_id, namespace, action, method)
+   values
+     ('4028937b384132ff01384142ce790700',
+      '课程发布管理_预览',
+      '04001',
+      '/entity/teaching',
+      'peBzzCourseManager',
+      'review');
+      
+         insert into pe_priority
+     (id, name, fk_pri_cat_id, namespace, action, method)
+   values
+     ('4028937b384132ff01384142ce790800',
+      '课程发布管理_管理课件',
+      '04001',
+      '/entity/teaching',
+      'peBzzCourseManager',
+      'manageCourse');
+               insert into pe_priority
+     (id, name, fk_pri_cat_id, namespace, action, method)
+   values
+     ('4028937b384132ff01384142ce790900',
+      '课程发布管理_管理学习资源',
+      '04001',
+      '/entity/teaching',
+      'peBzzCourseManager',
+      'manageSource');
+               insert into pe_priority
+     (id, name, fk_pri_cat_id, namespace, action, method)
+   values
+     ('4028937b384132ff01384142ce790a00',
+      '课程发布管理_添加满意度',
+      '04001',
+      '/entity/teaching',
+      'peBzzCourseManager',
+      'satified');
+      
+                     insert into pe_priority
+     (id, name, fk_pri_cat_id, namespace, action, method)
+   values
+     ('4028937b384132ff01384142ce790b00',
+      '课程发布管理_修改课件首页',
+      '04001',
+      '/entity/teaching',
+      'peBzzCourseManager',
+      'updateIndex');
+      
+        insert into pe_priority
+     (id, name, fk_pri_cat_id, namespace, action, method)
+   values
+     ('4028937b384132ff01384142ce790c00',
+      '课程发布管理_查看信息',
+      '04001',
+      '/entity/teaching',
+      'peBzzCourseManager',
+      'view');
+   insert into pe_priority
+     (id, name, fk_pri_cat_id, namespace, action, method)
+   values
+     ('4028937b384132ff01384142ce790d00',
+      '课程发布管理_查看调查结果',
+      '04001',
+      '/entity/teaching',
+      'peBzzCourseManager',
+      'viewResult');

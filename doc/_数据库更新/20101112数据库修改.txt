@@ -1,0 +1,40 @@
+
+//增加考试报名审核功能
+insert into enum_const values('402880a9aaadc115061dadfcf26b0003','已审核','1','FlagExamScoreStatus','0',sysdate,'考试报名是否审核通过');
+insert into enum_const values('402880a9aaadc115062dadfcf26b0003','未审核','0','FlagExamScoreStatus','0',sysdate,'考试报名是否审核通过');
+
+//删除姓名确认功能
+delete from pe_pri_category  t where t.name='姓名确认';
+delete from pe_priority t where t.fk_pri_cat_id='17005';
+delete from pr_pri_role t where t.fk_priority_id='402880a92113b9b0012113e615e70515d';
+
+
+
+
+//为管理员加考试统计功能20101224 (梁宏霞)
+
+insert into pe_pri_category
+  (id, name, fk_parent_id, code, path, flag_left_menu)
+values
+  ('402880f32217b09e01221959770b0008',
+   '考试统计',
+   '5',
+   '5010',
+   '/entity/statistics/prBzzStatistics_turntoExam.action',
+   '1');
+   
+   
+insert into pe_priority
+  (id, name, fk_pri_cat_id, namespace, action, method)
+values
+  ('402880f3221ae60c01229af211f50003',
+   '考试统计',
+   '402880f32217b09e01221959770b0008',
+   '/entity/statistics',
+   'prBzzStatistics','*');
+   
+   
+insert into pr_pri_role
+  (id, fk_role_id, fk_priority_id, flag_isvalid)
+values
+  ('402880f3224ad8ff91224b48ee8f001f', '3', '402880f3221ae60c01229af211f50003', '1');

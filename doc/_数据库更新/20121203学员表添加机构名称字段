@@ -1,0 +1,6 @@
+--本字段为社会人员注册时填写的机构名称
+-- Add/modify columns 
+alter table PE_BZZ_STUDENT add ENTERPRISE_NAME VARCHAR2(500);
+-- Add comments to the columns 
+comment on column PE_BZZ_STUDENT.ENTERPRISE_NAME
+  is '注册时填写的机构';

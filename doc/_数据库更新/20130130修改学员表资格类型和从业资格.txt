@@ -1,0 +1,2 @@
+update pe_bzz_student set is_employee='40288ccf3ac50e95013ac5148fde0003'  where is_employee is null;
+update pe_bzz_student set zige='4028808c1dbe60fe011dbe7866590093' where zige  is null;

@@ -1,0 +1,12 @@
+insert into PE_PRIORITY (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288acf3bd4ccd5013bd5353eaf0011', '电汇支票订单_*', '40288acf3bd4ccd5013bd5304fce0010', '/entity/basic', 'orderQueryZhiDian', '*');
+
+insert into PE_PRI_CATEGORY (ID, NAME, FK_PARENT_ID, CODE, PATH, FLAG_LEFT_MENU)
+values ('40288acf3bd4ccd5013bd5304fce0010', '电汇支票订单', '08003', '0800303', '/entity/basic/orderQueryZhiDian.action', '0');
+
+
+
+
+
+
+将权限分配给一级集体管理员

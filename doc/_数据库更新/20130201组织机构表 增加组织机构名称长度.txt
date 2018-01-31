@@ -1,0 +1,3 @@
+更新 pe_enterprise name长度由50到100
+语句：
+alter table pe_enterprise  modify name varchar2(100)

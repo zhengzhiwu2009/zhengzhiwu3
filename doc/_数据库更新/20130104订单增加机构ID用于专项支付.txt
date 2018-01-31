@@ -1,0 +1,14 @@
+-- Add/modify columns 
+alter table PE_BZZ_ORDER_INFO add fk_enterprise_id VARCHAR2(50);
+-- Add comments to the columns 
+comment on column PE_BZZ_ORDER_INFO.id
+  is 'ID';
+comment on column PE_BZZ_ORDER_INFO.flag_payment_method
+  is '支付方式';
+comment on column PE_BZZ_ORDER_INFO.fk_enterprise_id
+  is '机构ID，用于专项支付中一级给二级支付。';
+  
+ -- Create/Recreate primary, unique and foreign key constraints 
+alter table PE_BZZ_ORDER_INFO
+  add constraint FK_PE_BZZ_ORDER_R_ENTERPRISE foreign key (FK_ENTERPRISE_ID)
+  references pe_enterprise (ID);

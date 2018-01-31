@@ -1,0 +1,34 @@
+﻿// 李冰
+PeStudent.hbm.xml
+	 SsoUser, PrStudentInfo 级联删除
+
+PeSite.hbm.xml
+	PrEduMajorSiteFeeLevels	 级联删除
+	
+PeEdutype.hbm.xml
+	PrEduMajorSiteFeeLevels	 级联删除
+	
+PeMajor.hbm.xml
+	PrEduMajorSiteFeeLevels	 级联删除		
+	
+PeRecRoom.hbm.xml
+	删除时将PeRecStudent 中peRecRoom 设置为空
+PeExamMaincourseRoom.hbm.xml
+	删除时将prExamStuMaincourses中的peExamMaincourseRoom设置为空	
+
+// 张羽
+PeTchProgram.hbm.xml
+PeTchProgramGroup.hbm.xml
+	<Set cascade="delete">级联删除。
+PrTchOpencourse.hbm.xml
+	<set name="prTchOpencourseCoursewares" inverse="true" cascade="delete">
+	<set name="prTchStuElectives" inverse="true" cascade="delete">
+	<set name="prTchOpencourseBooks" inverse="true" cascade="delete">	级联删除 
+
+//张莹莹
+peManager.hbm.xml
+	ssoUser 级联删除
+peSiteManager.hbm.xml
+	ssoUser 级联删除
+ssoUser.hbm.xml
+	加横向权限4个set

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ehcache name="ehcache-xm_hzgh">
+
+  <defaultCache
+    maxElementsInMemory="10000"
+    eternal="false"
+    timeToIdleSeconds="300"
+    timeToLiveSeconds="600"
+    overflowToDisk="false"
+    diskPersistent="false"
+    maxElementsOnDisk="100"
+    memoryStoreEvictionPolicy="LRU">
+   <!-- <terracotta concurrency="8"/> --> 
+  </defaultCache>
+
+  <cache name="defaultCacheConfiguration"
+    maxElementsInMemory="10000"
+    eternal="false"
+    maxElementsOnDisk="100"
+    timeToIdleSeconds="300"
+    timeToLiveSeconds="600"
+    overflowToDisk="false"
+    diskPersistent="false"
+    memoryStoreEvictionPolicy="LRU">
+   <!-- <terracotta concurrency="8"/> --> 
+  </cache>
+  
+  <cache name="WhatyServicesCache"
+    maxElementsInMemory="10000"
+    eternal="true"
+    maxElementsOnDisk="100"
+    timeToIdleSeconds="200"
+    timeToLiveSeconds="300"
+    overflowToDisk="false"
+    diskPersistent="false"
+    memoryStoreEvictionPolicy="LRU">
+   <!-- <terracotta concurrency="8"/> -->  
+  </cache>
+   <cache name="hzphCache"
+         maxElementsInMemory="100"
+         maxElementsOnDisk="100"
+         eternal="true"
+	     overflowToDisk="false"
+	     diskSpoolBufferSizeMB="30"
+	     diskPersistent="false"
+         memoryStoreEvictionPolicy="LFU">
+    <!-- <terracotta concurrency="8"/> --> 
+  </cache> 
+   
+  <!-- <terracottaConfig url="10.0.9.231:9510"/> -->
+
+</ehcache>

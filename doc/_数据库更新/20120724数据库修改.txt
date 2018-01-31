@@ -1,0 +1,104 @@
+-- Create table
+create table PE_ELECTIVE_COURSE_PERIOD
+(
+  ID           VARCHAR2(50) not null,
+  NAME         VARCHAR2(50) not null,
+  BEGIN_DATE   DATE,
+  END_DATE     DATE,
+  STU_TIME     VARCHAR2(50),
+  FLAG_ISVALID VARCHAR2(50)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table PE_ELECTIVE_COURSE_PERIOD
+  is '选课期表';
+-- Add comments to the columns 
+comment on column PE_ELECTIVE_COURSE_PERIOD.STU_TIME
+  is '学时';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table PE_ELECTIVE_COURSE_PERIOD
+  add constraint PK_PE_ELECTIVE_COURSE_PERIOD primary key (ID)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+alter table PE_ELECTIVE_COURSE_PERIOD
+  add constraint AK_KEY_1_PE_ELECTIVE_PERIOD unique (NAME)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+
+
+
+-- Create table
+create table PE_EXAM_ONLINE
+(
+  ID         VARCHAR2(50) not null,
+  NAME       VARCHAR2(100),
+  STATUS     VARCHAR2(50) default 'ccb2880a91dadc115011dadfcf26b0004',
+  BEGIN_DATE DATE,
+  END_DATE   DATE,
+  REMARK     VARCHAR2(500)
+)
+tablespace HZPH20120724
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table PE_EXAM_ONLINE
+  is '在线考试表';
+-- Add comments to the columns 
+comment on column PE_EXAM_ONLINE.NAME
+  is '考试名称';
+comment on column PE_EXAM_ONLINE.STATUS
+  is '状态';
+comment on column PE_EXAM_ONLINE.BEGIN_DATE
+  is '开始时间';
+comment on column PE_EXAM_ONLINE.END_DATE
+  is '结束时间';
+comment on column PE_EXAM_ONLINE.REMARK
+  is '备注';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table PE_EXAM_ONLINE
+  add constraint FK_PE_EXAM_ONLINE primary key (ID)
+  using index 
+  tablespace HZPH20120724
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );

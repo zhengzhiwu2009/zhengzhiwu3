@@ -1,0 +1,1 @@
+update pe_pri_category ppc set ppc.name='未审核课程'  where ppc.name='未审核课程浏览' 

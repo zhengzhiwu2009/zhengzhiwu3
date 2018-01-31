@@ -1,0 +1,572 @@
+--报名概述
+create or replace view report_ent as
+select sy.year,
+       (nvl(sy.entry_user_num,0) - nvl(sy.refund_num,0)) as A1,
+       sy.entry_user_growth as A2,
+       (nvl(sy.entry_user_times,0) - nvl(sy.refund_times,0)) as A3,
+       sy.entry_user_times_growth as A4,
+       (nvl(sy.entry_courehours,0) - nvl(sy.refund_hours,0)) as A5,
+       sy.entry_courehours_growth as A6,
+       (nvl(sy.fee_amount,0)-nvl(sy.refund_amount,0)) as A7,
+       sy.entry_courehours_growth as A8,
+       sy.entry_user_num as A1_1,
+       sy.refund_num as A1_2,
+       sy.overyear_refund_num as A1_3,
+       sy.entry_user_times as A3_1,
+       sy.refund_times as A3_2,
+       sy.overyear_refund_times as A3_3,
+       sy.entry_courehours as A5_1,
+       sy.refund_hours as A5_2,
+       sy.overyear_refund_hours as A5_3,
+       sy.fee_amount as A7_1,
+       sy.refund_amount as A7_2,
+       sy.overyear_refund_amount as A7_3
+  from statistic_year sy;
+
+
+  
+--报名课程
+create or replace view report_ent_course as
+select sc.year,
+       pbtc.code as A1,
+       (nvl(sc.study_total_times,0)-nvl(sc.refund_count,0)) as A2,
+       nvl(sc.study_total_times,0) as A2_1,
+       nvl(sc.refund_count,0) as A2_2,
+       nvl(sc.overyear_refund_times,0) as A2_3,
+       (nvl(sc.study_total_times,0)-nvl(sc.refund_count,0)) as A3,
+       nvl(sc.study_total_times,0) as A3_1,
+       nvl(sc.refund_count,0) as A3_2,
+       nvl(sc.overyear_refund_times,0) as A3_3,
+       (nvl(sc.study_total_times,0)-nvl(sc.refund_count,0))*to_number(nvl(pbtc.time,0)) as A4,
+       nvl(sc.study_total_times,0)*to_number(nvl(pbtc.time,0)) as A4_1,
+       nvl(sc.refund_count,0)*to_number(nvl(pbtc.time,0)) as A4_2,
+       nvl(sc.overyear_refund_times,0)*to_number(nvl(pbtc.time,0)) as A4_3,
+       (nvl(sc.study_total_times,0)-nvl(sc.refund_count,0))*to_number(nvl(pbtc.time,0))*(select to_number(name)from enum_const where namespace='ClassHourRate') as A5,
+       nvl(sc.study_total_times,0)*to_number(nvl(pbtc.time,0))*(select to_number(name)from enum_const where namespace='ClassHourRate') as A5_1,
+       nvl(sc.refund_count,0)*to_number(nvl(pbtc.time,0))*(select to_number(name)from enum_const where namespace='ClassHourRate') as A5_2,
+       nvl(sc.overyear_refund_times,0)*to_number(nvl(pbtc.time,0))*(select to_number(name)from enum_const where namespace='ClassHourRate') as A5_3,
+       pbtc.time*(select to_number(name)from enum_const where namespace='ClassHourRate') as A6,
+       pbtc.name as A7
+  from statistic_courses sc, pe_bzz_tch_course pbtc
+ where sc.fk_course_id = pbtc.id
+   and sc.year = to_char(sysdate, 'yyyy')
+   and sc.month = to_char(sysdate, 'MM');
+   
+ --报名机构
+create or replace view report_ent_ins as
+select year,nvl(c.name, '个人用户') as A1,
+           sum(nvl(entry_user_num,0)-nvl(refund_num,0)) as A2,
+                sum(nvl(entry_user_num,0)) as A2_1,
+                sum(nvl(refund_num,0)) as A2_2,
+                sum(nvl(overyear_refund_num,0)) as A2_3,
+                sum(nvl(entry_user_times,0)-nvl(refund_times,0)) as A3,
+                sum(nvl(entry_user_times,0)) as A3_1,
+                sum(nvl(refund_times,0)) as A3_2,
+                sum(nvl(overyear_refund_times,0)) as A3_3,
+                sum(nvl(entry_courehours,0)-nvl(refund_hours,0)) as A4,
+                sum(nvl(entry_courehours,0))as A4_1,
+                sum(nvl(refund_hours,0))as A4_2,
+                sum(nvl(overyear_refund_hours,0))as A4_3,
+                sum(fee_amount-refund_amount)as A5,
+                sum(fee_amount)as A5_1,
+                sum(refund_amount)as A5_2,
+                sum(overyear_refund_amount)as A5_3
+      from statistic_enterprise se
+      left join enum_const c on se.enterprise_type = c.id
+     group by nvl(c.name, '个人用户'), se.year;
+
+--报名机构详情
+create or replace view report_ent_ins_detail as
+select year,pe.name as A1,
+           sum(nvl(entry_user_num,0)-nvl(refund_num,0)) as A2,
+                sum(nvl(entry_user_num,0)) as A2_1,
+                sum(nvl(refund_num,0)) as A2_2,
+                sum(nvl(overyear_refund_num,0)) as A2_3,
+                sum(nvl(entry_user_times,0)-nvl(refund_times,0)) as A3,
+                sum(nvl(entry_user_times,0)) as A3_1,
+                sum(nvl(refund_times,0)) as A3_2,
+                sum(nvl(overyear_refund_times,0)) as A3_3,
+                sum(nvl(entry_courehours,0)-nvl(refund_hours,0)) as A4,
+                sum(nvl(entry_courehours,0))as A4_1,
+                sum(nvl(refund_hours,0))as A4_2,
+                sum(nvl(overyear_refund_hours,0))as A4_3,
+                sum(fee_amount-refund_amount)as A5,
+                sum(fee_amount)as A5_1,
+                sum(refund_amount)as A5_2,
+                sum(overyear_refund_amount)as A5_3,
+                c.name as A6
+      from statistic_enterprise se
+      inner join pe_enterprise pe on se.fk_enterprise_id=pe.id
+      inner join enum_const c on se.enterprise_type = c.id
+     group by pe.name, se.year,c.name;
+
+     
+--报名月度
+
+create or replace view report_ent_month as
+select year,month as A1,
+            sum(nvl(entry_user_num,0)-nvl(refund_num,0)) as A2,
+                sum(nvl(entry_user_num,0)) as A2_1,
+                sum(nvl(refund_num,0)) as A2_2,
+                sum(nvl(overyear_refund_num,0)) as A2_3,
+                sum(nvl(entry_user_times,0)-nvl(refund_times,0)) as A3,
+                sum(nvl(entry_user_times,0)) as A3_1,
+                sum(nvl(refund_times,0)) as A3_2,
+                sum(nvl(overyear_refund_times,0)) as A3_3,
+                sum(nvl(entry_courehours,0)-nvl(refund_hours,0)) as A4,
+                sum(nvl(entry_courehours,0))as A4_1,
+                sum(nvl(refund_hours,0))as A4_2,
+                sum(nvl(overyear_refund_hours,0))as A4_3,
+                sum(nvl(fee_amount,0)-nvl(refund_amount,0))as A5,
+                sum(nvl(fee_amount,0))as A5_1,
+                sum(nvl(refund_amount,0))as A5_2,
+                sum(nvl(overyear_refund_amount,0))as A5_3
+            from statistic_enterprise
+      group by month, year
+      order by month;
+      
+--报名类型
+
+create or replace view report_ent_type as
+select year,decode(fk_enterprise_id, '0000', '个人用户', '集体用户') as A1,
+                sum(nvl(entry_user_num,0)-nvl(refund_num,0)) as A2,
+                sum(nvl(entry_user_num,0)) as A2_1,
+                sum(nvl(refund_num,0)) as A2_2,
+                '' as A2_3,
+                sum(nvl(entry_user_times,0)-nvl(refund_times,0)) as A3,
+                sum(nvl(entry_user_times,0)) as A3_1,
+                sum(nvl(refund_times,0)) as A3_2,
+                sum(nvl(overyear_refund_times,0)) as A3_3,
+                sum(nvl(entry_courehours,0)-nvl(refund_hours,0)) as A4,
+                sum(nvl(entry_courehours,0))as A4_1,
+                sum(nvl(refund_hours,0))as A4_2,
+                sum(nvl(overyear_refund_hours,0))as A4_3,
+                sum(nvl(fee_amount,0)-nvl(refund_amount,0))as A5,
+                sum(nvl(fee_amount,0))as A5_1,
+                sum(nvl(refund_amount,0))as A5_2,
+                sum(nvl(overyear_refund_amount,0))as A5_3
+           from statistic_enterprise
+          group by decode(fk_enterprise_id, '0000', '个人用户', '集体用户'),
+                   year;
+
+                   
+--综合统计概述
+
+create or replace view report_general as
+select year,
+       nvl(sy.reg_enterprise_count,0) as A1,
+       nvl((nvl(sy.entry_user_num,0)-nvl(sy.refund_num,0)),0) as A2,
+       nvl((nvl(sy.entry_user_times,0)-nvl(sy.refund_times,0)),0)as A3,
+       nvl((nvl(sy.entry_courehours,0)-nvl(sy.refund_hours,0))*(select to_number(name)from enum_const where namespace='ClassHourRate'),0) as A4,
+       nvl(sy.study_begin_times,0) as A5,
+       nvl(decode(sy.study_begin_times,0,0,sy.study_complete_times/sy.study_begin_times),0) as A6,
+       nvl(sy.com_ten_hours_num,0) as A7,
+       nvl(sy.com_fifteen_hours_num,0) as A8,
+       nvl(sy.entry_user_num,0) as A2_1,
+       nvl(sy.refund_num,0) as A2_2,
+       nvl(sy.overyear_refund_num,0) as A2_3,
+       nvl(sy.entry_user_times,0) as A3_1,
+       nvl(sy.refund_times,0) as A3_2,
+       nvl(sy.overyear_refund_times,0) as A3_3,
+       nvl(sy.entry_courehours * (select to_number(name)from enum_const where namespace='ClassHourRate'),0) as A4_1,
+       nvl(sy.refund_hours*(select to_number(name)from enum_const where namespace='ClassHourRate'),0) as A4_2,
+       nvl(sy.overyear_refund_amount,0) as A4_3
+  from statistic_year sy;
+
+  
+  
+--学习概述
+create or replace view report_len as
+select scy.year,
+       scy.start_study_person_number as A1,
+       decode(scy1.start_study_person_number,
+              0,
+              0,
+              (scy.start_study_person_number -
+              scy1.start_study_person_number) /
+              scy1.start_study_person_number) as A2,
+       scy.completed_study_person_number as A3,
+       decode(scy1.completed_study_person_number,
+              0,
+              0,
+              (scy.completed_study_person_number -
+              scy1.completed_study_person_number) /
+              scy1.completed_study_person_number) as A4,
+       decode(scy.start_study_person_number,
+              0,
+              0,
+              scy.completed_study_person_number /
+              scy.start_study_person_number) as A5,
+       scy.pre_start_study_number as A6,
+       scy.pre_completed__study_number as A7,
+       '' as A8,
+       '' as A9,
+       '' as A10
+  from statistic_course_year scy
+  left join statistic_course_year scy1 on to_number(scy1.year) + 1 =
+                                          to_number(scy.year);
+ 
+--学习课程
+ 
+ create or replace view report_len_course as
+select sc.year,
+       pbtc.code as A1,
+       sc.study_begin_times as A2,
+       sc.study_complete_times as A3,
+       decode(sc.study_begin_times,0,
+              0,
+              0,
+              sc.study_complete_times / sc.study_begin_times) as A4,
+       pbtc.name as A5
+  from statistic_courses sc, pe_bzz_tch_course pbtc
+ where sc.fk_course_id = pbtc.id
+   and sc.year = to_char(sysdate, 'yyyy')
+   and sc.month = to_char(sysdate, 'MM');
+   
+   
+--学习机构
+
+create or replace view report_len_ins as
+select nvl(c.name, '个人用户') as A1,
+           nvl(sum(se.study_begin_times), 0) as A2,
+           nvl(sum(se.study_complete_times), 0) as A3,
+           decode(sum(se.study_begin_times),
+                  0,
+                  0,
+                  cast(sum(se.study_complete_times)/
+                       sum(se.study_begin_times) as decimal(10, 6))) as A4,
+                       '' as A5,
+           se.year as year
+      from statistic_enterprise se
+      left join enum_const c on se.enterprise_type = c.id
+     group by nvl(c.name, '个人用户'), se.year;
+     
+--学习机构详情
+
+create or replace view report_len_ins_detail as
+select se.year,
+       pe.name as A1,
+       nvl(se.study_begin_times_count, 0) as A2,
+       nvl(se.study_complete_times_count, 0) as A3,
+       decode(nvl(se.study_begin_times_count, 0),
+              0,
+              0,
+              nvl(se.study_complete_times_count, 0) /
+              nvl(se.study_begin_times_count, 0)) as A4,
+       ec.name as A5
+  from statistic_enterprise se, pe_enterprise pe, enum_const ec
+ where se.fk_enterprise_id = pe.id
+   and pe.entype = ec.id;
+   
+   
+--学习月度
+
+create or replace view report_len_month as
+select month as A1,
+            sum(sbNum) as A2,
+            max(sbCount) as A3,
+            sum(scNum) as A4,
+            max(scCount) as A5,
+            year
+       from (select year,
+                    month,
+                    sum(study_begin_times) as sbNum,
+                    sum(study_begin_times_count) as sbCount,
+                    sum(study_complete_times) scNum,
+                    sum(study_complete_times_count) as scCount
+               from statistic_enterprise
+              group by month, year)
+      group by month, year
+      order by month;
+      
+--学习类型
+
+create or replace view report_len_type as
+select year,decode(fk_enterprise_id, '0000', '个人用户', '集体用户') as A1,
+                sum(study_begin_times) as A2,
+                sum(study_complete_times) as A3,
+                decode(sum(study_begin_times),0,0,cast(sum(study_complete_times)/
+                     sum(study_begin_times) as decimal(10, 4))) as A4
+           from statistic_enterprise
+          group by decode(fk_enterprise_id, '0000', '个人用户', '集体用户'),
+                   year;
+                   
+--注册概述
+
+create or replace view report_reg as
+select sy.reg_enterprise_num as A1,
+       sy.reg_enterprise_count as A2,
+       decode((sy.reg_enterprise_count - sy.reg_enterprise_num),0,0,sy.reg_enterprise_num /
+       (sy.reg_enterprise_count - sy.reg_enterprise_num)) as A3,
+       sy.reg_user_num as A4,
+       sy.reg_user_count as A5,
+       decode((sy.reg_user_count - sy.reg_user_num),0,0,sy.reg_user_num / (sy.reg_user_count - sy.reg_user_num)) as A6,
+       sy.year,
+       '' as A7
+  from statistic_year sy;
+  
+--机构详情
+create or replace view report_reg_com as
+select pe.name as A1,pe.code as A2,pe.address as A3,pe.num as A4,to_char(pe.data_date,'yyyy')as year from pe_enterprise pe where pe.fk_parent_id is null;
+
+--注册机构类型
+
+create or replace view report_reg_ins as
+select nvl(c.name, '个人用户') as A1,
+                max(se.reg_enterprise_num) as A2,
+                max(se.reg_enterprise_count) as A3,
+                sum(se.reg_user_num) as A4,
+                sum(se.reg_user_count) as A5,
+                year as YEAR
+           from statistic_enterprise se
+           left join enum_const c on se.enterprise_type = c.id
+          group by c.name, year
+          order by c.name;
+          
+--注册机构类型详情
+
+create or replace view report_reg_ins_detail as
+select pe.name                 as A1,
+       se.reg_user_num   as A2,
+       se.reg_user_count as A3,
+       ec.name                 as A4,
+       se.year
+  from statistic_enterprise se, pe_enterprise pe, enum_const ec
+ where se.fk_enterprise_id = pe.id
+   and se.enterprise_type = ec.id;
+   
+--注册月度
+
+create or replace view report_reg_mounth as
+select month as A1,
+               nvl(sum(enNum), 0) as A2,
+               nvl(sum(enCount), 0) as A3,
+               sum(userNum) as A4,
+               sum(userCount) as A5,
+               year as YEAR 
+               from ( select month ,
+               max(reg_enterprise_num) as enNum,
+               max(reg_enterprise_count) as enCount,
+               sum(reg_user_num) as userNum,
+               sum(reg_user_count) as userCount,
+               year as YEAR
+          from statistic_enterprise
+         group by month, year,enterprise_type)
+         group by month,year;
+         
+         
+--注册类型
+create or replace view report_reg_type as
+select '集体用户' as A1,
+                      sum(enNum) as A2,
+                      sum(enCount) as A3,
+                      sum(userNum) as A4,
+                      sum(userCount) as A5,
+                      year as YEAR
+                 from (select year,
+                              max(reg_enterprise_num) as enNum,
+                              max(reg_enterprise_count) as enCount,
+                              sum(reg_user_num) userNum,
+                              sum(reg_user_count) as userCount
+                         from statistic_enterprise
+                        where fk_enterprise_id <> '0000'
+                        group by year,enterprise_type)
+                group by year
+               union
+               select '个人用户' as A1,
+                      sum(reg_enterprise_num) as A2,
+                      sum(reg_enterprise_count) as A3,
+                      sum(reg_user_num) as A4,
+                      sum(reg_user_count) as A5,
+                      year
+                 from statistic_enterprise
+                where fk_enterprise_id = '0000'
+                group by year;
+
+--测验概述
+create or replace view report_tes as
+select scy.year,
+       scy.start_exam_person_number as A1,
+       decode(scy1.start_exam_person_number,
+              0,
+              0,
+              (scy.start_exam_person_number - scy1.start_exam_person_number) / scy1.start_exam_person_number) as A2,
+       scy.pass_exam_person_number as A3,
+       decode(scy1.pass_exam_person_number,
+              0,
+              0,
+              (scy.pass_exam_person_number - scy1.pass_exam_person_number) / scy1.pass_exam_person_number) as A4,
+       decode(scy.start_exam_person_number,
+              0,
+              0,
+              scy.pass_exam_person_number / scy.start_exam_person_number) as A5,
+       scy.pre_start_exam_number as A6,
+       scy.pre_pass_exam_number as A7,
+       '' as A8,
+       '' as A9,
+       '' as A10
+  from statistic_course_year scy left join statistic_course_year scy1 on to_number(scy1.year) + 1 =
+                                          to_number(scy.year);
+ 
+--测验机构
+create or replace view report_tes_ins as
+select nvl(c.name, '个人用户') as A1,
+           nvl(sum(se.test_begin_times), 0) as A2,
+           nvl(sum(se.test_complete_times), 0) as A3,
+           decode(sum(se.test_begin_times),
+                  0,
+                  0,
+                  cast(sum(se.test_complete_times)/
+                       sum(se.test_begin_times) as decimal(10, 6))) as A4,
+           se.year as year
+      from statistic_enterprise se
+      left join enum_const c on se.enterprise_type = c.id
+     group by nvl(c.name, '个人用户'), se.year;
+
+
+
+--测验机构详情
+create or replace view report_tes_ins_detail as
+select se.year,
+       pe.name as A1,
+       nvl(se.test_begin_times_count, 0) as A2,
+       nvl(se.test_complete_times_count, 0) as A3,
+       decode(nvl(se.test_begin_times_count, 0),
+              0,
+              0,
+              nvl(se.test_complete_times_count, 0) /
+              nvl(se.test_begin_times_count, 0)) as A4,
+       ec.name as A5
+  from statistic_enterprise se, pe_enterprise pe, enum_const ec
+ where se.fk_enterprise_id = pe.id
+   and pe.entype = ec.id;
+
+
+--测验月度
+create or replace view report_tes_month as
+select month as A1,
+            sum(tbNum) as A2,
+            max(tbCount) as A3,
+            sum(tcNum) as A4,
+            max(tcCount) as A5,
+            year
+       from (select year,
+                    month,
+                    sum(test_begin_times) as tbNum,
+                    sum(test_begin_times_count) as tbCount,
+                    sum(test_complete_times) tcNum,
+                    sum(test_complete_times_count) as tcCount
+               from statistic_enterprise
+              group by month, year)
+      group by month, year
+      order by month;
+
+
+--测验课程
+create or replace view report_tes_course as
+select sc.year,
+       pbtc.code as A1,
+       sc.test_begin_times as A2,
+       sc.test_complete_times as A3,
+       decode(sc.test_begin_times,
+              0,
+              0,
+              sc.test_complete_times / sc.test_begin_times) as A4,
+       pbtc.name as A5
+  from statistic_courses sc, pe_bzz_tch_course pbtc
+ where sc.fk_course_id = pbtc.id
+   and sc.year = to_char(sysdate, 'yyyy')
+   and sc.month = to_char(sysdate, 'MM');
+
+
+--测验类型
+create or replace view report_tes_type as
+select year,decode(fk_enterprise_id, '0000', '个人用户', '集体用户') as A1,
+                sum(test_begin_times) as A2,
+                sum(test_complete_times) as A3,
+                decode(sum(test_begin_times),0,0,cast(sum(test_complete_times)/
+                     sum(test_begin_times) as decimal(10, 6))) as A4
+           from statistic_enterprise
+          group by decode(fk_enterprise_id, '0000', '个人用户', '集体用户'),
+                   year;
+                   
+--学时概述
+create or replace view report_tim as
+select scy.year,
+       scy.pass_exam_person_number as A1,
+       scy.pass_tjmes as A2,
+       scy.pass_com_ten_hours as A3,
+       scy.pass_com_fifteen_hours as A4,
+       scy.pre_pass_exam_number as A5,
+       scy.pre_pass_tjmes as A6,
+       scy.pre_pass_com_ten_hours as A7,
+       scy.pre_pass_com_fifteen_hours as A8
+  from statistic_course_year scy;
+
+
+--学时机构类型
+create or replace view report_tim_ins as
+select nvl(c.name, '个人用户') as A1,
+           nvl(sum(se.test_complete_times), 0) as A2,
+           nvl(sum(se.complete_hours), 0) as A3,
+           nvl(sum(se.complete_ten_hours), 0) as A4,
+           nvl(sum(se.complete_fifteen_hours), 0) as A5,
+           se.year
+      from statistic_enterprise se
+      left join enum_const c on se.enterprise_type = c.id
+     group by nvl(c.name, '个人用户'), se.year;
+
+--学时机构类型详情
+create or replace view report_tim_ins_detail as
+select se.year,
+       pe.name as A1,
+       nvl(se.test_complete_times_count, 0) as A2,
+       nvl(se.complete_hours_count, 0) as A3,
+       nvl(se.complete_ten_hours_count, 0) as A4,
+       nvl(se.complete_fifteen_hours_count, 0) as A5,
+       ec.name as A6
+  from statistic_enterprise se, pe_enterprise pe, enum_const ec
+ where se.fk_enterprise_id = pe.id
+   and pe.entype = ec.id;
+
+
+--学时月度
+create or replace view report_tim_month as
+select month as A1,
+            sum(A2) as A2,
+            sum(A3) as A3,
+            sum(A4) as A4,
+            sum(A5) as A5,
+            sum(A6) as A6,
+            sum(A7) as A7,
+            sum(A8) as A8,
+            sum(A9) as A9,
+            year
+       from (select year,
+                    month,
+                    sum(test_complete_times) as A2,
+                    max(test_complete_times_count) as A3,
+                    sum(complete_hours) as A4,
+                    max(complete_hours_count) as A5,
+                    sum(complete_ten_hours) as A6,
+                    max(complete_ten_hours_count) as A7,
+                    sum(complete_fifteen_hours) as A8,
+                    max(complete_fifteen_hours_count) as A9
+               from statistic_enterprise
+              group by month, year)
+      group by month, year
+      order by month;
+
+
+--学时类型
+create or replace view report_tim_type as
+select decode(fk_enterprise_id, '0000', '个人用户', '集体用户') as A1,
+                sum(test_complete_times) as A2,
+                sum(complete_hours) as A3,
+                sum(complete_ten_hours) as A4,
+                sum(complete_fifteen_hours) as A5,
+                year
+           from statistic_enterprise
+          group by decode(fk_enterprise_id, '0000', '个人用户', '集体用户'),
+                   year;
+

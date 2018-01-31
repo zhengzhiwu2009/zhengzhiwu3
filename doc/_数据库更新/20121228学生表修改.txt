@@ -1,0 +1,2 @@
+-- Add/modify columns 
+alter table PE_BZZ_STUDENT modify PHOTO_CONFIRM null;

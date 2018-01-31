@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Untitled Page</title>
+    <style type="text/css">
+    
+*{ margin:0; padding:0}
+
+/*-插件样式*/
+.myScroll {
+	width:100%;
+	height:210px;
+	overflow:hidden;
+	zoom:1;
+}
+.myScroll p {
+	width:22px;
+	height:210px;
+	background-image:url(icon.gif);
+	background-repeat:no-repeat;
+	cursor:pointer
+}
+.myPrevBtn {
+	background-position:left center;
+	float:left;
+	display:inline
+}
+.myNextBtn {
+	background-position:right center;
+	float:right;
+	display:inline
+}
+.myBlock {
+	overflow:hidden;
+	float:left;
+	display:inline
+}
+.myBlock ul {
+	width:100%;
+	overflow:hidden;
+	zoom:1;
+	list-style:none
+}
+.myBlock ul li {
+	width:200px;
+	float:left;
+	padding:10px 0;
+	display:inline
+}
+.myBlock ul li:hover {
+	background-color:#FFC
+}
+.myBlock dl {
+	width:160px;
+	margin:0 auto;
+	list-style:none;
+}
+.myBlock dl dt {
+	width:160px;
+	height:160px;
+	overflow:hidden;
+	background-color:#FFF
+}
+.myBlock dl dt img {
+	width:160px;
+}
+.myBlock dl dd {
+	line-height:18px;
+	list-style:none;
+	text-align:center
+}
+.myBlock dl dd a {
+	display:inline-block;
+	padding:3px 0;
+	width:100%;
+}
+.myClone {
+	overflow:hidden;
+	zoom:1
+}
+.myClone ul {
+	float:left;
+	display:inline
+}
+
+    </style>
+    <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="slider.js"></script>
+    <script type="text/javascript">
+//    auto:[false,3000]   这里是个数组，第一个是否自动滚动,第二个是自动滚动间隔时间
+//    visible:4    可显示图片的数量
+//    speed:1000   动画时间，可选slow，fast，数值类
+//    scroll:1     每次切换的个数,此数小于等于visible值
+//        //手动滚动
+//        $("#product0").myScroll({
+//            visible: 3,
+//            scroll: 2,
+//            speed: 1000
+//        });
+
+        //自动滚动
+        $(function () {
+            $("#product0").myScroll({
+                visible: 4,
+                scroll: 1,
+                auto: [true, 1],
+                speed: 1000
+            });
+        });
+
+    </script>
+</head>
+<body>
+<div class="myScroll" id="product0">
+<p class="myPrevBtn"></p>
+<p class="myNextBtn"></p>
+<div class="myBlock">
+<ul>
+  <li>
+  <dl>
+    <dd><a href="">图片滚动插件1</a></dd>
+  </dl>
+  </li>
+  <li>
+  <dl>
+    <dd><a href="">图片滚动插件2</a></dd>
+  </dl>
+  </li>
+  <li>
+  <dl>
+    <dd><a href="">图片滚动插件3</a></dd>
+  </dl>
+  </li>
+  <li>
+  <dl>
+    <dd><a href="">图片滚动插件3</a></dd>
+  </dl>
+  </li>
+  <li>
+  <dl>
+    <dd><a href="">图片滚动插件3</a></dd>
+  </dl>
+  </li>
+</ul>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+应华政人员要求，现在对pe_bzz_tch_course表进行修改，添加表字段标识课程条目分类
+添加字段FLAG_COURSE_ITEM_TYPE关联外键enum_const表中的id
+
+enum_const表添加新的属性字段。
+insert into ENUM_CONST (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('40288acf3ac44bb8013ac44e6f1b0001', '业务', '1', 'FlagCourseItemType', '0', to_date('03-11-2012', 'dd-mm-yyyy'), '华政人员提出的新要求，课程添加新标识字段');
+insert into ENUM_CONST (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('40288acf3ac45c97013ac4619f750001', '大纲', '0', 'FlagCourseItemType', '1', to_date('03-11-2012', 'dd-mm-yyyy'), '华政业务人员要求，添加');

@@ -1,0 +1,19 @@
+update pe_pri_category ppc set ppc.path='to_top_menu' where ppc.id='07002'；
+
+
+insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('40288a7b39433ae20139434xfxdc0004', '退费初审', '4', 'FlagRefundState', '0', to_date('15-03-2013', 'dd-mm-yyyy'), '订单退费状态');
+
+insert into pe_pri_category (ID, NAME, FK_PARENT_ID, CODE, PATH, FLAG_LEFT_MENU)
+values ('07002001', '退费初审', '07002', '07002001', '/entity/basic/refoundManage.action', '0');
+
+insert into pe_pri_category (ID, NAME, FK_PARENT_ID, CODE, PATH, FLAG_LEFT_MENU)
+values ('07002002', '退费终审', '07002', '07002002', '/entity/basic/refoundManageFinal.action', '0');
+
+update pe_priority pp set pp.fk_pri_cat_id='07002001' where pp.fk_pri_cat_id='07002'；
+
+insert into pe_priority (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288a7b39433ae20139433f01xc0002', '退费终审管理_abstractList', '07002002', '/entity/basic', 'refoundManageFinal', 'abstractList');
+
+insert into pe_priority (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288a7b39433ae20139433e59ex0001', '退费终审管理_*', '07002002', '/entity/basic', 'refoundManageFinal', '*');

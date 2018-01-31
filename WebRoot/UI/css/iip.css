@@ -1,0 +1,50 @@
+body,td,p,input,select,textarea		{font-size:9pt; font-family:arial,ËÎÌå;}
+p		{line-height:120%; text-indent: 0em;}
+form		{margin-top:2; margin-bottom:2;}
+A:link		{text-decoration:none; color:#0000ff}
+A:visited	{text-decoration:none; color:#0000ff}
+A:hover		{text-decoration:underline; color:#ff0000;}
+A:active	{text-decoration:none; color:#000099}
+
+input,button	{background-color: #ffffff; border:	1px solid rgb(120,172,255); height: 13pt; }
+textarea	{background-color: #ffffff; border:	1px solid rgb(120,172,255); }
+select		{background-color: #ffffff; border:	1px solid rgb(120,172,255); height: 12pt; }
+
+.input1 	{background-color: #f0f0f0; border:	1px solid rgb(120,172,255) }
+.input2 	{background-color: #EEEEEE; border:	1px solid rgb(120,172,255); color:#888888;}
+.button		{cursor: expression("hand"); height: 13pt; border: 1px solid rgb(120,172,255); background: rgb(224,232,245);}
+
+.title		{font-size:10.6pt; font-weight:bold; color:#ffffff}
+.doctitle	{font-size:18pt; font-weight:bold; color:#000000;}
+.subtitletable	{font-size:12pt; font-weight:bold;}
+.currentlocation {background-color: #79A5DF; font-size:9pt; color:#FFD66B; height: 18pt;}
+.table1		{border-style:Solid; border-width:1px; border-color:#000099;}         
+.tdframe	{background-color: rgb(120,172,255);}
+.tdsectionbar	{background-color: rgb(120,172,255); font-size:9pt; font-weight:bold; color:#000044; text-indent: 0pt; height: 16pt; }
+.tdbg0		{background-color: #ffffff; color:#444444}
+.tdbg1		{background-color: rgb(224,232,245); font-weight:bold; color:#000000; height: 16pt;}
+.tdbg2		{background-color: rgb(224,232,245); font-weight:bold; color:#000000}
+.tdbgbutton	{background-color: #ddddee;}
+.tdbgpaging	{background-color: #FFFFFF;}
+.alert		{color:#ff0000;}
+.error		{font-size:10.6pt; font-weight:bold; color:#ff0000;}
+.ok		{font-size:10.6pt; font-weight:bold; color:#000000;}
+.noClickBtn	{height: 13pt; border: 1px solid rgb(120,172,255); background: rgb(224,232,245);color:gray}
+.reportTable    {BORDER-RIGHT: #BFCAED 0px solid ; BORDER-TOP: #BFCAED 1px solid ; BORDER-LEFT: #BFCAED 1px solid ; BORDER-BOTTOM: #BFCAED 0px solid }
+.reporthead     {BORDER-RIGHT: #6D97D6 1px solid ; BORDER-TOP: #BFCAED 0px solid ; BORDER-LEFT: #BFCAED 0px solid ; BORDER-BOTTOM: #BFCAED 1px solid }
+.reportHeadV    {height: 20px;BORDER-RIGHT: #6D97D6 1px solid ; BORDER-TOP: #BFCAED 0px solid ; BORDER-LEFT: #BFCAED 0px solid ; BORDER-BOTTOM: #BFCAED 1px solid }
+.reportdesc     {font-family:"ËÎÌå(GB)"; font-size:14.6pt; font-weight:bold; color:black; }
+.CursorHand	{cursor: hand; color:#0000ff;}
+.reportbody     {height: 20px;BORDER-RIGHT: #6D97D6 1px solid ; BORDER-TOP: #BFCAED 0px solid ; BORDER-LEFT: #BFCAED 0px solid ; BORDER-BOTTOM: #BFCAED 1px solid }
+.AlertMode1     {font-size:10.6pt; font-weight:bold; color:red;BORDER-RIGHT: #6D97D6 1px solid ; BORDER-TOP: #BFCAED 0px solid ; BORDER-LEFT: #BFCAED 0px solid ; BORDER-BOTTOM: #BFCAED 1px solid }
+
+/* a class for all Tigra Hints boxes, TD object */
+.hintsClass
+	{text-align: center; font-family: Verdana, Arial, Helvetica;}
+/* this class is used by Tigra Hints wrappers */
+.row
+	{background: #FFFFDD;filter:Alpha(Opacity=88);}
+.tooltipbg
+	{BORDER-RIGHT: #BFCAED 0px solid ; BORDER-TOP: #BFCAED 1px solid ; BORDER-LEFT: #BFCAED 1px solid ; BORDER-BOTTOM: #BFCAED 0px solid ;background: pink;filter:Alpha(Opacity=88);}
+.reportRow		{background:transparent;}¡¡¡¡
+.reportRow2		{background:rgb(224,232,245);} ¡¡¡¡

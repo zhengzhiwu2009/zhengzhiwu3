@@ -1,0 +1,74 @@
+-- Create table
+create table PE_BALANCE_HISTORY
+(
+  id            VARCHAR2(50) not null,
+  fk_ssouser_id VARCHAR2(50),
+  fk_order_id   VARCHAR2(50),
+  class_hour    NUMBER(10,2),
+  amount_num    NUMBER(10,2),
+  operate_date  DATE default sysdate,
+  note          VARCHAR2(4000),
+  note2         VARCHAR2(4000)
+)
+tablespace HZPH
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table PE_BALANCE_HISTORY
+  is '余额历史记录';
+-- Add comments to the columns 
+comment on column PE_BALANCE_HISTORY.id
+  is 'ID';
+comment on column PE_BALANCE_HISTORY.fk_ssouser_id
+  is '用户ID';
+comment on column PE_BALANCE_HISTORY.fk_order_id
+  is '订单ID（可空）';
+comment on column PE_BALANCE_HISTORY.class_hour
+  is '学时';
+comment on column PE_BALANCE_HISTORY.amount_num
+  is '金额';
+comment on column PE_BALANCE_HISTORY.operate_date
+  is '操作时间';
+comment on column PE_BALANCE_HISTORY.note
+  is '备注';
+comment on column PE_BALANCE_HISTORY.note2
+  is '备注2';
+-- Create/Recreate indexes 
+create index FK_BALANCE_SSO_ID on PE_BALANCE_HISTORY (FK_SSOUSER_ID)
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table PE_BALANCE_HISTORY
+  add constraint PK_PE_BALANCE_HISTORY_ID primary key (ID)
+  using index 
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+alter table PE_BALANCE_HISTORY
+  add constraint FK_BALANCE_ORDER_ID foreign key (FK_ORDER_ID)
+  references PE_BZZ_ORDER_INFO (ID);
+alter table PE_BALANCE_HISTORY
+  add constraint FK_BALANCE_SSO_ID foreign key (FK_SSOUSER_ID)
+  references SSO_USER (ID);

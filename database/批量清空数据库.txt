@@ -1,0 +1,23 @@
+根据外键名查找表名
+select * from user_cons_columns cl where cl.constraint_name = '外键名'
+
+
+delete from STUTTIME;
+delete from PE_BZZ_SUGGESTION;
+delete from  pr_bzz_tch_stu_elective;
+delete from training_course_student;
+delete from pr_bzz_tch_opencourse;
+delete from pe_bzz_tch_courseware t;
+delete  from pe_bzz_tch_course t;
+delete  from pe_bzz_student t;
+delete  from pe_bzz_batch t;
+delete from pe_enterprise_manager t;
+delete from pr_bzz_pri_manager_enterprise t;
+delete  from pe_enterprise t;
+
+delete  from SCORM_STU_SCO t;
+delete from scorm_stu_course t;
+delete  from scorm_course_item t;
+delete  from scorm_course_info t;
+
+

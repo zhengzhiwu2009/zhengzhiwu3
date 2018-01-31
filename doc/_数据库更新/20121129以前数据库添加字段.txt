@@ -1,0 +1,298 @@
+update pe_pri_category set name='账户管理' where code='02';
+update pe_pri_category set name='账户基本信息' where code='02001';
+update pe_pri_category set name='集体用户账户' where code='02002';
+update pe_pri_category set name='报名付费历史查询' where code='08003';
+alter table PE_BZZ_TCH_COURSEWARE modify NAME VARCHAR2(500);
+alter table PE_ENTERPRISE add (num varchar(50)); 
+comment on column PE_ENTERPRISE.Num is '从业人员规模';
+update enum_const e set e.name='是' where e.id='402880f827f5b99b0127f5bdadc70007'; 
+update enum_const e set e.name='否' where e.id='402880f827f5b99b0127f5bdadc70008'; 
+update pe_pri_category set name='非从业注册审核' ,path='/sso/regist.action' where code='02004';
+update pe_priority set name='非从业注册审核_*' where fk_pri_cat_id='40288ccf3aaf4b0c013ab00af90c0013';  
+update pe_pri_category set name='二级机构' where name like '二级%' and code='06005'; 
+delete from pr_pri_role a where a.fk_priority_id in (select s.id from pe_priority s where s.fk_pri_cat_id='02003');
+delete from pe_priority s where s.fk_pri_cat_id='02003';
+delete from pe_pri_category b where b.id='02003';
+
+alter table PE_BZZ_STUDENT add (zige varchar(50)); 
+comment on column PE_BZZ_STUDENT.zige is '资格类型';
+alter table PE_BZZ_STUDENT add (CHECK_STATE varchar(50)); 
+comment on column PE_BZZ_STUDENT.CHECK_STATE is '审核装态';
+
+alter table PE_BZZ_STUDENT add (ENTERPRISE_ID varchar(50)); 
+comment on column PE_BZZ_STUDENT.ENTERPRISE_ID is '注册时选择的机构';
+update pe_pri_category set name='学习情况查询' where name='一般课程查询';
+update pe_pri_category set name='学员——课程' where id='40288acf39b430650139b44563610003';
+update pe_pri_category set name='课程——学员' where id='40288acf39b430650139b4462a790004';
+update pe_priority set name='学习情况查询_*' where id='40284a8136cd5bee0136cdccf8fb0004'; 
+update pe_priority set name='学习情况查询学员到课程_*' where id='40288acf3aa215a2013aa217f4640001'; 
+update pe_priority set name='学习情况查询课程到学员列表_' where id='40288acf3aa1c2fd013aa1c6eea10001'; 
+
+update pe_pri_category set name='学员—课程' where code='0600301';
+update pe_pri_category set name='课程—学员' where code='0600302';
+
+alter table PE_BZZ_TCH_COURSE add create_date date;
+alter table PE_BZZ_TCH_COURSE add edit_date date;
+-- Add comments to the columns 
+comment on column PE_BZZ_TCH_COURSE.create_date
+  is '创建时间';
+comment on column PE_BZZ_TCH_COURSE.edit_date
+  is '编辑时间';
+
+  alter table Pe_Enterprise add ENTYPE VARCHAR2(50)
+
+
+
+
+  insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('402880a91dadc115011dadfcf26b6003', '资产管理公司', 'Z', 'FlagEnterpriseType', '0', to_date('29-10-2012 
+
+16:26:32', 'dd-mm-yyyy hh24:mi:ss'), '机构类别');
+
+insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('402880a91dadc115011dadfcf26b5003', '证券资信评级机构', 'R', 'FlagEnterpriseType', '0', to_date('29-10-2012 
+
+16:26:32', 'dd-mm-yyyy hh24:mi:ss'), '机构类别');
+
+insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('402880a91dadc115011dadfcf26b4003', '证券投资咨询公司', 'A', 'FlagEnterpriseType', '0', to_date('29-10-2012 
+
+16:26:32', 'dd-mm-yyyy hh24:mi:ss'), '机构类别');
+
+insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('402880a91dadc115011dadfcf26b3003', '证券公司', 'S', 'FlagEnterpriseType', '0', to_date('29-10-2012 
+
+16:26:32', 'dd-mm-yyyy hh24:mi:ss'), '机构类别');
+
+insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('402880a91dadc115011dadfcf26b2003', '基金托管代销银行', 'B', 'FlagEnterpriseType', '0', to_date('29-10-2012 
+
+16:26:32', 'dd-mm-yyyy hh24:mi:ss'), '机构类别');
+
+insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('402880a91dadc115011dadfcf26b1003', '基金公司', 'F', 'FlagEnterpriseType', '0', to_date('29-10-2012 
+
+16:26:32', 'dd-mm-yyyy hh24:mi:ss'), '机构类别');
+
+
+
+
+alter table PE_ENTERPRISE
+  add constraint FK_PE_ENT_R_ENUMC foreign key (ENTYPE)
+  references ENUM_CONST (ID);
+
+
+-- Create table
+create table PR_BZZ_TCH_STU_ELECTIVE_BACK
+(
+  id                      varchar2(50),
+  FK_OPERATOR_ID          varchar2(50),
+  FK_TCH_OPENCOURSE_ID    varchar2(50),
+  FK_STU_ID               varchar2(50),
+  FK_ORDER_ID             varchar2(50),
+  FK_ELE_COURSE_PERIOD_ID varchar2(50)
+)
+tablespace HZPH
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table PR_BZZ_TCH_STU_ELECTIVE_BACK
+  is '此表用于网银支付时，订单生成时，所产生的选课记录';
+-- Add comments to the columns 
+comment on column PR_BZZ_TCH_STU_ELECTIVE_BACK.FK_OPERATOR_ID
+  is '订单创建人';
+comment on column PR_BZZ_TCH_STU_ELECTIVE_BACK.FK_TCH_OPENCOURSE_ID
+  is '对应的opencourse的id号';
+comment on column PR_BZZ_TCH_STU_ELECTIVE_BACK.FK_STU_ID
+  is '学生id';
+comment on column PR_BZZ_TCH_STU_ELECTIVE_BACK.FK_ORDER_ID
+  is '订单号';
+comment on column PR_BZZ_TCH_STU_ELECTIVE_BACK.FK_ELE_COURSE_PERIOD_ID
+  is '选课期id';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table PR_BZZ_TCH_STU_ELECTIVE_BACK
+  add constraint pk_back_id primary key (ID);
+alter table PR_BZZ_TCH_STU_ELECTIVE_BACK
+  add constraint FK_OPERATOR_ID foreign key (FK_OPERATOR_ID)
+  references sso_user (ID);
+alter table PR_BZZ_TCH_STU_ELECTIVE_BACK
+  add constraint FK_TCH_OPENCOURSE_ID foreign key (FK_TCH_OPENCOURSE_ID)
+  references pr_bzz_tch_opencourse (ID);
+alter table PR_BZZ_TCH_STU_ELECTIVE_BACK
+  add constraint FK_STU_ID foreign key (FK_STU_ID)
+  references pe_bzz_student (ID);
+alter table PR_BZZ_TCH_STU_ELECTIVE_BACK
+  add constraint FK_ORDER_ID foreign key (FK_ORDER_ID)
+  references pe_bzz_order_info (ID);
+alter table PR_BZZ_TCH_STU_ELECTIVE_BACK
+  add constraint FK_ELE_COURSE_PERIOD_ID foreign key (FK_ELE_COURSE_PERIOD_ID)
+  references pe_elective_course_period (ID);
+
+
+
+--添加种类
+insert into pe_pri_category(id,name,fk_parent_id,code,path,flag_left_menu)values('40288ccf3aaf4b0c013ab00af90c0013','
+
+审核注册用户','02','02004','/sso/web/action/regist.action','1');
+
+--添加权限
+insert into pe_priority(id,name,fk_pri_cat_id,namespace,action,method)values('40288ccf3aaf4b0c013ab00c2b430014','审核
+
+注册_*','40288ccf3aaf4b0c013ab00af90c0013','/sso','regist','*');
+
+
+--添加种类
+insert into pe_pri_category(id,name,fk_parent_id,code,path,flag_left_menu)values('40288ccf3acf22eb013acf7293f80019','
+
+本机构学员信息列表','03','03002','/entity/basic/peBzzStudent.action?flag=self','1');
+
+--添加权限
+insert into pe_priority(id,name,fk_pri_cat_id,namespace,action,method)values('40288ccf3acf22eb013acf80b6af001c','本机
+
+构学员信息_*','40288ccf3acf22eb013acf7293f80019','/entity/basic','peBzzStudent','*');
+
+insert into enum_const(id,name,code,namespace,is_default,create_date,note)values('40288ccf3ab046d0013ab0915db80009','
+
+待审核','0','CheckState','1',sysdate,'新注册用户审核状态');
+insert into enum_const(id,name,code,namespace,is_default,create_date,note)values('40288ccf3ab046d0013ab092477c000a','
+
+审核通过','1','CheckState','0',sysdate,'新注册用户审核状态');
+insert into enum_const(id,name,code,namespace,is_default,create_date,note)values('40288ccf3ab046d0013ab0930fcd000b','
+
+审核未通过','2','CheckState','0',sysdate,'新注册用户审核状态');
+
+--pe_bzz_student更新语句
+alter table pe_bzz_student add STUDENT_TYPE VARCHAR2(255 CHAR);
+-- Add comments to the columns 
+comment on column pe_bzz_student.STUDENT_TYPE
+  is '用户类型（集体或个人）';
+
+
+
+alter table PE_BZZ_STUDENT
+  add constraint FK_PE_BZZ_ST_R_ENUM_CONST foreign key (STUDENT_TYPE)
+  references ENUM_CONST (ID);
+  
+  -------------------------------
+--  enum_const插入信息
+  insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('402880a91da9032f011da905da070002', '否', '0', 'FlagStudentType', '1', to_date('23-10-2012 10:55:15', 'dd-mm
+
+-yyyy hh24:mi:ss'), '是否是个人用户');
+
+insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('402880a91da9032f011da905da070003', '是', '1', 'FlagStudentType', '0', to_date('23-10-2012 10:55:15', 'dd-mm
+
+-yyyy hh24:mi:ss'), '是否是个人用户');
+
+
+update enum_const set NAME='网银支付' where ID='40288a7b394207de01394212e47f0005';
+update enum_const set NAME='预付费账户支付' where ID='40288a7b394207de0139421358110006';
+
+--订单表添加订单是否有效字段，用于标识订单是否被关闭
+--enumConstByFlagOrderIsValid  
+
+-- Add/modify columns 
+alter table PE_BZZ_ORDER_INFO add FLAG_ORDER_ISVALID VARCHAR2(50);
+-- Add comments to the columns 
+comment on column PE_BZZ_ORDER_INFO.FLAG_ORDER_ISVALID
+  is '标识订单是否关闭';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table PE_BZZ_ORDER_INFO
+  add constraint FK_FLAG_ORDER_ISVALID foreign key (FLAG_ORDER_ISVALID)
+  references enum_const (ID);
+  
+  --常量表中的数据
+  insert into ENUM_CONST (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('40288acf3b0823db013b0827f02a0001', '是', '1', 'FlagOrderIsValid', '0', to_date('16-11-2012', 'dd-mm-yyyy'), 
+
+'订单是否有效');
+insert into ENUM_CONST (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('40288acf3b0823db013b0828a4d40002', '否', '0', 'FlagOrderIsValid', '1', to_date('16-11-2012', 'dd-mm-yyyy'), 
+
+'订单是否有效');
+  
+  
+
+-- Add/modify columns 
+alter table PE_BZZ_TCH_COURSE add FLAG_IS_EXAM VARCHAR2(50);
+-- Add comments to the columns 
+comment on column PE_BZZ_TCH_COURSE.FLAG_IS_EXAM
+  is '课程是可以否考试';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table PE_BZZ_TCH_COURSE
+  add constraint FK_flag_is_exam foreign key (FLAG_IS_EXAM)
+  references enum_const (ID);
+  
+  
+  insert into ENUM_CONST (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('40288acf3ae01103013ae012940b0001', '是', '1', 'FlagIsExam', '0', to_date('08-11-2012', 'dd-mm-yyyy'), '课程
+
+是否可以考试');
+insert into ENUM_CONST (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('40288acf3ae01103013ae0130d030002', '否', '0', 'FlagIsExam', '1', to_date('08-11-2012', 'dd-mm-yyyy'), '课程
+
+是否可以考试');
+
+
+-- 应华政业务人员要求，删除常量表中的行业课程
+ --数据备份
+ insert into ENUM_CONST (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('402881213421b2f1013421ba3a910002', '行业课程', '2', 'FlagCourseType', '0', to_date('09-12-2011', 'dd-mm-
+
+yyyy'), '课程性质');
+
+
+alter table PE_BZZ_TCH_COURSE  modify NAME VARCHAR2(500);
+
+alter table PE_BZZ_TCH_COURSE  modify SUGGESTION VARCHAR2(1000);
+
+
+--应华政人员要求，现在对pe_bzz_tch_course表进行修改，添加表字段标识课程条目分类
+--添加字段FLAG_COURSE_ITEM_TYPE关联外键enum_const表中的id
+
+--enum_const表添加新的属性字段。
+insert into ENUM_CONST (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('40288acf3ac44bb8013ac44e6f1b0001', '业务', '1', 'FlagCourseItemType', '0', to_date('03-11-2012', 'dd-mm-
+
+yyyy'), '华政人员提出的新要求，课程添加新标识字段');
+insert into ENUM_CONST (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('40288acf3ac45c97013ac4619f750001', '大纲', '0', 'FlagCourseItemType', '1', to_date('03-11-2012', 'dd-mm-
+
+yyyy'), '华政业务人员要求，添加');
+
+
+--退费表修改，添加退费拒绝缘由PE_BZZ_REFUND_INFO
+--添加字段refause_reason
+alter table PE_BZZ_REFUND_INFO add refause_reason VARCHAR2(2000);
+
+
+
+
+alter table pr_bzz_tch_stu_elective add (start_time date); 
+comment on column pr_bzz_tch_stu_elective.start_time is '开始学习时间';
+
+
+
+--选课表pr_bzz_tch_stu_elective去除约束
+alter table PR_BZZ_TCH_STU_ELECTIVE
+  drop constraint AK_KEY_2_PR_BZZ_T1 cascade;
+
+
+
+-- Add/modify columns 
+alter table ONLINETEST_COURSE_INFO modify note null;
+
+-- Add/modify columns 
+alter table TEST_TESTPAPER_INFO modify note null;
+
+-- Add/modify columns 
+alter table PR_BZZ_TCH_STU_ELECTIVE add exam_times NUMBER(4,1);
+-- Add comments to the columns 
+comment on column PR_BZZ_TCH_STU_ELECTIVE.exam_times
+  is '考试次数';
+alter table PE_BULLETIN modify SCOPE_STRING VARCHAR2(4000);

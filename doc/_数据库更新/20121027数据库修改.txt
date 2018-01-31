@@ -1,0 +1,9 @@
+--课程表添加创建和修改时间 by linjie
+-- Add/modify columns 
+alter table PE_BZZ_TCH_COURSE add create_date date;
+alter table PE_BZZ_TCH_COURSE add edit_date date;
+-- Add comments to the columns 
+comment on column PE_BZZ_TCH_COURSE.create_date
+  is '创建时间';
+comment on column PE_BZZ_TCH_COURSE.edit_date
+  is '编辑时间';

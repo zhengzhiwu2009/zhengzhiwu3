@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+  <head>
+    <title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="css/shared.css">
+    <script language="JavaScript" src="js/shared.js"></script>
+   <style type="text/css">
+   .chat {
+   background: #c8c8c8;
+   align: left;
+   }
+   </style>
+<script type="text/javascript">
+var online_answer = function() {
+	var btn = document.getElementById('btn');
+	if (btn.state == "0") {
+		btn.value = "结束答疑";
+		btn.state = 1;
+	} else {
+		btn.value = "开始答疑";
+		btn.state = 0;
+	}
+};
+</script>
+  </head>
+  
+  <body>
+<form name="form1" method="post" action="">
+  <!--开始-->
+  
+  <table width="100%" border="0" cellspacing="0" cellpadding="4" align="center">
+          <tr>    
+      			<td class="tdsectionbar">在线答疑</td>
+          </tr>
+    </table>
+
+  <table width="98%" border="0" cellspacing="3" cellpadding="0" align="center">
+        <tr> 
+          
+     		 <td height="77" class="tdframe"> <table width="100%" border="0" cellspacing="1" cellpadding="3" align="center">
+          <tr> 
+            <td  nowrap class="tdbg1" colspan="3" ><div align="left">上市公司治理</div></td>
+            <td  nowrap class="tdbg1" ><div align="left"> <input type="button" id="btn" onclick="online_answer();" state="0" class="button" value="开始答疑"/></div></td>
+          </tr>
+          <tr>
+          <td class="tdbg1" colspan="4" align="center">
+         	<textarea id="" cols="150" rows="10" readonly="true" class="chat" align="left">
+         	[2012-04-20 12:23:00] [中信证券][张三]：请问可以提供更多的学习资料吗？谢谢。
+         	[2012-04-20 12:23:20] [协会][讲师1]：在“学习资料管理”提供有课程相关资料下载。
+         	</textarea>
+          </td>
+          </tr>
+		<tr>
+          <td class="tdbg1" colspan="4" align="center">
+         	<textarea id="" cols="80" rows="5"></textarea></br>
+         	<input type="button" class="button" value="发送" onclick="send();"/>
+          </td>
+          </tr>
+        </table></td>
+        </tr>
+			<tr><td><tr>
+		  		<td width="10%" nowrap class="tdbg2" align="center">
+		  		<input type="button" class="button" value="返回" onclick="window.history.go(-1);"/>
+		  	</tr></td></tr>
+      </table>
+
+  <!--结束-->
+</form>
+  </body>
+</html>

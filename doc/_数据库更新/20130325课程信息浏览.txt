@@ -1,0 +1,5 @@
+insert into PE_PRIORITY (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288acf3d9fb2eb013da046d75e000a', '课程信息浏览_*', '40288acf3d9fb2eb013da0458e930009', '/entity/teaching', 'kechengLiulan', '*');
+
+insert into PE_PRI_CATEGORY (ID, NAME, FK_PARENT_ID, CODE, PATH, FLAG_LEFT_MENU)
+values ('40288acf3d9fb2eb013da0458e930009', '课程信息浏览', '04', '04005', '/entity/teaching/kechengLiulan.action', '1');

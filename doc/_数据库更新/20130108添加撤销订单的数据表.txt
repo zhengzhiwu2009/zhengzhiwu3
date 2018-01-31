@@ -1,0 +1,48 @@
+-- Create table
+create table ELECTIVE_BACK_HISTORY
+(
+  id                      VARCHAR2(50) not null,
+  fk_operator_id          VARCHAR2(50),
+  fk_tch_opencourse_id    VARCHAR2(50),
+  fk_stu_id               VARCHAR2(50),
+  fk_order_id             VARCHAR2(50),
+  fk_ele_course_period_id VARCHAR2(50)
+)
+tablespace HZPH
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table ELECTIVE_BACK_HISTORY
+  is '此表用于网银支付时，订单生成时，所产生的选课记录';
+-- Add comments to the columns 
+comment on column ELECTIVE_BACK_HISTORY.fk_operator_id
+  is '订单创建人';
+comment on column ELECTIVE_BACK_HISTORY.fk_tch_opencourse_id
+  is '对应的opencourse的id号';
+comment on column ELECTIVE_BACK_HISTORY.fk_stu_id
+  is '学生id';
+comment on column ELECTIVE_BACK_HISTORY.fk_order_id
+  is '订单号';
+comment on column ELECTIVE_BACK_HISTORY.fk_ele_course_period_id
+  is '选课期id';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table ELECTIVE_BACK_HISTORY
+  add constraint PK_ELECTIVE_BACK_ID primary key (ID)
+  using index 
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );

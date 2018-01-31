@@ -1,0 +1,8 @@
+-- Add/modify columns 
+alter table TRAINING_COURSE_STUDENT add COMPLETE_DATE date;
+-- Add comments to the columns 
+comment on column TRAINING_COURSE_STUDENT.COMPLETE_DATE
+  is '学习完成时间';
+  
+  
+  

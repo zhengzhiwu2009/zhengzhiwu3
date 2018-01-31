@@ -1,0 +1,6 @@
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table PE_BZZ_TCH_COURSE_CLICK_DETAIL
+  drop constraint FK_STUDENT_ID_FK_FK;
+alter table PE_BZZ_TCH_COURSE_CLICK_DETAIL
+  add constraint FK_STUDENT_ID_FK_FK foreign key (FK_STUDENT_ID)
+  references sso_user (ID);

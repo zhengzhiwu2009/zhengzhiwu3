@@ -1,0 +1,12 @@
+---添加一级集体学员调配权限
+update pe_pri_category ppc set ppc.path='to_top_menu' where ppc.id = '03001';
+insert into pe_pri_category (ID, NAME, FK_PARENT_ID, CODE, PATH, FLAG_LEFT_MENU)
+values ('03001001', '学员信息列表', '03001', '03001001', '/entity/basic/peBzzStudent.action', '0');
+
+insert into pe_pri_category (ID, NAME, FK_PARENT_ID, CODE, PATH, FLAG_LEFT_MENU)
+values ('03001002', '一级集体学员调配', '03001', '03001002', '/entity/basic/peBzzStudentSub.action', '0');
+
+update  pe_priority pp set pp.fk_pri_cat_id='03001001' where pp.fk_pri_cat_id='03001'；
+
+insert into pe_priority (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('402880a92113a9b0012113e61532233xx', '一级学员调配_*', '03001002', '/entity/basic', 'peBzzStudentSub', '*');

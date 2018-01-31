@@ -1,0 +1,1 @@
+update enum_const set name='已退费' where code='1' and namespace='FlagRefundState'

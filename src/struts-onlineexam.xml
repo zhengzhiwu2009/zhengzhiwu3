@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd" >
+<struts>
+	<package name="entity.onlineexam" extends="platform-default" namespace="/entity/onlineexam">
+		<global-results>
+			<result name="grid">/test/grid.jsp</result>
+		    <result name="json">/test/json.jsp</result>
+		    <result name="gridjs">/test/gridjs.jsp</result>
+		    <!-- <result name="excel">/test/export.jsp</result> -->
+		    <result name="error">/test/error.jsp</result>
+		    <result name="m_msg">/test/msg.jsp</result>
+		    <result name="msg">/test/stu_msg.jsp</result>
+		    <result name="stu_msg">/test/stu_msg.jsp</result>
+		    <result name="interactionMsg">/test/interactionMsg.jsp</result>
+		    <result name="input">/entity/manager/pub/turnToLogin.jsp </result>
+		    <result name="tokenError">/error/tokenError.jsp</result>
+		    <result name="paymentMsg">/entity/manager/payment_msg.jsp</result>
+		</global-results>
+		<action name="peBzzPici_*" method="{1}" class="peBzzPiciAction">
+			<result name="toUpload">/entity/manager/studentStatus/pc_student_upload.jsp</result>
+		</action>	
+		<action name="pePcDetail_*" method="{1}" class="pePcDetailAction">
+			<result name="stuinfo">/entity/manager/studentStatus/studen_info.jsp</result>
+			<result name="questionView">/entity/manager/studentStatus/question_view.jsp</result>
+			
+		</action>
+	</package>
+</struts>

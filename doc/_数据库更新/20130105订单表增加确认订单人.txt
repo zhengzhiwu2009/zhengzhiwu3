@@ -1,0 +1,11 @@
+-- Add/modify columns 
+alter table PE_BZZ_ORDER_INFO add operater VARCHAR2(100);
+alter table PE_BZZ_ORDER_INFO add operate_type VARCHAR2(50);
+alter table PE_BZZ_ORDER_INFO add operate_date date;
+-- Add comments to the columns 
+comment on column PE_BZZ_ORDER_INFO.operater
+  is '操作人登陆ID';
+comment on column PE_BZZ_ORDER_INFO.operate_type
+  is '操作类型';
+comment on column PE_BZZ_ORDER_INFO.operate_date
+  is '操作日期';

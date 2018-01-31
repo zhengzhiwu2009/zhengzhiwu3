@@ -1,0 +1,241 @@
+@charset "utf-8";
+/* CSS Document */
+
+html, body, div, section, menu, article, nav, footer, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, input{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+abbr, article, aside, audio, canvas, datalist, details, dialog, eventsource, figure, footer, header, hgroup, mark, menu, meter, nav, output, progress, section, time, video {
+	display:block;
+	margin: 0;
+	padding: 0;
+}
+
+em{font-style:normal;}
+body {
+	line-height:2;
+	color: #666;
+	font-family:"微软雅黑";
+	background:#f0f0f0;
+	font-size:12px;
+}
+a{ text-decoration:none;cursor:pointer}
+a:hover{ color:#272727;}
+
+a:hover img{opacity:0.8}
+a:hover b{box-shadow:0px 0px 5px rgba(0,0,0,0.7); cursor:pointer}
+ol, ul {
+	list-style: none;
+}
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+}
+caption, th, td {
+	
+	font-weight: normal;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+	content: "";
+}
+blockquote, q {
+	quotes: "" "";
+}
+datalist{ display:none;}
+img {
+	vertical-align:;
+}
+.clear {
+	clear:both;
+}
+.left {
+	float:left;
+}
+.right {
+	float:right;
+}
+.block {
+	display:block;
+	vertical-align:top;
+}
+.inline-block {
+	display:inline-block;
+	vertical-align:top;
+	*display:inline;*zoom:1;
+}
+.none{ display:none;}
+/*************width设定***********/
+.w1{ width:100%;}
+.w2{ width:960px;
+margin:auto;
+}
+.t{ text-indent:20px;}
+/*************字体颜色***********/
+.c{ color:#333333;font-weight:400;}
+.c1{ color:#6b6b6b}
+.c2{ color:#000000;font-weight:400;}
+.c3{ color:#cccccc}
+.c4{ color:#305C88;font-weight:bold;}
+.c5{ color:#4d4d4d;}
+.c6{ color:#fe0000;}
+.c7{ color:#4d4d4d;}
+.c9{ color:#999999;}
+.c10{color:#ff0000;}
+.c13{color:#ffffff;}
+/*************字体大小***********/
+.f1 {
+	font-size:19px;font-weight:400;
+}
+.f2 {
+	font-size:1.3em;font-weight:400;
+}
+.f3 {
+	font-size:1.2em;font-weight:400;
+}
+.f4{ font-size:1.8em;}
+.f5{ font-size:3.3em;}
+.f6{ font-size:1.5em}
+.f7{font-size:2.3em;}
+.f8{font-size:1.1em;}
+
+/*************字边框颜色***********/
+.b {background:#ef9632;
+	border-radius:20px;
+	border:none;
+	color:#fff;
+}
+.b1{border:1px solid e9e9e9;}
+.b2{ border-bottom:3px solid #ebebeb;}
+.b3{ border-bottom:3px solid #2a7ab9;}
+.b4{ border:1px solid #dbdbdb;}
+.b5{border:1px solid #dddddd;}
+	
+
+/*************line-height***********/
+.h1{ line-height:20px;}
+.h2{ line-height:24px;}
+.h3{ line-height:28px;}
+.h4{ line-height:32px;}
+.h5{ line-height:52px;}
+.h6{height:48px;}
+
+/*************间距*******
+****/
+.m1{ margin-top:40px;}
+.m3{ margin-top:20px;}
+.m5{margin-top:10px;}
+.m6{margin-left:5px;}
+.m7{margin-left:15px;}
+.m8{margin-left:25px;}
+/*************input按钮***********/
+input[type="button"]{font-family:"微软雅黑"}
+input[type="button"]:hover{box-shadow:0px 0px 5px rgba(0,0,0,0.7); cursor:pointer}
+input[name="button"]{ background:#ef9632; color:#fff;}
+input[type="text"],input[type="date"] {
+	padding:2px 0px;
+	border:1px solid #cccccc;
+	font-size:14px;line-height:22px;
+	color:#666666
+	
+	
+}
+input[id="Input_page"]{width:30px;margin:0px 5px;padding:0px;}
+input[name="password"], input[name="username"]{
+	width:90%;	
+}
+input[name="LoginNumber"]{ width:60%;}
+
+input[name="LoginNumber"],input[name="password"],input[name*="username"],.inputcode1{
+	background:#f1f1f1;
+	border:1px solid #dfdfdf;
+	border-radius:2px;
+	padding:4px 0px;
+	line-height:18px;
+	height:23px;}
+.inputcode{background:#f1f1f1;
+	border:1px solid #dfdfdf;
+	border-radius:2px;
+	padding:10px 0px;
+	line-height:26px;
+	height:26px;
+	}
+input[name="loginId"],input[name="passwd"],input[name="Fcode"]{ height:23px;}
+.input{background:#f1f1f1;
+	border:1px solid #cccccc;
+	border-radius:2px;
+	padding:2px 0px;
+	height:23px;
+	width:80%}
+.inputheight{height:22px;}
+.inputwidth{width:185px;}
+/******************************************************/
+@font-face {
+ font-family: 'icomoon';
+ src:url('fonts/icomoon.eot');
+ src:url('fonts/icomoon.eot?#iefix') format('embedded-opentype'), url('fonts/icomoon.woff') format('woff'), url('fonts/icomoon.ttf') format('truetype'), url('fonts/icomoon.svg#icomoon') format('svg');
+ font-weight: normal;
+ font-style: normal;
+}
+[class^="icon-"], [class*=" icon-"] {
+ font-family: 'icomoon';
+ speak: none;
+ font-style: normal;
+ font-weight: normal;
+ font-variant: normal;
+ text-transform: none;
+ line-height: 1;
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+ -moz-osx-font-smoothing: grayscale;
+}
+.icon-bubbles:before {
+	content: "\e605";
+	margin-right:10px;
+}
+.icon-profile:before {
+	content: "\e603";
+	margin-right:10px;
+}
+.icon-bell:before {
+	content: "\e604";
+	margin-right:10px;
+}
+.icon-record:before {
+	content: "\e607";
+	position:absolute;
+	*background:url(images/circle.png);
+	*width:14px;
+	*height:18px;
+	*margin:8px 0px 0px 0px;
+	
+}
+.icon-search1:before {
+	content: "\e600";
+	color:#fff;
+}
+/*.icon-search1 {
+     position:relative;
+     z-index:3;
+  *left:25px;
+  _left:25px;
+  left:30px\0;
+
+  *display:inline-block;
+  *width:13px;
+  *height:25px;
+  *background:url(images/search.png);
+  *vertical-align:top;
+}**/
+input[name="qtionsearch"]{background:url(images/search.png) #ef9632 no-repeat center;margin-left:10px;}
+
+.ie10 input[name="qtionsearch"]{position:relative;z-index:1;top:-5px;}
+select{height:24px;line-height:24px;vertical-align:middle;}
+input{vertical-align:middle;}

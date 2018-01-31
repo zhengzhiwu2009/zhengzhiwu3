@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="GB2312"?>
+<lom xmlns="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+     xsi:schemaLocation="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd">
+
+   <general>
+      <title>
+         <langstring></langstring>
+      </title>
+      <catalogentry>
+         <catalog>ADL Course Catalogue ID</catalog>
+         <entry>
+            <langstring>1000</langstring>
+         </entry>
+      </catalogentry>
+      <catalogentry>
+         <catalog></catalog>
+         <entry>
+            <langstring></langstring>
+         </entry>
+      </catalogentry>
+      <language>zh-CN</language>
+      <description>
+         <langstring></langstring>
+      </description>
+      <keyword>
+         <langstring></langstring>
+      </keyword>
+      <keyword>
+         <langstring></langstring>
+      </keyword>
+      <keyword>
+         <langstring></langstring>
+      </keyword>
+      <aggregationlevel>
+         <source>
+            <langstring xml:lang="x-none">LOMv1.0</langstring>
+         </source>
+         <value>
+            <langstring xml:lang="x-none">3</langstring>
+         </value>
+      </aggregationlevel>
+   </general>
+
+   <lifecycle>
+      <version>
+         <langstring>1.1</langstring>
+      </version>
+      <status>
+         <source>
+            <langstring xml:lang="x-none">LOMv1.0</langstring>
+         </source>
+         <value>
+            <langstring xml:lang="x-none">Final</langstring>
+         </value>
+      </status>
+      <contribute>
+         <role>
+            <source>
+               <langstring xml:lang="x-none">LOMv1.0</langstring>
+            </source>
+            <value>
+               <langstring xml:lang="x-none">Author</langstring>
+            </value>
+         </role>
+         <centity>
+            <vcard>BEGIN:vCard ORG:ADL Co-Lab END:vCard</vcard>
+         </centity>
+         <date>
+            <datetime>2000-01-28</datetime>
+         </date>
+      </contribute>
+   </lifecycle>
+
+   <metametadata>
+      <catalogentry>
+         <catalog></catalog>
+         <entry>
+            <langstring></langstring>
+         </entry>
+      </catalogentry>
+      <metadatascheme>ADL SCORM 1.2</metadatascheme>
+      <language>zh-CN</language>
+   </metametadata>
+   <technical>
+      <format>text/html</format>
+      <location type="URI">Course01.xml</location>
+      <requirement>
+         <type>
+            <source>
+               <langstring xml:lang="x-none">LOMv1.0</langstring>
+            </source>
+            <value>
+               <langstring xml:lang="x-none">Browser</langstring>
+            </value>
+         </type>
+         <name>
+            <source>
+               <langstring xml:lang="x-none">LOMv1.0</langstring>
+            </source>
+            <value>
+               <langstring xml:lang="x-none">Microsoft Internet Explorer</langstring>
+            </value>
+         </name>
+         <minimumversion>5.0</minimumversion>
+      </requirement>
+   </technical>
+
+   <educational>
+      <learningresourcetype>
+         <source>
+            <langstring xml:lang="x-none">LOMv1.0</langstring>
+         </source>
+         <value>
+            <langstring xml:lang="x-none">Narrative Text</langstring>
+         </value>
+      </learningresourcetype>
+      <learningresourcetype>
+         <source>
+            <langstring xml:lang="x-none">LOMv1.0</langstring>
+         </source>
+         <value>
+            <langstring xml:lang="x-none">Figure</langstring>
+         </value>
+      </learningresourcetype>
+      <learningresourcetype>
+         <source>
+            <langstring xml:lang="x-none">LOMv1.0</langstring>
+         </source>
+         <value>
+            <langstring xml:lang="x-none"></langstring>
+         </value>
+      </learningresourcetype>
+   </educational>
+
+   <rights>
+      <cost>
+         <source>
+            <langstring xml:lang="x-none">LOMv1.0</langstring>
+         </source>
+         <value>
+            <langstring xml:lang="x-none">no</langstring>
+         </value>
+      </cost>
+      <copyrightandotherrestrictions>
+         <source>
+            <langstring xml:lang="x-none">LOMv1.0</langstring>
+         </source>
+         <value>
+            <langstring xml:lang="x-none">no</langstring>
+         </value>
+      </copyrightandotherrestrictions>
+      <description>
+         <langstring></langstring>
+      </description>
+   </rights>
+   
+   <classification>
+     <purpose>
+        <source>
+           <langstring xml:lang="x-none">LOMv1.0</langstring>
+        </source>
+        <value>
+           <langstring xml:lang="x-none">Discipline</langstring>
+        </value>
+     </purpose>
+     <taxonpath>
+        <source>
+           <langstring></langstring>
+        </source>
+        <taxon>
+           <id></id>
+           <entry>
+              <langstring></langstring>
+           </entry>
+        </taxon>
+     </taxonpath>
+     <description>
+         <langstring></langstring>
+      </description>
+     <keyword>
+        <langstring></langstring>
+     </keyword>
+     <keyword>
+        <langstring></langstring>
+     </keyword>
+   </classification>
+   <classification>
+      <purpose>
+        <source>
+           <langstring xml:lang="x-none">LOMv1.0</langstring>
+        </source>
+        <value>
+           <langstring xml:lang="x-none">Educational Objective</langstring>
+        </value>
+      </purpose>
+      <description>
+         <langstring></langstring>
+      </description>
+      <keyword>
+         <langstring></langstring>
+      </keyword>
+   </classification>
+   <classification>
+      <purpose>
+        <source>
+           <langstring xml:lang="x-none">LOMv1.0</langstring>
+        </source>
+        <value>
+           <langstring xml:lang="x-none"></langstring>
+        </value>
+      </purpose>
+      <description>
+         <langstring></langstring>
+      </description>
+      <keyword>
+         <langstring></langstring>
+      </keyword>
+   </classification>
+</lom>

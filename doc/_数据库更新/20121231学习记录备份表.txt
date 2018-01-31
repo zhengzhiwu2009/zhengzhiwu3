@@ -1,0 +1,50 @@
+-- Create table
+create table TCS_history
+(
+  ID            VARCHAR2(50) not null,
+  STUDENT_ID    VARCHAR2(50),
+  COURSE_ID     VARCHAR2(50),
+  STATUS        VARCHAR2(50),
+  GET_DATE      DATE default sysdate,
+  PERCENT       NUMBER(6,2),
+  LEARN_STATUS  VARCHAR2(20),
+  SCORE         NUMBER,
+  COMPLETE_DATE DATE
+)
+tablespace HZPH
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 632M
+    next 8K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the columns 
+comment on column TCS_history.COMPLETE_DATE
+  is '学习完成时间';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table TCS_history
+  add constraint Tcs_history_3 primary key (ID)
+  using index 
+  tablespace HZPH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 464M
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table TCS_history
+  add constraint FK_Tcs_history_2 foreign key (COURSE_ID)
+  references PR_BZZ_TCH_OPENCOURSE (ID)
+  disable;
+alter table TCS_history
+  add constraint FK_TCS_history foreign key (STUDENT_ID)
+  references SSO_USER (ID)
+  disable;

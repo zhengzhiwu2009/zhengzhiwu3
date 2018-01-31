@@ -1,0 +1,2 @@
+alter table PE_BZZ_STUDENT add (zige varchar(50)); 
+comment on column PE_BZZ_STUDENT.zige is '资格类型';

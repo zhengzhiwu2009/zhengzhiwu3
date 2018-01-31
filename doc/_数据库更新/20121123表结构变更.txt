@@ -1,0 +1,11 @@
+-- Add/modify columns 
+alter table ONLINETEST_COURSE_INFO modify note null;
+
+-- Add/modify columns 
+alter table TEST_TESTPAPER_INFO modify note null;
+
+-- Add/modify columns 
+alter table PR_BZZ_TCH_STU_ELECTIVE add exam_times NUMBER(4,1);
+-- Add comments to the columns 
+comment on column PR_BZZ_TCH_STU_ELECTIVE.exam_times
+  is '考试次数';

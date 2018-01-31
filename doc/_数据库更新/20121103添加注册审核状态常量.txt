@@ -1,0 +1,3 @@
+insert into enum_const(id,name,code,namespace,is_default,create_date,note)values('40288ccf3ab046d0013ab0915db80009','待审核','0','CheckState','1',sysdate,'新注册用户审核状态');
+insert into enum_const(id,name,code,namespace,is_default,create_date,note)values('40288ccf3ab046d0013ab092477c000a','审核通过','1','CheckState','0',sysdate,'新注册用户审核状态');
+insert into enum_const(id,name,code,namespace,is_default,create_date,note)values('40288ccf3ab046d0013ab0930fcd000b','审核未通过','2','CheckState','0',sysdate,'新注册用户审核状态');

@@ -1,0 +1,2 @@
+-- Create/Recreate indexes 
+create index FK_ELE_COURSE_PERIOD_ID on PR_BZZ_TCH_STU_ELECTIVE (FK_ELE_COURSE_PERIOD_ID);

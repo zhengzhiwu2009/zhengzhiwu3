@@ -1,0 +1,8 @@
+insert into enum_const(id,name,code,namespace,is_default,create_date,note)values('402880971e19b68d011e19bb24f60003','中国大陆','0','Nation','1',sysdate,'国籍');
+insert into enum_const(id,name,code,namespace,is_default,create_date,note)values('402880971e19b68d011e19bb24f60004','中国香港','1','Nation','0',sysdate,'国籍');
+insert into enum_const(id,name,code,namespace,is_default,create_date,note)values('402880971e19b68d011e19bb24f60005','中国澳门','2','Nation','0',sysdate,'国籍');
+insert into enum_const(id,name,code,namespace,is_default,create_date,note)values('402880971e19b68d011e19bb24f60006','中国台湾','3','Nation','0',sysdate,'国籍');
+insert into enum_const(id,name,code,namespace,is_default,create_date,note)values('402880971e19b68d011e19bb24f60007','美国','4','Nation','0',sysdate,'国籍');
+insert into enum_const(id,name,code,namespace,is_default,create_date,note)values('402880971e19b68d011e19bb24f60008','英国','5','Nation','0',sysdate,'国籍');
+insert into enum_const(id,name,code,namespace,is_default,create_date,note)values('402880971e19b68d011e19bb24f60009',' 法国','6','Nation','0',sysdate,'国籍');
+insert into enum_const(id,name,code,namespace,is_default,create_date,note)values('402880971e19b68d011e19bb24f60010','其它','7','Nation','0',sysdate,'国籍');

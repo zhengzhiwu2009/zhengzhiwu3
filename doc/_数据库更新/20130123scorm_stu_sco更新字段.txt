@@ -1,0 +1,2 @@
+-- Add/modify columns 
+alter table SCORM_STU_SCO modify core_lesson VARCHAR2(4000);

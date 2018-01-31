@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<bank>
+		<id>ABC</id>
+		<name>农业银行</name>
+		<img>/entity/manager/images/bankLogo/b2c/icon_abc_s.gif</img>
+	</bank>
+	
+	<bank>
+		<id>BCN</id>
+		<name>中国银行</name>
+		<img>/entity/manager/images/bankLogo/b2c/icon_bcn_s.gif</img>
+	</bank>
+	
+	<bank>
+		<id>BOC</id>
+		<name>交通银行</name>
+		<img>/entity/manager/images/bankLogo/b2c/icon_boc_s.gif</img>
+	</bank>
+	
+	<bank>
+		<id>CCB</id>
+		<name>建设银行</name>
+		<img>/entity/manager/images/bankLogo/b2c/icon_ccb_s.gif</img>
+	</bank>
+	
+	<bank>
+		<id>CIB</id>
+		<name>兴业银行</name>
+		<img>/entity/manager/images/bankLogo/b2c/icon_cib_s.gif</img>
+	</bank>
+	
+	<bank>
+		<id>CMB</id>
+		<name>招商银行</name>
+		<img>/entity/manager/images/bankLogo/b2c/icon_cmb_s.gif</img>
+	</bank>
+	<!-- 
+	<bank>
+		<id>CMSB</id>
+		<name>中国民生银行</name>
+		<img>/entity/manager/images/bankLogo/b2c/icon_cmsb_s.gif</img>
+	</bank>
+	 -->
+	<bank>
+		<id>FUDIAN</id>
+		<name>富滇银行</name>
+		<img>/entity/manager/images/bankLogo/b2c/icon_fudian_s.gif</img>
+	</bank>
+	<!-- 
+	<bank>
+		<id>HXB</id>
+		<name>华夏银行</name>
+		<img>/entity/manager/images/bankLogo/b2c/icon_hxb_s.gif</img>
+	</bank>
+	 -->
+	<bank>
+		<id>ICBC</id>
+		<name>中国工商银行</name>
+		<img>/entity/manager/images/bankLogo/b2c/icon_icbc_s.gif</img>
+	</bank>
+	
+	<bank>
+		<id>POST</id>
+		<name>中国邮政储蓄银行</name>
+		<img>/entity/manager/images/bankLogo/b2c/icon_post_s.gif</img>
+	</bank>
+	
+	<bank>
+		<id>SPDB</id>
+		<name>浦发银行</name>
+		<img>/entity/manager/images/bankLogo/b2c/icon_spdb_s.gif</img>
+	</bank>
+	
+	<bank>
+		<id>SZDB</id>
+		<name>深证发展银行</name>
+		<img>/entity/manager/images/bankLogo/b2c/icon_szdb_s.gif</img>
+	</bank>
+	
+	<bank>
+		<id>GDB</id>
+		<name>广发银行</name>
+		<img>/entity/manager/images/bankLogo/b2c/icon_gdb_s.gif</img>
+	</bank>
+	
+	<bank>
+		<id>CEB</id>
+		<name>中国光大银行</name>
+		<img>/entity/manager/images/bankLogo/b2c/icon_ceb_s.gif</img>
+	</bank>
+</root>

@@ -1,0 +1,24 @@
+-- Add/modify columns 
+alter table ASSIGN_RECORD_STUDENT add fk_enterprise_manager_id VARCHAR2(50);
+-- Add comments to the columns 
+comment on column ASSIGN_RECORD_STUDENT.id
+  is 'ID';
+comment on column ASSIGN_RECORD_STUDENT.fk_record_id
+  is '分配记录ID';
+comment on column ASSIGN_RECORD_STUDENT.fk_student_id
+  is '学员ID';
+comment on column ASSIGN_RECORD_STUDENT.class_num
+  is '学时数';
+comment on column ASSIGN_RECORD_STUDENT.fk_enterprise_manager_id
+  is '机构管理员ID（分配剥离二级管理员学时增加）';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table ASSIGN_RECORD_STUDENT
+  add constraint FK_ENTERPRISE_MANAGER_ID foreign key (FK_ENTERPRISE_MANAGER_ID)
+  references PE_ENTERPRISE_MANAGER (ID);
+  
+  insert into pe_priority (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288a7b3947c48b013948a52f460001x', '集体分配学时_*', '08004', '/entity/basic', 'assignStudyHourEnt', '*');
+
+insert into pe_priority (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288acf395d087301395d0a47380001x', '查看集体学时分配记录_*', '08004', '/entity/basic', 'checkClassHourRecordEnt', '*');
+  

@@ -1,0 +1,42 @@
+BODY {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; BACKGROUND-COLOR: #e0e0e0
+}
+.main_bor {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; BORDER-LEFT: #cccccc 1px solid; BORDER-BOTTOM: #cccccc 1px solid
+}
+.main_bg {
+	BACKGROUND-POSITION: center top; BACKGROUND-IMAGE: url(../images/sp1_05.jpg); BACKGROUND-REPEAT: no-repeat; HEIGHT: 370px
+}
+.title {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; TEXT-INDENT: 40px
+}
+.trbor {
+	BACKGROUND-POSITION: 50% bottom; BACKGROUND-IMAGE: url(../images/sp_17.jpg); BACKGROUND-REPEAT: no-repeat
+}
+.trbor TD {
+	FONT-SIZE: 12px; LINE-HEIGHT: 24px
+}
+.spbg {
+	BACKGROUND-IMAGE: url(../images/spbg.jpg)
+}
+.title2 {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #000000
+}
+.spbox {
+	MARGIN-TOP: 18px; HEIGHT: 288px; BACKGROUND-COLOR: #cccccc
+}
+.jishu TD {
+	FONT-WEIGHT: bold; FONT-SIZE: 24px; COLOR: #ffffff; FONT-FAMILY: "ºÚÌå"
+}
+.diaocha {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #ffffff; TEXT-INDENT: 20px
+}
+.title3 {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; FONT-WEIGHT: bold; FONT-SIZE: 14px; PADDING-BOTTOM: 5px; COLOR: #666666; PADDING-TOP: 5px
+}
+.footer {
+	FONT-SIZE: 12px; COLOR: #666666; LINE-HEIGHT: 24px; TEXT-ALIGN: center
+}
+.diaocha_con {
+	PADDING-LEFT: 15px; FONT-SIZE: 12px; COLOR: #999999; LINE-HEIGHT: 24px
+}

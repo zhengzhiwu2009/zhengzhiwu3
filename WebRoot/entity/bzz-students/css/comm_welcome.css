@@ -1,0 +1,70 @@
+* {
+	scrollbar-3dlight-color:#aabdce; /*- 最外左 -*/
+	scrollbar-highlight-color:#aabdce; /*- 左二 -*/
+	scrollbar-face-color:#aabdce; /*- 面子 -*/
+	scrollbar-arrow-color:#fff; /*- 箭头 -*/
+	scrollbar-shadow-color:#aabdce; /*- 右二 -*/
+	scrollbar-darkshadow-color:#aabdce; /*- 右一 -*/
+	scrollbar-base-color:#aabdce; /*- 基色 -*/
+	scrollbar-track-color:#f0f0f0;/*- 滑道 -*/
+}
+form {
+	margin:0;
+	padding:0
+}
+table a{font-weight:bold;}
+a:link {
+	color: #3366ff;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #3366ff;
+}
+a:hover {
+	text-decoration: underline;
+	color: #3366ff;
+}
+a:active {
+	text-decoration: none;
+	color: #3366ff;
+}
+body, td, textarea, div,th {
+	font-size: 12px;
+	line-height:180%
+}
+ 
+body {
+	margin:0;
+	padding:0
+}
+p {
+	padding:0;
+	margin:0;
+	line-height:180%
+}
+a {
+	cursor:pointer
+}
+img {
+	border:0
+}
+table {
+	border-collapse:collapse
+}
+p {
+	padding:0;
+	margin:0
+}
+ul, li, div {
+	padding:0;
+	margin:0;
+	list-style:none;
+}
+ 
+input[type="checkbox"]{ border:none}
+ h1,h2,h3,h4,h5,h6{line-height:180%; padding:0; display:block; overflow:hidden; margin:0; }
+ 
+.red{ color:#ff0000}
+.wei{ font-weight:bold}
+.font16{ font-size:16px}

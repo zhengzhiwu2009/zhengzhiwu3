@@ -1,0 +1,198 @@
+<html>
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=GB2312">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+
+<SCRIPT LANGUAGE=JavaScript>
+<!--
+        var RealMode=0;
+        var RealPlayer5=0;
+        var RealPlayer4=0;
+        var RealPlayerG2=0;
+
+        if (navigator.userAgent.indexOf("MSIE")< 0 )
+        {
+        
+        
+        numPlugins = navigator.plugins.length;
+        for (i = 0; i < numPlugins; i++)
+        {
+                plugin = navigator.plugins[i];
+                if (plugin.name.substring(0,10)=="RealPlayer")
+                {
+                        RealMode=1;
+                }
+        }
+                alert("建议使用IE.5以上版本浏览本课件");
+        }
+        
+        else
+        {
+        
+        var version = parseFloat(navigator.appVersion);
+        //alert("建议使用IE.5以上版本浏览本课件"+navigator.appVersion);
+
+        }
+
+        document.write('<SCRIPT LANGUAGE=VBScript\> \n');
+        document.write('on error resume next \n');
+        document.write('RealPlayerG2 = (NOT IsNull(CreateObject("rmocx.RealPlayer G2 Control")))\n');
+        document.write('RealPlayer5 = (NOT IsNull(CreateObject("RealPlayer.RealPlayer(tm) ActiveX Control (32-bit)")))\n');
+        document.write('RealPlayer4 = (NOT IsNull(CreateObject("RealVideo.RealVideo(tm) ActiveX Control (32-bit)")))\n');
+        document.write('</SCRIPT\> \n');
+
+        if ( RealPlayerG2 || RealPlayer5 || RealPlayer4 ) 
+        {
+                
+                //alert("RealPlayer InternetExplorer plug-in is installed. ");
+       		document.write('<OBJECT ID="RealPlayerIE" NAME="RealPlayerIE2" CLASSID="CLSID:CFCDAA03-8BE4-11cf-B84B-0020AFBBCCFA"  style="width:0px;height:0px">\n');
+		document.write('</OBJECT> \n');
+		//alert("InternetExplorer Embedded RealPlayer version " + document.RealPlayerIE.GetVersionInfo());
+
+
+        }
+	else if ( RealMode )
+	{
+                //alert("RealPlayer Netscape plug-in is installed. ");
+        	document.write('<EMBED TYPE="audio/x-pn-realaudio-plugin" NAME="RealPlayerNS" ID="RealPlayerNS2" CONTROLS="HomeCtrl" HEIGHT=0 WIDTH=0> \n');
+		document.write('</EMBED> \n');
+		//alert("Netscape Embedded RealPlayer version " + document.RealPlayerNS.GetVersionInfo());
+	}
+        else 
+        {
+                alert("请先安装Realplayer再运行本课件. ");
+                window.open("../help/help.htm",null,"resizable=yes,scrollbars=yes");
+        }
+
+        //-->
+</SCRIPT>
+<script language="JavaScript1.2">
+<!-- begin hiding
+// (C) 2001 Zhang Zhen [zhangzh@whaty.com]. All rights reserved.
+// Obtain permission before selling/redistributing in any medium.
+
+startingColor = new Array() // <-- Do not modify!
+endingColor = new Array() // <-- Do not modify!
+
+// YOU MAY MODIFY THE FOLLOWING:
+var yourImages = new Array("images/a1.gif","images/a2.gif","images/a3.gif","images/a4.gif","images/a5.gif","images/a5_1.gif","images/a6.gif","images/a7.gif","images/a8.gif","images/atext.gif","images/b1.gif","images/b2.gif","images/b3.gif","images/b4.gif","images/b5.gif","images/b6.gif","images/b7.gif","images/blank.gif","images/c1.gif","images/c11.gif","images/c2.gif","images/c2_1.gif","images/c3.gif","images/c5.gif","images/d1.gif","images/d10.gif","images/d11.gif","images/d12.gif","images/d2.gif","images/d3.gif","images/d3_1.gif","images/d4.gif","images/d5.gif","images/d6.gif","images/d8.gif","images/d9.gif","images/dd1.gif","images/dd1_1.gif","images/dd2.gif","images/dd2_1.gif","images/dd3.gif","images/dd3_1.gif","images/dd4.gif","images/dd4_1.gif","images/ff.gif","images/ffmousedown.gif","images/ffmouseover.gif","images/full.gif","images/fullon.gif","images/left.gif","images/left.jpg","images/lefton.gif","images/n1.gif","images/n1_1.gif","images/n2.gif","images/n2_1.gif","images/n3.gif","images/n3_1.gif","images/n4.gif","images/n4_1.gif","images/n5.gif","images/n5_1.gif","images/n6.gif","images/n6_1.gif","images/pause.gif","images/pausemousedown.gif","images/pausemouseover.gif","images/play.gif","images/playmousedown.gif","images/playmouseover.gif","images/real_b.gif","images/real_b_left.gif","images/real_b_right.gif","images/rew.gif","images/rewmousedown.gif","images/rewmouseover.gif","images/right.gif","images/right.jpg","images/righton.gif","images/scroll-btn.gif","images/scroll.gif","images/scroll.jpg","images/scroll1.gif","images/stop.gif","images/stopmousedown.gif","images/stopmouseover.gif","images/time.gif","images/top.gif","images/video.gif","images/videoon.gif","images/voicedisable.gif","images/voiceenable.gif","images/volume-btn.gif","images/volume.gif") // Fill this array with the images you wish to preload
+//var locationAfterPreload = "contents.htm" // The script will redirect here when the preloading finishes *successfully*
+var locationAfterPreload =parent.location.href.substring(0,parent.location.href.length-9)+"contents.htm";
+var preloadbarWidth = 250 // The length of the preload bar. Should be greater than total amount of images you want to preload!
+var preloadbarHeight = 15 // The height of the gradient/preload bar
+var backgroundOfGradient = "#000000" // Default color while the preload bar is "filling up"
+
+// Color the preloadbar is starting with - enter 1st, 3rd and 5th numbers/letters of color code
+startingColor[0] = "c" 
+startingColor[1] = "f"
+startingColor[2] = "f"
+
+// Color the preloadbar is going to end up with - enter the 1st, 3rd and 5th numbers/letters of color code
+endingColor[0] = "c"
+endingColor[1] = "0"
+endingColor[2] = "0"
+
+// FOR TROUBLESHOOTING:
+var gap = 5 // PLAY AROUND WITH THIS SETTING IF YOU GET A JAVASCRIPT ERROR!!! 2 is the minumum value!!!
+
+
+// DO NOT MODIFY ANYTHING BEYOND THIS POINT!!!
+
+if (!document.all) location.replace(locationAfterPreload)
+var a = 10, b = 11, c = 12, d = 13, e = 14, f=15, i, j, ones = new Array(), sixteens = new Array(), diff = new Array();
+var convert = new Array("0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"), imgLen = yourImages.length;
+var loaded = new Array(), preImages = new Array(), currCount = 0, pending = 0, h = 0, hilite = new Array(), cover = new Array();
+var num = Math.floor(preloadbarWidth/gap);
+num=100;
+for (i = 0; i < 3; i++) {
+	startingColor[i] = startingColor[i].toLowerCase();
+	endingColor[i] = endingColor[i].toLowerCase();
+	startingColor[i] = eval(startingColor[i]);
+	endingColor[i] = eval(endingColor[i]);
+	diff[i] = (endingColor[i]-startingColor[i])/num;
+	ones[i] = Math.floor(diff[i]);
+	sixteens[i] = Math.round((diff[i] - ones[i])*15);
+}
+endingColor[0] = 0;
+endingColor[1] = 0;
+endingColor[2] = 0;
+i = 0, j = 0;
+while (i <= num) {
+	hilite[i] = "#";
+	while (j < 3) {
+		hilite[i] += convert[startingColor[j]];
+		hilite[i] += convert[endingColor[j]];
+		startingColor[j] += ones[j];
+		endingColor[j] += sixteens[j];
+		if (endingColor[j] > 15) {
+			endingColor[j] -= 15;
+			startingColor[j]++;
+		}
+		j++;
+	}
+	j = 0;
+	i++;
+}
+function loadImages() {
+	for (i = 0; i < imgLen; i++) {
+		preImages[i] = new Image();
+		preImages[i].src = "../"+yourImages[i];
+		loaded[i] = 0;
+		cover[i] = Math.floor(num/imgLen)*(i+1)
+	}
+	cover[cover.length-1] += num%imgLen
+	checkLoad();
+}
+function checkLoad() {
+	if (pending) { changeto(); return }
+	if (currCount == imgLen) { location.replace(locationAfterPreload); return }
+	for (i = 0; i < imgLen; i++) {
+		if (!loaded[i] && preImages[i].complete) {
+			loaded[i] = 1; pending++; currCount++;
+			checkLoad();
+			return;
+		}
+	}
+	setTimeout("checkLoad()",10);
+}
+function changeto() {
+	if (h+1 > cover[currCount-1]) {
+		var percent = Math.round(100/imgLen)*currCount;
+		eval("document.all.cell" + (currCount+1) + ".style.backgroundColor = hilite[currCount]");
+		if (percent > 100) while (percent != 100) percent--;
+		if (currCount == imgLen && percent < 100) percent = 100;
+		defaultStatus = "一共" + imgLen  + " 个文件，正在装载第" + currCount+ " 个文件 [" + percent + "%].";
+		if (percent==100) defaultStatus="业精于勤，荒于嬉。";
+		mystatus.innerHTML=defaultStatus;
+		pending--;
+		checkLoad();
+		return;
+	}
+	eval("document.all.cell" + (h+1) + ".style.backgroundColor = hilite[h]");;
+	h++;
+	setTimeout("changeto()",1);
+}
+defaultStatus = "Loaded 0 out of " + imgLen + " images [0%]."
+// end hiding -->
+</script>
+</head>
+<body>
+<center>
+欢迎使用网梯多媒体远程教育课件。
+<font face="Verdana, Arial, Helvetica" size="2"><center>文件装载中... 请稍候...</center>
+<div id="mystatus"> </div>
+<script language="JavaScript1.2">
+<!-- beging hiding
+document.write('<table border="0" cellpadding="0" cellspacing="0" width="' + preloadbarWidth + '"><tr height="' + preloadbarHeight + '" bgcolor="' + backgroundOfGradient + '">');
+for (i = 0; i < num; i++) {
+	document.write('<td width="' + gap + '" id="cell' + (i+1) + '"></td>');
+}
+document.write('</tr></table>');
+document.write('<p><a href="javascript:location.replace(locationAfterPreload)">直接进入</a> &nbsp;| &nbsp;</p></font>')
+loadImages();
+// end hiding -->
+</script>
+
+</center>
+</body>
+</html>

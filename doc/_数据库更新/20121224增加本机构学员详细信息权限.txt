@@ -1,0 +1,1 @@
+insert into pe_priority(id,name,fk_pri_cat_id,namespace,action,method)values('ff8080813aeeac87013af3b43c3e01b5','本机构学员详细信息','40288ccf3acf22eb013acf7293f80019','/entity/basic','peDetail','*')

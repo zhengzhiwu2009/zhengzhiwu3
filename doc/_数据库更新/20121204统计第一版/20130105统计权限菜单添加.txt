@@ -1,0 +1,34 @@
+insert into pe_pri_category(id,name,fk_parent_id,code,path,flag_left_menu)values('11003002','课程发布','11003','11003002','','1');
+insert into pe_pri_category(id,name,fk_parent_id,code,path,flag_left_menu)values('11003002001','课程发布概述','11003002','11003002001','/birt/zqyxh/REPORT_REL.jsp','1');
+insert into pe_pri_category(id,name,fk_parent_id,code,path,flag_left_menu)values('11003001','课程统计概述','11003','11003001','/birt/zqyxh/REPORT_COURSE.jsp','1');
+insert into pe_pri_category(id,name,fk_parent_id,code,path,flag_left_menu)values('11003002002','年度新发课程','11003002','11003002002','/birt/zqyxh/REPORT_REL_NEW_TYP.jsp','1');
+--insert into pe_pri_category(id,name,fk_parent_id,code,path,flag_left_menu)values('11003002002001','按性质分类','11003002002','11003002002001','/birt/zqyxh/REPORT_REL_NEW_TYP.jsp','0');
+--insert into pe_pri_category(id,name,fk_parent_id,code,path,flag_left_menu)values('11003002002002','按学时分类','11003002002','11003002002002','/birt/zqyxh/REPORT_REL_NEW_TIM.jsp','0');
+insert into PE_PRI_CATEGORY (ID, NAME, FK_PARENT_ID, CODE, PATH, FLAG_LEFT_MENU)
+values ('11003002004', '课程明细查询', '11003002', '11003002004', '/birt/zqyxh/REPORT_REL_DETAIL.jsp', '1');
+
+insert into PE_PRIORITY (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288acf3c1d3df0013c1d6b5efc0017', '课程明细查询_*', '11003002004', '/entity/statistics', 'prBzzStatistics', '*');
+insert into pe_pri_category(id,name,fk_parent_id,code,path,flag_left_menu)values('11003003','学习及测验','11003','11003003','','1');
+insert into pe_pri_category(id,name,fk_parent_id,code,path,flag_left_menu)values('11003003001','学习及测验概述','11003003','11003003001','/birt/zqyxh/REPORT_LNT.jsp','1');
+insert into pe_pri_category(id,name,fk_parent_id,code,path,flag_left_menu)values('11003003002','学习及测验明细','11003003','11003003002','/birt/zqyxh/REPORT_LNT_YEAR.jsp','1');
+insert into pe_pri_category(id,name,fk_parent_id,code,path,flag_left_menu)values('11003003003','报名情况年度比较','11003003','11003003003','/birt/zqyxh/REPORT_LNT_ENT.jsp','1');
+
+
+
+
+
+
+
+insert into pe_priority(id,name,fk_pri_cat_id,namespace,action,method)values('4028937b384132ff01384142ce790005','课程发布概述_*','11003002001','/entity/statistics','prBzzStatistics','*');
+insert into pe_priority(id,name,fk_pri_cat_id,namespace,action,method)values('4028937b384132ff01384142ce790006','课程发布_*','11003002','/entity/statistics','prBzzStatistics','*');
+insert into pe_priority(id,name,fk_pri_cat_id,namespace,action,method)values('4028937b384132ff01384142ce790007','课程统计概述_*','11003001','/entity/statistics','prBzzStatistics','*');
+insert into pe_priority(id,name,fk_pri_cat_id,namespace,action,method)values('4028937b384132ff01384142ce790008','年度新发课程_*','11003002002','/entity/statistics','prBzzStatistics','*');
+--insert into pe_priority(id,name,fk_pri_cat_id,namespace,action,method)values('4028937b384132ff01384142ce790009','新发按性质','11003002002001','/entity/statistics','prBzzStatistics','*');
+--insert into pe_priority(id,name,fk_pri_cat_id,namespace,action,method)values('4028937b384132ff01384142ce79000a','新发按学时','11003002002002','/entity/statistics','prBzzStatistics','*');
+--insert into pe_priority(id,name,fk_pri_cat_id,namespace,action,method)values('4028937b384132ff01384142ce79000b','年度在线课程_*','11003002002','/entity/statistics','prBzzStatistics','*');
+
+insert into pe_priority(id,name,fk_pri_cat_id,namespace,action,method)values('4028937b384132ff01384142ce79000c','学习及测验概述_*','11003003001','/entity/statistics','prBzzStatistics','*');
+insert into pe_priority(id,name,fk_pri_cat_id,namespace,action,method)values('4028937b384132ff01384142ce79000d','学习及测验_*','11003003','/entity/statistics','prBzzStatistics','*');
+insert into pe_priority(id,name,fk_pri_cat_id,namespace,action,method)values('4028937b384132ff01384142ce79000e','学习及测验明细_*','11003003002','/entity/statistics','prBzzStatistics','*');
+insert into pe_priority(id,name,fk_pri_cat_id,namespace,action,method)values('4028937b384132ff01384142ce790010','报名情况年度比较_*','11003003003','/entity/statistics','prBzzStatistics','*');

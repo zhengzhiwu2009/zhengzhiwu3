@@ -1,0 +1,11 @@
+
+{totalcount:1,root:[
+	       {year:'2012',dept_create:9,dept_sum:'248', dept_persent:'<font color="red">↑3.27%</font>', user_create:'53,260',user_sum:'296,634',user_persent:'<font color="red">↑21.88%</font>',
+	       		extraInfo:{dept_create:['上半年-5','下半年-4']}
+	       },
+	       {year:'2011',dept_create:18,dept_sum:'275',dept_persent:'<font color="red">↑7.00%</font>', user_create:'78,728',user_sum:'243,374',user_persent:'<font color="red">↑47.82%</font>'},
+	       {year:'2010',dept_create:27,dept_sum:'257',dept_persent:'<font color="red">↑11.74%</font>', user_create:'59,913',user_sum:'164,646',user_persent:'<font color="red">↑57.21%</font>'},
+	       {year:'2009',dept_create:67,dept_sum:'230',dept_persent:'<font color="red">↑41.10%</font>', user_create:'32,381',user_sum:'104,733',user_persent:'<font color="red">↑44.75%</font>'},
+	       {year:'2008',dept_create:163,dept_sum:'163',dept_persent:'--',user_create:'72,352',user_sum:'72,352',user_persent:'--'}
+	   ]
+}

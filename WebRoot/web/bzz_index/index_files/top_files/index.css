@@ -1,0 +1,150 @@
+BODY {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; BACKGROUND-COLOR: #e0e0e0; TEXT-ALIGN: center
+}
+.down {
+	FONT-SIZE: 12px; COLOR: #838383; LINE-HEIGHT: 22px; FONT-FAMILY: simsun
+}
+.font_bq {
+	FONT-SIZE: 8px; MARGIN: 0px 5px 0px 10px; COLOR: #0765b6
+}
+.font {
+	FONT-SIZE: 12px; COLOR: #0765b6; LINE-HEIGHT: 22px
+}
+.font A {
+	FONT-SIZE: 12px; COLOR: #0765b6; LINE-HEIGHT: 22px; TEXT-DECORATION: none
+}
+.font A:link {
+	FONT-SIZE: 12px; COLOR: #0765b6; LINE-HEIGHT: 22px; TEXT-DECORATION: none
+}
+.font A:visited {
+	FONT-SIZE: 12px; COLOR: #0765b6; LINE-HEIGHT: 22px; TEXT-DECORATION: none
+}
+.font A:hover {
+	FONT-SIZE: 12px; COLOR: #d5880d; LINE-HEIGHT: 22px; TEXT-DECORATION: none
+}
+.dengl_font {
+	FONT-SIZE: 12px; COLOR: #000000; LINE-HEIGHT: 22px; LETTER-SPACING: 0.2em
+}
+.input {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; FONT-SIZE: 12px; BORDER-LEFT: #cccccc 1px solid; WIDTH: 152px; COLOR: #518ee4; BORDER-BOTTOM: #cccccc 1px solid; HEIGHT: 20px; BACKGROUND-COLOR: #ffffff
+}
+.xz_font {
+	FONT-SIZE: 12px; COLOR: #0a4374; LINE-HEIGHT: 22px
+}
+.xz_font A {
+	FONT-SIZE: 12px; COLOR: #0a4374; LINE-HEIGHT: 22px; TEXT-DECORATION: none
+}
+.xz_font A:link {
+	FONT-SIZE: 12px; COLOR: #0a4374; LINE-HEIGHT: 22px; TEXT-DECORATION: none
+}
+.xz_font A:visited {
+	FONT-SIZE: 12px; COLOR: #0a4374; LINE-HEIGHT: 22px; TEXT-DECORATION: none
+}
+.xz_font A:hover {
+	FONT-SIZE: 12px; COLOR: #d5880d; LINE-HEIGHT: 22px; TEXT-DECORATION: none
+}
+.boder {
+	BORDER-RIGHT: #deecf9 2px solid; PADDING-RIGHT: 2px; BORDER-TOP: #deecf9 2px solid; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; BORDER-LEFT: #deecf9 2px solid; PADDING-TOP: 2px; BORDER-BOTTOM: #deecf9 2px solid
+}
+.new_font {
+	FONT-WEIGHT: bolder; FONT-SIZE: 12px; COLOR: #ff0000
+}
+.new_font01 {
+	FONT-SIZE: 12px; COLOR: #000000; HEIGHT: 25px
+}
+.new_font01 A {
+	FONT-SIZE: 12px; COLOR: #000000; TEXT-DECORATION: none
+}
+.new_font01 A:link {
+	FONT-SIZE: 12px; COLOR: #000000; TEXT-DECORATION: none
+}
+.new_font01 A:visited {
+	FONT-SIZE: 12px; COLOR: #000000; TEXT-DECORATION: none
+}
+.new_font01 A:hover {
+	FONT-SIZE: 12px; COLOR: #d90000; TEXT-DECORATION: none
+}
+.new_font01 IMG {
+	MARGIN: 0px 8px 0px 0px
+}
+.yxbzz {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 8px; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; COLOR: #000000; PADDING-TOP: 0px; BORDER-BOTTOM: #96a2ba 1px dashed; LETTER-SPACING: 0.3em; HEIGHT: 23px
+}
+.yxbzz A {
+	FONT-SIZE: 12px; COLOR: #000000; TEXT-DECORATION: none
+}
+.yxbzz A:link {
+	FONT-SIZE: 12px; COLOR: #000000; TEXT-DECORATION: none
+}
+.yxbzz A:visited {
+	FONT-SIZE: 12px; COLOR: #000000; TEXT-DECORATION: none
+}
+.yxbzz A:hover {
+	FONT-SIZE: 12px; COLOR: #d90000; TEXT-DECORATION: none
+}
+.yxbzz IMG {
+	MARGIN: 0px 5px 0px 0px
+}
+.kczs {
+	FONT-SIZE: 12px; COLOR: #000000; LINE-HEIGHT: 20px
+}
+.kczs02 {
+	FONT-SIZE: 12px; COLOR: #ff9000
+}
+.xywy {
+	PADDING-LEFT: 6px; FONT-SIZE: 12px; COLOR: #000000; LINE-HEIGHT: 20px; HEIGHT: 25px
+}
+.xywy A {
+	FONT-SIZE: 12px; COLOR: #000000; TEXT-DECORATION: none
+}
+.xywy A:link {
+	FONT-SIZE: 12px; COLOR: #000000; TEXT-DECORATION: none
+}
+.xywy A:visited {
+	FONT-SIZE: 12px; COLOR: #000000; TEXT-DECORATION: none
+}
+.xywy A:hover {
+	FONT-SIZE: 12px; COLOR: #d90000; TEXT-DECORATION: none
+}
+.zw {
+	PADDING-RIGHT: 8px; PADDING-LEFT: 8px; FONT-SIZE: 12px; PADDING-BOTTOM: 2px; COLOR: #074981; TEXT-INDENT: 24px; LINE-HEIGHT: 19px; PADDING-TOP: 2px
+}
+.qhrw {
+	FONT-SIZE: 12px; MARGIN-LEFT: 8px; COLOR: #032e4f; LINE-HEIGHT: 24px; HEIGHT: 24px
+}
+.qhrw A {
+	FONT-SIZE: 12px; COLOR: #032e4f; TEXT-DECORATION: none
+}
+.qhrw A:link {
+	FONT-SIZE: 12px; COLOR: #032e4f; TEXT-DECORATION: none
+}
+.qhrw A:visited {
+	FONT-SIZE: 12px; COLOR: #032e4f; TEXT-DECORATION: none
+}
+.qhrw A:hover {
+	FONT-SIZE: 12px; COLOR: #990000; TEXT-DECORATION: none
+}
+.zzkt {
+	FONT-SIZE: 12px; COLOR: #000000; TEXT-DECORATION: none
+}
+.zzkt A {
+	FONT-SIZE: 12px; COLOR: #851d10; TEXT-DECORATION: none
+}
+.zzkt A:hover {
+	FONT-SIZE: 12px; COLOR: #ff0000; TEXT-DECORATION: none
+}
+.zxkt_info {
+	FONT-SIZE: 12px; COLOR: #000000; LINE-HEIGHT: 24px
+}
+.zxkt_info A {
+	FONT-SIZE: 12px; COLOR: #000000; TEXT-DECORATION: none
+}
+.zxkt_info A:hover {
+	FONT-SIZE: 12px; COLOR: #000000; TEXT-DECORATION: none
+}
+.fcolor1 {
+	PADDING-LEFT: 24px; COLOR: #b0660f
+}
+.new_bk {
+	BORDER-RIGHT: #deecf9 2px solid; BORDER-TOP: #deecf9 0px solid; BORDER-LEFT: #deecf9 2px solid; BORDER-BOTTOM: #deecf9 2px solid
+}

@@ -1,0 +1,13 @@
+update enum_const ec set ec.namespace='FlagCourseItemTypeBak',ec.note = '大纲分类_备份' where ec.namespace='FlagCourseItemType' and ec.code not in ('0','1','2');
+update enum_const ec set ec.code='0' where ec.id='40288acf3ac45c97013ac4619f750001';
+update enum_const ec set ec.code='1' where ec.id='40288acf3adf103d013adf5f19630020';
+update enum_const ec set ec.code='2' where ec.id='40288acf3ac44bb8013ac44e6f1b0001';
+update enum_const ec set ec.code='0',ec.name='证券经纪' where ec.id='52cce2fd23412cc201234a6a429d00a1';
+update enum_const ec set ec.code='1' where ec.id='40288acf3ae92a9c013ae9495a8a000a';
+update enum_const ec set ec.code='2' where ec.id='40288acf3ae92a9c013ae948cec40009';
+update enum_const ec set ec.code='3' where ec.id='40288acf3ae92a9c013ae946aa3f0007';
+update enum_const ec set ec.code='4',ec.name='创新业务' where ec.id='52cce2fd23412cc201234a6ad1ba00a2';
+update enum_const ec set ec.code='5' where ec.id='52cce2fd23412cc201234a6a429d00a5';
+update enum_const ec set ec.code='6' where ec.id='40288acf3ae92a9c013ae949dfc7000b';
+update enum_const ec set ec.code='7' where ec.id='52cce2fd23412cc201234a6b593900a3';
+update enum_const ec set ec.code='8' where ec.id='52cce2fd23412cc201234a6bd87b00a4';

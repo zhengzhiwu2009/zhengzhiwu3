@@ -1,0 +1,5 @@
+insert into PE_PRI_CATEGORY (ID, NAME, FK_PARENT_ID, CODE, PATH, FLAG_LEFT_MENU)
+values ('40288acf3c1d3df0013c1d5cdd6c0004', '年度在线课程', '11003002', '11003002003', '/birt/zqyxh/REPORT_REL_ONL_BUS.jsp', '1');
+
+insert into PE_PRIORITY (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288acf3c1d3df0013c1d6b5efc0007', '年度在线课程_*', '40288acf3c1d3df0013c1d5cdd6c0004', '/entity/statistics', 'prBzzStatistics', '*');

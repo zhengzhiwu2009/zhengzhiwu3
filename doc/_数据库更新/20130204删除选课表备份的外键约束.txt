@@ -1,0 +1,7 @@
+-- Drop primary, unique and foreign key constraints 
+alter table ELECTIVE_HISTORY
+  drop constraint FK_HISTORY_2;
+alter table ELECTIVE_HISTORY
+  drop constraint FK_OPENCOURSE_HISTORY;
+alter table ELECTIVE_HISTORY
+  drop constraint FK_PE_PERIOD_HISTORY;

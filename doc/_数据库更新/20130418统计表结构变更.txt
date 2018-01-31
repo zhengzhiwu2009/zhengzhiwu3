@@ -1,0 +1,18 @@
+-- Alter table 
+alter table STATISTIC_COURSES
+  storage
+  (
+    next 1
+  )
+;
+-- Add/modify columns 
+alter table STATISTIC_COURSES add test_begin_counts NUMBER(9);
+-- Add comments to the columns 
+comment on column STATISTIC_COURSES.test_begin_counts
+  is '开始测验人数';
+  
+  
+  
+  
+insert into pe_priority (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('402880a92113a9b0012113e614fd0506x', '执行统计_*', '11001', '/entity/basic', 'statistic', '*');

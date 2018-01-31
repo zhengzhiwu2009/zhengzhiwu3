@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<body>
+	<h2>
+		个人用户登录
+	</h2>
+	<div class="login">
+		<form name="form1" method=post id="d1" action=""
+			onkeydown="check1(event)">
+			<div class="lgt" style="text-align: left;">
+
+				<div>
+					账
+					<span style="border: 1px; padding-right: 14px;"></span>号:
+					<input
+						style="width: 100px; height: 16px; border: 1px solid #8f8f8f;"
+						name="loginId" type="text" id="id">
+				</div>
+				<div>
+					密
+					<span style="border: 1px; padding-right: 14px;"></span>码:
+					<input
+						style="width: 100px; height: 16px; border: 1px solid #8f8f8f; margin-top: 8px;"
+						name="passwd" type="password" id="pass">
+				</div>
+				<input type="hidden" name="loginType" value="2">
+				<div style="height: 20px; width: 155px;">
+					验证码:
+					<input
+						style="margin-left: 0px; width: 47px; height: 16px; border: 1px solid #8f8f8f; margin-top: 8px;"
+						id="authCode0" name="authCode0" type="text" class="input">
+					<img src="/sso/authimg?flag=0"
+						style="padding-top: 3px; width: 46px; height: 18px;"
+						align="absmiddle"
+						onclick="this.src=this.src+'&'+(new Date()).getTime()" />
+				</div>
+			</div>
+			<div class="dl_btn">
+				<a href="###" id="log1">登录</a>
+				<div>
+
+				</div>
+			</div>
+		</form>
+
+		<div style="clear: both; height: 0px;"></div>
+		<div class="lgb" style="margin-top: 13px;">
+			<a href="###" id="reg1">注册</a>
+			<a href="javascript:alert('功能未开放');">演示</a><a href="/help/studoc.doc"
+				title='个人用户使用手册 '>下载</a>
+		</div>
+		<p>
+			<a href="###" id="fgtStudentAccount">忘记账号？</a>
+			<a href="###" id="fgtStudentPwd">忘记密码？</a>
+		</p>
+	</div>
+
+	<h2>
+		集体用户登录
+	</h2>
+	<div class="login">
+		<div class="lgt" style="text-align: left;">
+			<form name="form2" method=post action="" id="d2"
+				onkeydown="check2(event)">
+				<div>
+					账
+					<span style="border: 1px; padding-right: 14px;"></span>号:
+					<input
+						style="width: 100px; height: 16px; border: 1px solid #8f8f8f;"
+						name="loginId" type="text" id="id1">
+				</div>
+				<div>
+					密
+					<span style="border: 1px; padding-right: 14px;"></span>码:
+					<input
+						style="width: 100px; height: 16px; border: 1px solid #8f8f8f; margin-top: 8px;"
+						name="passwd" type="password" id="pass1">
+				</div>
+				<input type="hidden" name="loginType" value="0">
+				<div style="height: 20px; width: 155px;">
+					验证码:
+					<input
+						style="margin-left: 0px; width: 47px; height: 16px; border: 1px solid #8f8f8f; margin-top: 8px;"
+						id="authCode" name="authCode" type="text" class="input">
+					<img src="/sso/authimg"
+						style="padding-top: 3px; width: 46px; height: 18px;"
+						align="absmiddle"
+						onclick="this.src=this.src+'?'+(new Date()).getTime()" />
+				</div>
+		</form>
+		</div>
+		<div class="dl_btn">
+			<a href="###" id="log2">登录</a>
+		</div>
+		<div style="clear: both; height: 0px;"></div>
+		<div class="lgb" style="margin-top: 13px;">
+			<a href="javascript:alert('功能未开放');" style="margin-left: 30px;">演示</a><a
+				href="/help/coldoc.doc" title='集体管理员使用手册'>下载</a>
+		</div>
+		<p>
+			<a href="###" id="fgtGroupAccount">忘记账号？</a>
+			<a href="###" id="fgtGroupPwd">忘记密码？</a>
+		</p>
+	</div>
+</body>
+	<script>
+ function check1(e){
+	var eve=window.event||e;
+  if (eve.keyCode == 13 ){
+ // alert("qwert");
+	  if(document.getElementById("id").value==""){
+		alert("用户账户不能为空");
+		return false;
+		}
+		 if(document.getElementById("pass").value==""){
+		alert("用户密码不能为空");
+		return false;
+		}
+	if(document.getElementById("authCode0").value==""){
+		alert("验证码不能为空!");
+		return false;
+	}
+	 document.form1.action="/sso/login_login.action";
+	document.form1.submit();
+  
+  }   
+}
+ function check2(e){
+ 	var eve=window.event||e;
+  if (eve.keyCode == 13 ){
+  //alert(event.keyCode);
+		  if(document.getElementById("id1").value==""){
+			alert("用户账户不能为空");
+			return false;
+		} if(document.getElementById("pass1").value==""){
+			alert("用户密码不能为空");
+			return false;
+			}
+	if(document.getElementById("authCode").length<1){
+		alert("验证码不能为空!");
+		return false;
+	}
+	 document.form2.action="/sso/login_login.action";
+	document.form2.submit();
+  }   
+  }
+  $("#log1").click(function(){
+   if($("#id").val()==''){
+    alert("账户不能为空");
+    return;
+   }
+   if($("#pass").val()==''){
+    alert("密码不能为空");
+    return;
+   }
+   if($("#authCode0").val()==''){
+    alert("验证码不能为空");
+    return;
+   }
+   form1.action="/sso/login_login.action";
+   form1.submit();
+  }
+  )
+  $("#log2").click(function(){
+   if($("#id1").val()==''){
+    alert("账户不能为空");
+    return;
+   }
+   if($("#pass1").val()==''){
+    alert("密码不能为空");
+    return;
+   }
+   if($("#authCode").val()==''){
+    alert("验证码不能为空");
+    return;
+   }
+   form2.action="/sso/login_login.action";
+   form2.submit();
+  }
+  )
+ 
+ $("#reg1").click(function(){
+   form1.action="/sso/regist_registUser.action";
+   form1.submit();
+  })
+  
+ $("#fgtStudentAccount").click(function(){
+   form1.action="/sso/regist_findUserAccount.action";
+   form1.submit();
+  })
+  
+ $("#fgtGroupAccount").click(function(){
+   form2.action="/sso/regist_findGroupUserAccount.action";
+   form2.submit();
+  })
+  
+  $("#fgtStudentPwd").click(function(){
+   form1.action="/password/getPsw_identify.action";
+   form1.submit();
+  })
+  
+ $("#fgtGroupPwd").click(function(){
+   form2.action="/password/getPsw_identify.action";
+   form2.submit();
+  })
+  	
+  </script>
+</html>

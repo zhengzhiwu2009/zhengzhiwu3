@@ -1,0 +1,17 @@
+hzph 清空集体管理员步骤 其中可能有的关联表无数据所以不全
+
+delete ASSIGN_RECORD a where a.fk_user_id in（）；
+delete PE_BZZ_REFUND_INFO p where p.fk_order_id in（）；--PE_BZZ_ORDER_INFO(ID) 
+delete PE_BZZ_INVOICE_INFO p where p.FK_ORDER_ID in（）；--PE_BZZ_ORDER_INFO(ID) 
+delete stu_batch s where s.fk_order_id in（）；--PE_BZZ_ORDER_INFO(ID) 
+delete  PE_BZZ_ORDER_INFO p where p.CREATE_USER  in (）；--CREATE_USER=sso_user(ID)
+delete sso_user s where s.id in();
+delete pe_enterprise_manager p where  p.FK_SSO_USER_ID in();
+
+
+
+--根据表明 查询关联主键是哪个表的外键 --蔡磊提供
+select * from user_constraints where
+R_CONSTRAINT_NAME in (select constraint_name from user_constraints where table_name = '表名一定要大写')
+
+

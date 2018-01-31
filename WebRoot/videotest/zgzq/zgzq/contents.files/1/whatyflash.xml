@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="gb2312"?>
+<course>
+<Properties MovieScale="20" numBg="5" width="1280" height="1024">教师屏幕</Properties>
+<SWFFile>
+<SWF file="section1.swf" totalframe="302" framerate="10" >片断1</SWF>
+<SWF file="section2.swf" totalframe="1139" framerate="10" >片断2</SWF>
+</SWFFile>
+<TimeLine>
+<item time="135">来自网页的消息</item>
+<item time="137">中国证券业协会远程培训平台 - Windows Internet Explorer</item>
+</TimeLine>
+</course>

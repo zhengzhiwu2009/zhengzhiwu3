@@ -1,0 +1,2 @@
+insert into enum_const (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('40288acf3d62b37f013d62b9aeec0003', '未申请', '2', 'FlagCheckStatus', '1', to_date('13-03-2013', 'dd-mm-yyyy'), '课程审核状态');

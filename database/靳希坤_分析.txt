@@ -1,0 +1,16 @@
+﻿应该加非空约束外键和必要字段
+-----------------------------------------------------------------------------------------------
+招生报名信息表PE_REC_STUDENT	
+	FK_REC_MAJOR_SITE_ID	FK_REC_CHANNEL	FLAG_NOEXAM	FLAG_PUBLISH	FLAG_TEACHER
+学生表PE_STUDENT
+	FK_SITE_ID	FK_MAJOR_ID	FK_GRADE_ID	FK_EDUTYPE_ID	FK_FEE_LEVEL_ID
+	FK_STUDENT_INFO_ID	FLAG_STUDENT_STATUS	FLAG_FEE_REDUCE	FLAG_ADVANCED
+	FLAG_DISOBEY	FLAG_GRADUATE_APPLY	FLAG_DEGREE_APPLY
+	一个年级下同身份证的学生只有一个？
+转学习中心表PR_STU_CHANGE_SITE	学生转专业表PR_STU_CHANGE_MAJOR	学生转层次表PR_STU_CHANGE_EDUTYPE
+还有学籍异动表（开除学籍 退学）PR_STU_CHANGE_SCHOOL等所有的外键和日期
+
+学习中心上交费用批次
+	总站是否有添加学生交费的权限和上报交费批次的权限呢？
+	学生交消费明细PR_FEE_DETAIL除了备注其他都不能为空
+	

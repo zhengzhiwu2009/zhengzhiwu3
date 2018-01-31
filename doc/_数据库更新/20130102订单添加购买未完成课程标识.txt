@@ -1,0 +1,13 @@
+-- Add/modify columns 
+alter table PE_BZZ_ORDER_INFO add FLAG_ORDER_INCOMPLETE VARCHAR2(50);
+-- Add comments to the columns 
+comment on column PE_BZZ_ORDER_INFO.FLAG_ORDER_INCOMPLETE
+  is '订单是否为购买未完成课程';
+
+  
+  
+  
+  insert into ENUM_CONST (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('40288acf3bf97689013bf98335df000a', '是', '1', 'FlagOrderIsIncomplete', '0', to_date('02-01-2013', 'dd-mm-yyyy'), '订单是否为继续购买未通过课程');
+insert into ENUM_CONST (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('40288acf3bf97689013bf983afc2000b', '否', '0', 'FlagOrderIsIncomplete', '1', to_date('02-01-2013', 'dd-mm-yyyy'), '订单是否为继续购买为通过课程');

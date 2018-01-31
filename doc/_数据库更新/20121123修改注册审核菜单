@@ -1,0 +1,2 @@
+update pe_pri_category set name='非从业注册审核' ,path='/sso/regist.action' where code='02004';
+update pe_priority set name='非从业注册审核_*' where fk_pri_cat_id='40288ccf3aaf4b0c013ab00af90c0013';  

@@ -1,0 +1,38 @@
+	{totalcount:1,root:[{
+	     rid : 423,
+	     rolename : "管理员",
+	     sex:"女",
+	     unit:"sjdjja",
+	     address:"jjdsjjfs",
+	     parents:"xiaoming",
+	     extraInfo:{sex:['jean','jack'],address:['海淀区','知春路','盈都大厦']}
+	    }, {
+	     rid : 434,
+	     rolename : "库管",
+	     sex:"男",
+	     unit:"sjdjja",
+	     address:"jjdsjjfs",
+	     parents:"xiaoming"
+	    }, {
+	     rid : 546,
+	     rolename : "采样员",
+	     sex:"女",
+	     unit:"sjdjja",
+	     address:"jjdsjjfs",
+	     parents:"xiaoming"
+	    }, {
+	     rid : 778,
+	     rolename : "注射员",
+	     sex:"男",
+	     unit:"sjdjja",
+	     address:"jjdsjjfs",
+	     parents:"xiaoming"
+	    }, {
+	     rid : 443,
+	     rolename : "化验员",
+	     sex:"女",
+	     unit:"sjdjja",
+	     address:"jjdsjjfs",
+	     parents:"xiaoming"
+	   }]
+   }

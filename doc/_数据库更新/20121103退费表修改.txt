@@ -1,0 +1,3 @@
+退费表修改，添加退费拒绝缘由PE_BZZ_REFUND_INFO
+添加字段refause_reason
+alter table PE_BZZ_REFUND_INFO add refause_reason VARCHAR2(2000);

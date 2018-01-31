@@ -1,0 +1,2 @@
+insert into enum_const(id,name,code,namespace,is_default,create_date,note)values('40288ccf3ac50e95013ac5148fde0003','否','0','IsEmployee','1',sysdate,'是否是从业人员');
+insert into enum_const(id,name,code,namespace,is_default,create_date,note)values('40288ccf3ac50e95013ac51504430004','是','1','IsEmployee','0',sysdate,'是否是从业人员');

@@ -1,0 +1,15 @@
+-- Add/modify columns 
+alter table PE_BZZ_TCH_COURSE add FLAG_IS_EXAM VARCHAR2(50);
+-- Add comments to the columns 
+comment on column PE_BZZ_TCH_COURSE.FLAG_IS_EXAM
+  is '课程是可以否考试';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table PE_BZZ_TCH_COURSE
+  add constraint FK_flag_is_exam foreign key (FLAG_IS_EXAM)
+  references enum_const (ID);
+  
+  
+  insert into ENUM_CONST (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('40288acf3ae01103013ae012940b0001', '是', '1', 'FlagIsExam', '0', to_date('08-11-2012', 'dd-mm-yyyy'), '课程是否可以考试');
+insert into ENUM_CONST (ID, NAME, CODE, NAMESPACE, IS_DEFAULT, CREATE_DATE, NOTE)
+values ('40288acf3ae01103013ae0130d030002', '否', '0', 'FlagIsExam', '1', to_date('08-11-2012', 'dd-mm-yyyy'), '课程是否可以考试');

@@ -1,0 +1,8 @@
+-- Add/modify columns 
+alter table PE_BZZ_STUDENT add Com_ten_hours_date date;
+alter table PE_BZZ_STUDENT add Com_fifteen_hours_date date;
+-- Add comments to the columns 
+comment on column PE_BZZ_STUDENT.Com_ten_hours_date
+  is '完成十个学时时间（统计时添加）';
+comment on column PE_BZZ_STUDENT.Com_fifteen_hours_date
+  is '完成十五个学时时间（统计时添加）';

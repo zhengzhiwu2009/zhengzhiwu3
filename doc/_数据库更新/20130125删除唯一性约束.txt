@@ -1,0 +1,3 @@
+-- Drop primary, unique and foreign key constraints 
+alter table PE_BZZ_TCH_COURSEWARE
+  drop constraint AK_KEY_1_PE_BZZ_TCH_5 cascade;

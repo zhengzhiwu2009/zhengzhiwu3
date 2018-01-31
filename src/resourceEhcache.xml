@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ehcache name="ehcache-xmeans">
+
+  <defaultCache
+    maxElementsInMemory="10000"
+    eternal="false"
+    timeToIdleSeconds="300"
+    timeToLiveSeconds="600"
+    overflowToDisk="false"
+    diskPersistent="false"
+    memoryStoreEvictionPolicy="LRU">
+   <!-- 
+   <terracotta concurrency="8"/>
+    --> 
+  </defaultCache>
+
+  <cache name="defaultCacheConfiguration"
+    maxElementsInMemory="10000"
+    eternal="false"
+    timeToIdleSeconds="300"
+    timeToLiveSeconds="600"
+    overflowToDisk="false"
+    diskPersistent="false"
+    memoryStoreEvictionPolicy="LRU">
+   <!-- 
+   <terracotta concurrency="8"/>
+    --> 
+  </cache>
+  
+  <cache name="WhatyServicesCache"
+    maxElementsInMemory="10000"
+    eternal="true"
+    timeToIdleSeconds="200"
+    timeToLiveSeconds="300"
+    overflowToDisk="false"
+    diskPersistent="false"
+    memoryStoreEvictionPolicy="LRU">
+   <!-- 
+   <terracotta concurrency="8"/>
+    --> 
+  </cache>
+  
+</ehcache>

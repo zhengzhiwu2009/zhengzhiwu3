@@ -1,0 +1,8 @@
+-- Add/modify columns 
+alter table PE_BZZ_INVOICE_INFO add province VARCHAR2(50);
+alter table PE_BZZ_INVOICE_INFO add city VARCHAR2(50);
+-- Add comments to the columns 
+comment on column PE_BZZ_INVOICE_INFO.province
+  is '邮寄地址省份';
+comment on column PE_BZZ_INVOICE_INFO.city
+  is '邮寄地址城市';

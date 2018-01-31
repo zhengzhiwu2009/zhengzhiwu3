@@ -1,0 +1,2 @@
+insert into pe_priority (ID, NAME, FK_PRI_CAT_ID, NAMESPACE, ACTION, METHOD)
+values ('40288afe3e308f50013e30a14f44000x', '审核课程浏览_预览', '40288afe3e308f50013e30a019300008', '/entity/teaching', 'peBzzCourseManager', 'review');

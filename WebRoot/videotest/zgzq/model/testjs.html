@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE> New Document </TITLE>
+<META NAME="Generator" CONTENT="EditPlus">
+<META NAME="Author" CONTENT="">
+<META NAME="Keywords" CONTENT="">
+<META NAME="Description" CONTENT="">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+</HEAD>
+
+<BODY>
+<span width = 500 height=500 id="testspan"></span>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+//document.getElementById("testspan").innerHTML = escape("网梯流媒体课件 - 北京网梯信息技术有限公司") + "<br />";
+//document.getElementById("testspan").innerHTML += escape("北京网梯信息技术有限公司");
+
+function Trim(strOrig){
+  var ret=strOrig;
+//    ret=ret.replace(/^\s+/,"");
+//    ret=ret.replace(/\s+$/,"");
+  return strOrig.replace(/^\s+[^\s]*\s+$/,"");
+}
+
+var strA="   AAA  中国 fa  ";
+var strB=Trim(strA);
+document.getElementById("testspan").innerText=Trim(strA);
+document.getElementById("testspan").innerText+="|";
+document.getElementById("testspan").innerText += strA;
+alert(strA.length+", "+strB.length);
+//-->
+</SCRIPT>
+
+
+
+</BODY>
+</HTML>

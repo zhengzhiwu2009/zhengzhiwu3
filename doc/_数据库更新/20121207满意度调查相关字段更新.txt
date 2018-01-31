@@ -1,0 +1,17 @@
+
+-- Add/modify columns 
+alter table pe_vote_paper add type varchar2(50);
+alter table pe_vote_paper add createuser varchar2(50);
+alter table pe_vote_paper add courseId varchar2(50);
+alter table pr_vote_record add stuid varchar2(50);
+-- Add/modify columns 
+alter table PR_VOTE_RECORD add ssoid VARCHAR2(50);
+-- Add comments to the columns 
+comment on column pe_vote_paper.type
+  is 'Ͷ投票类型';
+comment on column pe_vote_paper.createuser
+  is '创建者';
+comment on column pe_vote_paper.courseId
+  is '关联课程';  
+comment on column pr_vote_record.stuid
+  is '记录投票的学生';  

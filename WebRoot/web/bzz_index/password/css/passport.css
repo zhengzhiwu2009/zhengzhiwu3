@@ -1,0 +1,39 @@
+.passport {
+	MARGIN: 0px auto; WIDTH: 750px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; HEIGHT: 35px; CLEAR: both; FONT-SIZE: 12px
+}
+.passport .s1 {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; FLOAT: left; PADDING-TOP: 11px
+}
+.passport .s2 {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; FLOAT: left; PADDING-TOP: 7px
+}
+.passport .s2 INPUT {
+	BORDER-BOTTOM: #000 1px solid; BORDER-LEFT: #000 1px solid; WIDTH: 50px; FONT-SIZE: 12px; BORDER-TOP: #000 1px solid; BORDER-RIGHT: #000 1px solid
+}
+.passport .s2 SELECT {
+	WIDTH: 88px; FONT-SIZE: 12px
+}
+.passport .s3 {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 2px; PADDING-RIGHT: 0px; FLOAT: left; PADDING-TOP: 7px
+}
+.passport TABLE TD TABLE TD {
+	PADDING-BOTTOM: 3px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; PADDING-TOP: 3px
+}
+.domainSelector {
+	LINE-HEIGHT: normal; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 12px; PADDING-TOP: 0px
+}
+.domainSelector * {
+	LINE-HEIGHT: normal; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 12px; PADDING-TOP: 0px
+}
+.domainSelector {
+	BORDER-BOTTOM: #c6cfce 2px solid; BORDER-LEFT: #c6cfce 2px solid; WIDTH: 170px; HEIGHT: 225px; MARGIN-LEFT: 1px; BORDER-TOP: #c6cfce 2px solid; BORDER-RIGHT: #c6cfce 2px solid
+}
+.domainSelector .title {
+	BACKGROUND-COLOR: #e9e9e9; TEXT-INDENT: 6px; HEIGHT: 15px; PADDING-TOP: 4px
+}
+.domainSelector TD {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.domainSelector TABLE TD TABLE TD {
+	PADDING-BOTTOM: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; WHITE-SPACE: nowrap; PADDING-TOP: 2px
+}

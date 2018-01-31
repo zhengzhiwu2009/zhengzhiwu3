@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd" >
+<struts>
+	<package name="entity.basic" extends="platform-default" namespace="/entity/basic">
+		<global-results>
+			<result name="grid">/test/grid.jsp</result>
+			<result name="json">/test/json.jsp</result>
+			<result name="gridjs">/test/gridjs.jsp</result>
+			<!-- <result name="excel">/test/export.jsp</result> -->
+			<result name="error">/test/error.jsp</result>
+			<result name="m_msg">/test/msg.jsp</result>
+			<result name="lee">/test/msg.jsp</result>
+			<result name="msg">/test/msg.jsp</result>
+			<result name="stu_msg">/test/msg.jsp</result>
+			<result name="interactionMsg">/test/interactionMsg.jsp</result>
+			<result name="input">/entity/manager/pub/turnToLogin.jsp</result>
+			<result name="tokenError">/error/tokenError.jsp</result>
+			<result name="paymentMsg">/entity/manager/payment_msg.jsp</result>
+		</global-results>
+		<action name="peSite_*" method="{1}" class="peSiteAction"></action>
+		<action name="peGrade_*" method="{1}" class="peGradeAction"></action>
+		<action name="peSemester_*" method="{1}" class="peSemesterAction"></action>
+		<action name="peMajor_*" method="{1}" class="peMajorAction"></action>
+		<action name="peEdutype_*" method="{1}" class="peEdutypeAction"></action>
+		<action name="peDetail_*" method="{1}" class="peDetailAction">
+			<result name="viewDetail">/entity/manager/Enterprise/penterprise_info.jsp</result>
+			<result name="viewPeDetail">/entity/manager/Enterprise/penterprise_info.jsp</result>
+			<result name="stuinfo">/entity/manager/studentStatus/studen_info.jsp</result>
+		</action>
+		<action name="peStuDetail_*" method="{1}" class="peStuDetailAction"></action>
+		<action name="pePubStuDetail_*" method="{1}" class="pePubStuDetailAction"></action>
+		<action name="pePubStuLearnDetail_*" method="{1}" class="pePubStuLearnDetailAction"></action>
+		<!-- 公司内训查询 Lzh -->
+		<action name="peInternalStuDetail_*" method="{1}" class="peInternalStuDetailAction"></action>
+		<action name="peInternalStuLearnDetail_*" method="{1}" class="peInternalStuLearnDetailAction"></action>
+		<!-- 公司内训报名Lzh -->
+		<action name="applyInternal_*" method="{1}" class="applyInternalAction">
+			<result name="message">/test/msg.jsp</result>
+			<result name="addstudent" type="redirect">/entity/basic/signStudentCourseInternal.action?typeflag=addstu&amp;courseId=${courseId}</result>
+		</action>
+		<!-- 问题建议  lzh -->
+		<action name="problemsManager_*" method="{1}" class="problemsManagerAction">
+			<result name="courseInfo">/entity/manager/basic/addreply.jsp</result>
+			<result name="addQuestionAdvice">/entity/manager/basic/addQuestionAdvice.jsp</result>
+			<result type="stream">
+				<param name="contentType">application/octet-stream</param>
+				<param name="inputName">inputStream</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="bufferSize">1024</param>
+			</result>
+		</action>
+		<action name="signStudentCourseInternal_*" method="{1}" class="signStudentCourseInternalAction"></action>
+		<action name="peBatchDetail_*" method="{1}" class="peBatchDetailAction">
+			<result name="viewDetail">/entity/manager/Enterprise/penterprise_info.jsp</result>
+			<result name="viewPeDetail">/entity/manager/Enterprise/penterprise_info.jsp</result>
+			<result name="stuinfo">/entity/manager/studentStatus/studen_info.jsp</result>
+		</action>
+		<action name="peSiteManager_*" method="{1}" class="peSiteManagerAction"></action>
+		<action name="siteManager_*" method="{1}" class="siteManagerAction"></action>
+		<action name="peEnterprise_*" method="{1}" class="peEnterpriseAction">
+			<param name="savePath">/incoming/Excel</param>
+			<result name="batch">/entity/manager/Enterprise/peEnterprise_batch_register.jsp</result>
+		</action>
+		<action name="peSubEnterprise_*" method="{1}" class="peSubEnterpriseAction">
+			<result name="setManagerFail">/entity/manager/Enterprise/penterprise_setManager_fail.jsp</result>
+			<result name="setManager">/entity/manager/Enterprise/penterprise_setManager.jsp</result>
+			<result name="addManagerSuccess">/entity/manager/Enterprise/penterprise_showManager.jsp</result>
+			<result name="viewDetail">/entity/manager/Enterprise/peSubenterprise_info.jsp</result>
+			<result name="combineFail">/entity/manager/Enterprise/penterprise_combineFail.jsp</result>
+			<result name="combineDesEntSelect">/entity/manager/Enterprise/combineDesEntSelect.jsp</result>
+			<result name="combineSuccess">/entity/manager/Enterprise/combineSuccess.jsp</result>
+			<result name="updateInfo">/entity/manager/Enterprise/peSubenterprise_update.jsp</result>
+			<result name="editInfo">/entity/manager/Enterprise/peSubenterpriseUpdate.jsp</result>
+		</action>
+		<action name="peBzzBatch_*" method="{1}" class="peBzzBatchAction">
+			<!-- Lee start 2013年12月31日 -->
+			<result name="toImpStudents">/entity/manager/Enterprise/impXlsStus.jsp</result>
+			<result name="toAddStudent">peBatchDetail.action?batchid=${id}&amp;method=${method}</result>
+			<result name="addCourseChoose">/entity/teaching/prBzzTchOpenCourseDetail.action?batchid=${id}&amp;method=${method}</result>
+			<result name="addCourseMust">/entity/teaching/prBzzTchOpenCourseDetail.action?batchid=${id}&amp;method=${method}</result>
+			<!-- <result name="m_msg">/test/msg.jsp</result> -->
+			<!-- Lee end -->
+		</action>
+		<!-- Lee start 在线直播 -->
+		<action name="sacLive_*" method="{1}" class="sacLiveAction">
+			<result name="setCourseImg">/entity/bzz-students/setCourseImg.jsp</result>
+			<result name="setTeaImg">/entity/bzz-students/setTeaImg.jsp</result>
+			<result name="setSugg">sacLiveSugg.action?tableName=SAC_LIVE</result>
+			<result name="sacLiveView">/entity/manager/basic/sacLiveView.jsp</result>
+		</action>
+		<action name="sacLiveDetail_*" method="{1}" class="sacLiveDetailAction">
+			<result name="showDetail">/entity/manager/basic/showDetail.jsp</result>
+		</action>
+		<action name="sacLiveSugg_*" method="{1}" class="sacLiveSuggAction"></action>
+		<action name="peBatchDetailEnter_*" method="{1}" class="peBatchDetailEnterAction">
+			<result name="viewDetail">/entity/manager/Enterprise/penterprise_info.jsp</result>
+			<result name="viewPeDetail">/entity/manager/Enterprise/penterprise_info.jsp</result>
+			<result name="stuinfo">/entity/manager/studentStatus/studen_info.jsp</result>
+		</action>
+		<action name="peBzzBatchEnter_*" method="{1}" class="peBzzBatchEnterAction">
+			<!-- Lee start 2013年12月31日 -->
+			<result name="toImpStudents">/entity/manager/Enterprise/impXlsEnterStus.jsp</result>
+			<result name="toAddStudent">peBatchDetail.action?batchid=${id}&amp;method=${method}</result>
+			<result name="addCourseChoose">/entity/teaching/prBzzTchOpenCourseDetail.action?batchid=${id}&amp;method=${method}</result>
+			<result name="addCourseMust">/entity/teaching/prBzzTchOpenCourseDetail.action?batchid=${id}&amp;method=${method}</result>
+			<!-- <result name="m_msg">/test/msg.jsp</result> -->
+			<!-- Lee end -->
+		</action>
+		<!-- Lee end -->	
+		<action name="peBzzStudent_*" method="{1}" class="peBzzStudentAction">
+			<param name="savePath">/incoming/Excel</param>
+			<result name="batch">/entity/manager/studentStatus/student_batch_register.jsp</result>
+			<result name="uploadStudent_result">/entity/manager/studentStatus/operate_result.jsp</result>
+			<result name="uploadImage">/entity/manager/basic/image_upload.jsp</result>
+			<result name="uploadImageRes">/entity/manager/basic/image_upload_res.jsp</result>
+			<result name="unConfirmPhoto">/entity/manager/studentStatus/photo.jsp</result>
+			<result name="toGroup">/entity/manager/studentStatus/student_group.jsp</result>
+			<result name="toCheckIn">/entity/manager/studentStatus/student_checkIn.jsp</result>
+			<result name="toUpload">/entity/manager/studentStatus/student_upload.jsp</result>
+			<result name="toExcelCheckIn">/entity/manager/studentStatus/excelCheck.jsp</result>
+			<result name="batchExcelGroup">/entity/manager/studentStatus/batchExcelGroup.jsp</result>
+			<result name="groupList">/entity/manager/studentStatus/modifyGroup.jsp</result>
+			<!-- Lee start 2014年9月20日11:11:48 协会端批量学员调入 -->
+			<result name="stuCheckId">/entity/manager/basic/stu_check_in.jsp</result>
+			<result name="studyRecord">/entity/manager/basic/studyRecord.jsp</result>
+			<!-- Lee end -->
+			<!-- Lee start 2014年9月20日14:24:02 协会端批量修改学员学习进度 -->
+			<result name="stuLearnStatus">/entity/manager/basic/stu_learn_status.jsp</result>
+			<!-- Lee end -->
+		</action>
+		<action name="peBzzStudentSub_*" method="{1}" class="peBzzStudentSubAction">
+			<param name="savePath">/incoming/Excel</param>
+			<result name="batch">/entity/manager/studentStatus/student_batch_register.jsp</result>
+			<result name="uploadStudent_result">/entity/manager/studentStatus/operate_result.jsp</result>
+			<result name="uploadImage">/entity/manager/basic/image_upload.jsp</result>
+			<result name="uploadImageRes">/entity/manager/basic/image_upload_res.jsp</result>
+			<result name="unConfirmPhoto">/entity/manager/studentStatus/photo.jsp</result>
+			<result name="toGroup">/entity/manager/studentStatus/student_group.jsp</result>
+			<result name="toCheckIn">/entity/manager/studentStatus/student_checkIn.jsp</result>
+			<result name="toUpload">/entity/manager/studentStatus/student_upload.jsp</result>
+			<result name="toExcelCheckIn">/entity/manager/studentStatus/excelCheck.jsp</result>
+		</action>
+		<action name="peBzzStudentEnterprise_*" method="{1}" class="peBzzStudentEnterpriseAction"></action>
+		<action name="peBzzCertificate_*" method="{1}" class="peBzzCertificateAction">
+			<result name="ups">/entity/manager/basic/certificate_batch_upload.jsp</result>
+			<result name="uploadCertificate_result">/entity/manager/basic/operate_result.jsp</result>
+			<result name="certificatePrint">/entity/manager/basic/certificate_select.jsp</result>
+			<result name="certificatePrintSpecial">/entity/manager/basic/certificate_special_select.jsp</result>
+			<result name="scorePrint">/entity/manager/basic/score_select.jsp</result>
+		</action>
+		<action name="peBzzEvaluate_*" method="{1}" class="peBzzEvaluateAction">
+			<result name="excellence">/entity/manager/basic/excellence_list.jsp</result>
+			<result name="optimal">/entity/manager/basic/optimal_list.jsp</result>
+			<result name="StudentExcellence">/entity/manager/basic/StudentExcellence_list.jsp</result>
+		</action>
+		<action name="peBzzCertificateInfo_*" method="{1}" class="peBzzCertificateInfoAction"></action>
+		<action name="peEnterprisemanager_*" method="{1}" class="peEnterpriseManagerAction"></action>
+		<action name="peCertificateYiJi_*" method="{1}" class="peCertificateYiJiAction"></action>
+		<action name="peCertificateErJi_*" method="{1}" class="peCertificateErJiAction"></action>
+		<action name="peBzzCertificateMailInfo_*" method="{1}" class="peBzzCertificateMailInfoAction"></action>
+		<action name="enterpriseManager_*" method="{1}" class="enterpriseManagerAction">
+			<result name="jigou">/entity/manager/basic/jigouxinxi.jsp</result>
+			<result name="add_enterprise">/entity/manager/basic/add_enterprise.jsp </result>
+		</action>
+		<action name="managerEnterprise_*" method="{1}" class="managerEnterpriseAction">
+			<result name="addSuccess">/entity/basic/managerEnterprise.action</result>
+		</action>
+		<action name="peBzzOnlineCourseManage_*" method="{1}" class="peBzzOnlineCourseManageAction"></action>
+		<action name="onlineCourseMutiDisplay_*" method="{1}" class="onlineCourseMutiDisplayAction"></action>
+		<action name="peBzzCommInfo_*" method="{1}" class="peBzzCommInfoAction">
+			<result name="batch">/entity/manager/commInfo/comm_batch_upload.jsp</result>
+			<result name="uploadComm_result">/entity/manager/commInfo/operate_result.jsp</result>
+		</action>
+		<action name="peBzzGoodStu_*" method="{1}" class="peBzzGoodStuAction">
+			<result name="detail">/entity/manager/basic/goodStu_detail.jsp</result>
+			<result name="addGoodStu">/entity/manager/basic/addGoodStuInfoMessage.jsp</result>
+		</action>
+		<action name="peBzzGoodMag_*" method="{1}" class="peBzzGoodMagAction">
+			<result name="detail">/entity/manager/basic/goodMag_detail.jsp</result>
+			<result name="addGoodMag">/entity/manager/basic/addGoodMagInfoMessage.jsp</result>
+		</action>
+		<action name="peBzzFeedbackInfo_*" method="{1}" class="peBzzFeedbackInfoAction">
+			<result name="showInfo">/entity/manager/basic/peBzzFeedbackInfo_detail.jsp</result>
+		</action>
+		<action name="peBzzReplyInfo_*" method="{1}" class="peBzzReplyInfoAction">
+			<result name="addReply">/entity/manager/basic/peBzzReplyInfo_add.jsp</result>
+			<result name="addReplyexe">/entity/manager/basic/peBzzReplyInfo_status.jsp</result>
+		</action>
+		<action name="peElectiveCoursePeriod_*" method="{1}" class="peElectiveCoursePeriodAction">
+			<result name="electiveCoursePeriodDetail">/entity/manager/electiveCoursePeriod/elective_detail.jsp</result>
+			<result name="viewStudentInfo">/entity/manager/electiveCoursePeriod/elective_student_detail.jsp?id=${id}</result>
+			<result name="confirmOrderInfo">/entity/manager/electiveCoursePeriod/confirm_orderInfo.jsp</result>
+			<result name="confirmPaymentMethod">/entity/manager/electiveCoursePeriod/confirm_paymentMethod.jsp</result>
+			<result name="onlinePayment">/entity/basic/onlinePayment_electiveBank.action</result>
+			<result name="toSelectStudent">addStudentToPeriod.action?id=${id}&amp;flag=${method}</result>
+		</action>
+		<action name=""></action>
+		<action name="addStudentToPeriod_*" method="{1}" class="addStudentToPeriodAction"></action>
+		<action name="peCourseQuery_*" method="{1}" class="peCourseQueryAction"></action>
+		<action name="paymentManage_*" method="{1}" class="paymentManageAction">
+			<result name="orderDetail">/entity/manager/financial/order_detail.jsp</result>
+			<result name="toExcelCheckIn">/entity/manager/basic/check_batch_upload.jsp</result>
+		</action>
+		<action name="prepaidAccountManage_*" method="{1}" class="prepaidAccountManageAction">
+			<result name="accountManage">/entity/manager/prepaid/account_manage.jsp</result>
+			<result name="accountManageAction">prepaidAccountSearch.action</result>
+			<result name="purchaseStudyHour">/entity/manager/prepaid/purchase_amount.jsp</result>
+			<result name="assignStudyHour">/entity/manager/prepaid/assign_studyhour.jsp</result>
+			<result name="viewPurchaseHistory">/entity/manager/prepaid/view_purchase_history.jsp</result>
+			<result name="viewAssignHistory">/entity/manager/prepaid/view_assign_history.jsp</result>
+		</action>
+		<action name="prepaidSearch_*" method="{1}" class="prepaidSearchAction"></action>
+		<!-- action name="prepaidOrderInfoList_*" method="{1}" class="prepaidOrderInfoListAction">
+			</action-->
+		<action name="prepaidAccountSearch_*" method="{1}" class="prepaidAccountSearchAction">
+			<result name="viewStudentAdd">/entity/manager/prepaid/view_student_prepaid_add.jsp</result>
+			<result name="viewStudentDel">/entity/manager/prepaid/view_student_prepaid_del.jsp</result>
+			<result name="viewEnterpriseAdd">/entity/manager/prepaid/view_enterprise_prepaid_add.jsp</result>
+			<result name="viewEnterpriseDel">/entity/manager/prepaid/view_enterprise_prepaid_del.jsp</result>
+		</action>
+		<action name="refoundManage_*" method="{1}" class="refoundManageAction">
+			<result name="refoundDetail">/entity/manager/financial/refound_detail.jsp</result>
+			<result name="toOnlineRefund">/entity/basic/onlinePayment_doRefund.action</result>
+		</action>
+		<action name="refoundManageFinal_*" method="{1}" class="refoundManageFinalAction">
+			<result name="refoundDetail">/entity/manager/financial/refound_detail.jsp</result>
+			<result name="toOnlineRefund">/entity/basic/onlinePayment_doRefund.action</result>
+			<result name="to99BillRefund">/entity/basic/onlinePayment_do99BillRefund.action</result>
+		</action>
+		<action name="invoiceManage_*" method="{1}" class="invoiceManageAction">
+			<result name="invoiceDetail">/entity/manager/basic/invoice_detail.jsp</result>
+			<result name="printInvoice">/entity/manager/basic/invoice_print.jsp</result>
+			<result name="toExcelCheckIn">/entity/manager/basic/invoice_batch_upload.jsp</result>
+			<result name="writeCode">/entity/manager/basic/invoice_write_code.jsp</result>
+		</action>
+		<action name="ptInvoiceManage_*" method="{1}" class="ptInvoiceManageAction">
+			<result name="writeCode">/entity/manager/basic/invoice_write_code_pt.jsp</result>
+		</action>
+		<action name="collectiveElective_*" method="{1}" class="collectiveElectiveAction">
+			<result name="electiveBatchUpload">/entity/manager/collectiveApply/elective_batch_upload.jsp</result>
+			<result name="confirmElective">/entity/manager/collectiveApply/confirm_elective.jsp</result>
+			<result name="confirmOrderInfo">/entity/manager/collectiveApply/confirm_orderInfo.jsp</result>
+			<result name="confirmPaymentMethod">/entity/manager/collectiveApply/confirm_paymentMethod.jsp</result>
+			<result name="onlinePayment">/entity/basic/onlinePayment_electiveBank.action</result>
+		</action>
+		<action name="assignStudyHour_*" method="{1}" class="assignStudyHourAction"></action>
+		<action name="assignStudyHourEnt_*" method="{1}" class="assignStudyHourEntAction"><!-- 二级集体增加分配剥离学时 -->
+		</action>
+		<action name="buyClassHour_*" method="{1}" class="buyClassHourAction">
+			<result name="confirmOrder">/entity/manager/prepaid/confirm_order.jsp</result>
+			<result name="confirmPayment">/entity/manager/prepaid/confirm_payment.jsp</result>
+			<result name="onlinePayment">/entity/basic/onlinePayment_electiveBank.action</result>
+		</action>
+		<action name="buyClassHourRecord_*" method="{1}" class="buyClassHourRecordAction">
+			<result name="invoiceApply">/entity/manager/prepaid/invoice_apply.jsp</result>
+			<result name="refundApply">/entity/manager/prepaid/refund_apply.jsp</result>
+			<result name="viewReason">/entity/manager/prepaid/view_reason.jsp</result>
+		</action>
+		<action name="yuFuFeeRecord_*" method="{1}" class="yuFuFeeRecordAction"></action>
+		<action name="checkClassHourRecord_*" method="{1}" class="checkClassHourRecordAction"></action>
+		<action name="checkClassHourRecordEnt_*" method="{1}" class="checkClassHourRecordEntAction"><!-- 二级集体增加分配剥离学时 -->
+		</action>
+		<action name="collectiveOrderQuery_*" method="{1}" class="collectiveOrderQueryAction">
+			<result name="refundApply">/entity/manager/prepaid/refund_apply.jsp</result>
+			<result name="refundApply_copy">/entity/manager/prepaid/refund_apply_copy.jsp</result>
+			<result name="viewReason">/entity/manager/prepaid/view_reason.jsp</result>
+			<result name="viewOrder">/entity/manager/financial/order_detail_jiti.jsp</result>
+			<result name="viewOrderSub">/entity/manager/financial/order_detail_common_sub.jsp</result>
+			<result name="invoiceView">/entity/manager/financial/invoice_view.jsp</result>
+			<result name="invoiceView1">/entity/manager/financial/invoice_view1.jsp</result>
+			<result name="invoiceApply">/entity/manager/prepaid/invoice_apply.jsp</result>
+			<result name="invoiceReset">/entity/manager/prepaid/invoice_reset.jsp</result>
+			<result name="invoiceUpdate">/entity/manager/prepaid/invoice_update.jsp</result>
+			<result name="reFillout">/entity/manager/prepaid/fill_out.jsp</result>
+			<result name="success">/entity/manager/prepaid/success.jsp</result>
+			<result name="fail">/entity/manager/prepaid/fail.jsp</result>
+			<result name="onlinePayment">/entity/basic/onlinePayment_electiveBank.action</result>
+		</action>
+		<action name="applyInvoiceMerge_*" method="{1}" class="applyInvoiceMergeAction">
+			<result name ="mergeApply">/entity/manager/prepaid/invoice_merge.jsp</result>
+			<result name ="applyMergeInvoice">/entity/manager/prepaid/invoice_apply_merge.jsp</result>
+			<result name ="invoiceView">/entity/manager/prepaid/invoice_view.jsp</result>
+		</action>
+		<action name="collectiveStudentQuery_*" method="{1}" class="collectiveStudentQueryAction"></action>
+		<action name="onlinePayment_*" method="{1}" class="onlinePaymentAction">
+			<result name="electiveBank">/entity/manager/doPayment/elective_bank.jsp</result>
+			<result name="stuElectiveBank">/entity/manager/doPayment/stu_elective_bank.jsp</result>
+			<result name="toPayment">/entity/manager/doPayment/online_to_payment.jsp</result>
+			<result name="toRefund">/entity/manager/doPayment/online_to_refund.jsp</result>
+			<result name="refundEndHandle">/entity/basic/refoundManage_refundEndHandle.action</result>
+			<!-- 快钱支付跳转 -->
+			<result name="to99Bill">/entity/manager/doPayment/online_to_99bill_payment.jsp</result>
+			<!-- <result name="paymentBatchByGroup">/entity/basic/paymentBatch_refundEndHandle.action</result>
+				<result name="continuePayment">/entity/basic/collectiveOrderQuery_confirmOnlinePayment.action</result>
+				<result name="elePeriodPayment">/entity/basic/peElectiveCoursePeriod_confirmOnlinePayment.action</result>
+				<result name="buyHourPayment">/entity/basic/buyClassHour_confirmOnlinePayment.action</result>
+				<result name="colElePayment">/entity/basic/collectiveElective_confirmOnlinePayment.action</result>
+				<result name="stuElePayment">/entity/workspaceStudent/studentWorkspace_confirmOnlinePayment.action</result>
+				<result name="batchPayment">/entity/workspaceStudent/studentWorkspace_onlinePaymentOfBatch.action</result> -->
+		</action>
+		<action name="paymentBatch_*" method="{1}" class="paymentBatchAction">
+			<result name="confirmStudentInfo">/entity/manager/batchPayment/confirm_elective.jsp</result>
+			<result name="confirmOrderInfo">/entity/manager/batchPayment/confirm_orderInfo.jsp</result>
+			<result name="confirmPaymentMethod">/entity/manager/batchPayment/confirm_paymentMethod.jsp</result>
+			<result name="onlinePayment">/entity/basic/onlinePayment_electiveBank.action</result>
+			<result name="pbmsg">/entity/manager/paybatch_msg.jsp</result>
+			<result name="showDiscription">/entity/manager/teaching/showDiscription02.jsp</result>
+			<result name="addCourse">/entity/basic/paymentBatch.action"</result>
+		</action>
+		<!-- Lee 2014年11月19日 在线直播支付 -->
+		<action name="paymentLive_*" method="{1}" class="paymentLiveAction">
+			<result name="confirmStudentInfo">/entity/manager/livePayment/confirm_elective.jsp</result>
+			<result name="confirmOrderInfo">/entity/manager/livePayment/confirm_orderInfo.jsp</result>
+			<result name="confirmPaymentMethod">/entity/manager/livePayment/confirm_paymentMethod.jsp</result>
+			<result name="onlinePayment">/entity/basic/onlinePayment_electiveBank.action</result>
+			<result name="pbmsg">/entity/manager/paybatch_msg.jsp</result>
+			<result name="showDiscription">/entity/manager/teaching/showDiscription02.jsp</result>
+			<result name="addCourse">/entity/basic/paymentLive.action"</result>
+		</action>
+		<action name="paymentBatchAddCourse_*" method="{1}" class="paymentBatchAddCourseAction"></action>
+		<action name="orderQueryZhiDian_*" method="{1}" class="orderQueryZhiDianAction">
+			<result name="refundApply">/entity/manager/prepaid/refund_apply.jsp</result>
+			<result name="viewReason">/entity/manager/prepaid/view_reason.jsp</result>
+			<result name="viewOrder">/entity/manager/financial/order_detail_jiti.jsp</result>
+			<result name="invoiceView">/entity/manager/financial/invoice_view.jsp</result>
+			<result name="invoiceView1">/entity/manager/financial/invoice_view1.jsp</result>
+			<result name="invoiceApply">/entity/manager/prepaid/invoice_apply.jsp</result>
+			<result name="viewOrderSub">/entity/manager/financial/order_detail_common_sub.jsp</result>
+			<result name="reFillout">/entity/manager/prepaid/fill_out.jsp</result>
+			<result name="success">/entity/manager/prepaid/success.jsp</result>
+			<result name="fail">/entity/manager/prepaid/fail.jsp</result>
+		</action>
+		<action name="signStudentCourse_*" method="{1}" class="signStudentCourseAction"></action>
+		<action name="signUpOnline_*" method="{1}" class="signUpOnlineAction">
+			<result name="toAddSignUp">/entity/manager/signUpOnline/signUpOnline.jsp</result>
+			<result name="confirmSignUp">/entity/manager/collectiveApply/confirm_signUp.jsp</result>
+			<result name="getSignUpDetails">/entity/manager/signUpOnline/signUp_detail.jsp</result>
+			<result name="toPaySignUpOrder">/entity/manager/collectiveApply/confirm_elective.jsp</result>
+			<result name="toPayOnlineSignUp" type="redirect">/entity/basic/signUpOnline_toPaySignUpOrder.action?signUpId=${signUpId}</result>
+			<result name="tosinouppage" type="redirect">/entity/basic/signStudentCourse.action?typeflag=${typeflag}&amp;signUpId=${id}</result>
+			<result name="toConfirmPay">/entity/manager/basic/to_confirm_elective.jsp</result>
+		</action>
+		<action name="prSignUpOrderCourse_*" method="{1}" class="prSignUpOrderCourseAction"></action>
+		<action name="prSignUpOrderStudent_*" method="{1}" class="prSignUpOrderStudentAction"></action>
+		<action name="addStudentToSign_*" method="{1}" class="addStudentToSignAction"></action>
+		<action name="modifyInvoice_*" method="{1}" class="modifyInvoiceAction">
+			<result name="modifyInvoice">/entity/manager/basic/modify_invoice.jsp</result>
+		</action>
+		<action name="yufufeiPayment_*" method="{1}" class="yufufeiPaymentAction"></action>
+		<action name="subOrderInfo_*" method="{1}" class="subOrderInfoAction"></action>
+		<action name="orderInfoList_*" method="{1}" class="orderInfoListAction">
+			<result name="orderDetailCommon">/entity/manager/financial/order_detail_common.jsp</result>
+		</action>
+		<action name="statistic_*" method="{1}" class="statisticAction"></action>
+		<action name="peBzzTchOrderStuDetail_*" method="{1}" class="peBzzTchOrderStuDetailAction"></action>
+		<!-- 常见问题库 李文强 2014-10-15 -->
+		<action name="frequentlyAskedQuestions_*" method="{1}" class="frequentlyAskedQuestionsAction">
+			<result name="toImpQuestions">/entity/manager/frequentlyAskedQuestions/impXlsQuestions.jsp</result>
+			<result name="confirmElective">/entity/manager/frequentlyAskedQuestions/confirm_elective.jsp</result>
+			<result name="showDetail">/entity/manager/frequentlyAskedQuestions/showQuestion.jsp</result>
+			<result name="show_add_question">/entity/manager/frequentlyAskedQuestions/to_add_question.jsp</result>
+			<result name="do_info">/entity/manager/frequentlyAskedQuestions/do_info.jsp</result>
+			<result name="to_edit">/entity/manager/frequentlyAskedQuestions/to_edit.jsp</result>
+		</action>
+		<!-- 推荐系列，推荐课程zgl 2014-10-15 -->
+		<action name="recommendSeries_*" method="{1}" class="recommendSeriesAction">
+			<result name="courseInfo">/entity/manager/basic/detailed.jsp</result>
+		</action>
+		<action name="seriesCourse_*" method="{1}" class="seriesCourseAction"></action>
+		<action name="seriesCourseAdd_*" method="{1}" class="seriesCourseAddAction"></action>
+		<action name="recommendCourse_*" method="{1}" class="recommendCourseAction"></action>
+		<action name="recommendCourseAdd_*" method="{1}" class="recommendCourseAddAction"></action>
+	     <!-- 远程师资库 lwq 2014-11-13 -->
+	     <action name="teacherResource_*" method="{1}" class="teacherResourceAction">
+	     	<result name="toUpdate">/entity/manager/basic/update_teacher_code.jsp</result>
+	     	<result name="checkCode">/entity/manager/basic/update_teacher_info.jsp</result>
+	     	<result name="success">/entity/manager/basic/msg.jsp</result>
+	     	<result name="showTeacherInfo">/entity/manager/basic/show_teacher_info.jsp</result>
+	     	<result name="log_list">/entity/manager/basic/log_list.jsp</result>
+	     	<result name="toCompare">/entity/manager/basic/compare_log.jsp</result>
+	     	<result name="show_note">/entity/function/jsjj/teacher_note.jsp</result>
+	     	<result name="toAddNote">/entity/function/jsjj/add_note.jsp</result>
+	     	<result name="toEditNote">/entity/function/jsjj/edit_note.jsp</result>
+	     </action>
+	     <!-- 讲师授课课程 2014-11-25 lwq -->
+	     <action name="teacherShowCourse_*" method="{1}" class="teacherShowCourseAction">
+	     	<result name ="courseView">/entity/manager/basic/course_view.jsp </result>
+	     </action>
+	     <action name="teacherGrade_*" method="{1}" class="teacherGradeAction">
+	     	<result name="to_search_teacher_grade">/entity/manager/basic/search_teacher_grade.jsp</result>
+	     	<result name="search_teacher_grade" type="redirect">/entity/basic/teacherGrade.action?year=${year}&amp;teacherName=${teacherName}</result>
+	     </action>
+	     <action name="teacherGradeDetail_*" method="{1}" class="teacherGradeDetailAction">
+	     	<result name="to_search_teacher_grade_detail">/entity/manager/basic/searchTeacherGradeDetail.jsp</result>
+	     	<result name="search_teacher_grade_detail" type="redirect">/entity/basic/teacherGradeDetail.action?year=${year}&amp;teacherName=${teacherName}</result>
+	     </action>
+	     <!-- 行业推荐讲师库 lwq 2014-11-26-->
+	     <action name="industryTeacherResource_*" method="{1}" class="industryTeacherResourceAction">
+	     	<result name="toAdd">/entity/manager/basic/add_teacher.jsp</result>
+	     	<result name="toIndustryTeacher" type="redirect">/entity/basic/industryTeacherResource.action</result>
+	     	<result name="showDetail">/entity/manager/basic/teacher_view.jsp</result>
+	     	<result name="updateDetail">/entity/manager/basic/update_teacher.jsp</result>
+	     </action>
+	     <!-- 行业推荐课程库 2014-11-13 lwq -->
+	     <action name="industryCourseResource_*" method="{1}" class="industryCourseResourceAction">
+	     	<result name ="courseView">/entity/manager/basic/course_view.jsp </result>
+	     	<result name="showDetail">/entity/manager/basic/course_detail.jsp</result>
+	     </action>
+	     <!-- 课程推荐讲师 -->
+	      <action name="courseShowTeacher_*" method="{1}" class="courseShowTeacherAction">
+	     	 <result name="toAdd">/entity/manager/basic/courseAddTeacher.jsp</result>
+	     	 <result name="showDetail">/entity/manager/basic/teacher_view.jsp</result>
+	     	 <result name="updateDetail">/entity/manager/basic/courseUpdateTeacher.jsp</result>
+	     	 <result name="toIndustryTeacher" type="redirect">/entity/basic/courseShowTeacher.action?id=${id}</result>
+	       </action>
+	       <action name="teacherShowCourses_*" method="{1}" class="teacherShowCoursesAction">
+	     	<result name ="courseView">/entity/manager/basic/course_view.jsp </result>
+	     </action>
+	     <!-- 资料库标签管理 lwq 2015-12-28 -->
+	     <action name="tagManager_*" method="{1}" class="tagManagerAction"></action>
+	     <!-- 发票信息查询 -->
+	     <action name="modifyInvoice_*" method="{1}" class="modifyInvoiceAction">
+	     	<result name ="invoiceView" >/entity/manager/financial/invoice_view2.jsp</result>
+	     </action>
+	</package>
+</struts>

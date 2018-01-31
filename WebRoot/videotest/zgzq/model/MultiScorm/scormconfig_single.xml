@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="GB2312"?>
+<scorm>
+	<!--scorm类型，“multi”为多节点,“single”为单节点-->
+	<type>single</type>
+	<!--多长时间提交一次数据,单位为分钟，建议值（5-10）-->
+	<committime>5</committime>
+	<!--继续学习依据，按页：page；按时间position-->
+	<goonstudywith>position</goonstudywith>
+	<!--多节点每个节点完成时间比例，适用于多节点，建议值（0.5-0.9）-->
+	<blockpassk>0.7</blockpassk>
+	<!--完成准则，按累计时长：duration；按内容块：block；适用于单节点-->
+	<completedrule>duration</completedrule>
+	<!--单节点完成页数占总页数的比例，适用于单节点+block，建议值（0.5-0.9）-->
+	<easypasstime>0.8</easypasstime>
+	<!--单节点按总时间的完成时间比例，适用于单节点+duration，建议值（0.7-0.95）-->
+	<totalpassk>0.8</totalpassk>
+</scorm>

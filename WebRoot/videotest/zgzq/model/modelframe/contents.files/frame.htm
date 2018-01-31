@@ -1,0 +1,159 @@
+<html>
+
+<meta http-equiv=Content-Type content="text/html; charset=GB2312">
+<meta name=ProgId content=PowerPoint.Slide>
+<meta name=Generator content="Microsoft PowerPoint 9">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<link id=Main-File rel=Main-File href="../contents.htm">
+<link rel=Preview href=preview.wmf>
+<title></title>
+<![if !ppt]><script src=script.js></script><script>
+<!--
+var gNavLoaded = gOtlNavLoaded = gOtlLoaded = false;
+var gOtlOpen2 =true,gOtlFull=false;
+var IsLeftHidden=false;
+var IsRightDownHidden=false;
+
+function Load()
+{
+  str=document.location.hash,idx=str.indexOf('#')
+  if(idx>=0) str=str.substr(1);
+  if(str) {
+    PPTSld.location.replace(str);
+    fraMain.rows="0,*,0";
+    PPTHorizAdjust.cols="0,*";
+    PPTVert.rows="*,0";
+    PPTHorizAdjust.noResize=true;
+  }else{
+    if (PPTOtl.location.href.substr(0,11) == "about:blank"){
+      PPTOtl.location.href="media.xml";
+    }
+  }
+
+}
+
+function InitFrmSet(InitLeftSize, IsShowRightDown){
+
+  frmset=document.all("PPTHorizAdjust")
+  if (parseInt(InitLeftSize)>0){
+    frmset.cols=InitLeftSize+",*"
+  }
+
+  if (!IsShowRightDown && !IsRightDownHidden){
+    zToggleOtlPane2();
+  }
+}
+
+function zToggleOtlPane()
+{
+  
+  frmset=document.all("PPTHorizAdjust")
+  frm=document.all("PPTOtl")
+
+  if( gOtlOpen ){
+      frmset.cols="*,100%"
+      IsLeftHidden=true
+  }else{
+      frmset.cols=PPTOtl.InitLeftSize+",*"
+      IsLeftHidden=false
+  }
+//add by zhangzhen
+  gOtlOpen=!gOtlOpen
+  frm.noResize=!frm.noResize
+  UpdOtNavPane()
+}
+
+function zToggleOtlPane2()
+{
+	frmset=document.all("PPTVert")
+	frm=document.all("PPTOtl")
+
+	if( gOtlOpen2 ){
+   
+		frmset.rows="*,26"
+    IsRightDownHidden=true
+	}else{
+		frmset.rows="*,82"
+    IsRightDownHidden=false
+  }
+//add by zhangzhen
+	gOtlOpen2=!gOtlOpen2
+//	frm.noResize=!frm.noResize
+	UpdOtNavPane()
+}
+
+function zFullScreenPPT(){ 
+  //alert( MHTMLPrefix+FULLSCR_HREF);
+  window.open( zCalculateMHTMLPrefix()+"fullscreen.htm",null,"fullscreen=yes" ) }
+
+function zFullScreen(){
+  if(IsLeftHidden && IsRightDownHidden){
+    zToggleOtlPane()
+    zToggleOtlPane2()
+  }else{
+    if( !IsLeftHidden )
+      zToggleOtlPane()
+    if( !IsRightDownHidden )
+      zToggleOtlPane2()
+  }
+}
+
+
+function zCalculateMHTMLPrefix()
+{
+  //if ( (document.location.protocol == 'mhtml:') || (document.location.protocol == 'file:')|| (document.location.protocol == 'http:')) 
+  { //add by Zhang Zhen
+      href=new String(document.location.href) 
+      Start=href.indexOf('!')+1 
+      End=href.lastIndexOf('/')+1 
+      if (End < Start) 
+          return href.substring(0, Start) 
+      else 
+      return href.substring(0, End) 
+  }
+  //return '';//rem by Zhang Zhen
+}
+function GoToPrevSld1()
+{
+alert("Ok!,GoToPrevSld1");
+//document.all().test();
+alert(PPTOtl.location);
+PPTOtl.test();
+}
+//-->
+</script><![endif]>
+</head>
+
+<frameset id="fraMain" framespacing="0" border="0" rows="38,96%,7" frameborder="0">
+  <!--Top-->
+  <frame name="fraTop" scrolling="no" noresize target="middle">
+
+  <!--Middle-->
+	<frameset cols="224,*" id=PPTHorizAdjust framespacing="4" bordercolor="#4D5E8C" frameborder="0">
+    <!--Middle-Left-->
+    <!--<frame id=PPTOtl src="media.xml" scrolling="no" target=PPTVert> //src在load()里面设,如果是直接点击slide????.htm进来的就不设,这样可以直接显示PPT页面而不播放视频,方便编辑器-->
+    <frame id=PPTOtl src="" scrolling="no" target=PPTVert>
+    <!--Middle-Right-->
+    <frameset rows="*,82" id=PPTVert framespacing=0 border=0 frameborder=0>
+
+      <!--Middle-Right-PPT-->
+      <frameset rows="100%,*" id=PPTVertAdjust framespacing=0 onload="Load()">
+        <frame src="" name=PPTSld>
+        <frame src="" name=PPTNts>
+		  </frameset>
+
+      <!--Middle-Right-BelowPPT-->
+      <frame id="PPTNav" scrolling="no">
+    </frameset>
+	</frameset>
+
+  <!--bottom-->
+	<frame id="fraBottom" scrolling="no" noresize>
+	<noframes>
+	<body>
+		<p>此网页使用了框架，但您的浏览器不支持框架。</p>
+	</body>
+	</noframes>
+</frameset>
+
+</html>

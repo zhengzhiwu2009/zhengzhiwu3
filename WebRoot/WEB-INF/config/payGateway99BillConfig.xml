@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<!-- 支付相关参数 -->
+	<!-- 测试账号：1001213884201 -->
+	<!-- 生产账号：1002738866301 -->
+	<merchantAcctId>1002738866301</merchantAcctId><!-- 人民币账号：本参数用来指定接收款项的快钱用户的人民币账号 -->
+	<!-- 测试密钥：5UHQX2G65W4ECF5G -->
+	<!-- 生产密钥：4AJDI25KGM9KC7UK -->
+	<key>4AJDI25KGM9KC7UK</key><!-- 客户编号所对应的密钥：在账户邮箱中获取 -->
+	<inputCharset>1</inputCharset><!-- 字符集：固定值：1 1代表UTF-8 -->
+	<version>v2.0</version><!-- 查询接口版本 固定值：v2.0注意为小写字母 -->
+	<signType>4</signType><!-- 签名类型 固定值：1 1代表MD5加密签名方式 -->
+	<queryType>0</queryType><!-- 查询方式 固定选择值：0、1 0按商户订单号单笔查询（返回该订单信息） 1按交易结束时间批量查询（只返回成功订单） -->
+	<queryMode>1</queryMode><!-- 查询模式 固定值：1 1代表简单查询（返回基本订单信息） -->
+	<startTime></startTime><!-- 交易开始时间 数字串，一共14位 格式为：年[4位]月[2位]日[2位]时[2位]分[2位]秒[2位]，例如：20071117020101 -->
+	<endTime></endTime><!-- "20120319150000" ; 交易结束时间 数字串，一共14位 格式为：年[4位]月[2位]日[2位]时[2位]分[2位]秒[2位]，例如：20071117020101 -->
+	<requestPage></requestPage><!-- "20120320142624"; 请求记录集页码 在查询结果数据总量很大时，快钱会将支付结果分多次返回。本参数表示商户需要得到的记录集页码。 默认为1，表示第1页。 -->
+	<pageUrl></pageUrl><!-- 需要是绝对地址，不能同时为空 当bgUrl为空时，快钱直接将支付结果GET到pageUrl 当bgUrl不为空时，挄照bgUrl的方式返回 -->
+	<bgUrl>http://trainingtest.sac.net.cn/test/check_checking99Bill.action</bgUrl><!-- 服务器接收支付结果的后台地址 -->
+	<!-- 退款相关参数 -->
+	<refundVersion>bill_drawback_api_1</refundVersion><!-- 退款接口版本号 目前固定为此值 -->
+	<commandType>001</commandType><!-- 操作类型 固定值001 001代表下订单请求退款 -->
+	<!-- 测试KEY：U9HSFFJ9UDEKY7T6 -->
+	<!-- 生产KEY：AUXCLDGD6YTD949N -->
+	<merchantKey>AUXCLDGD6YTD949N</merchantKey><!-- 加密所需的key值，线上的话发到商户快钱账户邮箱里 -->
+	<!-- Lee sandbox为测试地址www为生产地址 -->
+	<bankResultValue>https://www.99bill.com/webapp/receiveDrawbackAction.do</bankResultValue><!-- 退费地址 -->
+</root>
